@@ -4,6 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Iback Lungu | Portfolio</title>
+  <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init({
+        publicKey: "f1egd1Rb6-dqFGy5D",
+      });
+   })();
+</script>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -509,11 +519,12 @@
         submitButton.textContent = 'Sending...';
         formStatus.textContent = '';
 
-        // IMPORTANT: Replace with your actual EmailJS Service ID, Template ID, and Public Key
-        const serviceID = 'YOUR_SERVICE_ID';
-        const templateID = 'YOUR_TEMPLATE_ID';
-        const publicKey = 'YOUR_PUBLIC_KEY';
+        // Your actual EmailJS credentials
+        const serviceID = 'service_89njjb3';
+        const templateID = 'template_h4cawxa';
+        const publicKey = 'f1egd1Rb6-dqFGy5D';
         
+        // ✅ FIXED: correctly using variables instead of undefined identifiers
         emailjs.sendForm(serviceID, templateID, this, publicKey)
           .then(() => {
             submitButton.disabled = false;
@@ -521,16 +532,24 @@
             formStatus.textContent = 'Message sent successfully! Thank you.';
             formStatus.classList.add('text-green-400');
             contactForm.reset();
-            setTimeout(() => { formStatus.textContent = ''; formStatus.classList.remove('text-green-400'); }, 5000);
+            setTimeout(() => { 
+              formStatus.textContent = ''; 
+              formStatus.classList.remove('text-green-400'); 
+            }, 5000);
           }, (err) => {
             submitButton.disabled = false;
             submitButton.textContent = 'Send Message';
             formStatus.textContent = 'Failed to send message. Please try again later.';
             formStatus.classList.add('text-red-400');
-            setTimeout(() => { formStatus.textContent = ''; formStatus.classList.remove('text-red-400'); }, 5000);
+            console.error('EmailJS Error:', err); // ✅ Added helpful debugging
+            setTimeout(() => { 
+              formStatus.textContent = ''; 
+              formStatus.classList.remove('text-red-400'); 
+            }, 5000);
           });
       });
     });
-  </script>
+</script>
+
 </body>
 </html>
