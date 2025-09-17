@@ -1,123 +1,133 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Iback Lungu | Portfolio</title>
+
+    <!-- EmailJS Library -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script type="text/javascript">
-        (function(){
+        (function() {
             emailjs.init({
                 publicKey: "5MsPZTTeDr90FHm7N",
             });
         })();
     </script>
+
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Custom Styles -->
     <style>
-/* ===== Base Styles ===== */
-body {
-    font-family: 'Inter', sans-serif;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-    padding-top: 4rem; /* space for fixed header */
-}
-body::-webkit-scrollbar {
-    display: none;
-}
+        /* ===== Base Styles ===== */
+        body {
+            font-family: 'Inter', sans-serif;
+            -ms-overflow-style: none; /* IE scrollbar hide */
+            scrollbar-width: none; /* Firefox scrollbar hide */
+            padding-top: 4rem; /* space for fixed header */
+        }
+        body::-webkit-scrollbar {
+            display: none; /* Chrome scrollbar hide */
+        }
 
-/* Gradient Text */
-.text-gradient {
-    background: linear-gradient(135deg, #2563eb 0%, #0d9488 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
+        /* ===== Gradient Text ===== */
+        .text-gradient {
+            background: linear-gradient(135deg, #2563eb 0%, #0d9488 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
 
-/* Hero fade-in animation */
-.hero-fade-in {
-    opacity: 0;
-    transform: translateY(2rem);
-    transition: opacity 1s ease-out, transform 1s ease-out;
-}
-.hero-fade-in.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
+        /* ===== Hero Fade-In Animation ===== */
+        .hero-fade-in {
+            opacity: 0;
+            transform: translateY(2rem);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+        .hero-fade-in.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-/* Scroll animation */
-.animate-on-scroll {
-    opacity: 0;
-    transform: translateY(2.5rem);
-    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
-}
-.animate-on-scroll.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
+        /* ===== Scroll Animation ===== */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(2.5rem);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-/* ===== Hero Section & Min Heights ===== */
-#home {
-    min-height: 75vh; 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-top: 0; /* body padding already handles header */
-}
+        /* ===== Hero Section ===== */
+        #home {
+            min-height: 75vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 0; /* body padding handles header */
+        }
 
-/* ===== Responsive Adjustments for Mobile ===== */
-@media (max-width: 640px) {
-    /* Disable jumpy animations */
-    .hero-fade-in,
-    .animate-on-scroll {
-        transform: none !important;
-        opacity: 1 !important;
-        transition: none !important;
-    }
+        /* ===== Typewriter Box Custom Class ===== */
+        .typewriter-box {
+            min-height: 5rem; /* Tailwind arbitrary class replacement */
+        }
 
-    /* Reduce hero height for small screens */
-    #home {
-        min-height: 60vh;
-        padding-top: 1rem;
-    }
+        /* ===== Responsive Adjustments for Mobile ===== */
+        @media (max-width: 640px) {
+            /* Disable jumpy animations on small screens */
+            .hero-fade-in,
+            .animate-on-scroll {
+                transform: none !important;
+                opacity: 1 !important;
+                transition: none !important;
+            }
 
-    /* Reduce typewriter box height */
-    .min-h-[5rem] {
-        min-height: 4rem !important;
-    }
+            /* Reduce hero section height */
+            #home {
+                min-height: 60vh;
+                padding-top: 1rem;
+            }
 
-    /* Reduce gap between social icons */
-    .flex.justify-center.items-center.gap-2 {
-        gap: 1rem !important;
-    }
+            /* Reduce typewriter box height */
+            .typewriter-box {
+                min-height: 4rem !important;
+            }
 
-    /* Reduce button sizes */
-    .mt-10 a {
-        padding: 0.75rem 1.5rem !important;
-        font-size: 0.875rem !important;
-    }
+            /* Reduce gap between social icons */
+            .social-icons {
+                gap: 1rem !important;
+            }
 
-    /* Reduce profile image size */
-    .hero-fade-in img {
-        width: 5rem !important;
-        height: 5rem !important;
-    }
-}
+            /* Reduce hero button sizes */
+            .hero-buttons a {
+                padding: 0.75rem 1.5rem !important;
+                font-size: 0.875rem !important;
+            }
 
-/* ===== Desktop Smooth Scroll ===== */
-@media (min-width: 768px) {
-    html {
-        scroll-behavior: smooth;
-    }
-}
-</style>
+            /* Reduce profile image size */
+            .hero-fade-in img {
+                width: 5rem !important;
+                height: 5rem !important;
+            }
+        }
 
+        /* ===== Desktop Smooth Scroll ===== */
+        @media (min-width: 768px) {
+            html {
+                scroll-behavior: smooth;
+            }
+        }
+    </style>
 </head>
 
-<body class="bg-gray-900 text-gray-100">
 
     <!-- Header -->
     <header class="fixed top-0 left-0 right-0 z-50 bg-gray-900/80 backdrop-blur-sm shadow-lg border-b border-gray-700/50">
