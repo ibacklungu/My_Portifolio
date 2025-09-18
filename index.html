@@ -153,7 +153,6 @@
         }
     }
 </style>
-
 </head>
 
 
@@ -246,7 +245,7 @@
                             Inprogress
                         </p>
                         <p class="text-gray-300 text-sm">
-                            This program covers essential data tools including <span class="font-bold text-white">Python, SQL, Power BI, Machine Learning</span> to better understand data. It also involves practical projects that help develop skills applicable to real-world problems.
+                            This program covers essential data tools — including Python, <span class="font-bold text-white">Python, SQL, Power BI, and Machine Learning —</span> to build a deeper understanding of data. It incorporates practical, hands-on projects designed to develop skills that are directly applicable to solving real-world problems.
                         </p>
                     </div>
 
@@ -262,7 +261,7 @@
                             Copperbelt University
                         </p>
                         <p class="text-gray-300 text-sm">
-                            This gave me a strong foundation in numbers, patterns, and structured problem-solving, providing a solid base for analytical thinking and data understanding.
+                            My BSc in Mathematics from the Copperbelt University introduced me to the world of numbers, logical reasoning, and abstract thinking. Mathematics taught me how to see patterns, break down complex problems, and think in a structured way. These skills have become the foundation for my growth in data science, helping me better understand topics like <span class="font-bold text-white">statistics, algorithms, and data analysis —</span> as I continue to build my expertise.
                         </p>
                     </div>
                 </div>
@@ -546,18 +545,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const typewriterElement = document.getElementById('typewriter-text');
     if (typewriterElement) {
         const heroMessages = [
-    "Curious about what your data can reveal? Let's explore it together.",
-    "Your data has a story—let's uncover it.",
-    "Helping you make smarter decisions with data, step by step.",
-    "Data-driven ideas start here. Let's dive in.",
-    "Exploring patterns, uncovering insights, empowering growth."
-    ];
-    ;
+            // 1️⃣ Intro – spark curiosity
+            "Are curious about what your data can reveal? Let's take a closer look.",
+
+            // 2️⃣ Observation – noticing patterns
+            "Every dataset holds patterns-recognizing them uncovers meaning.",
+
+            // 3️⃣ Practical application – realistic insight
+            "Using these insights, we can make thoughtful, informed decisions.",
+
+            // 4️⃣ Final static message – lasting, thoughtful takeaway
+            "Data is more than numbers, it’s a guide to understanding, learning, and improving the world around us."
+        ];
 
         let currentMessageIndex = 0;
         let currentText = '';
         let isDeleting = false;
-        let typingSpeed = 100;
+        const typingSpeed = 100;
 
         const type = () => {
             const fullText = heroMessages[currentMessageIndex];
@@ -570,6 +574,10 @@ document.addEventListener('DOMContentLoaded', () => {
             let currentTypingSpeed = isDeleting ? typingSpeed / 2 : typingSpeed;
 
             if (!isDeleting && currentText === fullText) {
+                if (currentMessageIndex === heroMessages.length - 1) {
+                    // Stop on the last message
+                    return;
+                }
                 currentTypingSpeed = 2000;
                 isDeleting = true;
             } else if (isDeleting && currentText === '') {
@@ -631,6 +639,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 </script>
+
 </body>
 </html>
 
