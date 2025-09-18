@@ -545,51 +545,44 @@ document.addEventListener('DOMContentLoaded', () => {
     const typewriterElement = document.getElementById('typewriter-text');
     if (typewriterElement) {
         const heroMessages = [
-            // 1️⃣ Intro – spark curiosity
             "Are curious about what your data can reveal? Let's take a closer look.",
-
-            // 2️⃣ Observation – noticing patterns
-            "Every dataset holds patterns-recognizing them uncovers meaning.",
-
-            // 3️⃣ Practical application – realistic insight
+            "Every dataset holds patterns—recognizing them uncovers meaning.",
             "Using these insights, we can make thoughtful, informed decisions.",
-
-            // 4️⃣ Final static message – lasting, thoughtful takeaway
-            "Data is more than numbers, it’s a guide to understanding, learning, and improving the world around us."
+            "Data is more than numbers; it’s a guide to understanding, learning, and improving the world around us."
         ];
 
         let currentMessageIndex = 0;
-        let currentText = '';
-        let isDeleting = false;
         const typingSpeed = 100;
+        const pauseAfterMessage = 1500; // pause 1.5s after each message
 
-        const type = () => {
-            const fullText = heroMessages[currentMessageIndex];
-            currentText = isDeleting
-                ? fullText.substring(0, currentText.length - 1)
-                : fullText.substring(0, currentText.length + 1);
+        const typeMessage = (message, callback) => {
+            let currentText = '';
+            const typeChar = () => {
+                currentText = message.substring(0, currentText.length + 1);
+                typewriterElement.innerHTML = currentText;
 
-            typewriterElement.innerHTML = currentText;
-
-            let currentTypingSpeed = isDeleting ? typingSpeed / 2 : typingSpeed;
-
-            if (!isDeleting && currentText === fullText) {
-                if (currentMessageIndex === heroMessages.length - 1) {
-                    // Stop on the last message
-                    return;
+                if (currentText.length < message.length) {
+                    setTimeout(typeChar, typingSpeed);
+                } else {
+                    setTimeout(callback, pauseAfterMessage);
                 }
-                currentTypingSpeed = 2000;
-                isDeleting = true;
-            } else if (isDeleting && currentText === '') {
-                isDeleting = false;
-                currentMessageIndex = (currentMessageIndex + 1) % heroMessages.length;
-                currentTypingSpeed = 500;
-            }
-
-            setTimeout(type, currentTypingSpeed);
+            };
+            typeChar();
         };
 
-        type();
+        const showNextMessage = () => {
+            if (currentMessageIndex < heroMessages.length - 1) {
+                typeMessage(heroMessages[currentMessageIndex], () => {
+                    currentMessageIndex++;
+                    showNextMessage();
+                });
+            } else {
+                // Final message stays static
+                typeMessage(heroMessages[currentMessageIndex], () => {});
+            }
+        };
+
+        showNextMessage();
     }
 
     // ===== SCROLL ANIMATIONS =====
@@ -609,8 +602,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const contactForm = document.getElementById('contact-form');
     const statusMessage = document.getElementById('form-status');
     const submitButton = document.getElementById('submit-button');
-    const serviceID = 'service_89njjb3';  // ✅ Replace with your actual EmailJS Service ID
-    const templateID = 'template_h4cawxa'; // ✅ Replace with your actual EmailJS Template ID
+    const serviceID = 'service_89njjb3';  
+    const templateID = 'template_h4cawxa'; 
 
     if (contactForm) {
         contactForm.addEventListener('submit', function(event) {
