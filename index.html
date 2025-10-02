@@ -383,7 +383,7 @@
         <!-- Projects Cards Wrapper -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 w-full">
             <!-- Maji Ndogo Agricultural Analysis -->
-            <div class="group bg-gray-800 rounded-2xl p-4 md:p-6 border border-gray-700 flex flex-col h-full shadow-lg hover:shadow-teal-400/10 hover:border-teal-400/50 transition-all duration-300 transform hover:-translate-y-2 relative overflow-hidden min-h-[300px] md:min-h-[400px]">
+            <div class="group bg-gray-800 rounded-2xl p-6 border border-gray-700 flex flex-col h-full shadow-lg hover:shadow-teal-400/10 hover:border-teal-400/50 transition-all duration-300 transform hover:-translate-y-2 relative overflow-hidden">
                 <!-- 🖼️ FULL CARD IMAGE BACKGROUND -->
                 <div class="absolute inset-0">
                     <img src="./Maji_Ndongo_Image_5.png" alt="Maji Ndogo Agriculture Project — Fields, mountains, and community farms" class="w-full h-full object-cover" />
@@ -391,18 +391,26 @@
                     <div class="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/30 to-transparent"></div>
                 </div>
 
-                <!-- 💬 TEXT AT THE BOTTOM (MOBILE-FIRST OPTIMIZED) -->
-                <div class="relative z-10 mt-auto pt-3 pb-3 px-4">
-                    <h3 class="text-lg md:text-xl font-bold text-white mb-1">Maji Ndogo Agricultural Analysis</h3>
-                    <p class="text-gray-200 text-xs md:text-sm mb-2 line-clamp-2">This project is an initial step for a initiative to automate farming in Maji Ndogo.</p>
-                    <div class="flex flex-wrap gap-1 mb-2">
-                        <span class="px-2 py-1 bg-teal-400 text-gray-900 font-semibold rounded-full text-[10px] md:text-xs">Python</span>
-                        <span class="px-2 py-1 bg-teal-400 text-gray-900 font-semibold rounded-full text-[10px] md:text-xs">Pandas</span>
-                        <span class="px-2 py-1 bg-teal-400 text-gray-900 font-semibold rounded-full text-[10px] md:text-xs">NumPy</span>
-                        <span class="px-2 py-1 bg-teal-400 text-gray-900 font-semibold rounded-full text-[10px] md:text-xs">SQL</span>
-                        <span class="px-2 py-1 bg-teal-400 text-gray-900 font-semibold rounded-full text-[10px] md:text-xs">Data Cleaning</span>
+                <!-- 💬 TEXT AT THE BOTTOM (DESKTOP + MOBILE) -->
+                <div class="relative z-10 mt-auto pt-4">
+
+                    <!-- 📱 MOBILE-ONLY TITLE AT TOP -->
+                    <div class="md:hidden mb-4">
+                        <h3 class="text-xl font-extrabold text-white leading-tight">
+                            MAJI NDOGO<br>AGRICULTURE PROJECT
+                        </h3>
                     </div>
-                    <div class="inline-flex items-center text-gray-300 font-bold py-1 px-3 md:px-4 rounded-full bg-gray-700/50 text-[10px] md:text-xs">
+
+                    <!-- DESCRIPTION & TAGS -->
+                    <p class="text-gray-200 text-sm mb-3">This project is an initial step for a initiative to automate farming in Maji Ndogo.</p>
+                    <div class="flex flex-wrap gap-1 mb-3">
+                        <span class="px-2 py-1 bg-teal-400 text-gray-900 font-semibold rounded-full text-[10px]">Python</span>
+                        <span class="px-2 py-1 bg-teal-400 text-gray-900 font-semibold rounded-full text-[10px]">Pandas</span>
+                        <span class="px-2 py-1 bg-teal-400 text-gray-900 font-semibold rounded-full text-[10px]">NumPy</span>
+                        <span class="px-2 py-1 bg-teal-400 text-gray-900 font-semibold rounded-full text-[10px]">SQL</span>
+                        <span class="px-2 py-1 bg-teal-400 text-gray-900 font-semibold rounded-full text-[10px]">Data Cleaning</span>
+                    </div>
+                    <div class="inline-flex items-center text-gray-300 font-bold py-1 px-4 rounded-full bg-gray-700/50 text-xs">
                         <span class="relative flex h-2 w-2 mr-2">
                             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
                             <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
@@ -459,7 +467,6 @@
         </div>
     </div>
 </section>
-
 
          <!-- Contact Section -->
     <section id="contact" class="py-12 md:py-16 bg-gray-900">
