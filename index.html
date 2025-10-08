@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
@@ -60,16 +59,111 @@ body::-webkit-scrollbar { display: none; }
 
 .social-icons { display:flex; gap:1.5rem; justify-content:center; align-items:center; }
 
-@media (max-width:640px) {
-    .hero-fade-in, .animate-on-scroll { transform:none!important; opacity:1!important; transition:none!important; }
-    #home { min-height:60vh; padding-top:1rem; }
-    .typewriter-box { min-height:4rem!important; }
-    .social-icons { gap:1rem!important; }
-    .hero-buttons a { padding:0.75rem 1.5rem!important; font-size:0.875rem!important; }
-    .hero-fade-in img { width:5rem!important; height:5rem!important; }
+/* Card text optimization */
+.card-content p, .card-content li {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
 }
 
-@media (min-width:768px) { html { scroll-behavior: smooth; } }
+/* Mobile Optimizations */
+@media (max-width: 640px) {
+    .hero-fade-in, .animate-on-scroll { transform:none!important; opacity:1!important; transition:none!important; }
+    #home { 
+        min-height:70vh; 
+        padding: 2rem 1rem;
+        display: flex;
+        align-items: center;
+    }
+    
+    #hero-content {
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    #hero-content h1 {
+        font-size: 1.6rem;
+        line-height: 1.3;
+        margin-bottom: 1.5rem;
+    }
+    
+    .typewriter-box { 
+        min-height: 6rem!important; 
+        width: 100%;
+    }
+    
+    .typewriter-box > div {
+        width: 100%;
+        max-width: 100%;
+        padding: 1rem;
+    }
+    
+    #typewriter-text {
+        font-size: 0.9rem;
+        line-height: 1.5;
+        text-align: center;
+    }
+    
+    .social-icons { gap:1rem!important; }
+    .hero-buttons { 
+        flex-direction: column;
+        width: 100%;
+        max-width: 280px;
+        margin: 2rem auto 0;
+        gap: 1rem;
+    }
+    .hero-buttons a { 
+        width: 100%;
+        text-align: center;
+        padding:0.875rem 1.5rem!important; 
+        font-size:0.9rem!important; 
+    }
+    .hero-fade-in img { width:6rem!important; height:6rem!important; margin-bottom: 1rem; }
+    
+    /* Education & Experience cards */
+    .card-content p, .card-content li {
+        font-size: 0.85rem;
+        line-height: 1.5;
+    }
+    
+    .card-content h4 {
+        font-size: 1.1rem;
+    }
+    
+    /* Project cards */
+    .project-card {
+        padding: 1.25rem;
+    }
+    
+    .project-card h3 {
+        font-size: 1.25rem;
+    }
+    
+    .project-card p {
+        font-size: 0.85rem;
+        line-height: 1.5;
+    }
+    
+    /* Skills cards */
+    .skills-card ul li {
+        font-size: 0.9rem;
+    }
+    
+    /* Contact form */
+    #contact-form {
+        padding: 1.25rem;
+    }
+}
+
+@media (min-width:768px) { 
+    html { scroll-behavior: smooth; } 
+    
+    /* Desktop text optimization */
+    .card-content p, .card-content li {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+}
 </style>
 </head>
 
@@ -111,21 +205,21 @@ body::-webkit-scrollbar { display: none; }
 <main>
 <!-- Hero Section -->
 <section id="home" class="min-h-[75vh] flex items-center justify-center bg-gray-900 pt-16">
-    <div id="hero-content" class="max-w-4xl mx-auto text-center px-4 hero-fade-in">
+    <div id="hero-content" class="max-w-4xl mx-auto text-center px-4 hero-fade-in w-full">
         <div class="inline-block mb-6">
             <img src="p2-removebg-preview 2.png" alt="Iback Lungu" class="w-28 h-28 mx-auto rounded-full border-4 border-teal-400 shadow-lg object-cover">
         </div>
         <h1 class="text-3xl md:text-4xl font-extrabold text-white mb-4">Aspiring Data Scientist | Empowering Decisions Through Data.</h1>
 
-        <div class="min-h-[5rem] flex items-center justify-center">
-            <div class="inline-block bg-gray-800/50 px-6 py-4 rounded-xl shadow-2xl border border-gray-700 transition-all duration-300">
-                <p id="typewriter-text" class="text-lg text-gray-300 font-medium leading-relaxed text-center">&nbsp;</p>
+        <div class="min-h-[5rem] flex items-center justify-center w-full">
+            <div class="inline-block bg-gray-800/50 px-4 md:px-6 py-4 rounded-xl shadow-2xl border border-gray-700 transition-all duration-300 w-full max-w-2xl">
+                <p id="typewriter-text" class="text-base md:text-lg text-gray-300 font-medium leading-relaxed text-center">&nbsp;</p>
             </div>
         </div>
         
         <div class="mt-10 flex flex-col sm:flex-row justify-center items-center gap-2 hero-buttons">
-            <a href="#projects" class="border-2 border-teal-500 text-teal-300 font-bold py-3 px-8 rounded-full hover:bg-teal-500 hover:text-gray-900 shadow-lg">View My Work</a>
-            <a href="#contact" class="border-2 border-teal-500 text-teal-300 font-bold py-3 px-8 rounded-full hover:bg-teal-500 hover:text-gray-900 shadow-lg">Get In Touch</a>
+            <a href="#projects" class="border-2 border-teal-500 text-teal-300 font-bold py-3 px-8 rounded-full hover:bg-teal-500 hover:text-gray-900 shadow-lg transition-all duration-300 w-full sm:w-auto text-center">View My Work</a>
+            <a href="#contact" class="border-2 border-teal-500 text-teal-300 font-bold py-3 px-8 rounded-full hover:bg-teal-500 hover:text-gray-900 shadow-lg transition-all duration-300 w-full sm:w-auto text-center">Get In Touch</a>
         </div>
     </div>
 </section>
@@ -140,41 +234,41 @@ body::-webkit-scrollbar { display: none; }
         </div>
 
         <!-- Main Wrapper for Education and Experience Sections -->
-        <div class="flex flex-col gap-2">
+        <div class="flex flex-col gap-8">
 
             <!-- Education Section -->
             <div class="flex flex-col items-center md:items-start">
                 <h3 class="text-2xl font-bold text-white mb-6 text-center w-full">Education</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-2 w-full">
                     <!-- ALX Africa Data Science Program -->
-                    <div class="group bg-gray-800 rounded-2xl p-6 border border-gray-700 flex flex-col items-center text-center shadow-lg hover:shadow-teal-400/20 hover:border-teal-400/50 transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="group bg-gray-800 rounded-2xl p-6 border border-gray-700 flex flex-col items-center text-center shadow-lg hover:shadow-teal-400/20 hover:border-teal-400/50 transition-all duration-300 transform hover:-translate-y-2 card-content">
                         <img src="Education_icon.png" alt="Education Icon" class="w-16 h-16 rounded-full border-4 border-transparent object-cover mb-2">
                         <h4 class="text-xl font-bold text-teal-400">ALX Africa Data Science Program</h4>
                         <p class="text-gray-400 text-sm mb-1">2025 - 2026</p>
-                        <p class="text-teal-400 text-sm mb-1 flex items-center">
+                        <p class="text-teal-400 text-sm mb-1 flex items-center justify-center">
                             <span class="relative flex h-3 w-3 mr-2">
                                 <span class="absolute inline-flex h-3 w-3 rounded-full bg-green-500 animate-blink"></span>
                             </span>
                             Inprogress
                         </p>
-                        <p class="text-gray-300 text-sm">
-                            This program covers essential data tools — including Python, <span class="font-bold text-white">Python, SQL, Power BI, and Machine Learning —</span> to build a deeper understanding of data. It incorporates practical, hands-on projects designed to develop skills that are directly applicable to solving real-world problems.
+                        <p class="text-gray-300 mt-3">
+                            This program covers essential data tools — including <span class="font-bold text-white">Python, SQL, Power BI, and Machine Learning</span> — to build a deeper understanding of data. It incorporates practical, hands-on projects designed to develop skills that are directly applicable to solving real-world problems.
                         </p>
                     </div>
 
                     <!-- BSc in Mathematics -->
-                    <div class="group bg-gray-800 rounded-2xl p-6 border border-gray-700 flex flex-col items-center text-center shadow-lg hover:shadow-teal-400/20 hover:border-teal-400/50 transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="group bg-gray-800 rounded-2xl p-6 border border-gray-700 flex flex-col items-center text-center shadow-lg hover:shadow-teal-400/20 hover:border-teal-400/50 transition-all duration-300 transform hover:-translate-y-2 card-content">
                         <img src="Education_icon.png" alt="Education Icon" class="w-16 h-16 rounded-full border-4 border-transparent object-cover mb-2">
                         <h4 class="text-xl font-bold text-teal-400">BSc in Mathematics</h4>
                         <p class="text-gray-400 text-sm mb-1">2016 - 2020</p>
-                        <p class="text-teal-400 text-sm mb-1 flex items-center">
+                        <p class="text-teal-400 text-sm mb-1 flex items-center justify-center">
                             <span class="relative flex h-3 w-3 mr-2">
                                 <span class="absolute inline-flex h-3 w-3 rounded-full bg-green-500"></span>
                             </span>
                             Copperbelt University
                         </p>
-                        <p class="text-gray-300 text-sm">
-                            My BSc in Mathematics from the Copperbelt University introduced me to the world of numbers, logical reasoning, and abstract thinking. Mathematics taught me how to see patterns, break down complex problems, and think in a structured way. These skills have become the foundation for my growth in data science, helping me better understand topics like <span class="font-bold text-white">statistics, algorithms, and data analysis —</span> as I continue to build my expertise.
+                        <p class="text-gray-300 mt-3">
+                            My BSc in Mathematics from the Copperbelt University introduced me to the world of numbers, logical reasoning, and abstract thinking. Mathematics taught me how to see patterns, break down complex problems, and think in a structured way. These skills have become the foundation for my growth in data science, helping me better understand topics like <span class="font-bold text-white">statistics, algorithms, and data analysis</span> — as I continue to build my expertise.
                         </p>
                     </div>
                 </div>
@@ -185,44 +279,44 @@ body::-webkit-scrollbar { display: none; }
                 <h3 class="text-2xl font-bold text-white mb-6 text-center w-full">Experience</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 w-full">
                     <!-- Zanaco Bank -->
-                    <div class="group bg-gray-800 rounded-2xl p-6 border border-gray-700 flex flex-col items-center text-center shadow-lg hover:shadow-teal-400/20 hover:border-teal-400/50 transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="group bg-gray-800 rounded-2xl p-6 border border-gray-700 flex flex-col items-center text-center shadow-lg hover:shadow-teal-400/20 hover:border-teal-400/50 transition-all duration-300 transform hover:-translate-y-2 card-content">
                         <img src="experience.png" alt="Experience Icon" class="w-16 h-16 rounded-full border-4 border-transparent object-cover mb-2">
                         <h4 class="text-xl font-bold text-teal-400">Trade Development Representative — Zanaco Bank</h4>
                         <p class="text-gray-400 text-sm mb-2">Nov 2024 - Jul 2025 · Lusaka, Zambia</p>
-                        <ul class="list-none space-y-2 text-gray-300 text-sm">
+                        <ul class="list-none space-y-2 text-gray-300 mt-3">
                             <li class="flex items-start"><span class="text-teal-400 mr-2 mt-1">•</span>Promoted digital payment adoption across merchants, including card and mobile services payments, achieving high engagement and activity rates in my territory.</li>
                             <li class="flex items-start"><span class="text-teal-400 mr-2 mt-1">•</span>Supplied and supported POS systems while building strong relationships with merchants of all sizes.</li>
                         </ul>
                     </div>
 
                     <!-- Bolabet Limited -->
-                    <div class="group bg-gray-800 rounded-2xl p-6 border border-gray-700 flex flex-col items-center text-center shadow-lg hover:shadow-teal-400/20 hover:border-teal-400/50 transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="group bg-gray-800 rounded-2xl p-6 border border-gray-700 flex flex-col items-center text-center shadow-lg hover:shadow-teal-400/20 hover:border-teal-400/50 transition-all duration-300 transform hover:-translate-y-2 card-content">
                         <img src="experience.png" alt="Experience Icon" class="w-16 h-16 rounded-full border-4 border-transparent object-cover mb-2">
                         <h4 class="text-xl font-bold text-teal-400">Platform Support Assistant — Bolabet Limited</h4>
                         <p class="text-gray-400 text-sm mb-2">Aug 2023 - Feb 2024 · Lusaka, Zambia</p>
-                        <ul class="list-none space-y-2 text-gray-300 text-sm">
+                        <ul class="list-none space-y-2 text-gray-300 mt-3">
                             <li class="flex items-start"><span class="text-teal-400 mr-2 mt-1">•</span>Managed communications with network providers, game providers, and internal departments to ensure smooth operations.</li>
                             <li class="flex items-start"><span class="text-teal-400 mr-2 mt-1">•</span>Ensured smooth website operations and resolved technical issues promptly.</li>
                         </ul>
                     </div>
 
                     <!-- Coca-Cola (Smollan) -->
-                    <div class="group bg-gray-800 rounded-2xl p-6 border border-gray-700 flex flex-col items-center text-center shadow-lg hover:shadow-teal-400/20 hover:border-teal-400/50 transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="group bg-gray-800 rounded-2xl p-6 border border-gray-700 flex flex-col items-center text-center shadow-lg hover:shadow-teal-400/20 hover:border-teal-400/50 transition-all duration-300 transform hover:-translate-y-2 card-content">
                         <img src="experience.png" alt="Experience Icon" class="w-16 h-16 rounded-full border-4 border-transparent object-cover mb-2">
                         <h4 class="text-xl font-bold text-teal-400">General Trade Merchandiser — Coca-Cola (Smollan)</h4>
                         <p class="text-gray-400 text-sm mb-2">Feb 2023 - Aug 2023 · Longacres, Lusaka</p>
-                        <ul class="list-none space-y-2 text-gray-300 text-sm">
+                        <ul class="list-none space-y-2 text-gray-300 mt-3">
                             <li class="flex items-start"><span class="text-teal-400 mr-2 mt-1">•</span>Boosted product visibility and sales in key high-volume outlets like Hungry Lion, Restaurants, and hotels.</li>
                             <li class="flex items-start"><span class="text-teal-400 mr-2 mt-1">•</span>Managed inventory efficiently and built strong retailer relationships for long-term account stability.</li>
                         </ul>
                     </div>
 
                     <!-- Stanbic Bank POS Project (Smollan) -->
-                    <div class="group bg-gray-800 rounded-2xl p-6 border border-gray-700 flex flex-col items-center text-center shadow-lg hover:shadow-teal-400/20 hover:border-teal-400/50 transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="group bg-gray-800 rounded-2xl p-6 border border-gray-700 flex flex-col items-center text-center shadow-lg hover:shadow-teal-400/20 hover:border-teal-400/50 transition-all duration-300 transform hover:-translate-y-2 card-content">
                         <img src="experience.png" alt="Experience Icon" class="w-16 h-16 rounded-full border-4 border-transparent object-cover mb-2">
                         <h4 class="text-xl font-bold text-teal-400">Field Sales Representative — Stanbic Bank POS Project (Smollan)</h4>
                         <p class="text-gray-400 text-sm mb-2">Mar 2021 - Feb 2023 · Lusaka, Zambia</p>
-                        <ul class="list-none space-y-2 text-gray-300 text-sm">
+                        <ul class="list-none space-y-2 text-gray-300 mt-3">
                             <li class="flex items-start"><span class="text-teal-400 mr-2 mt-1">•</span>Drove adoption of digital payment solutions for grocery shops, including airtime top-ups, TV subscriptions, and loans through the POS platform.</li>
                             <li class="flex items-start"><span class="text-teal-400 mr-2 mt-1">•</span>Provided post-sale support and communicated efficiently with clients through WhatsApp and phone calls.</li>
                         </ul>
@@ -248,7 +342,7 @@ body::-webkit-scrollbar { display: none; }
         <!-- Skills Cards Wrapper -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 w-full">
             <!-- Data Analysis & Visualization -->
-            <div class="bg-gray-800 rounded-2xl p-6 border border-gray-700 shadow-lg hover:shadow-teal-400/10 hover:border-teal-400/50 transition-all duration-300 transform hover:-translate-y-2">
+            <div class="bg-gray-800 rounded-2xl p-6 border border-gray-700 shadow-lg hover:shadow-teal-400/10 hover:border-teal-400/50 transition-all duration-300 transform hover:-translate-y-2 skills-card">
                 <h3 class="text-xl font-bold text-teal-400 mb-4 text-center">Data Analysis & Visualization</h3>
                 <ul class="list-none space-y-3 text-left">
                     <li class="flex items-center"><span class="text-lg mr-3">📊</span><span class="font-medium text-white">Power BI</span></li>
@@ -259,7 +353,7 @@ body::-webkit-scrollbar { display: none; }
             </div>
 
             <!-- Programming & Data Manipulation -->
-            <div class="bg-gray-800 rounded-2xl p-6 border border-gray-700 shadow-lg hover:shadow-teal-400/10 hover:border-teal-400/50 transition-all duration-300 transform hover:-translate-y-2">
+            <div class="bg-gray-800 rounded-2xl p-6 border border-gray-700 shadow-lg hover:shadow-teal-400/10 hover:border-teal-400/50 transition-all duration-300 transform hover:-translate-y-2 skills-card">
                 <h3 class="text-xl font-bold text-teal-400 mb-4 text-center">Programming & Data Manipulation</h3>
                 <ul class="list-none space-y-3 text-left">
                     <li class="flex items-center"><span class="text-lg mr-3">🐍</span><span class="font-medium text-white">Python</span></li>
@@ -270,7 +364,7 @@ body::-webkit-scrollbar { display: none; }
             </div>
 
             <!-- Databases & Version Control -->
-            <div class="bg-gray-800 rounded-2xl p-6 border border-gray-700 shadow-lg hover:shadow-teal-400/10 hover:border-teal-400/50 transition-all duration-300 transform hover:-translate-y-2">
+            <div class="bg-gray-800 rounded-2xl p-6 border border-gray-700 shadow-lg hover:shadow-teal-400/10 hover:border-teal-400/50 transition-all duration-300 transform hover:-translate-y-2 skills-card">
                 <h3 class="text-xl font-bold text-teal-400 mb-4 text-center">Databases & Version Control</h3>
                 <ul class="list-none space-y-3 text-left">
                     <li class="flex items-center"><span class="text-lg mr-3">🗄️</span><span class="font-medium text-white">SQL & MySQL</span></li>
@@ -293,7 +387,7 @@ body::-webkit-scrollbar { display: none; }
         <!-- Projects Cards Wrapper -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 w-full">
             <!-- Maji Ndogo Agricultural Analysis -->
-            <div class="group bg-gray-800 rounded-2xl p-6 border border-gray-700 flex flex-col h-full shadow-lg hover:shadow-teal-400/10 hover:border-teal-400/50 transition-all duration-300 transform hover:-translate-y-2 relative overflow-hidden">
+            <div class="group bg-gray-800 rounded-2xl p-6 border border-gray-700 flex flex-col h-full shadow-lg hover:shadow-teal-400/10 hover:border-teal-400/50 transition-all duration-300 transform hover:-translate-y-2 relative overflow-hidden project-card">
                 <!-- 🖼️ FULL CARD IMAGE BACKGROUND -->
                 <div class="absolute inset-0">
                     <img src="./Maji_Ndongo_Image_5.png" alt="Maji Ndogo Agriculture Project — Fields, mountains, and community farms" class="w-full h-full object-cover" />
@@ -302,7 +396,7 @@ body::-webkit-scrollbar { display: none; }
                 </div>
 
                 <!-- 💬 TEXT AT THE BOTTOM (DESKTOP + MOBILE) -->
-                <div class="relative z-10 mt-auto pt-4">
+                <div class="relative z-10 mt-auto pt-4 w-full">
 
                     <!-- 📱 MOBILE-ONLY TITLE AT TOP -->
                     <div class="md:hidden mb-4">
@@ -329,9 +423,9 @@ body::-webkit-scrollbar { display: none; }
             </div>
 
             <!-- Maji Ndogo Water Funds Dashboard -->
-            <div class="group bg-gray-800 rounded-2xl p-8 border border-gray-700 flex flex-col h-full shadow-lg hover:shadow-teal-400/10 hover:border-teal-400/50 transition-all duration-300 transform hover:-translate-y-2">
-                <div class="flex-grow">
-                    <h3 class="text-2xl font-bold text-white mb-3">Maji Ndogo Water Crisis - Funding Dashboard</h3>
+            <div class="group bg-gray-800 rounded-2xl p-6 md:p-8 border border-gray-700 flex flex-col h-full shadow-lg hover:shadow-teal-400/10 hover:border-teal-400/50 transition-all duration-300 transform hover:-translate-y-2 project-card">
+                <div class="flex-grow card-content">
+                    <h3 class="text-xl md:text-2xl font-bold text-white mb-3">Maji Ndogo Water Crisis - Funding Dashboard</h3>
                     <p class="text-gray-400 mb-4">As the final phase of a multi-part project, this initiative focused on building a public-facing dashboard to ensure transparency in the management of Maji Ndogo's water crisis funding. The dashboard provides a clear view of how funds are being allocated, featuring tools to track the project budget against completion, monitor team performance, and compare budgeted versus actual costs. This tool promotes accountability and helps address the region's ongoing water crisis.</p>
                     <p class="text-teal-400 italic mb-6 text-sm">Building a transparent dashboard to empower communities with clear, accessible insights into financial management.</p>
                     <div class="flex flex-wrap gap-2 mb-6">
@@ -352,9 +446,9 @@ body::-webkit-scrollbar { display: none; }
             </div>
 
             <!-- Data Intelligence Portal for Financial Services -->
-            <div class="group bg-gray-800 rounded-2xl p-8 border border-gray-700 flex flex-col h-full shadow-lg hover:shadow-teal-400/10 hover:border-teal-400/50 transition-all duration-300 transform hover:-translate-y-2">
-                <div class="flex-grow">
-                    <h3 class="text-2xl font-bold text-white mb-3">Data Intelligence Dashboard for Financial Services</h3>
+            <div class="group bg-gray-800 rounded-2xl p-6 md:p-8 border border-gray-700 flex flex-col h-full shadow-lg hover:shadow-teal-400/10 hover:border-teal-400/50 transition-all duration-300 transform hover:-translate-y-2 project-card">
+                <div class="flex-grow card-content">
+                    <h3 class="text-xl md:text-2xl font-bold text-white mb-3">Data Intelligence Dashboard for Financial Services</h3>
                     <p class="text-gray-400 mb-4">In this project im aiming to address critical data problem within a financial services companies in Zambia, this project outlines the vision for a centralized, role-based dashboard. The solution aims to replace fragmented, manual reports with a single source of truth for all departments. By providing real-time access to terminals(machines), transactions, and merchant data, the dashboard will enable proactive decision-making for sales, strategic tracking for management, and efficient issue diagnosis for IT, ultimately fostering a data-driven culture and maximizing revenue.</p>
                     <p class="text-teal-400 italic mb-6 text-sm">Designing a central hub to connect financial data and empower departments with real-time, actionable intelligence.</p>
                     <div class="flex flex-wrap gap-2 mb-6">
@@ -520,32 +614,3 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
