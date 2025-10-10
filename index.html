@@ -212,20 +212,22 @@ body::-webkit-scrollbar { display: none; }
     margin-right: auto;
 }
 
-/* Mobile Menu Teal Background - ADDED */
+/* Updated Mobile Menu - Transparent Background with Gradient Text */
 #mobile-menu {
-    background: rgba(6, 214, 160, 0.98) !important; /* Teal background */
+    background: rgba(16, 22, 32, 0.95) !important; /* Dark transparent background */
     backdrop-filter: blur(20px);
 }
 
-/* Mobile menu links - white for better contrast on teal - ADDED */
+/* Mobile menu links - Gradient text like "Iback Lungu" */
 #mobile-menu a {
-    color: white !important;
+    background: linear-gradient(135deg, #17c8d9 0%, #06d6a0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     font-weight: 600;
 }
 
 #mobile-menu a:hover {
-    color: #101620 !important; /* Dark color on hover for contrast */
     transform: scale(1.05);
     transition: all 0.3s ease;
 }
