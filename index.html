@@ -211,6 +211,47 @@ body::-webkit-scrollbar { display: none; }
     margin-left: auto;
     margin-right: auto;
 }
+
+/* Mobile Menu Teal Background - ADDED */
+#mobile-menu {
+    background: rgba(6, 214, 160, 0.98) !important; /* Teal background */
+    backdrop-filter: blur(20px);
+}
+
+/* Mobile menu links - white for better contrast on teal - ADDED */
+#mobile-menu a {
+    color: white !important;
+    font-weight: 600;
+}
+
+#mobile-menu a:hover {
+    color: #101620 !important; /* Dark color on hover for contrast */
+    transform: scale(1.05);
+    transition: all 0.3s ease;
+}
+
+/* Ensure In Progress button matches LIVE DEMO exactly - ADDED */
+.project-status-container .inline-flex {
+    background-color: #06d6a0 !important;
+    color: #000000 !important; /* CHANGED: from #101620 to #000000 for pure black */
+    font-weight: 700;
+    padding: 0.5rem 1rem !important;
+    border-radius: 9999px;
+    font-size: 0.8rem;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    box-shadow: 0 4px 6px rgba(6, 214, 160, 0.2);
+}
+
+/* Make sure both buttons stay side by side on mobile - ADDED */
+@media (max-width: 640px) {
+    .project-status-container {
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: space-between;
+    }
+}
+
 /* Mobile Optimizations - Retained for responsiveness */
 @media (max-width: 640px) {
     .hero-fade-in, .animate-on-scroll { transform:none!important; opacity:1!important; transition:none!important; }
@@ -247,11 +288,11 @@ body::-webkit-scrollbar { display: none; }
                 <span class="text-gradient">Iback Lungu</span>
             </a>
             <nav class="hidden md:flex space-x-8">
-                <a href="#home" class="text-gray-300 hover:text-teal-400 font-medium transition-colors duration-300">Home</a>
-                <a href="#about" class="text-gray-300 hover:text-teal-400 font-medium transition-colors duration-300">About</a>
-                <a href="#skills" class="text-gray-300 hover:text-teal-400 font-medium transition-colors duration-300">Skills</a>
-                <a href="#projects" class="text-gray-300 hover:text-teal-400 font-medium transition-colors duration-300">Projects</a>
-                <a href="#contact" class="text-gray-300 hover:text-teal-400 font-medium transition-colors duration-300">Contact</a>
+                <a href="#home" class="text-gray-300 hover:text-teal-300 font-medium transition-colors duration-300">Home</a>
+                <a href="#about" class="text-gray-300 hover:text-teal-300 font-medium transition-colors duration-300">About</a>
+                <a href="#skills" class="text-gray-300 hover:text-teal-300 font-medium transition-colors duration-300">Skills</a>
+                <a href="#projects" class="text-gray-300 hover:text-teal-300 font-medium transition-colors duration-300">Projects</a>
+                <a href="#contact" class="text-gray-300 hover:text-teal-300 font-medium transition-colors duration-300">Contact</a>
             </nav>
             <button id="hamburger-button" class="md:hidden text-white focus:outline-none" aria-label="Open menu">
                 <svg id="hamburger-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -289,17 +330,16 @@ body::-webkit-scrollbar { display: none; }
 
 <!-- Education & Experience Section -->
 <section id="about" class="py-16 md:py-24 bg-[#101620]">
-    <div class="max-w-7xl mx-auto px-4 animate-on-scroll">
+    <div class="w-full animate-on-scroll">
         <div class="section-header">
             <p class="section-subtitle">My Journey</p>
             <h2 class="section-title">Education & Experience</h2>
         </div>
         
-        <div class="flex flex-col gap-2">
+        <div class="flex flex-col gap-2 px-4 md:px-8">
             <!-- Education Section -->
             <div>
                 <h3 class="text-2xl font-bold text-white mb-8 text-center border-b-2 border-teal-400/30 pb-3">Education</h3>
-                <!-- Add gap-6 (or your preferred spacing) to this grid -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-2 w-full">
                     <!-- ALX Africa -->
                     <div class="group bg-[#1f2937] rounded-2xl p-6 border border-gray-700 flex flex-col items-center text-center shadow-xl hover:shadow-[#06d6a0]/30 hover:border-[#06d6a0] transition-all duration-500 transform hover:-translate-y-2 card-content">
@@ -392,9 +432,6 @@ body::-webkit-scrollbar { display: none; }
         <div class="section-header">
             <p class="section-subtitle">Skills & Tools</p>
             <h2 class="section-title">My Data Science Toolkit</h2>
-            <p class="section-description">
-                My skills are being actively developed through the hands-on curriculum of the alx_africa Data Science Program. I have a foundational and growing understanding of the following tools and methodologies.
-            </p>
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 w-full">
@@ -441,7 +478,7 @@ body::-webkit-scrollbar { display: none; }
             <h2 class="section-title">Work & Explorations</h2>
         </div>
         
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-2 w-full">
             <!-- Maji Ndogo -->
             <div class="group project-card bg-[#1f2937] rounded-2xl border border-gray-700 flex flex-col h-full shadow-2xl hover:shadow-[#06d6a0]/30 hover:border-[#06d6a0] transition-all duration-500 transform hover:-translate-y-2 relative overflow-hidden">
                 <div class="card-image-container">
@@ -455,14 +492,14 @@ body::-webkit-scrollbar { display: none; }
                     </div>
                 </div>
                 <div class="mt-auto p-6">
-                    <div class="project-status-container">
-                        <div class="inline-flex items-center text-gray-300 font-bold py-1 px-4 rounded-full bg-gray-700/50 text-xs uppercase tracking-wider">
+                    <div class="project-status-container flex flex-row items-center justify-between gap-3">
+                        <div class="inline-flex items-center text-gray-300 font-bold py-2 px-4 rounded-full bg-[#06d6a0] text-xs uppercase tracking-wider">
                             <span class="relative flex h-2 w-2 mr-2">
-                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
-                                <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-black opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-2 w-2 bg-black"></span>
                             </span>In Progress
                         </div>
-                        <a href="#" class="live-button">
+                        <a href="#" class="live-button inline-flex items-center justify-center py-2 px-4 rounded-full bg-[#06d6a0] text-[#101620] font-bold text-xs uppercase tracking-wider hover:bg-[#17c8d9] transition-all duration-300">
                             <span>LIVE DEMO</span>
                         </a>
                     </div>
@@ -482,14 +519,14 @@ body::-webkit-scrollbar { display: none; }
                     </div>
                 </div>
                 <div class="mt-auto p-6">
-                    <div class="project-status-container">
-                        <div class="inline-flex items-center text-gray-300 font-bold py-1 px-4 rounded-full bg-gray-700/50 text-xs uppercase tracking-wider">
+                    <div class="project-status-container flex flex-row items-center justify-between gap-3">
+                        <div class="inline-flex items-center text-gray-300 font-bold py-2 px-4 rounded-full bg-[#06d6a0] text-xs uppercase tracking-wider">
                             <span class="relative flex h-2 w-2 mr-2">
-                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
-                                <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-black opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-2 w-2 bg-black"></span>
                             </span>In Progress
                         </div>
-                        <a href="#" class="live-button">
+                        <a href="#" class="live-button inline-flex items-center justify-center py-2 px-4 rounded-full bg-[#06d6a0] text-[#101620] font-bold text-xs uppercase tracking-wider hover:bg-[#17c8d9] transition-all duration-300">
                             <span>LIVE DEMO</span>
                         </a>
                     </div>
