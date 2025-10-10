@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Iback Lungu | Portfolio</title>
-
     <!-- EmailJS Library -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script type="text/javascript">
@@ -12,15 +11,12 @@
             emailjs.init({ publicKey: "5MsPZTTeDr90FHm7N" });
         })();
     </script>
-
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
     <!-- Custom Styles -->
 <style>
 body {
@@ -29,64 +25,85 @@ body {
     scrollbar-width: none;
     padding-top: 4rem;
     margin: 0;
-    background: linear-gradient(to bottom, #1f2937, #111827);
+    /* Deep, modern dark mode background — FROM CODE 1 */
+    background: linear-gradient(to bottom, #101620, #0a0d13); 
+    color: #f3f4f6;
 }
 body::-webkit-scrollbar { display: none; }
-
 .text-gradient {
-    background: linear-gradient(135deg, #2563eb 0%, #0d9488 100%);
+    /* High-contrast, vibrant neon-teal gradient — FROM CODE 1 */
+    background: linear-gradient(135deg, #17c8d9 0%, #06d6a0 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
-
-.hero-fade-in { opacity:0; transform: translateY(2rem); transition: opacity 1s ease-out, transform 1s ease-out; }
-.hero-fade-in.is-visible { opacity:1; transform: translateY(0); }
-
+.hero-fade-in { 
+    opacity:0; 
+    transform: translateY(2rem); 
+    transition: opacity 1.2s cubic-bezier(0.19, 1, 0.22, 1), transform 1.2s cubic-bezier(0.19, 1, 0.22, 1); 
+}
+.hero-fade-in.is-visible { 
+    opacity:1; 
+    transform: translateY(0); 
+}
 @keyframes blink { 0%,50%,100%{opacity:1} 25%,75%{opacity:0} }
 .animate-blink { animation: blink 3s infinite; }
-
-.animate-on-scroll { opacity:0; transform: translateY(2.5rem); transition: opacity 0.7s ease-out, transform 0.7s ease-out; }
-.animate-on-scroll.is-visible { opacity:1; transform: translateY(0); }
-
-.typewriter-box { min-height:5rem; }
-
-.hero-buttons a {
-    display:inline-block; padding:1rem 2rem; font-size:1rem; border-radius:9999px; font-weight:bold;
-    transition: all 0.3s ease;
+.animate-on-scroll { 
+    opacity:0; 
+    transform: translateY(3rem); 
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out; 
 }
-.hero-buttons a:hover { transform: scale(1.05); box-shadow: 0 10px 15px rgba(0,255,200,0.3); }
-
+.animate-on-scroll.is-visible { 
+    opacity:1; 
+    transform: translateY(0); 
+}
+.typewriter-box { min-height:5rem; }
+.hero-buttons a {
+    display:inline-block; 
+    padding:1rem 2rem; 
+    font-size:1rem; 
+    border-radius:9999px; 
+    font-weight:bold;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.hero-buttons a:hover { 
+    transform: scale(1.05); 
+    box-shadow: 0 0 30px rgba(6,214,160,0.7); 
+}
 .social-icons { display:flex; gap:1.5rem; justify-content:center; align-items:center; }
-
-/* Card text optimization - UPDATED FOR FULL WIDTH TEXT */
+.social-icons a {
+    transition: transform 0.3s ease, color 0.3s ease;
+    color: #a1a1aa; 
+}
+.social-icons a:hover {
+    transform: scale(1.2);
+    color: #06d6a0; 
+}
+/* Card Styles - Optimized for Board Presentation — FROM CODE 1 */
 .card-content p, .card-content li {
     word-wrap: break-word;
     overflow-wrap: break-word;
     hyphens: auto;
-    width: 100%; /* Ensures text takes full width */
+    width: 100%;
+    font-size: 0.95rem; /* Slightly smaller, professional body copy */
+    line-height: 1.6;
 }
-
-/* Project Card Styles - UPDATED FOR BETTER LAYOUT */
+/* Elevated Card Style — FROM CODE 1 */
+.group.bg-gray-800 {
+    background-color: #1f2937; 
+    border: 1px solid #374151;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+.group:hover {
+    border-color: #06d6a0;
+    box-shadow: 0 0 15px rgba(6,214,160,0.3);
+}
+/* Project Card Styles — FROM CODE 1 */
 .project-card {
     position: relative;
     overflow: hidden;
-    min-height: 320px; /* Ensures consistent card height */
+    min-height: 350px;
 }
-
-.project-card .card-image-container {
-    position: absolute;
-    inset: 0;
-}
-
-/* UPDATED: Ensure images display properly and titles are visible */
-.project-card .card-image-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: top; /* Ensure the top of image (where titles are) is visible */
-}
-
 .project-card .card-content-overlay {
     position: relative;
     z-index: 10;
@@ -95,37 +112,96 @@ body::-webkit-scrollbar { display: none; }
     flex-direction: column;
     justify-content: flex-end;
     padding: 1.5rem;
+    background: linear-gradient(to top, rgba(16, 22, 32, 1) 0%, rgba(16, 22, 32, 0.8) 35%, rgba(16, 22, 32, 0) 100%);
 }
-
-/* STATUS AND BUTTON CONTAINER - UPDATED FOR INLINE LAYOUT */
+/* Card image container */
+.card-image-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+.card-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+/* LIVE BUTTON STYLES — FROM CODE 1 */
+.live-button {
+    display: inline-flex;
+    align-items: center;
+    background-color: #06d6a0;
+    color: #101620; 
+    font-weight: 700;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    box-shadow: 0 4px 6px rgba(6, 214, 160, 0.2);
+}
+.live-button:hover {
+    background-color: #17c8d9;
+    transform: scale(1.03);
+    box-shadow: 0 4px 10px rgba(23, 200, 217, 0.4);
+}
 .project-status-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
-    margin-top: 0.5rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
 }
-
-/* LIVE BUTTON STYLES - NEW */
-.live-button {
-    display: inline-flex;
+/* Education Icons - Small and Round */
+.education-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
     align-items: center;
-    background-color: rgba(45, 212, 191, 0.9);
-    color: #1f2937;
-    font-weight: bold;
-    padding: 0.4rem 0.8rem;
-    border-radius: 9999px;
-    font-size: 0.75rem;
-    transition: all 0.3s ease;
-    text-decoration: none;
+    justify-content: center;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
 }
-
-.live-button:hover {
-    background-color: rgba(45, 212, 191, 1);
-    transform: scale(1.05);
+/* Form centering */
+.centered-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-
-/* Mobile Optimizations */
+.form-input {
+    text-align: center;
+}
+/* Consistent Section Headers */
+.section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+.section-subtitle {
+    color: #06d6a0;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+}
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 1rem;
+}
+.section-description {
+    color: #9ca3af;
+    max-width: 42rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+/* Mobile Optimizations - Retained for responsiveness */
 @media (max-width: 640px) {
     .hero-fade-in, .animate-on-scroll { transform:none!important; opacity:1!important; transition:none!important; }
     #home { 
@@ -134,136 +210,30 @@ body::-webkit-scrollbar { display: none; }
         display: flex;
         align-items: center;
     }
-    
-    #hero-content {
-        width: 100%;
-        max-width: 100%;
-    }
-    
     #hero-content h1 {
-        font-size: 1.6rem;
-        line-height: 1.3;
-        margin-bottom: 1.5rem;
+        font-size: 1.8rem;
     }
-    
-    .typewriter-box { 
-        min-height: 6rem!important; 
-        width: 100%;
-    }
-    
-    .typewriter-box > div {
-        width: 100%;
-        max-width: 100%;
-        padding: 1rem;
-    }
-    
-    /* UPDATED: HERO TEXT TO SPAN FULL WIDTH */
     #typewriter-text {
-        font-size: 0.9rem;
-        line-height: 1.5;
-        text-align: center;
-        width: 100%;
-        max-width: 100%;
-    }
-    
-    .social-icons { gap:1rem!important; }
-    .hero-buttons { 
-        flex-direction: column;
-        width: 100%;
-        max-width: 280px;
-        margin: 2rem auto 0;
-        gap: 1rem;
-    }
-    .hero-buttons a { 
-        width: 100%;
-        text-align: center;
-        padding:0.875rem 1.5rem!important; 
-        font-size:0.9rem!important; 
-    }
-    .hero-fade-in img { width:6rem!important; height:6rem!important; margin-bottom: 1rem; }
-    
-    /* Education & Experience cards - UPDATED FOR FULL WIDTH TEXT */
-    .card-content p, .card-content li {
-        font-size: 0.85rem;
-        line-height: 1.5;
-        width: 100%;
-    }
-    
-    .card-content h4 {
-        font-size: 1.1rem;
-    }
-    
-    /* Project cards - UPDATED FOR MOBILE RESPONSIVENESS */
-    .project-card {
-        padding: 0; /* Remove padding to allow full image display */
-        min-height: 280px; /* Slightly smaller on mobile */
-    }
-    
-    .project-card h3 {
-        font-size: 1.25rem;
-        margin-bottom: 0.75rem;
-    }
-    
-    .project-card .card-content-overlay {
-        padding: 1.25rem;
-    }
-    
-    .project-card p {
-        font-size: 0.85rem;
-        line-height: 1.5;
-    }
-    
-    /* STATUS CONTAINER FOR MOBILE - UPDATED */
-    .project-status-container {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-    }
-    
-    /* UPDATED: Adjust overlay for mobile to ensure titles are visible */
-    .project-card .card-image-container img {
-        object-position: top center; /* Ensure top of image is visible on mobile */
-    }
-    
-    /* Skills cards */
-    .skills-card ul li {
-        font-size: 0.9rem;
-    }
-    
-    /* Contact form */
-    #contact-form {
-        padding: 1.25rem;
-    }
-}
-
-@media (min-width:768px) { 
-    html { scroll-behavior: smooth; } 
-    
-    /* Desktop text optimization - UPDATED FOR FULL WIDTH */
-    .card-content p, .card-content li {
         font-size: 0.95rem;
-        line-height: 1.6;
-        width: 100%;
     }
-    
-    /* Project cards - UPDATED FOR DESKTOP */
-    .project-card {
-        min-height: 350px; /* Taller on desktop for better visual impact */
+    .hero-buttons { 
+        max-width: 280px;
     }
-    
-    /* UPDATED: Adjust overlay for desktop to ensure titles are visible */
-    .project-card .card-image-container img {
-        object-position: top center; /* Ensure top of image is visible on desktop */
+    .project-status-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .section-title {
+        font-size: 2rem;
     }
 }
 </style>
 </head>
-
 <body>
-<header class="fixed top-0 left-0 right-0 z-50 bg-gray-900/80 backdrop-blur-sm shadow-lg border-b border-gray-700/50">
-    <div class="max-w-7xl mx-auto px-2 sm:px-2 lg:px-6">
+<header class="fixed top-0 left-0 right-0 z-50 bg-gray-900/85 backdrop-blur-md shadow-xl border-b border-gray-700/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16">
-            <a href="#home" class="text-2xl font-bold text-white hover:opacity-90 transition">
+            <a href="#home" class="text-2xl font-extrabold hover:opacity-90 transition">
                 <span class="text-gradient">Iback Lungu</span>
             </a>
             <nav class="hidden md:flex space-x-8">
@@ -283,7 +253,7 @@ body::-webkit-scrollbar { display: none; }
             </button>
         </div>
     </div>
-    <div id="mobile-menu" class="md:hidden absolute top-16 left-0 w-full bg-gray-900/95 backdrop-blur-md transition-all duration-300 ease-in-out opacity-0 invisible">
+    <div id="mobile-menu" class="md:hidden absolute top-16 left-0 w-full bg-gray-900/98 backdrop-blur-lg transition-all duration-300 ease-in-out opacity-0 invisible">
         <nav class="flex flex-col items-center space-y-4 py-6">
             <a href="#home" class="text-gray-300 hover:text-teal-400 font-medium text-lg mobile-nav-link">Home</a>
             <a href="#about" class="text-gray-300 hover:text-teal-400 font-medium text-lg mobile-nav-link">About</a>
@@ -293,178 +263,158 @@ body::-webkit-scrollbar { display: none; }
         </nav>
     </div>
 </header>
-
 <main>
 <!-- Hero Section -->
 <section id="home" class="min-h-[75vh] flex items-center justify-center bg-gray-900 pt-16">
-    <div id="hero-content" class="max-w-4xl mx-auto text-center px-4 hero-fade-in w-full">
+    <div id="hero-content" class="max-w-5xl mx-auto text-center px-4 hero-fade-in w-full">
         <div class="inline-block mb-6">
-            <img src="p2-removebg-preview 2.png" alt="Iback Lungu" class="w-28 h-28 mx-auto rounded-full border-4 border-teal-400 shadow-lg object-cover">
+            <img src="p2-removebg-preview 2.png" alt="Iback Lungu" class="w-32 h-32 md:w-40 md:h-40 mx-auto rounded-full border-4 border-[#06d6a0] shadow-2xl object-cover">
         </div>
-        <h1 class="text-3xl md:text-4xl font-extrabold text-white mb-4">Aspiring Data Scientist | Empowering Decisions Through Data.</h1>
-
-        <div class="min-h-[5rem] flex items-center justify-center w-full">
-            <div class="inline-block bg-gray-800/50 px-4 md:px-6 py-4 rounded-xl shadow-2xl border border-gray-700 transition-all duration-300 w-full max-w-2xl">
-                <!-- UPDATED: HERO TEXT NOW SPANS FULL WIDTH -->
-                <p id="typewriter-text" class="text-base md:text-lg text-gray-300 font-medium leading-relaxed text-center w-full">&nbsp;</p>
-            </div>
-        </div>
-        
-        <div class="mt-10 flex flex-col sm:flex-row justify-center items-center gap-2 hero-buttons">
-            <a href="#projects" class="border-2 border-teal-500 text-teal-300 font-bold py-3 px-8 rounded-full hover:bg-teal-500 hover:text-gray-900 shadow-lg transition-all duration-300 w-full sm:w-auto text-center">View My Work</a>
-            <a href="#contact" class="border-2 border-teal-500 text-teal-300 font-bold py-3 px-8 rounded-full hover:bg-teal-500 hover:text-gray-900 shadow-lg transition-all duration-300 w-full sm:w-auto text-center">Get In Touch</a>
-        </div>
+        <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-6 leading-snug">
+            <span class="text-gradient">Aspiring Data Scientist-Empowering Decisions Through Data.</span>
+        </h1>
     </div>
 </section>
 
 <!-- Education & Experience Section -->
-<section id="about" class="py-12 md:py-16 bg-gray-900">
+<section id="about" class="py-16 md:py-24 bg-[#101620]">
     <div class="max-w-7xl mx-auto px-4 animate-on-scroll">
-        <!-- Section Header -->
-        <div class="text-center mb-12">
-            <p class="text-teal-400 font-semibold tracking-widest uppercase text-sm">My Journey</p>
-            <h2 class="text-3xl md:text-4xl font-extrabold text-white">Education & Experience</h2>
+        <div class="section-header">
+            <p class="section-subtitle">My Journey</p>
+            <h2 class="section-title">Education & Experience</h2>
         </div>
-
-        <!-- Main Wrapper for Education and Experience Sections -->
-        <div class="flex flex-col gap-8">
-
+        
+        <div class="flex flex-col gap-12">
             <!-- Education Section -->
-            <div class="flex flex-col items-center md:items-start">
-                <h3 class="text-2xl font-bold text-white mb-6 text-center w-full">Education</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-2 w-full">
-                    <!-- ALX Africa Data Science Program -->
-                    <div class="group bg-gray-800 rounded-2xl p-6 border border-gray-700 flex flex-col items-center text-center shadow-lg hover:shadow-teal-400/20 hover:border-teal-400/50 transition-all duration-300 transform hover:-translate-y-2 card-content">
-                        <img src="Education_icon.png" alt="Education Icon" class="w-16 h-16 rounded-full border-4 border-transparent object-cover mb-2">
-                        <h4 class="text-xl font-bold text-teal-400">ALX Africa Data Science Program</h4>
+            <div>
+                <h3 class="text-2xl font-bold text-white mb-8 text-center border-b-2 border-teal-400/30 pb-3">Education</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 2 w-full">
+                    <!-- ALX Africa -->
+                    <div class="group bg-[#1f2937] rounded-2xl p-6 border border-gray-700 flex flex-col items-center text-center shadow-xl hover:shadow-[#06d6a0]/30 hover:border-[#06d6a0] transition-all duration-500 transform hover:-translate-y-2 card-content">
+                        <div class="education-icon bg-gradient-to-br from-[#06d6a0] to-[#17c8d9]">
+                            <img class=" sctext-white font-bold text-xs"><img src="./alx-icon.jpg" alt=""></span>
+                        </div>
+                        <h4 class="text-xl font-bold text-[#17c8d9]">ALX Africa Data Science Program</h4>
                         <p class="text-gray-400 text-sm mb-1">2025 - 2026</p>
-                        <p class="text-teal-400 text-sm mb-1 flex items-center justify-center">
+                        <p class="text-[#06d6a0] font-semibold text-sm mb-1 flex items-center justify-center">
                             <span class="relative flex h-3 w-3 mr-2">
-                                <span class="absolute inline-flex h-3 w-3 rounded-full bg-green-500 animate-blink"></span>
+                                <span class="absolute inline-flex h-3 w-3 rounded-full bg-green-500 opacity-75 animate-ping"></span>
+                                <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
                             </span>
-                            Inprogress
+                        Alx Data Science Program
                         </p>
-                        <!-- UPDATED: TEXT NOW SPANS FULL WIDTH -->
-                        <p class="text-gray-300 mt-3 w-full">
+                        <p class="text-gray-300 mt-4 w-full text-left">
                             This program covers essential data tools — including <span class="font-bold text-white">Python, SQL, Power BI, and Machine Learning</span> — to build a deeper understanding of data. It incorporates practical, hands-on projects designed to develop skills that are directly applicable to solving real-world problems.
                         </p>
                     </div>
-
-                    <!-- BSc in Mathematics -->
-                    <div class="group bg-gray-800 rounded-2xl p-6 border border-gray-700 flex flex-col items-center text-center shadow-lg hover:shadow-teal-400/20 hover:border-teal-400/50 transition-all duration-300 transform hover:-translate-y-2 card-content">
-                        <img src="Education_icon.png" alt="Education Icon" class="w-16 h-16 rounded-full border-4 border-transparent object-cover mb-2">
-                        <h4 class="text-xl font-bold text-teal-400">BSc in Mathematics</h4>
+                    
+                    <!-- BSc Mathematics -->
+                    <div class="group bg-[#1f2937] rounded-2xl p-6 border border-gray-700 flex flex-col items-center text-center shadow-xl hover:shadow-[#06d6a0]/30 hover:border-[#06d6a0] transition-all duration-500 transform hover:-translate-y-2 card-content">
+                        <div class="education-icon bg-gradient-to-br from-yellow-500 to-red-500">
+                            <span class="text-white font-bold text-xs"><img src="./cbu icon" alt=""></span>
+                        </div>
+                        <h4 class="text-xl font-bold text-[#17c8d9]">BSc in Mathematics</h4>
                         <p class="text-gray-400 text-sm mb-1">2016 - 2020</p>
-                        <p class="text-teal-400 text-sm mb-1 flex items-center justify-center">
-                            <span class="relative flex h-3 w-3 mr-2">
-                                <span class="absolute inline-flex h-3 w-3 rounded-full bg-green-500"></span>
-                            </span>
+                        <p class="text-[#06d6a0] font-semibold text-sm mb-1 flex items-center justify-center">
                             Copperbelt University
                         </p>
-                        <!-- UPDATED: TEXT NOW SPANS FULL WIDTH -->
-                        <p class="text-gray-300 mt-3 w-full">
+                        <p class="text-gray-300 mt-4 w-full text-left">
                             My BSc in Mathematics from the Copperbelt University introduced me to the world of numbers, logical reasoning, and abstract thinking. Mathematics taught me how to see patterns, break down complex problems, and think in a structured way. These skills have become the foundation for my growth in data science, helping me better understand topics like <span class="font-bold text-white">statistics, algorithms, and data analysis</span> — as I continue to build my expertise.
                         </p>
                     </div>
                 </div>
             </div>
-
+            
             <!-- Experience Section -->
-            <div class="flex flex-col items-center md:items-start">
-                <h3 class="text-2xl font-bold text-white mb-6 text-center w-full">Experience</h3>
+            <div>
+                <h3 class="text-2xl font-bold text-white mb-8 text-center border-b-2 border-teal-400/30 pb-3">Experience</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 w-full">
                     <!-- Zanaco Bank -->
-                    <div class="group bg-gray-800 rounded-2xl p-6 border border-gray-700 flex flex-col items-center text-center shadow-lg hover:shadow-teal-400/20 hover:border-teal-400/50 transition-all duration-300 transform hover:-translate-y-2 card-content">
-                        <img src="experience.png" alt="Experience Icon" class="w-16 h-16 rounded-full border-4 border-transparent object-cover mb-2">
-                        <h4 class="text-xl font-bold text-teal-400">Trade Development Representative — Zanaco Bank</h4>
-                        <p class="text-gray-400 text-sm mb-2">Nov 2024 - Jul 2025 · Lusaka, Zambia</p>
-                        <ul class="list-none space-y-2 text-gray-300 mt-3 w-full">
-                            <li class="flex items-start"><span class="text-teal-400 mr-2 mt-1">•</span>Promoted digital payment adoption across merchants, including card and mobile services payments, achieving high engagement and activity rates in my territory.</li>
-                            <li class="flex items-start"><span class="text-teal-400 mr-2 mt-1">•</span>Supplied and supported POS systems while building strong relationships with merchants of all sizes.</li>
+                    <div class="group bg-[#1f2937] rounded-2xl p-6 border border-gray-700 flex flex-col items-center text-center shadow-xl hover:shadow-[#06d6a0]/30 hover:border-[#06d6a0] transition-all duration-500 transform hover:-translate-y-2 card-content">
+                        <h4 class="text-xl font-bold text-[#17c8d9]">Trade Development Representative</h4>
+                        <p class="text-gray-400 text-sm mb-3">Zanaco Bank • Nov 2024 - Jul 2025</p>
+                        <ul class="list-none space-y-2 text-gray-300 mt-3 w-full text-left">
+                            <li class="flex items-start"><span class="text-[#06d6a0] mr-2 mt-1">✓</span>Promoted digital payment adoption across merchants, including card and mobile services payments, achieving high engagement and activity rates in my territory.</li>
+                            <li class="flex items-start"><span class="text-[#06d6a0] mr-2 mt-1">✓</span>Supplied and supported POS systems while building strong relationships with merchants of all sizes.</li>
                         </ul>
                     </div>
-
+                    
                     <!-- Bolabet Limited -->
-                    <div class="group bg-gray-800 rounded-2xl p-6 border border-gray-700 flex flex-col items-center text-center shadow-lg hover:shadow-teal-400/20 hover:border-teal-400/50 transition-all duration-300 transform hover:-translate-y-2 card-content">
-                        <img src="experience.png" alt="Experience Icon" class="w-16 h-16 rounded-full border-4 border-transparent object-cover mb-2">
-                        <h4 class="text-xl font-bold text-teal-400">Platform Support Assistant — Bolabet Limited</h4>
-                        <p class="text-gray-400 text-sm mb-2">Aug 2023 - Feb 2024 · Lusaka, Zambia</p>
-                        <ul class="list-none space-y-2 text-gray-300 mt-3 w-full">
-                            <li class="flex items-start"><span class="text-teal-400 mr-2 mt-1">•</span>Managed communications with network providers, game providers, and internal departments to ensure smooth operations.</li>
-                            <li class="flex items-start"><span class="text-teal-400 mr-2 mt-1">•</span>Ensured smooth website operations and resolved technical issues promptly.</li>
+                    <div class="group bg-[#1f2937] rounded-2xl p-6 border border-gray-700 flex flex-col items-center text-center shadow-xl hover:shadow-[#06d6a0]/30 hover:border-[#06d6a0] transition-all duration-500 transform hover:-translate-y-2 card-content">
+                        <h4 class="text-xl font-bold text-[#17c8d9]">Platform Support Assistant</h4>
+                        <p class="text-gray-400 text-sm mb-3">Bolabet Limited • Aug 2023 - Feb 2024</p>
+                        <ul class="list-none space-y-2 text-gray-300 mt-3 w-full text-left">
+                            <li class="flex items-start"><span class="text-[#06d6a0] mr-2 mt-1">✓</span>Managed communications with network providers, game providers, and internal departments to ensure smooth operations.</li>
+                            <li class="flex items-start"><span class="text-[#06d6a0] mr-2 mt-1">✓</span>Ensured smooth website operations and resolved technical issues promptly.</li>
                         </ul>
                     </div>
-
+                    
                     <!-- Coca-Cola (Smollan) -->
-                    <div class="group bg-gray-800 rounded-2xl p-6 border border-gray-700 flex flex-col items-center text-center shadow-lg hover:shadow-teal-400/20 hover:border-teal-400/50 transition-all duration-300 transform hover:-translate-y-2 card-content">
-                        <img src="experience.png" alt="Experience Icon" class="w-16 h-16 rounded-full border-4 border-transparent object-cover mb-2">
-                        <h4 class="text-xl font-bold text-teal-400">General Trade Merchandiser — Coca-Cola (Smollan)</h4>
-                        <p class="text-gray-400 text-sm mb-2">Feb 2023 - Aug 2023 · Longacres, Lusaka</p>
-                        <ul class="list-none space-y-2 text-gray-300 mt-3 w-full">
-                            <li class="flex items-start"><span class="text-teal-400 mr-2 mt-1">•</span>Boosted product visibility and sales in key high-volume outlets like Hungry Lion, Restaurants, and hotels.</li>
-                            <li class="flex items-start"><span class="text-teal-400 mr-2 mt-1">•</span>Managed inventory efficiently and built strong retailer relationships for long-term account stability.</li>
+                    <div class="group bg-[#1f2937] rounded-2xl p-6 border border-gray-700 flex flex-col items-center text-center shadow-xl hover:shadow-[#06d6a0]/30 hover:border-[#06d6a0] transition-all duration-500 transform hover:-translate-y-2 card-content">
+                        <h4 class="text-xl font-bold text-[#17c8d9]">General Trade Merchandiser</h4>
+                        <p class="text-gray-400 text-sm mb-3">Coca-Cola (Smollan) • Feb 2023 - Aug 2023</p>
+                        <ul class="list-none space-y-2 text-gray-300 mt-3 w-full text-left">
+                            <li class="flex items-start"><span class="text-[#06d6a0] mr-2 mt-1">✓</span>Boosted product visibility and sales in key high-volume outlets like Hungry Lion, Restaurants, and hotels.</li>
+                            <li class="flex items-start"><span class="text-[#06d6a0] mr-2 mt-1">✓</span>Managed inventory efficiently and built strong retailer relationships for long-term account stability.</li>
                         </ul>
                     </div>
-
-                    <!-- Stanbic Bank POS Project (Smollan) -->
-                    <div class="group bg-gray-800 rounded-2xl p-6 border border-gray-700 flex flex-col items-center text-center shadow-lg hover:shadow-teal-400/20 hover:border-teal-400/50 transition-all duration-300 transform hover:-translate-y-2 card-content">
-                        <img src="experience.png" alt="Experience Icon" class="w-16 h-16 rounded-full border-4 border-transparent object-cover mb-2">
-                        <h4 class="text-xl font-bold text-teal-400">Field Sales Representative — Stanbic Bank POS Project (Smollan)</h4>
-                        <p class="text-gray-400 text-sm mb-2">Mar 2021 - Feb 2023 · Lusaka, Zambia</p>
-                        <ul class="list-none space-y-2 text-gray-300 mt-3 w-full">
-                            <li class="flex items-start"><span class="text-teal-400 mr-2 mt-1">•</span>Drove adoption of digital payment solutions for grocery shops, including airtime top-ups, TV subscriptions, and loans through the POS platform.</li>
-                            <li class="flex items-start"><span class="text-teal-400 mr-2 mt-1">•</span>Provided post-sale support and communicated efficiently with clients through WhatsApp and phone calls.</li>
+                    
+                    <!-- Stanbic Bank POS Project -->
+                    <div class="group bg-[#1f2937] rounded-2xl p-6 border border-gray-700 flex flex-col items-center text-center shadow-xl hover:shadow-[#06d6a0]/30 hover:border-[#06d6a0] transition-all duration-500 transform hover:-translate-y-2 card-content">
+                        <h4 class="text-xl font-bold text-[#17c8d9]">Field Sales Representative</h4>
+                        <p class="text-gray-400 text-sm mb-3">Stanbic Bank POS Project • Mar 2021 - Feb 2023</p>
+                        <ul class="list-none space-y-2 text-gray-300 mt-3 w-full text-left">
+                            <li class="flex items-start"><span class="text-[#06d6a0] mr-2 mt-1">✓</span>Drove adoption of digital payment solutions for grocery shops, including airtime top-ups, TV subscriptions, and loans through the POS platform.</li>
+                            <li class="flex items-start"><span class="text-[#06d6a0] mr-2 mt-1">✓</span>Provided post-sale support and communicated efficiently with clients through WhatsApp and phone calls.</li>
                         </ul>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </section>
 
 <!-- Skills Section -->
-<section id="skills" class="py-12 md:py-16 bg-gray-900">
-    <div class="max-w-7xl mx-auto px-2 animate-on-scroll">
-        <div class="text-center mb-12">
-            <p class="text-teal-400 font-semibold tracking-widest uppercase text-sm">Skills & Tools</p>
-            <h2 class="text-3xl md:text-4xl font-extrabold text-white">My Data Science Toolkit</h2>
-            <p class="text-gray-400 mt-4 max-w-2xl mx-auto">
+<section id="skills" class="py-16 md:py-24 bg-gray-900">
+    <div class="max-w-7xl mx-auto px-4 animate-on-scroll">
+        <div class="section-header">
+            <p class="section-subtitle">Skills & Tools</p>
+            <h2 class="section-title">My Data Science Toolkit</h2>
+            <p class="section-description">
                 My skills are being actively developed through the hands-on curriculum of the alx_africa Data Science Program. I have a foundational and growing understanding of the following tools and methodologies.
             </p>
         </div>
-
-        <!-- Skills Cards Wrapper -->
+        
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 w-full">
-            <!-- Data Analysis & Visualization -->
-            <div class="bg-gray-800 rounded-2xl p-6 border border-gray-700 shadow-lg hover:shadow-teal-400/10 hover:border-teal-400/50 transition-all duration-300 transform hover:-translate-y-2 skills-card">
-                <h3 class="text-xl font-bold text-teal-400 mb-4 text-center">Data Analysis & Visualization</h3>
-                <ul class="list-none space-y-3 text-left">
-                    <li class="flex items-center"><span class="text-lg mr-3">📊</span><span class="font-medium text-white">Power BI</span></li>
-                    <li class="flex items-center"><span class="text-lg mr-3">📈</span><span class="font-medium text-white">Matplotlib</span></li>
-                    <li class="flex items-center"><span class="text-lg mr-3">🧠</span><span class="font-medium text-white">Statistics</span></li>
-                    <li class="flex items-center"><span class="text-lg mr-3">🔍</span><span class="font-medium text-white">Excel / Google Sheets</span></li>
+            <!-- Programming & Machine Learning -->
+            <div class="bg-[#1f2937] rounded-2xl p-6 border border-gray-700 shadow-xl hover:shadow-[#06d6a0]/20 hover:border-[#06d6a0] transition-all duration-300 transform hover:-translate-y-1 skills-card">
+                <h3 class="text-xl font-extrabold text-[#17c8d9] mb-4 text-center border-b border-gray-700 pb-2">Programming & Machine Learning</h3>
+                <ul class="list-none space-y-4 text-left text-lg">
+                    <li class="flex items-center"><span class="text-2xl mr-3">🐍</span><span class="font-medium text-white">Python for Data Science</span></li>
+                    <li class="flex items-center"><span class="text-2xl mr-3">🐼</span><span class="font-medium text-white">Pandas & NumPy Data Wrangling</span></li>
+                    <li class="flex items-center"><span class="text-2xl mr-3">🤖</span><span class="font-medium text-white">Scikit-learn Machine Learning</span></li>
+                    <li class="flex items-center"><span class="text-2xl mr-3">💡</span><span class="font-medium text-white">Quantitative Problem Solving</span></li>
                 </ul>
             </div>
-
-            <!-- Programming & Data Manipulation -->
-            <div class="bg-gray-800 rounded-2xl p-6 border border-gray-700 shadow-lg hover:shadow-teal-400/10 hover:border-teal-400/50 transition-all duration-300 transform hover:-translate-y-2 skills-card">
-                <h3 class="text-xl font-bold text-teal-400 mb-4 text-center">Programming & Data Manipulation</h3>
-                <ul class="list-none space-y-3 text-left">
-                    <li class="flex items-center"><span class="text-lg mr-3">🐍</span><span class="font-medium text-white">Python</span></li>
-                    <li class="flex items-center"><span class="text-lg mr-3">🐼</span><span class="font-medium text-white">Pandas</span></li>
-                    <li class="flex items-center"><span class="text-lg mr-3">🔢</span><span class="font-medium text-white">NumPy</span></li>
-                    <li class="flex items-center"><span class="text-lg mr-3">🤖</span><span class="font-medium text-white">Scikit-learn</span></li>
+            
+            <!-- Data Visualization & Reporting -->
+            <div class="bg-[#1f2937] rounded-2xl p-6 border border-gray-700 shadow-xl hover:shadow-[#06d6a0]/20 hover:border-[#06d6a0] transition-all duration-300 transform hover:-translate-y-1 skills-card">
+                <h3 class="text-xl font-extrabold text-[#17c8d9] mb-4 text-center border-b border-gray-700 pb-2">Data Visualization & Reporting</h3>
+                <ul class="list-none space-y-4 text-left text-lg">
+                    <li class="flex items-center"><span class="text-2xl mr-3">📊</span><span class="font-medium text-white">Power BI</span></li>
+                    <li class="flex items-center"><span class="text-2xl mr-3">📈</span><span class="font-medium text-white">Matplotlib & Seaborn</span></li>
+                    <li class="flex items-center"><span class="text-2xl mr-3">🧠</span><span class="font-medium text-white">Statistical Analysis</span></li>
+                    <li class="flex items-center"><span class="text-2xl mr-3">🔍</span><span class="font-medium text-white">Excel/Googlesheets</span></li>
                 </ul>
             </div>
-
-            <!-- Databases & Version Control -->
-            <div class="bg-gray-800 rounded-2xl p-6 border border-gray-700 shadow-lg hover:shadow-teal-400/10 hover:border-teal-400/50 transition-all duration-300 transform hover:-translate-y-2 skills-card">
-                <h3 class="text-xl font-bold text-teal-400 mb-4 text-center">Databases & Version Control</h3>
-                <ul class="list-none space-y-3 text-left">
-                    <li class="flex items-center"><span class="text-lg mr-3">🗄️</span><span class="font-medium text-white">SQL & MySQL</span></li>
-                    <li class="flex items-center"><span class="text-lg mr-3">💻</span><span class="font-medium text-white">Git & GitHub</span></li>
-                    <li class="flex items-center"><span class="text-lg mr-3">📓</span><span class="font-medium text-white">Jupyter Notebook</span></li>
+            
+            <!-- Data Infrastructure -->
+            <div class="bg-[#1f2937] rounded-2xl p-6 border border-gray-700 shadow-xl hover:shadow-[#06d6a0]/20 hover:border-[#06d6a0] transition-all duration-300 transform hover:-translate-y-1 skills-card">
+                <h3 class="text-xl font-extrabold text-[#17c8d9] mb-4 text-center border-b border-gray-700 pb-2">Data Infrastructure</h3>
+                <ul class="list-none space-y-4 text-left text-lg">
+                    <li class="flex items-center"><span class="text-2xl mr-3">🗄️</span><span class="font-medium text-white">SQL Database Management</span></li>
+                    <li class="flex items-center"><span class="text-2xl mr-3">💻</span><span class="font-medium text-white">Git & GitHub Version Control</span></li>
+                    <li class="flex items-center"><span class="text-2xl mr-3">⚙️</span><span class="font-medium text-white">ETL Concepts & Data Pipelines</span></li>
                 </ul>
             </div>
         </div>
@@ -472,77 +422,64 @@ body::-webkit-scrollbar { display: none; }
 </section>
 
 <!-- Projects Section -->
-<section id="projects" class="py-12 md:py-16 bg-gradient-to-b from-gray-800 to-gray-900">
-    <div class="max-w-7xl mx-auto px-2 animate-on-scroll">
-        <div class="text-center mb-12">
-            <p class="text-teal-400 font-semibold tracking-widest uppercase text-sm">Browse My Recent</p>
-            <h2 class="text-3xl md:text-4xl font-extrabold text-white">Work & Explorations</h2>
+<section id="projects" class="py-16 md:py-24 bg-gradient-to-b from-[#101620] to-gray-900">
+    <div class="max-w-7xl mx-auto px-4 animate-on-scroll">
+        <div class="section-header">
+            <p class="section-subtitle">Browse My Recent</p>
+            <h2 class="section-title">Work & Explorations</h2>
         </div>
-
-        <!-- Projects Cards Wrapper -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 w-full">
-            <!-- Maji Ndogo Agricultural Analysis -->
-            <div class="group project-card bg-gray-800 rounded-2xl border border-gray-700 flex flex-col h-full shadow-lg hover:shadow-teal-400/10 hover:border-teal-400/50 transition-all duration-300 transform hover:-translate-y-2 relative overflow-hidden">
-                <!-- 🖼️ FULL CARD IMAGE BACKGROUND - UPDATED: object-position to show titles -->
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-82 w-full">
+            <!-- Maji Ndogo -->
+            <div class="group project-card bg-[#1f2937] rounded-2xl border border-gray-700 flex flex-col h-full shadow-2xl hover:shadow-[#06d6a0]/30 hover:border-[#06d6a0] transition-all duration-500 transform hover:-translate-y-2 relative overflow-hidden">
                 <div class="card-image-container">
-                    <img src="./Maji_Ndongo_Image_5.png" alt="Maji Ndogo Agriculture Project — Fields, mountains, and community farms" style="object-position: top center;" />
-                    <!-- Dark overlay for text readability - UPDATED: Reduced opacity to show titles better -->
-                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/20 to-transparent"></div>
-                </div>
-
-                <!-- 💬 TEXT CONTENT OVERLAY - UPDATED: REMOVED TITLE -->
-                <div class="card-content-overlay">
-                    <!-- UPDATED: STATUS AND LIVE BUTTON ON SAME LINE -->
-                    <div class="project-status-container">
-                        <div class="inline-flex items-center text-gray-300 font-bold py-1 px-4 rounded-full bg-gray-700/50 text-xs">
-                            <span class="relative flex h-2 w-2 mr-2">
-                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
-                                <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-                            </span>In Progress
-                        </div>
-                        <!-- UPDATED: ADDED LIVE BUTTON -->
-                        <a href="#" class="live-button">
-                            <span>Live</span>
-                        </a>
+                    <img src="./Maji_Ndongo_Image_5.png" alt="Maji Ndogo Agriculture Project" class="w-full h-full object-cover">
+                    <!-- Content overlay at the top -->
+                    <div class="absolute top-0 left-0 right-0 p-6 bg-gradient-to-b from-[#101620] via-[#101620]/90 to-transparent">
+                        <h3 class="text-2xl font-extrabold text-white mb-2">Maji Ndogo Agricultural Analysis</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">
+                            Comprehensive SQL and Power BI analysis of agricultural data, focusing on crop yields, water usage, and farm performance to inform strategic policy decisions.
+                        </p>
                     </div>
                 </div>
-            </div>
-
-            <!-- Digital Payments Dashboard - UPDATED -->
-            <div class="group project-card bg-gray-800 rounded-2xl border border-gray-700 flex flex-col h-full shadow-lg hover:shadow-teal-400/10 hover:border-teal-400/50 transition-all duration-300 transform hover:-translate-y-2 relative overflow-hidden">
-                <!-- 🖼️ FULL CARD IMAGE BACKGROUND - UPDATED: object-position to show titles -->
-                <div class="card-image-container">
-                    <img src="./Digital Payments in Zambia.png" alt="Digital Payments Dashboard - Analytics and transaction visualization" style="object-position: top center;" />
-                    <!-- Dark overlay for text readability - UPDATED: Reduced opacity to show titles better -->
-                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/20 to-transparent"></div>
-                </div>
-
-                <!-- 💬 TEXT CONTENT OVERLAY - UPDATED: REMOVED TITLE -->
-                <div class="card-content-overlay">
-                    <!-- UPDATED: STATUS AND LIVE BUTTON ON SAME LINE -->
+                <div class="mt-auto p-6">
                     <div class="project-status-container">
-                        <div class="inline-flex items-center text-gray-300 font-bold py-1 px-4 rounded-full bg-gray-700/50 text-xs">
+                        <div class="inline-flex items-center text-gray-300 font-bold py-1 px-4 rounded-full bg-gray-700/50 text-xs uppercase tracking-wider">
                             <span class="relative flex h-2 w-2 mr-2">
                                 <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
                                 <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
                             </span>In Progress
                         </div>
-                        <!-- UPDATED: ADDED LIVE BUTTON -->
                         <a href="#" class="live-button">
-                            <span>Live</span>
+                            <span>View Report →</span>
                         </a>
                     </div>
                 </div>
             </div>
             
-            <!-- ADDITIONAL PROJECT CARD - Placeholder for future projects -->
-            <div class="group project-card bg-gray-800 rounded-2xl border border-gray-700 flex flex-col h-full shadow-lg hover:shadow-teal-400/10 hover:border-teal-400/50 transition-all duration-300 transform hover:-translate-y-2 relative overflow-hidden">
-                <!-- 🖼️ PLACEHOLDER FOR FUTURE PROJECT -->
-                <div class="card-image-container bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center">
-                    <div class="text-center p-6">
-                        <span class="text-4xl mb-3 block">📊</span>
-                        <p class="text-white font-bold text-lg">More Projects Coming Soon</p>
-                        <p class="text-gray-400 mt-2 text-sm">Stay tuned for more data science projects</p>
+            <!-- Digital Payments -->
+            <div class="group project-card bg-[#1f2937] rounded-2xl border border-gray-700 flex flex-col h-full shadow-2xl hover:shadow-[#06d6a0]/30 hover:border-[#06d6a0] transition-all duration-500 transform hover:-translate-y-2 relative overflow-hidden">
+                <div class="card-image-container">
+                    <img src="./Digital Payments in Zambia.png" alt="Digital Payments Dashboard" class="w-full h-full object-cover">
+                    <!-- Content overlay at the top -->
+                    <div class="absolute top-0 left-0 right-0 p-6 bg-gradient-to-b from-[#101620] via-[#101620]/90 to-transparent">
+                        <h3 class="text-2xl font-extrabold text-white mb-2">Digital Payments Dashboard</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">
+                            A self-service analytics dashboard designed to empower financial institutions.
+                        </p>
+                    </div>
+                </div>
+                <div class="mt-auto p-6">
+                    <div class="project-status-container">
+                        <div class="inline-flex items-center text-gray-300 font-bold py-1 px-4 rounded-full bg-gray-700/50 text-xs uppercase tracking-wider">
+                            <span class="relative flex h-2 w-2 mr-2">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                            </span>In Progress
+                        </div>
+                        <a href="#" class="live-button">
+                            <span>View Dashboard →</span>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -551,145 +488,167 @@ body::-webkit-scrollbar { display: none; }
 </section>
 
 <!-- Contact Section -->
-<section id="contact" class="py-12 md:py-16 bg-gray-900">
-    <div class="max-w-4xl mx-auto px-2 text-center animate-on-scroll">
-        <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-4">Let's Talk Data</h2>
-        <p class="text-lg text-gray-400 max-w-2xl mx-auto mb-10">The best insights start with a great conversation. Whether you're a fellow data explorer, a recruiter, or just curious about what's next in my journey, let's connect. I'm always open to discussing new ideas, projects, or challenges.</p>
+<section id="contact" class="py-16 md:py-24 bg-[#101620]">
+    <div class="max-w-4xl mx-auto px-4 text-center animate-on-scroll">
+        <div class="section-header">
+            <h2 class="section-title">Let's Connect</h2>
+            <p class="section-description">
+                The best insights start with a great conversation. Whether you're a fellow data explorer, a recruiter, or just curious about what's next in my journey, let's connect. I'm always open to discussing new ideas, projects, or challenges.
+            </p>
+        </div>
         
         <form
             id="contact-form"
-            class="max-w-md mx-auto flex flex-col items-center space-y-4 p-6 bg-gray-800 rounded-2xl shadow-lg"
+            class="max-w-xl mx-auto flex flex-col items-center space-y-4 p-8 bg-[#1f2937] rounded-3xl shadow-2xl border border-gray-700 centered-form"
         >
-            <input type="text" name="name" placeholder="Name" required class="w-full px-4 py-3 border border-gray-700 rounded-xl text-white bg-gray-700 focus:ring-2 focus:ring-teal-400 focus:outline-none shadow-sm text-center" />
-            <input type="email" name="email" placeholder="Email" required class="w-full px-4 py-3 border border-gray-700 rounded-xl text-white bg-gray-700 focus:ring-2 focus:ring-teal-400 focus:outline-none shadow-sm text-center" />
-            <input type="text" name="subject" placeholder="Subject" required class="w-full px-4 py-3 border border-gray-700 rounded-xl text-white bg-gray-700 focus:ring-2 focus:ring-teal-400 focus:outline-none shadow-sm text-center" />
-            <textarea name="message" placeholder="Message" required class="w-full px-4 py-3 border border-gray-700 rounded-xl text-white bg-gray-700 focus:ring-2 focus:ring-teal-400 focus:outline-none shadow-sm resize-none text-center" rows="5"></textarea>
-            
-            <button id="submit-button" type="submit" class="px-6 py-3 bg-teal-500 hover:bg-teal-600 text-white font-medium rounded-full shadow-md transition-transform transform hover:scale-105 focus:ring-2 focus:ring-offset-2 focus:ring-teal-400">
+            <input type="text" name="name" placeholder="Name" required class="w-full px-5 py-3 border border-gray-600 rounded-xl text-white bg-gray-800 focus:ring-4 focus:ring-[#06d6a0]/50 focus:border-[#06d6a0] focus:outline-none shadow-md form-input" />
+            <input type="email" name="email" placeholder="Email" required class="w-full px-5 py-3 border border-gray-600 rounded-xl text-white bg-gray-800 focus:ring-4 focus:ring-[#06d6a0]/50 focus:border-[#06d6a0] focus:outline-none shadow-md form-input" />
+            <input type="text" name="subject" placeholder="Subject" required class="w-full px-5 py-3 border border-gray-600 rounded-xl text-white bg-gray-800 focus:ring-4 focus:ring-[#06d6a0]/50 focus:border-[#06d6a0] focus:outline-none shadow-md form-input" />
+            <textarea name="message" placeholder="Message" rows="6" required class="w-full px-5 py-3 border border-gray-600 rounded-xl text-white bg-gray-800 focus:ring-4 focus:ring-[#06d6a0]/50 focus:border-[#06d6a0] focus:outline-none shadow-md resize-none form-input"></textarea>
+            <button
+                type="submit"
+                id="submit-button"
+                class="w-full mt-6 bg-[#06d6a0] text-gray-900 font-extrabold py-3.5 px-8 rounded-full shadow-2xl shadow-[#06d6a0]/40 transition-all duration-300 hover:bg-[#06d6a0]/90 uppercase tracking-wider"
+            >
                 ✉ Send
             </button>
+            <p id="form-status" class="mt-4 text-base font-semibold text-white"></p>
         </form>
-
-        <p id="form-status" class="text-center mt-3 text-sm"></p>
-    </div>
-   
-    <div class="mt-6 flex flex-col items-center justify-center gap-2">
-        <p class="text-gray-400 text-lg font-medium mb-2">Connect with me on</p>
-        <div class="flex justify-center items-center gap-8">
-            <a href="mailto:ibacklungu888@gmail.com" target="_blank" rel="noopener noreferrer" class="hover:scale-125 transition-transform duration-300">
-                <img src="email_red.png" alt="Email Icon" class="w-8 h-8 rounded-full">
-            </a>
-            <a href="https://linkedin.com/in/iback-lungu-3217451b4" target="_blank" rel="noopener noreferrer" class="hover:scale-125 transition-transform duration-300">
-                <img src="linkedin_blue.png" alt="LinkedIn Icon" class="w-8 h-8 rounded-full">
-            </a>
-            <a href="https://github.com/ibacklungu" target="_blank" rel="noopener noreferrer" class="hover:scale-125 transition-transform duration-300">
-                <img src="github_purple.png" alt="GitHub Icon" class="w-8 h-8 rounded-full">
-            </a>
-            <a href="https://wa.me/260975135029" target="_blank" rel="noopener noreferrer" class="hover:scale-125 transition-transform duration-300">
-                <img src="whatsapp _green.png" alt="WhatsApp Icon" class="w-8 h-8 rounded-full">
-            </a>
-        </div>
     </div>
 </section>
-
 </main>
 
-<!-- Footer -->
-<footer class="bg-gray-800 border-t border-gray-700 py-8">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-400">
-        <div class="flex justify-center mb-4">
-            <a href="#home" id="back-to-top" class="flex items-center text-teal-400 hover:text-teal-300 transition-colors duration-300">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg>
-                Back to Top
+<footer class="bg-gray-900 border-t border-gray-800 py-5">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+        <div class="social-icons mb-6">
+            <a href="mailto:ibacklungu888@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Email Me">
+                <img src="email_red.png" alt="Email" class="w-6 h-6">
+            </a>
+            <a href="https://linkedin.com/in/iback-lungu-3217451b4" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
+                <img src="./linkedin_blue.png" alt="LinkedIn" class="w-6 h-6">
+            </a>
+            <a href="https://github.com/ibacklungu" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
+                <img src="./github_purple.png" alt="GitHub" class="w-6 h-6">
+            </a>
+            <a href="https://wa.me/260975135029" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                <img src="./whatsapp _green.png" alt="WhatsApp" class="w-6 h-6">
             </a>
         </div>
-        <p>&copy; 2024 Iback Lungu. All Rights Reserved.</p>
+        <p class="text-gray-500 text-sm">
+            &copy; <span id="current-year"></span> Iback Lungu. All Rights Reserved.
+        </p>
     </div>
 </footer>
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
+    // Get current year for footer
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+    // Typewriter effect
+    const typewriterTextElement = document.getElementById('typewriter-text');
+    const textArray = [
+        "What draws me to data is the human story behind every number—stories about how people behave and the impact they create. My years in field sales and platform support gave me firsthand experience with these stories. That's why I'm passionate about turning real-world experiences into actionable insights that drive meaningful value."
+    ];
+    let textIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let typingSpeed = 70;
+    let deletingSpeed = 40;
+    let delayBetweenText = 1500;
+    function typeWriter() {
+        if (!typewriterTextElement) return;
+        const currentText = textArray[textIndex];
+        let displayHTML = currentText.substring(0, charIndex);
+        if (isDeleting) {
+            charIndex--;
+            typewriterTextElement.innerHTML = displayHTML.substring(0, charIndex) + '<span class="animate-blink">|</span>';
+        } else {
+            charIndex++;
+            typewriterTextElement.innerHTML = displayHTML + '<span class="animate-blink">|</span>';
+        }
+        let speed = isDeleting ? deletingSpeed : typingSpeed;
+        if (!isDeleting && charIndex === currentText.length) {
+            typewriterTextElement.innerHTML = displayHTML;
+            speed = delayBetweenText;
+            isDeleting = true;
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            textIndex = (textIndex + 1) % textArray.length;
+            speed = 500; 
+        }
+        setTimeout(typeWriter, speed);
+    }
+    // Animations
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                if (entry.target.id === 'hero-content' && typewriterTextElement && !typewriterTextElement.hasAttribute('data-typed')) {
+                    typeWriter();
+                    typewriterTextElement.setAttribute('data-typed', 'true');
+                }
+            }
+        });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.hero-fade-in').forEach(el => observer.observe(el));
+    document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+    // Mobile menu
     const hamburgerButton = document.getElementById('hamburger-button');
     const mobileMenu = document.getElementById('mobile-menu');
-    const openIcon = document.getElementById('hamburger-open');
-    const closeIcon = document.getElementById('hamburger-close');
-    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
-
-    const toggleMenu = () => {
-        mobileMenu.classList.toggle('opacity-0');
-        mobileMenu.classList.toggle('invisible');
-        openIcon.classList.toggle('hidden');
-        closeIcon.classList.toggle('hidden');
-    };
-    if (hamburgerButton) hamburgerButton.addEventListener('click', toggleMenu);
-    mobileNavLinks.forEach(link => link.addEventListener('click', toggleMenu));
-
-    const heroContent = document.getElementById('hero-content');
-    if (heroContent) setTimeout(() => heroContent.classList.add('is-visible'), 100);
-
-    const typewriterElement = document.getElementById('typewriter-text');
-    if (typewriterElement) {
-        const heroMessages = [
-            "What draws me to data is the human story behind every number-stories about how people behave and the impact they create. My years in field sales and platform support gave me firsthand experience with these stories. That's why I'm passionate about turning real-world experiences into actionable insights that drive meaningful value."
-        ];
-        let currentMessageIndex = 0;
-        const typingSpeed = 50; 
-        const pauseAfterMessage = 1500;
-
-        const typeMessage = (message, callback) => {
-            let currentText = '';
-            const typeChar = () => {
-                currentText = message.substring(0, currentText.length + 1);
-                typewriterElement.innerHTML = currentText;
-                if (currentText.length < message.length) setTimeout(typeChar, typingSpeed);
-                else setTimeout(callback, pauseAfterMessage);
-            };
-            typeChar();
-        };
-        const showNextMessage = () => {
-            if (currentMessageIndex < heroMessages.length - 1) {
-                typeMessage(heroMessages[currentMessageIndex], () => {
-                    currentMessageIndex++;
-                    showNextMessage();
-                });
-            } else { typeMessage(heroMessages[currentMessageIndex], () => {}); }
-        };
-        showNextMessage();
-    }
-
-    const animateElements = document.querySelectorAll('.animate-on-scroll');
-    const observer = new IntersectionObserver((entries, obs) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) { entry.target.classList.add('is-visible'); obs.unobserve(entry.target); }
+    const hamburgerOpen = document.getElementById('hamburger-open');
+    const hamburgerClose = document.getElementById('hamburger-close');
+    const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+    if (hamburgerButton) {
+        hamburgerButton.addEventListener('click', () => {
+            const isMenuOpen = mobileMenu.classList.contains('opacity-100');
+            if (isMenuOpen) {
+                mobileMenu.classList.remove('opacity-100', 'visible');
+                mobileMenu.classList.add('opacity-0', 'invisible');
+                hamburgerOpen.classList.remove('hidden');
+                hamburgerClose.classList.add('hidden');
+            } else {
+                mobileMenu.classList.add('opacity-100', 'visible');
+                mobileMenu.classList.remove('opacity-0', 'invisible');
+                hamburgerOpen.classList.add('hidden');
+                hamburgerClose.classList.remove('hidden');
+            }
         });
-    }, { threshold: 0.2 });
-    animateElements.forEach(el => observer.observe(el));
-
+    }
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.remove('opacity-100', 'visible');
+            mobileMenu.classList.add('opacity-0', 'invisible');
+            hamburgerOpen.classList.remove('hidden');
+            hamburgerClose.classList.add('hidden');
+        });
+    });
+    // Contact form
     const contactForm = document.getElementById('contact-form');
     const statusMessage = document.getElementById('form-status');
     const submitButton = document.getElementById('submit-button');
-    const serviceID = 'service_89njjb3';
-    const templateID = 'template_h4cawxa';
     if (contactForm) {
         contactForm.addEventListener('submit', function(event) {
             event.preventDefault();
-            submitButton.disabled = true; submitButton.textContent = '⏳ Sending...';
-            emailjs.sendForm(serviceID, templateID, this)
-            .then(() => {
-                statusMessage.textContent = '✅ Message sent successfully!';
-                statusMessage.classList.remove('text-red-400');
-                statusMessage.classList.add('text-green-400');
-                contactForm.reset();
-            })
-            .catch(() => {
-                statusMessage.textContent = '❌ Failed to send message. Please try again.';
-                statusMessage.classList.remove('text-green-400');
-                statusMessage.classList.add('text-red-400');
-            })
-            .finally(() => { submitButton.disabled = false; submitButton.textContent = '✉ Send'; });
+            submitButton.disabled = true;
+            submitButton.textContent = '⏳ Sending...';
+            statusMessage.textContent = 'Sending message...';
+            statusMessage.className = 'mt-4 text-base font-semibold text-blue-400';
+            
+            emailjs.sendForm('service_89njjb3', 'template_h4cawxa', this)
+                .then(() => {
+                    statusMessage.textContent = '✅ Message sent successfully!';
+                    statusMessage.className = 'mt-4 text-base font-semibold text-green-400';
+                    contactForm.reset();
+                })
+                .catch(() => {
+                    statusMessage.textContent = '❌ Failed to send. Please try again.';
+                    statusMessage.className = 'mt-4 text-base font-semibold text-red-400';
+                })
+                .finally(() => {
+                    submitButton.disabled = false;
+                    submitButton.textContent = '✉ Send';
+                });
         });
     }
-});
 </script>
 </body>
 </html>
