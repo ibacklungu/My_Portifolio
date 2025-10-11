@@ -58,10 +58,6 @@ body::-webkit-scrollbar { display: none; }
     transform: translateY(0); 
 }
 
-/* === TYPEWRITER BLINK ANIMATION === */
-@keyframes blink { 0%,50%,100%{opacity:1} 25%,75%{opacity:0} }
-.animate-blink { animation: blink 3s infinite; }
-
 /* === SCROLL ANIMATIONS === */
 .animate-on-scroll { 
     opacity:0; 
@@ -71,34 +67,6 @@ body::-webkit-scrollbar { display: none; }
 .animate-on-scroll.is-visible { 
     opacity:1; 
     transform: translateY(0); 
-}
-
-/* === TYPEWRITER CONTAINER === */
-.typewriter-box { min-height:5rem; }
-
-/* === HERO BUTTON STYLES === */
-.hero-buttons a {
-    display:inline-block; 
-    padding:1rem 2rem; 
-    font-size:1rem; 
-    border-radius:9999px; 
-    font-weight:bold;
-    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-.hero-buttons a:hover { 
-    transform: scale(1.05); 
-    box-shadow: 0 0 30px rgba(6,214,160,0.7); 
-}
-
-/* === SOCIAL ICONS STYLES === */
-.social-icons { display:flex; gap:1.5rem; justify-content:center; align-items:center; }
-.social-icons a {
-    transition: transform 0.3s ease, color 0.3s ease;
-    color: #a1a1aa; 
-}
-.social-icons a:hover {
-    transform: scale(1.2);
-    color: #06d6a0; 
 }
 
 /* === CARD CONTENT STYLES === */
@@ -297,9 +265,6 @@ body::-webkit-scrollbar { display: none; }
     #hero-content h1 {
         font-size: 1.8rem;
     }
-    #typewriter-text {
-        font-size: 0.95rem;
-    }
     .hero-buttons { 
         max-width: 280px;
     }
@@ -362,11 +327,11 @@ body::-webkit-scrollbar { display: none; }
 <!-- ===== HERO SECTION ===== -->
 <section id="home" class="min-h-[75vh] flex items-center justify-center bg-gray-900 pt-16">
     <div id="hero-content" class="w-full text-center hero-fade-in">
-        <!-- Profile Image -->
+        <!-- Profile Image - Reduced size with optimized attributes -->
         <div class="inline-block mb-6">
             <img src="./p2-removebg-preview 2.png" alt="Iback Lungu" 
-     class="w-24 h-24 md:w-32 md:h-32 mx-auto rounded-full border-2 border-[#06d6a0] shadow-2xl object-cover"
-     loading="lazy" width="128" height="128">
+                 class="w-24 h-24 md:w-32 md:h-32 mx-auto rounded-full border-2 border-[#06d6a0] shadow-2xl object-cover"
+                 loading="lazy" width="128" height="128">
         </div>
         
         <!-- Hero Text -->
@@ -395,7 +360,7 @@ body::-webkit-scrollbar { display: none; }
                     <!-- ALX Africa Card -->
                     <div class="group bg-[#1f2937] rounded-2xl p-6 border border-gray-700 flex flex-col items-center text-center shadow-xl hover:shadow-[#06d6a0]/30 hover:border-[#06d6a0] transition-all duration-500 transform hover:-translate-y-2 card-content">
                         <div class="education-icon bg-gradient-to-br from-[#06d6a0] to-[#17c8d9]">
-                            <img class=" sctext-white font-bold text-xs"><img src="./alx-icon.jpg" alt="ALX Logo"></span>
+                            <img src="./alx-icon.jpg" alt="ALX Logo" class="text-white font-bold text-xs">
                         </div>
                         <h4 class="text-xl font-bold text-[#17c8d9]">ALX Africa Data Science Program</h4>
                         <p class="text-gray-400 text-sm mb-1">2025 - 2026</p>
@@ -414,7 +379,7 @@ body::-webkit-scrollbar { display: none; }
                     <!-- BSc Mathematics Card -->
                     <div class="group bg-[#1f2937] rounded-2xl p-6 border border-gray-700 flex flex-col items-center text-center shadow-xl hover:shadow-[#06d6a0]/30 hover:border-[#06d6a0] transition-all duration-500 transform hover:-translate-y-2 card-content">
                         <div class="education-icon bg-gradient-to-br from-yellow-500 to-red-500">
-                            <span class="text-white font-bold text-xs"><img src="./cbu icon" alt="CBU Logo"></span>
+                            <img src="./cbu icon" alt="CBU Logo" class="text-white font-bold text-xs">
                         </div>
                         <h4 class="text-xl font-bold text-[#17c8d9]">BSc in Mathematics</h4>
                         <p class="text-gray-400 text-sm mb-1">2016 - 2020</p>
@@ -632,8 +597,8 @@ body::-webkit-scrollbar { display: none; }
 <!-- ===== FOOTER ===== -->
 <footer class="bg-gray-900 border-t border-gray-800 py-5">
     <div class="max-w-7xl mx-auto px-4 text-center">
-        <!-- Social Media Icons -->
-        <div class="social-icons mb-6">
+        <!-- Social Media Icons - Fixed centering -->
+        <div class="flex justify-center items-center gap-6 mb-6">
             <a href="mailto:ibacklungu888@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Email Me">
                 <img src="email_red.png" alt="Email" class="w-6 h-6">
             </a>
@@ -659,56 +624,11 @@ body::-webkit-scrollbar { display: none; }
     // === CURRENT YEAR FOR FOOTER ===
     document.getElementById('current-year').textContent = new Date().getFullYear();
     
-    // === TYPEWRITER EFFECT ===
-    const typewriterTextElement = document.getElementById('typewriter-text');
-    const textArray = [
-        "What draws me to data is the human story behind every number—stories about how people behave and the impact they create. My years in field sales and platform support gave me firsthand experience with these stories. That's why I'm passionate about turning real-world experiences into actionable insights that drive meaningful value."
-    ];
-    let textIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    let typingSpeed = 70;
-    let deletingSpeed = 40;
-    let delayBetweenText = 1500;
-    
-    function typeWriter() {
-        if (!typewriterTextElement) return;
-        const currentText = textArray[textIndex];
-        let displayHTML = currentText.substring(0, charIndex);
-        
-        if (isDeleting) {
-            charIndex--;
-            typewriterTextElement.innerHTML = displayHTML.substring(0, charIndex) + '<span class="animate-blink">|</span>';
-        } else {
-            charIndex++;
-            typewriterTextElement.innerHTML = displayHTML + '<span class="animate-blink">|</span>';
-        }
-        
-        let speed = isDeleting ? deletingSpeed : typingSpeed;
-        
-        if (!isDeleting && charIndex === currentText.length) {
-            typewriterTextElement.innerHTML = displayHTML;
-            speed = delayBetweenText;
-            isDeleting = true;
-        } else if (isDeleting && charIndex === 0) {
-            isDeleting = false;
-            textIndex = (textIndex + 1) % textArray.length;
-            speed = 500; 
-        }
-        
-        setTimeout(typeWriter, speed);
-    }
-    
     // === INTERSECTION OBSERVER FOR ANIMATIONS ===
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('is-visible');
-                // Start typewriter effect when hero section is visible
-                if (entry.target.id === 'hero-content' && typewriterTextElement && !typewriterTextElement.hasAttribute('data-typed')) {
-                    typeWriter();
-                    typewriterTextElement.setAttribute('data-typed', 'true');
-                }
             }
         });
     }, { threshold: 0.15 });
