@@ -4,39 +4,50 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Iback Lungu | Portfolio</title>
-    <!-- EmailJS Library -->
+    
+    <!-- ===== EXTERNAL DEPENDENCIES ===== -->
+    <!-- EmailJS for contact form functionality -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script type="text/javascript">
         (function() {
             emailjs.init({ publicKey: "5MsPZTTeDr90FHm7N" });
         })();
     </script>
-    <!-- Tailwind CSS -->
+    
+    <!-- Tailwind CSS framework -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts -->
+    
+    <!-- Google Fonts - Inter font family -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <!-- Custom Styles -->
+    
+    <!-- ===== CUSTOM STYLES ===== -->
 <style>
+/* === GLOBAL STYLES === */
 body {
     font-family: 'Inter', sans-serif;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-    padding-top: 4rem;
+    -ms-overflow-style: none;  /* Hide scrollbar for IE/Edge */
+    scrollbar-width: none;      /* Hide scrollbar for Firefox */
+    padding-top: 4rem;          /* Space for fixed header */
     margin: 0;
-    /* Deep, modern dark mode background — FROM CODE 1 */
+    /* Deep, modern dark mode background gradient */
     background: linear-gradient(to bottom, #101620, #0a0d13); 
     color: #f3f4f6;
 }
+/* Hide scrollbar for Webkit browsers */
 body::-webkit-scrollbar { display: none; }
+
+/* === TEXT GRADIENT UTILITY === */
 .text-gradient {
-    /* High-contrast, vibrant neon-teal gradient — FROM CODE 1 */
+    /* Vibrant teal gradient for text */
     background: linear-gradient(135deg, #17c8d9 0%, #06d6a0 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
+
+/* === HERO SECTION ANIMATIONS === */
 .hero-fade-in { 
     opacity:0; 
     transform: translateY(2rem); 
@@ -46,8 +57,12 @@ body::-webkit-scrollbar { display: none; }
     opacity:1; 
     transform: translateY(0); 
 }
+
+/* === TYPEWRITER BLINK ANIMATION === */
 @keyframes blink { 0%,50%,100%{opacity:1} 25%,75%{opacity:0} }
 .animate-blink { animation: blink 3s infinite; }
+
+/* === SCROLL ANIMATIONS === */
 .animate-on-scroll { 
     opacity:0; 
     transform: translateY(3rem); 
@@ -57,7 +72,11 @@ body::-webkit-scrollbar { display: none; }
     opacity:1; 
     transform: translateY(0); 
 }
+
+/* === TYPEWRITER CONTAINER === */
 .typewriter-box { min-height:5rem; }
+
+/* === HERO BUTTON STYLES === */
 .hero-buttons a {
     display:inline-block; 
     padding:1rem 2rem; 
@@ -70,6 +89,8 @@ body::-webkit-scrollbar { display: none; }
     transform: scale(1.05); 
     box-shadow: 0 0 30px rgba(6,214,160,0.7); 
 }
+
+/* === SOCIAL ICONS STYLES === */
 .social-icons { display:flex; gap:1.5rem; justify-content:center; align-items:center; }
 .social-icons a {
     transition: transform 0.3s ease, color 0.3s ease;
@@ -79,16 +100,18 @@ body::-webkit-scrollbar { display: none; }
     transform: scale(1.2);
     color: #06d6a0; 
 }
-/* Card Styles - Optimized for Board Presentation — FROM CODE 1 */
+
+/* === CARD CONTENT STYLES === */
 .card-content p, .card-content li {
     word-wrap: break-word;
     overflow-wrap: break-word;
     hyphens: auto;
     width: 100%;
-    font-size: 0.95rem; /* Slightly smaller, professional body copy */
+    font-size: 0.95rem; /* Professional body copy size */
     line-height: 1.6;
 }
-/* Elevated Card Style — FROM CODE 1 */
+
+/* === ELEVATED CARD STYLES === */
 .group.bg-gray-800 {
     background-color: #1f2937; 
     border: 1px solid #374151;
@@ -98,7 +121,8 @@ body::-webkit-scrollbar { display: none; }
     border-color: #06d6a0;
     box-shadow: 0 0 15px rgba(6,214,160,0.3);
 }
-/* Project Card Styles — FROM CODE 1 */
+
+/* === PROJECT CARD LAYOUT === */
 .project-card {
   display: flex;
   flex-direction: column;
@@ -124,7 +148,8 @@ body::-webkit-scrollbar { display: none; }
     padding: 1.5rem;
     background: linear-gradient(to top, rgba(16, 22, 32, 1) 0%, rgba(16, 22, 32, 0.8) 35%, rgba(16, 22, 32, 0) 100%);
 }
-/* Card image container */
+
+/* === CARD IMAGE CONTAINER === */
 .card-image-container {
     position: absolute;
     top: 0;
@@ -138,7 +163,8 @@ body::-webkit-scrollbar { display: none; }
     height: 100%;
     object-fit: cover;
 }
-/* LIVE BUTTON STYLES — FROM CODE 1 */
+
+/* === LIVE BUTTON STYLES === */
 .live-button {
     display: inline-flex;
     align-items: center;
@@ -158,6 +184,8 @@ body::-webkit-scrollbar { display: none; }
     transform: scale(1.03);
     box-shadow: 0 4px 10px rgba(23, 200, 217, 0.4);
 }
+
+/* === PROJECT STATUS CONTAINER === */
 .project-status-container {
     display: flex;
     justify-content: space-between;
@@ -166,7 +194,8 @@ body::-webkit-scrollbar { display: none; }
     flex-wrap: wrap;
     gap: 0.5rem;
 }
-/* Education Icons - Small and Round */
+
+/* === EDUCATION ICONS === */
 .education-icon {
     width: 60px;
     height: 60px;
@@ -177,7 +206,8 @@ body::-webkit-scrollbar { display: none; }
     margin-bottom: 1rem;
     font-size: 1.5rem;
 }
-/* Form centering */
+
+/* === FORM STYLES === */
 .centered-form {
     display: flex;
     flex-direction: column;
@@ -186,7 +216,8 @@ body::-webkit-scrollbar { display: none; }
 .form-input {
     text-align: center;
 }
-/* Consistent Section Headers */
+
+/* === SECTION HEADER STYLES === */
 .section-header {
     text-align: center;
     margin-bottom: 3rem;
@@ -212,13 +243,11 @@ body::-webkit-scrollbar { display: none; }
     margin-right: auto;
 }
 
-/* Updated Mobile Menu - Transparent Background with Gradient Text */
+/* === MOBILE MENU STYLES === */
 #mobile-menu {
     background: rgba(16, 22, 32, 0.95) !important; /* Dark transparent background */
     backdrop-filter: blur(20px);
 }
-
-/* Mobile menu links - Gradient text like "Iback Lungu" */
 #mobile-menu a {
     background: linear-gradient(135deg, #17c8d9 0%, #06d6a0 100%);
     -webkit-background-clip: text;
@@ -226,16 +255,15 @@ body::-webkit-scrollbar { display: none; }
     background-clip: text;
     font-weight: 600;
 }
-
 #mobile-menu a:hover {
     transform: scale(1.05);
     transition: all 0.3s ease;
 }
 
-/* Ensure In Progress button matches LIVE DEMO exactly - ADDED */
+/* === IN PROGRESS BUTTON STYLES === */
 .project-status-container .inline-flex {
     background-color: #06d6a0 !important;
-    color: #000000 !important; /* CHANGED: from #101620 to #000000 for pure black */
+    color: #000000 !important; /* Pure black text for better contrast */
     font-weight: 700;
     padding: 0.5rem 1rem !important;
     border-radius: 9999px;
@@ -245,7 +273,7 @@ body::-webkit-scrollbar { display: none; }
     box-shadow: 0 4px 6px rgba(6, 214, 160, 0.2);
 }
 
-/* Make sure both buttons stay side by side on mobile - ADDED */
+/* === MOBILE RESPONSIVE STYLES === */
 @media (max-width: 640px) {
     .project-status-container {
         flex-direction: row !important;
@@ -254,9 +282,12 @@ body::-webkit-scrollbar { display: none; }
     }
 }
 
-/* Mobile Optimizations - Retained for responsiveness */
+/* === MOBILE OPTIMIZATIONS === */
 @media (max-width: 640px) {
+    /* Disable animations on mobile for better performance */
     .hero-fade-in, .animate-on-scroll { transform:none!important; opacity:1!important; transition:none!important; }
+    
+    /* Mobile hero section adjustments */
     #home { 
         min-height:70vh; 
         padding: 2rem 1rem;
@@ -282,13 +313,18 @@ body::-webkit-scrollbar { display: none; }
 }
 </style>
 </head>
+
 <body>
+<!-- ===== FIXED HEADER NAVIGATION ===== -->
 <header class="fixed top-0 left-0 right-0 z-50 bg-gray-900/85 backdrop-blur-md shadow-xl border-b border-gray-700/50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16">
+            <!-- Logo/Name -->
             <a href="#home" class="text-2xl font-extrabold hover:opacity-90 transition">
                 <span class="text-gradient">Iback Lungu</span>
             </a>
+            
+            <!-- Desktop Navigation -->
             <nav class="hidden md:flex space-x-8">
                 <a href="#home" class="text-gray-300 hover:text-teal-300 font-medium transition-colors duration-300">Home</a>
                 <a href="#about" class="text-gray-300 hover:text-teal-300 font-medium transition-colors duration-300">About</a>
@@ -296,6 +332,8 @@ body::-webkit-scrollbar { display: none; }
                 <a href="#projects" class="text-gray-300 hover:text-teal-300 font-medium transition-colors duration-300">Projects</a>
                 <a href="#contact" class="text-gray-300 hover:text-teal-300 font-medium transition-colors duration-300">Contact</a>
             </nav>
+            
+            <!-- Mobile Menu Button -->
             <button id="hamburger-button" class="md:hidden text-white focus:outline-none" aria-label="Open menu">
                 <svg id="hamburger-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
@@ -306,6 +344,8 @@ body::-webkit-scrollbar { display: none; }
             </button>
         </div>
     </div>
+    
+    <!-- Mobile Menu Dropdown -->
     <div id="mobile-menu" class="md:hidden absolute top-16 left-0 w-full bg-gray-900/98 backdrop-blur-lg transition-all duration-300 ease-in-out opacity-0 invisible">
         <nav class="flex flex-col items-center space-y-4 py-6">
             <a href="#home" class="text-gray-300 hover:text-teal-400 font-medium text-lg mobile-nav-link">Home</a>
@@ -316,13 +356,18 @@ body::-webkit-scrollbar { display: none; }
         </nav>
     </div>
 </header>
+
+<!-- ===== MAIN CONTENT ===== -->
 <main>
-<!-- Hero Section - True Edge-to-Edge -->
+<!-- ===== HERO SECTION ===== -->
 <section id="home" class="min-h-[75vh] flex items-center justify-center bg-gray-900 pt-16">
     <div id="hero-content" class="w-full text-center hero-fade-in">
+        <!-- Profile Image -->
         <div class="inline-block mb-6">
             <img src="p2-removebg-preview 2.png" alt="Iback Lungu" class="w-32 h-32 md:w-40 md:h-40 mx-auto rounded-full border-4 border-[#06d6a0] shadow-2xl object-cover">
         </div>
+        
+        <!-- Hero Text -->
         <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-6 leading-snug">
             <span class="text-gradient block">Aspiring Data Scientist</span>
             <span class="text-gradient block mt-2">Empowering Decisions Through Data</span>
@@ -330,23 +375,25 @@ body::-webkit-scrollbar { display: none; }
     </div>
 </section>
 
-<!-- Education & Experience Section -->
+<!-- ===== EDUCATION & EXPERIENCE SECTION ===== -->
 <section id="about" class="py-16 md:py-24 bg-[#101620]">
     <div class="w-full animate-on-scroll">
+        <!-- Section Header -->
         <div class="section-header">
             <p class="section-subtitle">My Journey</p>
             <h2 class="section-title">Education & Experience</h2>
         </div>
         
         <div class="flex flex-col gap-2 px-4 md:px-8">
-            <!-- Education Section -->
+            <!-- EDUCATION SECTION -->
             <div>
                 <h3 class="text-2xl font-bold text-white mb-8 text-center border-b-2 border-teal-400/30 pb-3">Education</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-2 w-full">
-                    <!-- ALX Africa -->
+                    
+                    <!-- ALX Africa Card -->
                     <div class="group bg-[#1f2937] rounded-2xl p-6 border border-gray-700 flex flex-col items-center text-center shadow-xl hover:shadow-[#06d6a0]/30 hover:border-[#06d6a0] transition-all duration-500 transform hover:-translate-y-2 card-content">
                         <div class="education-icon bg-gradient-to-br from-[#06d6a0] to-[#17c8d9]">
-                            <img class=" sctext-white font-bold text-xs"><img src="./alx-icon.jpg" alt=""></span>
+                            <img class=" sctext-white font-bold text-xs"><img src="./alx-icon.jpg" alt="ALX Logo"></span>
                         </div>
                         <h4 class="text-xl font-bold text-[#17c8d9]">ALX Africa Data Science Program</h4>
                         <p class="text-gray-400 text-sm mb-1">2025 - 2026</p>
@@ -362,10 +409,10 @@ body::-webkit-scrollbar { display: none; }
                         </p>
                     </div>
                     
-                    <!-- BSc Mathematics -->
+                    <!-- BSc Mathematics Card -->
                     <div class="group bg-[#1f2937] rounded-2xl p-6 border border-gray-700 flex flex-col items-center text-center shadow-xl hover:shadow-[#06d6a0]/30 hover:border-[#06d6a0] transition-all duration-500 transform hover:-translate-y-2 card-content">
                         <div class="education-icon bg-gradient-to-br from-yellow-500 to-red-500">
-                            <span class="text-white font-bold text-xs"><img src="./cbu icon" alt=""></span>
+                            <span class="text-white font-bold text-xs"><img src="./cbu icon" alt="CBU Logo"></span>
                         </div>
                         <h4 class="text-xl font-bold text-[#17c8d9]">BSc in Mathematics</h4>
                         <p class="text-gray-400 text-sm mb-1">2016 - 2020</p>
@@ -379,11 +426,12 @@ body::-webkit-scrollbar { display: none; }
                 </div>
             </div>
             
-            <!-- Experience Section -->
+            <!-- EXPERIENCE SECTION -->
             <div>
                 <h3 class="text-2xl font-bold text-white mb-8 text-center border-b-2 border-teal-400/30 pb-3">Experience</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 w-full">
-                    <!-- Zanaco Bank -->
+                    
+                    <!-- Zanaco Bank Experience -->
                     <div class="group bg-[#1f2937] rounded-2xl p-6 border border-gray-700 flex flex-col items-center text-center shadow-xl hover:shadow-[#06d6a0]/30 hover:border-[#06d6a0] transition-all duration-500 transform hover:-translate-y-2 card-content">
                         <h4 class="text-xl font-bold text-[#17c8d9]">Trade Development Representative</h4>
                         <p class="text-gray-400 text-sm mb-3">Zanaco Bank • Nov 2024 - Jul 2025</p>
@@ -393,7 +441,7 @@ body::-webkit-scrollbar { display: none; }
                         </ul>
                     </div>
                     
-                    <!-- Bolabet Limited -->
+                    <!-- Bolabet Limited Experience -->
                     <div class="group bg-[#1f2937] rounded-2xl p-6 border border-gray-700 flex flex-col items-center text-center shadow-xl hover:shadow-[#06d6a0]/30 hover:border-[#06d6a0] transition-all duration-500 transform hover:-translate-y-2 card-content">
                         <h4 class="text-xl font-bold text-[#17c8d9]">Platform Support Assistant</h4>
                         <p class="text-gray-400 text-sm mb-3">Bolabet Limited • Aug 2023 - Feb 2024</p>
@@ -403,7 +451,7 @@ body::-webkit-scrollbar { display: none; }
                         </ul>
                     </div>
                     
-                    <!-- Coca-Cola (Smollan) -->
+                    <!-- Coca-Cola Experience -->
                     <div class="group bg-[#1f2937] rounded-2xl p-6 border border-gray-700 flex flex-col items-center text-center shadow-xl hover:shadow-[#06d6a0]/30 hover:border-[#06d6a0] transition-all duration-500 transform hover:-translate-y-2 card-content">
                         <h4 class="text-xl font-bold text-[#17c8d9]">General Trade Merchandiser</h4>
                         <p class="text-gray-400 text-sm mb-3">Coca-Cola (Smollan) • Feb 2023 - Aug 2023</p>
@@ -413,7 +461,7 @@ body::-webkit-scrollbar { display: none; }
                         </ul>
                     </div>
                     
-                    <!-- Stanbic Bank POS Project -->
+                    <!-- Stanbic Bank Experience -->
                     <div class="group bg-[#1f2937] rounded-2xl p-6 border border-gray-700 flex flex-col items-center text-center shadow-xl hover:shadow-[#06d6a0]/30 hover:border-[#06d6a0] transition-all duration-500 transform hover:-translate-y-2 card-content">
                         <h4 class="text-xl font-bold text-[#17c8d9]">Field Sales Representative</h4>
                         <p class="text-gray-400 text-sm mb-3">Stanbic Bank POS Project • Mar 2021 - Feb 2023</p>
@@ -428,16 +476,18 @@ body::-webkit-scrollbar { display: none; }
     </div>
 </section>
 
-<!-- Skills Section -->
+<!-- ===== SKILLS SECTION ===== -->
 <section id="skills" class="py-16 md:py-24 bg-gray-900">
     <div class="max-w-7xl mx-auto px-4 animate-on-scroll">
+        <!-- Section Header -->
         <div class="section-header">
             <p class="section-subtitle">Skills & Tools</p>
             <h2 class="section-title">My Data Science Toolkit</h2>
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 w-full">
-            <!-- Programming & Machine Learning -->
+            
+            <!-- Programming & Machine Learning Card -->
             <div class="bg-[#1f2937] rounded-2xl p-6 border border-gray-700 shadow-xl hover:shadow-[#06d6a0]/20 hover:border-[#06d6a0] transition-all duration-300 transform hover:-translate-y-1 skills-card">
                 <h3 class="text-xl font-extrabold text-[#17c8d9] mb-4 text-center border-b border-gray-700 pb-2">Programming & Machine Learning</h3>
                 <ul class="list-none space-y-4 text-left text-lg">
@@ -448,7 +498,7 @@ body::-webkit-scrollbar { display: none; }
                 </ul>
             </div>
             
-            <!-- Data Visualization & Reporting -->
+            <!-- Data Visualization & Reporting Card -->
             <div class="bg-[#1f2937] rounded-2xl p-6 border border-gray-700 shadow-xl hover:shadow-[#06d6a0]/20 hover:border-[#06d6a0] transition-all duration-300 transform hover:-translate-y-1 skills-card">
                 <h3 class="text-xl font-extrabold text-[#17c8d9] mb-4 text-center border-b border-gray-700 pb-2">Data Visualization & Reporting</h3>
                 <ul class="list-none space-y-4 text-left text-lg">
@@ -459,7 +509,7 @@ body::-webkit-scrollbar { display: none; }
                 </ul>
             </div>
             
-            <!-- Data Infrastructure -->
+            <!-- Data Infrastructure Card -->
             <div class="bg-[#1f2937] rounded-2xl p-6 border border-gray-700 shadow-xl hover:shadow-[#06d6a0]/20 hover:border-[#06d6a0] transition-all duration-300 transform hover:-translate-y-1 skills-card">
                 <h3 class="text-xl font-extrabold text-[#17c8d9] mb-4 text-center border-b border-gray-700 pb-2">Data Infrastructure</h3>
                 <ul class="list-none space-y-4 text-left text-lg">
@@ -472,35 +522,39 @@ body::-webkit-scrollbar { display: none; }
     </div>
 </section>
 
-<!-- Projects Section -->
+<!-- ===== PROJECTS SECTION ===== -->
 <section id="projects" class="py-16 md:py-24 bg-gradient-to-b from-[#101620] to-gray-900">
     <div class="max-w-7xl mx-auto px-4 animate-on-scroll">
+        <!-- Section Header -->
         <div class="section-header">
             <p class="section-subtitle">Browse My Recent</p>
             <h2 class="section-title">Work & Explorations</h2>
         </div>
         
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-2 w-full">
-            <!-- Maji Ndogo -->
+            
+            <!-- Maji Ndogo Project Card -->
             <div class="group project-card bg-[#1f2937] rounded-2xl border border-gray-700 flex flex-col h-full shadow-2xl hover:shadow-[#06d6a0]/30 hover:border-[#06d6a0] transition-all duration-500 transform hover:-translate-y-2 relative overflow-hidden">
                 <div class="card-image-container">
                     <img src="./Maji_Ndongo_Image_5.png" alt="Maji Ndogo Agriculture Project" class="w-full h-full object-cover">
-                    <!-- Content overlay at the top - Added text-center here -->
+                    <!-- Content overlay at the top -->
                     <div class="absolute top-0 left-0 right-0 p-6 bg-gradient-to-b from-[#101620] via-[#101620]/90 to-transparent text-center">
                         <h3 class="text-2xl font-extrabold text-white mb-2">Maji Ndogo Agricultural Analysis</h3>
                         <p class="text-gray-300 text-sm leading-relaxed">
-                            
+                            <!-- Project description can be added here -->
                         </p>
                     </div>
                 </div>
                 <div class="mt-auto p-6">
                     <div class="project-status-container flex flex-row items-center justify-between gap-3">
+                        <!-- In Progress Button -->
                         <div class="inline-flex items-center text-gray-300 font-bold py-2 px-4 rounded-full bg-[#06d6a0] text-xs uppercase tracking-wider">
                             <span class="relative flex h-2 w-2 mr-2">
                                 <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-black opacity-75"></span>
                                 <span class="relative inline-flex rounded-full h-2 w-2 bg-black"></span>
                             </span>In Progress
                         </div>
+                        <!-- Live Demo Button -->
                         <a href="#" class="live-button inline-flex items-center justify-center py-2 px-4 rounded-full bg-[#06d6a0] text-[#101620] font-bold text-xs uppercase tracking-wider hover:bg-[#17c8d9] transition-all duration-300">
                             <span>LIVE DEMO</span>
                         </a>
@@ -508,26 +562,28 @@ body::-webkit-scrollbar { display: none; }
                 </div>
             </div>
             
-            <!-- Digital Payments -->
+            <!-- Digital Payments Project Card -->
             <div class="group project-card bg-[#1f2937] rounded-2xl border border-gray-700 flex flex-col h-full shadow-2xl hover:shadow-[#06d6a0]/30 hover:border-[#06d6a0] transition-all duration-500 transform hover:-translate-y-2 relative overflow-hidden">
                 <div class="card-image-container">
                     <img src="./Digital Payments in Zambia.png" alt="Digital Payments Dashboard" class="w-full h-full object-cover">
-                    <!-- Content overlay at the top - Added text-center here -->
+                    <!-- Content overlay at the top -->
                     <div class="absolute top-0 left-0 right-0 p-6 bg-gradient-to-b from-[#101620] via-[#101620]/90 to-transparent text-center">
                         <h3 class="text-2xl font-extrabold text-white mb-2">Digital Payments Dashboard</h3>
                         <p class="text-gray-300 text-sm leading-relaxed">
-                            
+                            <!-- Project description can be added here -->
                         </p>
                     </div>
                 </div>
                 <div class="mt-auto p-6">
                     <div class="project-status-container flex flex-row items-center justify-between gap-3">
+                        <!-- In Progress Button -->
                         <div class="inline-flex items-center text-gray-300 font-bold py-2 px-4 rounded-full bg-[#06d6a0] text-xs uppercase tracking-wider">
                             <span class="relative flex h-2 w-2 mr-2">
                                 <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-black opacity-75"></span>
                                 <span class="relative inline-flex rounded-full h-2 w-2 bg-black"></span>
                             </span>In Progress
                         </div>
+                        <!-- Live Demo Button -->
                         <a href="#" class="live-button inline-flex items-center justify-center py-2 px-4 rounded-full bg-[#06d6a0] text-[#101620] font-bold text-xs uppercase tracking-wider hover:bg-[#17c8d9] transition-all duration-300">
                             <span>LIVE DEMO</span>
                         </a>
@@ -538,9 +594,10 @@ body::-webkit-scrollbar { display: none; }
     </div>
 </section>
 
-<!-- Contact Section -->
+<!-- ===== CONTACT SECTION ===== -->
 <section id="contact" class="py-16 md:py-24 bg-[#101620]">
     <div class="max-w-4xl mx-auto px-4 text-center animate-on-scroll">
+        <!-- Section Header -->
         <div class="section-header">
             <h2 class="section-title">Let's Connect</h2>
             <p class="section-description">
@@ -548,6 +605,7 @@ body::-webkit-scrollbar { display: none; }
             </p>
         </div>
         
+        <!-- Contact Form -->
         <form
             id="contact-form"
             class="max-w-xl mx-auto flex flex-col items-center space-y-4 p-8 bg-[#1f2937] rounded-3xl shadow-2xl border border-gray-700 centered-form"
@@ -569,8 +627,10 @@ body::-webkit-scrollbar { display: none; }
 </section>
 </main>
 
+<!-- ===== FOOTER ===== -->
 <footer class="bg-gray-900 border-t border-gray-800 py-5">
     <div class="max-w-7xl mx-auto px-4 text-center">
+        <!-- Social Media Icons -->
         <div class="social-icons mb-6">
             <a href="mailto:ibacklungu888@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Email Me">
                 <img src="email_red.png" alt="Email" class="w-6 h-6">
@@ -585,16 +645,19 @@ body::-webkit-scrollbar { display: none; }
                 <img src="./whatsapp _green.png" alt="WhatsApp" class="w-6 h-6">
             </a>
         </div>
+        <!-- Copyright -->
         <p class="text-gray-500 text-sm">
             &copy; <span id="current-year"></span> Iback Lungu. All Rights Reserved.
         </p>
     </div>
 </footer>
 
+<!-- ===== JAVASCRIPT FUNCTIONALITY ===== -->
 <script>
-    // Get current year for footer
+    // === CURRENT YEAR FOR FOOTER ===
     document.getElementById('current-year').textContent = new Date().getFullYear();
-    // Typewriter effect
+    
+    // === TYPEWRITER EFFECT ===
     const typewriterTextElement = document.getElementById('typewriter-text');
     const textArray = [
         "What draws me to data is the human story behind every number—stories about how people behave and the impact they create. My years in field sales and platform support gave me firsthand experience with these stories. That's why I'm passionate about turning real-world experiences into actionable insights that drive meaningful value."
@@ -605,10 +668,12 @@ body::-webkit-scrollbar { display: none; }
     let typingSpeed = 70;
     let deletingSpeed = 40;
     let delayBetweenText = 1500;
+    
     function typeWriter() {
         if (!typewriterTextElement) return;
         const currentText = textArray[textIndex];
         let displayHTML = currentText.substring(0, charIndex);
+        
         if (isDeleting) {
             charIndex--;
             typewriterTextElement.innerHTML = displayHTML.substring(0, charIndex) + '<span class="animate-blink">|</span>';
@@ -616,7 +681,9 @@ body::-webkit-scrollbar { display: none; }
             charIndex++;
             typewriterTextElement.innerHTML = displayHTML + '<span class="animate-blink">|</span>';
         }
+        
         let speed = isDeleting ? deletingSpeed : typingSpeed;
+        
         if (!isDeleting && charIndex === currentText.length) {
             typewriterTextElement.innerHTML = displayHTML;
             speed = delayBetweenText;
@@ -626,13 +693,16 @@ body::-webkit-scrollbar { display: none; }
             textIndex = (textIndex + 1) % textArray.length;
             speed = 500; 
         }
+        
         setTimeout(typeWriter, speed);
     }
-    // Animations
+    
+    // === INTERSECTION OBSERVER FOR ANIMATIONS ===
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('is-visible');
+                // Start typewriter effect when hero section is visible
                 if (entry.target.id === 'hero-content' && typewriterTextElement && !typewriterTextElement.hasAttribute('data-typed')) {
                     typeWriter();
                     typewriterTextElement.setAttribute('data-typed', 'true');
@@ -640,23 +710,30 @@ body::-webkit-scrollbar { display: none; }
             }
         });
     }, { threshold: 0.15 });
+    
+    // Observe all animated elements
     document.querySelectorAll('.hero-fade-in').forEach(el => observer.observe(el));
     document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
-    // Mobile menu
+    
+    // === MOBILE MENU FUNCTIONALITY ===
     const hamburgerButton = document.getElementById('hamburger-button');
     const mobileMenu = document.getElementById('mobile-menu');
     const hamburgerOpen = document.getElementById('hamburger-open');
     const hamburgerClose = document.getElementById('hamburger-close');
     const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+    
     if (hamburgerButton) {
         hamburgerButton.addEventListener('click', () => {
             const isMenuOpen = mobileMenu.classList.contains('opacity-100');
+            
             if (isMenuOpen) {
+                // Close mobile menu
                 mobileMenu.classList.remove('opacity-100', 'visible');
                 mobileMenu.classList.add('opacity-0', 'invisible');
                 hamburgerOpen.classList.remove('hidden');
                 hamburgerClose.classList.add('hidden');
             } else {
+                // Open mobile menu
                 mobileMenu.classList.add('opacity-100', 'visible');
                 mobileMenu.classList.remove('opacity-0', 'invisible');
                 hamburgerOpen.classList.add('hidden');
@@ -664,6 +741,8 @@ body::-webkit-scrollbar { display: none; }
             }
         });
     }
+    
+    // Close mobile menu when a link is clicked
     mobileLinks.forEach(link => {
         link.addEventListener('click', () => {
             mobileMenu.classList.remove('opacity-100', 'visible');
@@ -672,29 +751,37 @@ body::-webkit-scrollbar { display: none; }
             hamburgerClose.classList.add('hidden');
         });
     });
-    // Contact form
+    
+    // === CONTACT FORM HANDLING ===
     const contactForm = document.getElementById('contact-form');
     const statusMessage = document.getElementById('form-status');
     const submitButton = document.getElementById('submit-button');
+    
     if (contactForm) {
         contactForm.addEventListener('submit', function(event) {
             event.preventDefault();
+            
+            // Disable submit button and show loading state
             submitButton.disabled = true;
             submitButton.textContent = '⏳ Sending...';
             statusMessage.textContent = 'Sending message...';
             statusMessage.className = 'mt-4 text-base font-semibold text-blue-400';
             
+            // Send email via EmailJS
             emailjs.sendForm('service_89njjb3', 'template_h4cawxa', this)
                 .then(() => {
+                    // Success message
                     statusMessage.textContent = '✅ Message sent successfully!';
                     statusMessage.className = 'mt-4 text-base font-semibold text-green-400';
                     contactForm.reset();
                 })
                 .catch(() => {
+                    // Error message
                     statusMessage.textContent = '❌ Failed to send. Please try again.';
                     statusMessage.className = 'mt-4 text-base font-semibold text-red-400';
                 })
                 .finally(() => {
+                    // Re-enable submit button
                     submitButton.disabled = false;
                     submitButton.textContent = '✉ Send';
                 });
