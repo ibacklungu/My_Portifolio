@@ -608,72 +608,92 @@ body::-webkit-scrollbar { display: none; }
     </div>
 </section>
 
-<!-- ===== SKILLS SECTION — CLEAN & MODERN ===== -->
-<section id="skills" class="py-16 md:py-24 bg-slate-900">
+<!-- ===== SKILLS SECTION — CLEAN & PROFESSIONAL ===== -->
+<section id="skills" class="py-16 md:py-24 bg-slate-900 text-gray-100">
   <div class="max-w-7xl mx-auto px-4 animate-on-scroll">
-    <div class="section-header">
-      <p class="section-subtitle">Technical Expertise</p>
-      <h2 class="section-title">Data Science Toolkit</h2>
-      <p class="section-description">Core tools and technologies I use to extract insights and build data-driven solutions</p>
-    </div>
+    <!-- Section Header -->
+    <header class="text-center mb-12">
+      <p class="text-[#17c8d9] uppercase tracking-wider font-medium mb-2">Technical Expertise</p>
+      <h2 class="text-3xl md:text-4xl font-extrabold mb-3">Data Science Toolkit</h2>
+      <p class="text-gray-400 max-w-2xl mx-auto">
+        A comprehensive set of tools and techniques for extracting insights and building data-driven solutions.
+      </p>
+    </header>
 
+    <!-- Skills Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <!-- Programming & ML -->
-      <div class="professional-card p-6">
-        <h3 class="text-xl font-bold text-[#17c8d9] mb-4 text-center">Programming & Machine Learning</h3>
+      
+      <!-- Skill Category -->
+      <article class="bg-slate-800 rounded-2xl p-6 shadow-md hover:shadow-lg transition-shadow">
+        <h3 class="text-xl font-bold text-[#17c8d9] mb-4 text-center border-b border-slate-700 pb-2">
+          Programming & Machine Learning
+        </h3>
         <ul class="space-y-3">
-          <li class="flex items-center">
-            <i class="fab fa-python text-[#06d6a0] text-xl mr-3"></i>
-            <span>Python (Pandas, NumPy, Scikit-learn)</span>
+          <li class="flex items-center gap-3">
+            <span class="skill-icon">🐍</span>
+            <span>Python for Data Science</span>
           </li>
-          <li class="flex items-center">
-            <i class="fas fa-brain text-[#06d6a0] text-xl mr-3"></i>
-            <span>Machine Learning & Model Evaluation</span>
+          <li class="flex items-center gap-3">
+            <span class="skill-icon">📊</span>
+            <span>Pandas & NumPy for Data Wrangling</span>
           </li>
-          <li class="flex items-center">
-            <i class="fas fa-calculator text-[#06d6a0] text-xl mr-3"></i>
-            <span>Statistical & Quantitative Analysis</span>
+          <li class="flex items-center gap-3">
+            <span class="skill-icon">🤖</span>
+            <span>Scikit-learn for Machine Learning</span>
+          </li>
+          <li class="flex items-center gap-3">
+            <span class="skill-icon">🧩</span>
+            <span>Quantitative Problem Solving</span>
           </li>
         </ul>
-      </div>
+      </article>
 
-      <!-- Visualization & Reporting -->
-      <div class="professional-card p-6">
-        <h3 class="text-xl font-bold text-[#17c8d9] mb-4 text-center">Data Visualization & Reporting</h3>
+      <!-- Skill Category -->
+      <article class="bg-slate-800 rounded-2xl p-6 shadow-md hover:shadow-lg transition-shadow">
+        <h3 class="text-xl font-bold text-[#17c8d9] mb-4 text-center border-b border-slate-700 pb-2">
+          Data Visualization & Reporting
+        </h3>
         <ul class="space-y-3">
-          <li class="flex items-center">
-            <i class="fas fa-chart-bar text-[#06d6a0] text-xl mr-3"></i>
+          <li class="flex items-center gap-3">
+            <span class="skill-icon">📈</span>
             <span>Power BI Dashboards</span>
           </li>
-          <li class="flex items-center">
-            <i class="fas fa-paint-brush text-[#06d6a0] text-xl mr-3"></i>
+          <li class="flex items-center gap-3">
+            <span class="skill-icon">📉</span>
             <span>Matplotlib & Seaborn</span>
           </li>
-          <li class="flex items-center">
-            <i class="fas fa-table text-[#06d6a0] text-xl mr-3"></i>
+          <li class="flex items-center gap-3">
+            <span class="skill-icon">📊</span>
+            <span>Statistical Analysis</span>
+          </li>
+          <li class="flex items-center gap-3">
+            <span class="skill-icon">🧾</span>
             <span>Excel & Google Sheets</span>
           </li>
         </ul>
-      </div>
+      </article>
 
-      <!-- Data Infrastructure -->
-      <div class="professional-card p-6">
-        <h3 class="text-xl font-bold text-[#17c8d9] mb-4 text-center">Data Infrastructure</h3>
+      <!-- Skill Category -->
+      <article class="bg-slate-800 rounded-2xl p-6 shadow-md hover:shadow-lg transition-shadow">
+        <h3 class="text-xl font-bold text-[#17c8d9] mb-4 text-center border-b border-slate-700 pb-2">
+          Data Infrastructure
+        </h3>
         <ul class="space-y-3">
-          <li class="flex items-center">
-            <i class="fas fa-database text-[#06d6a0] text-xl mr-3"></i>
-            <span>SQL (Querying & Database Design)</span>
+          <li class="flex items-center gap-3">
+            <span class="skill-icon">🗄️</span>
+            <span>SQL Database Management</span>
           </li>
-          <li class="flex items-center">
-            <i class="fab fa-git-alt text-[#06d6a0] text-xl mr-3"></i>
-            <span>Git & GitHub (Version Control)</span>
+          <li class="flex items-center gap-3">
+            <span class="skill-icon">🔧</span>
+            <span>Git & GitHub Version Control</span>
           </li>
-          <li class="flex items-center">
-            <i class="fas fa-exchange-alt text-[#06d6a0] text-xl mr-3"></i>
-            <span>ETL Pipelines & Data Workflows</span>
+          <li class="flex items-center gap-3">
+            <span class="skill-icon">🔗</span>
+            <span>ETL Concepts & Data Pipelines</span>
           </li>
         </ul>
-      </div>
+      </article>
+
     </div>
   </div>
 </section>
