@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Iback Lungu | Portfolio</title>
+    <title>Iback Lungu | Data Science Portfolio</title>
     
     <!-- ===== EXTERNAL DEPENDENCIES ===== -->
-    <!-- EmailJS for contact form functionality -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script type="text/javascript">
         (function() {
@@ -14,119 +13,104 @@
         })();
     </script>
     
-    <!-- Tailwind CSS framework -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Google Fonts - Inter font family -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
-    <!-- ===== CUSTOM STYLES ===== -->
-<style>
+    <style>
 /* === GLOBAL STYLES === */
 body {
     font-family: 'Inter', sans-serif;
-    -ms-overflow-style: none;  /* Hide scrollbar for IE/Edge */
-    scrollbar-width: none;      /* Hide scrollbar for Firefox */
-    padding-top: 4rem;          /* Space for fixed header */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    padding-top: 4rem;
     margin: 0;
-    background: linear-gradient(to bottom, #101620, #0a0d13); 
-    color: #f3f4f6;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    color: #f8fafc;
 }
 body::-webkit-scrollbar { display: none; }
 
-/* === TEXT GRADIENT UTILITY === */
 .text-gradient {
-    background: linear-gradient(135deg, #17c8d9 0%, #06d6a0 100%);
+    background: linear-gradient(135deg, #3b82f6 0%, #06d6a0 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
 
-/* === HERO SECTION ANIMATIONS === */
 .hero-fade-in { 
-    opacity:0; 
+    opacity: 0; 
     transform: translateY(2rem); 
     transition: opacity 1.2s cubic-bezier(0.19, 1, 0.22, 1), transform 1.2s cubic-bezier(0.19, 1, 0.22, 1); 
 }
 .hero-fade-in.is-visible { 
-    opacity:1; 
+    opacity: 1; 
     transform: translateY(0); 
 }
 
-/* === SCROLL ANIMATIONS === */
 .animate-on-scroll { 
-    opacity:0; 
+    opacity: 0; 
     transform: translateY(3rem); 
     transition: opacity 0.8s ease-out, transform 0.8s ease-out; 
 }
 .animate-on-scroll.is-visible { 
-    opacity:1; 
+    opacity: 1; 
     transform: translateY(0); 
 }
 
-/* === CARD CONTENT STYLES === */
-.card-content p, .card-content li {
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    hyphens: auto;
+/* === CARD STYLES === */
+.professional-card {
+    background: rgba(30, 41, 59, 0.7);
+    backdrop-filter: blur(4px); /* Reduced blur for ALX/CBU cards */
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.4s ease;
+    overflow: hidden;
+    position: relative;
+}
+
+.professional-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 40px rgba(6, 214, 160, 0.15);
+    border-color: rgba(6, 214, 160, 0.3);
+}
+
+.card-logo-container {
     width: 100%;
-    font-size: 0.95rem;
-    line-height: 1.6;
+    height: 100px; /* Slightly reduced height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.1); /* Lighter background */
+    margin-bottom: 1rem;
+}
+.card-logo-container img {
+    max-height: 70px;
+    max-width: 160px;
+    object-fit: contain;
 }
 
-/* === ELEVATED CARD STYLES === */
-.group.bg-gray-800 {
-    background-color: #1f2937; 
-    border: 1px solid #374151;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+/* === BUTTON STYLES === */
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  background: linear-gradient(135deg, #3b82f6 0%, #06d6a0 100%);
+  color: white; 
+  font-weight: 700;
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  box-shadow: 0 4px 6px rgba(6,214,160,0.2);
 }
-.group:hover {
-    border-color: #06d6a0;
-    box-shadow: 0 0 15px rgba(6,214,160,0.3);
-}
-
-/* === PROJECT CARD LAYOUT === */
-.project-card {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  overflow: hidden;
-  min-height: 300px;
-}
-.project-status-container {
-  margin-top: auto;
-  position: relative;
-  z-index: 10;
-}
-.project-card .card-content-overlay {
-  position: relative;
-  z-index: 10;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 1.5rem;
-  background: linear-gradient(to top, rgba(16,22,32,1) 0%, rgba(16,22,32,0.8) 35%, rgba(16,22,32,0) 100%);
+.cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(6, 214, 160, 0.3);
 }
 
-/* === CARD IMAGE CONTAINER === */
-.card-image-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-}
-.card-image-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* === LIVE BUTTON STYLES === */
 .live-button {
   display: inline-flex;
   align-items: center;
@@ -147,7 +131,6 @@ body::-webkit-scrollbar { display: none; }
   box-shadow: 0 4px 10px rgba(23,200,217,0.4);
 }
 
-/* === PROJECT STATUS CONTAINER === */
 .project-status-container {
   display: flex;
   justify-content: space-between;
@@ -157,52 +140,74 @@ body::-webkit-scrollbar { display: none; }
   gap: 0.5rem;
 }
 
-/* === "COMING SOON" BADGE FIX === */
-.project-status-container .inline-flex {
-  background-color: #b1d1c9 !important;
-  color: #000000 !important;
+.coming-soon-badge {
+  display: inline-flex;
+  align-items: center;
+  background-color: #06d6a0;
+  color: black;
   font-weight: 700;
-  padding: 0.5rem 1rem !important;
+  padding: 0.5rem 1rem;
   border-radius: 9999px;
   font-size: 0.8rem;
   letter-spacing: 0.05em;
   box-shadow: 0 4px 6px rgba(6, 214, 160, 0.2);
-  overflow: hidden; /* Keeps ping inside */
 }
-.project-status-container .animate-ping {
+.coming-soon-badge .dot {
+  position: relative;
+  display: flex;
+  width: 0.75rem;
+  height: 0.75rem;
+  margin-right: 0.5rem;
+}
+.coming-soon-badge .dot .ping {
+  position: absolute;
   top: 0;
   left: 0;
-  transform: translate(-25%, -25%);
-  opacity: 0.6;
+  width: 100%;
+  height: 100%;
+  background: black;
+  border-radius: 9999px;
+  opacity: 0.75;
+  animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
-.project-status-container span.relative.flex.h-2.w-2.mr-2 {
+.coming-soon-badge .dot .static {
   position: relative;
-  flex-shrink: 0; /* Prevent overlap with text */
+  width: 100%;
+  height: 100%;
+  background: black;
+  border-radius: 9999px;
 }
 
-/* === EDUCATION ICONS === */
-.education-icon {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1rem;
-  font-size: 1.5rem;
+@keyframes ping {
+  75%, 100% {
+    transform: scale(2);
+    opacity: 0;
+  }
 }
 
-/* === FORM STYLES === */
+/* === FORM STYLES — CENTERED NICELY === */
 .centered-form {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
+  max-width: 400px; /* Reduced from 500px */
+  margin: 0 auto;
 }
 .form-input {
-  text-align: center;
+  text-align: left; /* Changed from center */
+  width: 100%;
+  padding: 0.75rem 1rem; /* Reduced padding */
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px; /* Reduced border radius */
+  color: white;
+  font-size: 0.9rem; /* Slightly smaller font */
+  transition: all 0.3s ease;
+  margin-bottom: 1rem; /* Reduced margin */
 }
 
-/* === SECTION HEADER STYLES === */
+/* === SECTION HEADERS === */
 .section-header {
   text-align: center;
   margin-bottom: 3rem;
@@ -222,47 +227,139 @@ body::-webkit-scrollbar { display: none; }
   margin-bottom: 1rem;
 }
 .section-description {
-  color: #9ca3af;
+  color: #94a3b8;
   max-width: 42rem;
   margin-left: auto;
   margin-right: auto;
+  line-height: 1.6;
 }
 
-/* === MOBILE MENU STYLES === */
-#mobile-menu {
-  background: rgba(16, 22, 32, 0.95) !important;
-  backdrop-filter: blur(20px);
+/* === PROJECT CARD FIXES === */
+.project-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
-#mobile-menu a {
-  background: linear-gradient(135deg, #17c8d9 0%, #06d6a0 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  font-weight: 600;
+.project-image-container {
+  position: relative;
+  /* increased height for clearer, larger images */
+  height: 320px; /* previously 200px */
+  overflow: hidden;
+  border-radius: 12px 12px 0 0;
 }
-#mobile-menu a:hover {
-  transform: scale(1.05);
+.project-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center; /* ensure the focal point is centered */
+  /* smooth quality-preserving transform and zoom */
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.3s ease;
+  will-change: transform;
+}
+.project-image-container:hover img {
+  transform: scale(1.08); /* subtle zoom to show detail */
+  filter: contrast(1.02) saturate(1.03);
+}
+/* Minimal subtle overlay — no visible text */
+.project-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(15, 23, 42, 0.85); /* Increased opacity for better visibility */
+  padding: 0.5rem 0.75rem;
+  color: white; /* Changed text color to white for contrast */
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  pointer-events: none; /* overlay won't interfere with hover/links */
+}
+
+/* Accessibility helper for screen-reader-only text */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* responsive sizes: larger on desktop, slightly reduced on phones */
+@media (min-width: 1024px) {
+  .project-image-container { height: 420px; } /* larger desktop preview */
+}
+@media (max-width: 640px) {
+  .project-image-container { height: 220px; } /* keep mobile compact */
+}
+
+/* === SKILLS SECTION — IMPROVED TEXT === */
+.skill-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.03);
   transition: all 0.3s ease;
 }
-
-/* === MOBILE RESPONSIVE STYLES === */
-@media (max-width: 640px) {
-  .project-status-container {
-    flex-direction: row !important;
-    align-items: center !important;
-    justify-content: space-between;
-  }
+.skill-item:hover {
+  background: rgba(6, 214, 160, 0.1);
+  transform: translateX(5px);
+}
+.skill-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+  font-weight: bold;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+  background: rgba(6, 214, 160, 0.1);
+  color: #06d6a0;
+}
+.skill-name {
+  font-weight: 500;
+  color: white;
 }
 
-/* === MOBILE OPTIMIZATIONS === */
+/* === SOCIAL ICONS === */
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px; /* Reduced size */
+  height: 40px; /* Reduced size */
+  border-radius: 50%;
+  background: rgba(30, 41, 59, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  padding: 8px; /* Added padding for icon sizing */
+}
+.social-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+/* === RESPONSIVE === */
 @media (max-width: 640px) {
   .hero-fade-in, .animate-on-scroll { 
-    transform:none!important; 
-    opacity:1!important; 
-    transition:none!important; 
+    transform: none !important; 
+    opacity: 1 !important; 
+    transition: none !important; 
   }
   #home { 
-    min-height:70vh; 
+    min-height: 70vh; 
     padding: 2rem 1rem;
     display: flex;
     align-items: center;
@@ -270,41 +367,120 @@ body::-webkit-scrollbar { display: none; }
   #hero-content h1 {
     font-size: 1.8rem;
   }
-  .hero-buttons { 
-    max-width: 280px;
+  .section-title {
+    font-size: 2rem;
   }
   .project-status-container {
     flex-direction: column;
     align-items: flex-start;
   }
-  .section-title {
-    font-size: 2rem;
+}
+
+/* Updated Project Card Styles */
+.project-card {
+    position: relative;
+    height: 400px;
+    overflow: hidden;
+}
+.project-image-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+}
+.project-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.7));
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* title top, status bottom */
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+.project-title {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+/* Status container sits full width at the bottom and centers its contents */
+.project-status-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;      /* center horizontally */
+    justify-content: flex-end;/* keep content at bottom area */
+    gap: 0.5rem;
+    margin: 0;
+    pointer-events: none;
+    /* keep it visually above the image */
+    position: relative;
+    z-index: 2;
+}
+
+/* keep badge style but ensure it remains centered */
+.coming-soon-badge {
+    background-color: rgba(6, 214, 160, 0.9);
+    backdrop-filter: blur(4px);
+    pointer-events: auto; /* allow hover if needed */
+}
+
+/* Hide project title and description on small screens (mobile) */
+@media (max-width: 640px) {
+  .project-title,
+  .project-description {
+    display: none !important;
+  }
+
+  /* place the status (COMING SOON badge) at the bottom of the card on small screens */
+  .project-overlay {
+    padding-bottom: 1.25rem; /* ensure room for the badge so it isn't clipped */
+  }
+
+  .project-status-container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* center the badge horizontally */
+    padding: 0.75rem 1rem;
+    pointer-events: auto;
+    z-index: 3;
+    gap: 0.5rem;
+    margin: 0;
+  }
+
+  .coming-soon-badge {
+    margin-bottom: 0; /* reset any previous lift */
   }
 }
-</style>
-
+    </style>
 </head>
 
 <body>
 <!-- ===== FIXED HEADER NAVIGATION ===== -->
-<header class="fixed top-0 left-0 right-0 z-50 bg-gray-900/85 backdrop-blur-md shadow-xl border-b border-gray-800/50">
+<header class="fixed top-0 left-0 right-0 z-50 bg-slate-900/85 backdrop-blur-md shadow-xl border-b border-slate-800/50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16">
-            <!-- Logo/Name -->
             <a href="#home" class="text-2xl font-extrabold hover:opacity-90 transition">
-                <span class="text-gradient">Iback Lungu</span>
+                <span class="text-white">Iback Lungu</span>
             </a>
-            
-            <!-- Desktop Navigation -->
             <nav class="hidden md:flex space-x-8">
-                <a href="#home" class="text-gray-300 hover:text-teal-300 font-medium transition-colors duration-300">Home</a>
-                <a href="#about" class="text-gray-300 hover:text-teal-300 font-medium transition-colors duration-300">About</a>
-                <a href="#skills" class="text-gray-300 hover:text-teal-300 font-medium transition-colors duration-300">Skills</a>
-                <a href="#projects" class="text-gray-300 hover:text-teal-300 font-medium transition-colors duration-300">Projects</a>
-                <a href="#contact" class="text-gray-300 hover:text-teal-300 font-medium transition-colors duration-300">Contact</a>
+                <a href="#home" class="text-slate-300 hover:text-teal-300 font-medium transition-colors duration-300">Home</a>
+                <a href="#about" class="text-slate-300 hover:text-teal-300 font-medium transition-colors duration-300">About</a>
+                <a href="#skills" class="text-slate-300 hover:text-teal-300 font-medium transition-colors duration-300">Skills</a>
+                <a href="#projects" class="text-slate-300 hover:text-teal-300 font-medium transition-colors duration-300">Projects</a>
+                <a href="#contact" class="text-slate-300 hover:text-teal-300 font-medium transition-colors duration-300">Contact</a>
             </nav>
-            
-            <!-- Mobile Menu Button -->
             <button id="hamburger-button" class="md:hidden text-white focus:outline-none" aria-label="Open menu">
                 <svg id="hamburger-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
@@ -315,358 +491,313 @@ body::-webkit-scrollbar { display: none; }
             </button>
         </div>
     </div>
-    
-    <!-- Mobile Menu Dropdown -->
-    <div id="mobile-menu" class="md:hidden absolute top-16 left-0 w-full bg-gray-900/98 backdrop-blur-lg transition-all duration-300 ease-in-out opacity-0 invisible">
+    <div id="mobile-menu" class="md:hidden absolute top-16 left-0 w-full bg-slate-900/98 backdrop-blur-lg transition-all duration-300 ease-in-out opacity-0 invisible">
         <nav class="flex flex-col items-center space-y-4 py-6">
-            <a href="#home" class="text-gray-300 hover:text-teal-400 font-medium text-lg mobile-nav-link">Home</a>
-            <a href="#about" class="text-gray-300 hover:text-teal-400 font-medium text-lg mobile-nav-link">About</a>
-            <a href="#skills" class="text-gray-300 hover:text-teal-400 font-medium text-lg mobile-nav-link">Skills</a>
-            <a href="#projects" class="text-gray-300 hover:text-teal-400 font-medium text-lg mobile-nav-link">Projects</a>
-            <a href="#contact" class="text-gray-300 hover:text-teal-400 font-medium text-lg mobile-nav-link">Contact</a>
+            <a href="#home" class="text-slate-300 hover:text-teal-400 font-medium text-lg mobile-nav-link">Home</a>
+            <a href="#about" class="text-slate-300 hover:text-teal-400 font-medium text-lg mobile-nav-link">About</a>
+            <a href="#skills" class="text-slate-300 hover:text-teal-400 font-medium text-lg mobile-nav-link">Skills</a>
+            <a href="#projects" class="text-slate-300 hover:text-teal-400 font-medium text-lg mobile-nav-link">Projects</a>
+            <a href="#contact" class="text-slate-300 hover:text-teal-400 font-medium text-lg mobile-nav-link">Contact</a>
         </nav>
     </div>
 </header>
 
-<!-- ===== MAIN CONTENT ===== -->
 <main>
 <!-- ===== HERO SECTION ===== -->
-<section id="home" class="min-h-[75vh] flex items-center justify-center bg-gray-800 pt-16">
-    <div id="hero-content" class="w-full text-center hero-fade-in">
-        <!-- Profile Image - Reduced size with optimized attributes -->
-        <div class="inline-block mb-6">
-            <img src="./p2-removebg-preview 2.png" alt="Iback Lungu" 
-                 class="w-24 h-24 md:w-32 md:h-32 mx-auto rounded-full border-2 border-[#06d6a0] shadow-2xl object-cover"
-                 loading="lazy" width="128" height="128">
-        </div>
-        
-        <!-- Hero Text -->
-        <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-6 leading-snug">
-            <span class="text-gradient block">Aspiring Data Scientist</span>
-            <span class="text-gradient block mt-2">Empowering Decisions Through Data</span>
+<section id="home" class="min-h-screen flex items-center justify-center pt-16 px-4">
+    <div class="text-center max-w-4xl hero-fade-in">
+        <img src="./p2-removebg-preview 2.png" alt="Iback Lungu" 
+             class="w-28 h-28 md:w-36 md:h-36 mx-auto rounded-full border-2 border-[#06d6a0] object-cover mb-6"
+             loading="lazy">
+        <h1 class="hero-heading text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-3">
+            Aspiring Data Scientist
         </h1>
+        <p class="hero-subheading text-xl md:text-4xl text-slate-300 mb-8 max-w-2xl mx-auto">
+            <span class="text-gradient">Empowering Decisions Through Data</span>
+        </p>
+        <a href="#projects" class="cta-button">
+            Explore My Work
+            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+        </a>
     </div>
 </section>
 
-<!-- ===== EDUCATION & EXPERIENCE SECTION ===== -->
-<section id="about" class="py-16 md:py-24 bg-gray-800 pt-16">
-    <div class="w-full animate-on-scroll">
-        <!-- Section Header -->
+<!-- ===== EDUCATION & EXPERIENCE SECTION (UNCHANGED — WELL WRITTEN) ===== -->
+<section id="about" class="py-16 md:py-24 bg-slate-900">
+    <div class="max-w-7xl mx-auto px-4 animate-on-scroll">
         <div class="section-header">
-            <p class="section-subtitle">My Journey</p>
+            <p class="section-subtitle">Professional Journey</p>
             <h2 class="section-title">Education & Experience</h2>
         </div>
-        
-        <div class="flex flex-col gap-2 px-4 md:px-8">
-            <!-- EDUCATION SECTION -->
-            <div>
-                <h3 class="text-2xl font-bold text-white mb-8 text-center border-b-2 border-teal-400/30 pb-3">Education</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-2 w-full">
-                    
-                    <!-- ALX Africa Card -->
-                    <div class="group bg-[#1f2937] rounded-2xl p-6 border border-gray-700 flex flex-col items-center text-center shadow-xl hover:shadow-[#06d6a0]/30 hover:border-[#06d6a0] transition-all duration-500 transform hover:-translate-y-2 card-content">
-                        <div class="education-icon bg-gradient-to-br from-[#06d6a0] to-[#17c8d9]">
-                            <img src="./alx-icon.jpg" alt="ALX Logo" class="text-white font-bold text-xs">
-                        </div>
-                        <h4 class="text-xl font-bold text-[#17c8d9]">ALX Africa Data Science Program</h4>
-                        <p class="text-gray-400 text-sm mb-1">2025 - 2026</p>
-                        <p class="text-[#06d6a0] font-semibold text-sm mb-1 flex items-center justify-center">
-                            <span class="relative flex h-3 w-3 mr-2">
-                                <span class="absolute inline-flex h-3 w-3 rounded-full bg-green-500 opacity-75 animate-ping"></span>
-                                <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
-                            </span>
-                        Alx Data Science Program
-                        </p>
-                        <p class="text-gray-300 mt-4 w-full text-left">
-                            This program covers essential data tools - including <span class="font-bold text-white">Python, SQL, Power BI, and Machine Learning</span> - to build a deeper understanding of data. It incorporates practical, hands-on projects designed to develop skills that are directly applicable to solving real-world problems.
-                        </p>
+
+        <!-- EDUCATION -->
+        <div class="mb-16">
+            <h3 class="text-2xl font-bold text-white mb-8 text-center">Education</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="professional-card p-6 flex flex-col items-center text-center">
+                    <div class="card-logo-container">
+                        <img src="./alx-icon.jpg" alt="ALX Africa" class="rounded-lg">
                     </div>
-                    
-                    <!-- BSc Mathematics Card -->
-                    <div class="group bg-[#1f2937] rounded-2xl p-6 border border-gray-700 flex flex-col items-center text-center shadow-xl hover:shadow-[#06d6a0]/30 hover:border-[#06d6a0] transition-all duration-500 transform hover:-translate-y-2 card-content">
-                        <div class="education-icon bg-gradient-to-br from-yellow-500 to-red-500">
-                            <img src="./cbu icon" alt="CBU Logo" class="text-white font-bold text-xs">
-                        </div>
-                        <h4 class="text-xl font-bold text-[#17c8d9]">BSc in Mathematics</h4>
-                        <p class="text-gray-400 text-sm mb-1">2016 - 2020</p>
-                        <p class="text-[#06d6a0] font-semibold text-sm mb-1 flex items-center justify-center">
-                            Copperbelt University
-                        </p>
-                        <p class="text-gray-300 mt-4 w-full text-left">
-                            My BSc in Mathematics from the Copperbelt University introduced me to the world of numbers, logical reasoning, and abstract thinking. Mathematics taught me how to see patterns, break down complex problems, and think in a structured way. These skills have become the foundation for my growth in data science, helping me better understand topics like <span class="font-bold text-white">statistics, algorithms, and data analysis</span> - as I continue to build my expertise.
-                        </p>
+                    <h4 class="text-xl font-bold text-[#17c8d9] mt-2">ALX Africa Data Science Program</h4>
+                    <p class="text-slate-400 text-sm mb-3">2025 – 2026</p>
+                    <p class="text-slate-300 mt-2 w-full text-left">
+                        I'm currently enrolled in a Data Science program, where I'm developing practical skills in Python, SQL, PowerBI, and Machine Learning to address real-world challenges. My program is project-based, centered on transforming complex raw data into clear, actionable insights that help decision-makers drive impactful solutions.
+                    </p>
+                </div>
+                <div class="professional-card p-6 flex flex-col items-center text-center">
+                    <div class="card-logo-container">
+                        <img src="./cbu icon.jpeg" alt="Copperbelt University" class="rounded-lg">
                     </div>
+                    <h4 class="text-xl font-bold text-[#17c8d9] mt-2">BSc in Mathematics</h4>
+                    <p class="text-slate-400 text-sm mb-3">2016 – 2020</p>
+                    <p class="text-slate-300 mt-2 w-full text-left">
+                        My degree equipped me with strong analytical and problem-solving skills. I developed a deep understanding of statistical reasoning, logic, and quantitative methods—foundations that now empower my journey into data science and machine learning.
+                    </p>
                 </div>
             </div>
-            
-            <!-- EXPERIENCE SECTION -->
-            <div>
-                <h3 class="text-2xl font-bold text-white mb-8 text-center border-b-2 border-teal-400/30 pb-3">Experience</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 w-full">
-                    
-                    <!-- Zanaco Bank Experience -->
-                    <div class="group bg-[#1f2937] rounded-2xl p-6 border border-gray-700 flex flex-col items-center text-center shadow-xl hover:shadow-[#06d6a0]/30 hover:border-[#06d6a0] transition-all duration-500 transform hover:-translate-y-2 card-content">
-                        <h4 class="text-xl font-bold text-[#17c8d9]">Trade Development Representative</h4>
-                        <p class="text-gray-400 text-sm mb-3">Zanaco Bank • Nov 2024 - August 2025</p>
-                        <ul class="list-none space-y-2 text-gray-300 mt-3 w-full text-left">
-                            <li class="flex items-start"><span class="text-[#06d6a0] mr-2 mt-1">.</span>Promoted digital payment adoption across merchants, including card and mobile services payments, achieving high engagement and activity rates in my territory.</li>
-                            <li class="flex items-start"><span class="text-[#06d6a0] mr-2 mt-1">.</span>Supplied and supported POS systems while building strong relationships with merchants of all sizes.</li>
-                        </ul>
+        </div>
+
+        <!-- EXPERIENCE -->
+        <div>
+            <h3 class="text-2xl font-bold text-white mb-8 text-center">Professional Experience</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+                <div class="professional-card p-6 flex flex-col items-center text-center">
+                    <div class="card-logo-container">
+                        <img src="./zanaco-logo.png" alt="Zanaco Bank" class="rounded-lg">
                     </div>
-                    
-                    <!-- Bolabet Limited Experience -->
-                    <div class="group bg-[#1f2937] rounded-2xl p-6 border border-gray-700 flex flex-col items-center text-center shadow-xl hover:shadow-[#06d6a0]/30 hover:border-[#06d6a0] transition-all duration-500 transform hover:-translate-y-2 card-content">
-                        <h4 class="text-xl font-bold text-[#17c8d9]">Platform Support Assistant</h4>
-                        <p class="text-gray-400 text-sm mb-3">Bolabet Limited • Aug 2023 - Feb 2024</p>
-                        <ul class="list-none space-y-2 text-gray-300 mt-3 w-full text-left">
-                            <li class="flex items-start"><span class="text-[#06d6a0] mr-2 mt-1">.</span>Managed communications with network providers, game providers, and internal departments to ensure smooth operations.</li>
-                            <li class="flex items-start"><span class="text-[#06d6a0] mr-2 mt-1">.</span>Ensured smooth website operations and resolved technical issues promptly.</li>
-                        </ul>
+                    <h4 class="text-xl font-bold text-[#17c8d9] mt-2">Trade Development Representative</h4>
+                    <p class="text-slate-400 text-sm mb-3">Nov 2024 – Aug 2025</p>
+                    <p class="text-slate-300 mt-2 w-full text-left text-sm">
+                        Here I promoted Zanaco POS digital payment solutions and onboarded new merchants by guiding them on using card and mobile payment solutions. I maintained a healthy merchant portfolio through proactive account management, performance monitoring, and fast issue resolution—strengthening customer relationships, improving retention, and increasing transaction volumes across my territory.
+                    </p>
+                </div>
+                <div class="professional-card p-6 flex flex-col items-center text-center">
+                    <div class="card-logo-container">
+                        <img src="./bolabet-logo.jpg" alt="Bolabet Limited" class="rounded-lg">
                     </div>
-                    
-                    <!-- Coca-Cola Experience -->
-                    <div class="group bg-[#1f2937] rounded-2xl p-6 border border-gray-700 flex flex-col items-center text-center shadow-xl hover:shadow-[#06d6a0]/30 hover:border-[#06d6a0] transition-all duration-500 transform hover:-translate-y-2 card-content">
-                        <h4 class="text-xl font-bold text-[#17c8d9]">General Trade Merchandiser</h4>
-                        <p class="text-gray-400 text-sm mb-3">Coca-Cola (Smollan) • Feb 2023 - Aug 2023</p>
-                        <ul class="list-none space-y-2 text-gray-300 mt-3 w-full text-left">
-                            <li class="flex items-start"><span class="text-[#06d6a0] mr-2 mt-1">.</span>Boosted product visibility and sales in key high-volume outlets like Hungry Lion, Restaurants, and hotels.</li>
-                            <li class="flex items-start"><span class="text-[#06d6a0] mr-2 mt-1">.</span>Managed inventory efficiently and built strong retailer relationships for long-term account stability.</li>
-                        </ul>
+                    <h4 class="text-xl font-bold text-[#17c8d9] mt-2">Platform Support Assistant</h4>
+                    <p class="text-slate-400 text-sm mb-3">Aug 2023 – Feb 2024</p>
+                    <p class="text-slate-300 mt-2 w-full text-left text-sm">
+                        I served as the main point of contact between internal teams, network providers, and game providers to keep the platform running smoothly. I quickly resolved technical issues to minimize downtime and keep users satisfied.
+                    </p>
+                </div>
+                <div class="professional-card p-6 flex flex-col items-center text-center">
+                    <div class="card-logo-container">
+                        <img src="./coca-cola-logo.png" alt="Coca-Cola (Smollan)" class="rounded-lg">
                     </div>
-                    
-                    <!-- Stanbic Bank Experience -->
-                    <div class="group bg-[#1f2937] rounded-2xl p-6 border border-gray-700 flex flex-col items-center text-center shadow-xl hover:shadow-[#06d6a0]/30 hover:border-[#06d6a0] transition-all duration-500 transform hover:-translate-y-2 card-content">
-                        <h4 class="text-xl font-bold text-[#17c8d9]">Field Sales Representative</h4>
-                        <p class="text-gray-400 text-sm mb-3">Stanbic Bank POS Project • Mar 2021 - Feb 2023</p>
-                        <ul class="list-none space-y-2 text-gray-300 mt-3 w-full text-left">
-                            <li class="flex items-start"><span class="text-[#06d6a0] mr-2 mt-1">.</span>Drove adoption of digital payment solutions for grocery shops, including airtime top-ups, TV subscriptions, and loans through the POS platform.</li>
-                            <li class="flex items-start"><span class="text-[#06d6a0] mr-2 mt-1">.</span>Provided post-sale support and communicated efficiently with clients through WhatsApp and phone calls.</li>
-                        </ul>
+                    <h4 class="text-xl font-bold text-[#17c8d9] mt-2">General Trade Merchandiser</h4>
+                    <p class="text-slate-400 text-sm mb-3">Feb 2023 – Aug 2023</p>
+                    <p class="text-slate-300 mt-2 w-full text-left text-sm">
+                        I improved product visibility and sales performance across key accounts. I executed merchandising plans by rotating stock, arranging eye-catching displays, and ensuring optimal facings and shelf placement to keep Coca‑Cola products highly visible and available. Conducted regular stock audits, coordinated timely restocks to prevent out-of-stock situations, engaged store managers to secure prime display locations, and supported in-store promotional activations to drive sales growth.
+                    </p>
+                </div>
+                <div class="professional-card p-6 flex flex-col items-center text-center">
+                    <div class="card-logo-container">
+                        <img src="./stanbic bank-logo" alt="Stanbic Bank" class="rounded-lg">
                     </div>
+                    <h4 class="text-xl font-bold text-[#17c8d9] mt-2">Field Sales Representative</h4>
+                    <p class="text-slate-400 text-sm mb-3">Mar 2021 – Feb 2023</p>
+                    <p class="text-slate-300 mt-2 w-full text-left text-sm">
+                        As a Trade Development Representative, I promoted mobiLot devices that facilitated airtime sales, bill payments for TV subscriptions, and provided access to loans through a POS platform. I ensured client retention and satisfaction by providing responsive post-sale support through WhatsApp and calls, effectively expanding our digital payment adoption across my assigned territory. Due to my consistency, I was recognized as the best performing employee for this project.
+                    </p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ===== SKILLS SECTION ===== -->
-<section id="skills" class="py-16 md:py-24 bg-gray-800">
+<!-- ===== SKILLS SECTION — IMPROVED TEXT === -->
+<section id="skills" class="py-16 md:py-24 bg-slate-900">
     <div class="max-w-7xl mx-auto px-4 animate-on-scroll">
-        <!-- Section Header -->
         <div class="section-header">
-            <p class="section-subtitle">Skills & Tools</p>
-            <h2 class="section-title">My Data Science Toolkit</h2>
+            <p class="section-subtitle">Technical Expertise</p>
+            <h2 class="section-title">Data Science Toolkit</h2>
+            <p class="section-description">A comprehensive set of tools and techniques for extracting insights and building data-driven solutions</p>
         </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 w-full">
-            
-            <!-- Programming & Machine Learning Card -->
-            <div class="bg-[#1f2937] rounded-2xl p-6 border border-gray-700 shadow-xl hover:shadow-[#06d6a0]/20 hover:border-[#06d6a0] transition-all duration-300 transform hover:-translate-y-1 skills-card">
-                <h3 class="text-xl font-extrabold text-[#17c8d9] mb-4 text-center border-b border-gray-700 pb-2">Programming & Machine Learning</h3>
-                <ul class="list-none space-y-4 text-left text-lg">
-                    <li class="flex items-center"><span class="text-2xl mr-3">🐍</span><span class="font-medium text-white">Python for Data Science</span></li>
-                    <li class="flex items-center"><span class="text-2xl mr-3">🐼</span><span class="font-medium text-white">Pandas & NumPy Data Wrangling</span></li>
-                    <li class="flex items-center"><span class="text-2xl mr-3">🤖</span><span class="font-medium text-white">Scikit-learn Machine Learning</span></li>
-                    <li class="flex items-center"><span class="text-2xl mr-3">💡</span><span class="font-medium text-white">Quantitative Problem Solving</span></li>
-                </ul>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="professional-card p-6">
+                <h3 class="text-xl font-extrabold text-[#17c8d9] mb-4 text-center border-b border-slate-700 pb-2">Programming & Machine Learning</h3>
+                <div class="space-y-3">
+                    <div class="skill-item">
+                        <div class="skill-icon">P</div>
+                        <span class="skill-name">Python for Data Science</span>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon">D</div>
+                        <span class="skill-name">Pandas & NumPy for Data Wrangling</span>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon">ML</div>
+                        <span class="skill-name">Scikit-learn for Machine Learning</span>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon">Q</div>
+                        <span class="skill-name">Quantitative Problem Solving</span>
+                    </div>
+                </div>
             </div>
-            
-            <!-- Data Visualization & Reporting Card -->
-            <div class="bg-[#1f2937] rounded-2xl p-6 border border-gray-700 shadow-xl hover:shadow-[#06d6a0]/20 hover:border-[#06d6a0] transition-all duration-300 transform hover:-translate-y-1 skills-card">
-                <h3 class="text-xl font-extrabold text-[#17c8d9] mb-4 text-center border-b border-gray-700 pb-2">Data Visualization & Reporting</h3>
-                <ul class="list-none space-y-4 text-left text-lg">
-                    <li class="flex items-center"><span class="text-2xl mr-3">📊</span><span class="font-medium text-white">Power BI</span></li>
-                    <li class="flex items-center"><span class="text-2xl mr-3">📈</span><span class="font-medium text-white">Matplotlib & Seaborn</span></li>
-                    <li class="flex items-center"><span class="text-2xl mr-3">🧠</span><span class="font-medium text-white">Statistical Analysis</span></li>
-                    <li class="flex items-center"><span class="text-2xl mr-3">🔍</span><span class="font-medium text-white">Excel/Googlesheets</span></li>
-                </ul>
+            <div class="professional-card p-6">
+                <h3 class="text-xl font-extrabold text-[#17c8d9] mb-4 text-center border-b border-slate-700 pb-2">Data Visualization & Reporting</h3>
+                <div class="space-y-3">
+                    <div class="skill-item">
+                        <div class="skill-icon">PB</div>
+                        <span class="skill-name">Power BI Dashboards</span>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon">MS</div>
+                        <span class="skill-name">Matplotlib & Seaborn</span>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon">S</div>
+                        <span class="skill-name">Statistical Analysis</span>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon">E</div>
+                        <span class="skill-name">Excel & Google Sheets</span>
+                    </div>
+                </div>
             </div>
-            
-            <!-- Data Infrastructure Card -->
-            <div class="bg-[#1f2937] rounded-2xl p-6 border border-gray-700 shadow-xl hover:shadow-[#06d6a0]/20 hover:border-[#06d6a0] transition-all duration-300 transform hover:-translate-y-1 skills-card">
-                <h3 class="text-xl font-extrabold text-[#17c8d9] mb-4 text-center border-b border-gray-700 pb-2">Data Infrastructure</h3>
-                <ul class="list-none space-y-4 text-left text-lg">
-                    <li class="flex items-center"><span class="text-2xl mr-3">🗄️</span><span class="font-medium text-white">SQL Database Management</span></li>
-                    <li class="flex items-center"><span class="text-2xl mr-3">💻</span><span class="font-medium text-white">Git & GitHub Version Control</span></li>
-                    <li class="flex items-center"><span class="text-2xl mr-3">⚙️</span><span class="font-medium text-white">ETL Concepts & Data Pipelines</span></li>
-                </ul>
+            <div class="professional-card p-6">
+                <h3 class="text-xl font-extrabold text-[#17c8d9] mb-4 text-center border-b border-slate-700 pb-2">Data Infrastructure</h3>
+                <div class="space-y-3">
+                    <div class="skill-item">
+                        <div class="skill-icon">SQL</div>
+                        <span class="skill-name">SQL Database Management</span>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon">G</div>
+                        <span class="skill-name">Git & GitHub Version Control</span>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon">ETL</div>
+                        <span class="skill-name">ETL Concepts & Data Pipelines</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ===== PROJECTS SECTION ===== -->
-<section id="projects" class="py-16 md:py-24 bg-gray-800 pt-16">
-  <div class="max-w-7xl mx-auto px-4 animate-on-scroll">
-
-    <!-- Section Header -->
-    <div class="section-header text-center mb-12">
-      <p class="section-subtitle">Browse My Recent</p>
-      <h2 class="section-title">Work & Explorations</h2>
-    </div>
-
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-2 w-full">
-
-      <!-- Maji Ndogo Project Card -->
-      <div
-        class="group project-card bg-[#1f2937] rounded-2xl border border-gray-700 flex flex-col h-full shadow-2xl hover:shadow-[#06d6a0]/30 hover:border-[#06d6a0] transition-all duration-500 transform hover:-translate-y-2 relative overflow-hidden">
-        <div class="card-image-container relative">
-          <img src="./Maji_Ndongo_Image_5.png" alt="Maji Ndogo Agriculture Project"
-            class="w-full h-full object-cover">
-          <!-- Content overlay at the top -->
-          <div
-            class="absolute top-0 left-0 right-0 p-6 bg-gradient-to-b from-[#101620] via-[#101620]/90 to-transparent text-center">
-            <h3 class="text-2xl font-extrabold text-white mb-2">
-              <!-- Maji Ndogo Agriculture Dashboard  -->
-            </h3>
-            <p class="text-gray-300 text-sm leading-relaxed">
-              <!-- When data meets agriculture, every insight becomes a seed for change. -->
-            </p>
-          </div>
+<!-- ===== PROJECTS SECTION — FIXED LAYOUT === -->
+<section id="projects" class="py-16 md:py-24 bg-slate-900">
+    <div class="max-w-7xl mx-auto px-4 animate-on-scroll">
+        <div class="section-header">
+            <p class="section-subtitle">Data Projects</p>
+            <h2 class="section-title">Work & Explorations</h2>
+            <p class="section-description">Practical applications of data science techniques to solve real-world problems</p>
         </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Maji Ndogo Project -->
+            <div class="project-card professional-card">
+                <div class="project-image-container">
+                    <img src="./Maji_Ndongo_Image_5.png" alt="Maji Ndogo Agriculture Project" class="w-full h-full object-cover">
+                    <div class="project-overlay">
+                        <h3 class="project-title">Maji Ndogo Agriculture Project</h3>
 
-        <div class="mt-auto p-6">
-          <div class="project-status-container flex flex-row items-center justify-between gap-3">
-            <!-- In Progress Button -->
-            <div
-              class="inline-flex items-center text-gray-900 font-bold py-2 px-4 rounded-full bg-[#06d6a0] text-xs uppercase tracking-wider">
-              <span class="relative flex h-2 w-2 mr-2">
-                <span
-                  class="animate-ping absolute inline-flex h-2 w-2 rounded-full bg-black opacity-75"></span>
-                <span class="relative inline-flex rounded-full h-2 w-2 bg-black"></span>
-              </span>
-              COMING SOON...
+                        <div class="project-status-container">
+                            <p class="project-description">Optimizing farming decisions through data-driven insights</p>
+                            <div class="coming-soon-badge">
+                                <span class="dot">
+                                    <span class="ping"></span>
+                                    <span class="static"></span>
+                                </span>
+                                COMING SOON...
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <!-- Live Demo Button -->
-            <a href="#"
-              class="live-button inline-flex items-center justify-center py-2 px-4 rounded-full bg-[#06d6a0] text-[#101620] font-bold text-xs uppercase tracking-wider hover:bg-[#17c8d9] transition-all duration-300">
-              <span>LIVE DEMO</span>
-            </a>
-          </div>
-        </div>
-      </div>
+            <!-- Digital Payments Project -->
+            <div class="project-card professional-card">
+                <div class="project-image-container">
+                    <img src="./Digital Payments in Zambia.png" alt="Digital Payments Dashboard" class="w-full h-full object-cover">
+                    <div class="project-overlay">
+                        <h3 class="project-title">Digital Payments Analysis</h3>
 
-      <!-- Digital Payments Project Card -->
-      <div
-        class="group project-card bg-[#1f2937] rounded-2xl border border-gray-700 flex flex-col h-full shadow-2xl hover:shadow-[#06d6a0]/30 hover:border-[#06d6a0] transition-all duration-500 transform hover:-translate-y-2 relative overflow-hidden">
-        <div class="card-image-container relative">
-          <img src="./Digital Payments in Zambia.png" alt="Digital Payments Dashboard"
-            class="w-full h-full object-cover">
-          <!-- Content overlay at the top -->
-          <div
-            class="absolute top-0 left-0 right-0 p-6 bg-gradient-to-b from-[#101620] via-[#101620]/90 to-transparent text-center">
-            <h3 class="text-2xl font-extrabold text-white mb-2">
-              <!-- Digital Payments Dashboard -->
-            </h3>
-            <p class="text-gray-300 text-sm leading-relaxed">
-              <!--Track and analyze transactions for POS systems.-->
-            </p>
-          </div>
-        </div>
-
-        <div class="mt-auto p-6">
-          <div class="project-status-container flex flex-row items-center justify-between gap-3">
-            <!-- In Progress Button -->
-            <div
-              class="inline-flex items-center text-gray-900 font-bold py-2 px-4 rounded-full bg-[#06d6a0] text-xs uppercase tracking-wider">
-              <span class="relative flex h-2 w-2 mr-2">
-                <span
-                  class="animate-ping absolute inline-flex h-2 w-2 rounded-full bg-black opacity-75"></span>
-                <span class="relative inline-flex rounded-full h-2 w-2 bg-black"></span>
-              </span>
-              COMING SOON...
+                        <div class="project-status-container">
+                            <p class="project-description">Tracking payment trends and merchant performance metrics in Zambia</p>
+                            <div class="coming-soon-badge">
+                                <span class="dot">
+                                    <span class="ping"></span>
+                                    <span class="static"></span>
+                                </span>
+                                COMING SOON...
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <!-- Live Demo Button -->
-            <a href="#"
-              class="live-button inline-flex items-center justify-center py-2 px-4 rounded-full bg-[#06d6a0] text-[#101620] font-bold text-xs uppercase tracking-wider hover:bg-[#17c8d9] transition-all duration-300">
-              <span>LIVE DEMO</span>
-            </a>
-          </div>
         </div>
-      </div>
-
     </div>
-  </div>
 </section>
 
-
-<!-- ===== CONTACT SECTION ===== -->
-<section id="contact" class="py-16 md:py-24 bg-gray-800 pt-16">
-    <div class="max-w-4xl mx-auto px-4 text-center animate-on-scroll">
-        <!-- Section Header -->
+<!-- ===== CONTACT SECTION — FORM CENTERED === -->
+<section id="contact" class="py-12 md:py-16 bg-slate-900"> <!-- Reduced padding -->
+    <div class="max-w-3xl mx-auto px-4 text-center animate-on-scroll"> <!-- Reduced max width -->
         <div class="section-header">
             <h2 class="section-title">Let's Connect</h2>
-            <p class="section-description">
-                The best insights start with a great conversation. Whether you're a fellow data explorer, a recruiter, or just curious about what's next in my journey, let's connect. I'm always open to discussing new ideas, projects, or challenges.
+            <p class="section-description mb-6">
+                I'm always interested in discussing data science opportunities, collaborations, or innovative projects.
             </p>
         </div>
         
+        <!-- Social Icons -->
+        <div class="flex justify-center gap-4 mb-6 "> <!-- Reduced gap and margin -->
+            <a href="mailto:ibacklungu888@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Email Me" class="social-icon">
+                <img src="./email_red.png" alt="Email">
+            </a>
+            <a href="https://linkedin.com/in/iback-lungu-3217451b4" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" class="social-icon">
+                <img src="linkedin_blue.png" alt="LinkedIn">
+            </a>
+            <a href="https://github.com/ibacklungu" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile" class="social-icon">
+                <img src="./github_purple.png" alt="GitHub">
+            </a>
+            <a href="https://wa.me/260975135029" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="social-icon">
+                <img src="./whatsapp _green.png" alt="WhatsApp">
+            </a>
+        </div>
+
         <!-- Contact Form -->
-        <form
-            id="contact-form"
-            class="max-w-xl mx-auto flex flex-col items-center space-y-4 p-8 bg-[#1f2937] rounded-3xl shadow-2xl border border-gray-700 centered-form"
-        >
-            <input type="text" name="name" placeholder="Name" required class="w-full px-5 py-3 border border-gray-600 rounded-xl text-white bg-gray-800 focus:ring-4 focus:ring-[#06d6a0]/50 focus:border-[#06d6a0] focus:outline-none shadow-md form-input" />
-            <input type="email" name="email" placeholder="Email" required class="w-full px-5 py-3 border border-gray-600 rounded-xl text-white bg-gray-800 focus:ring-4 focus:ring-[#06d6a0]/50 focus:border-[#06d6a0] focus:outline-none shadow-md form-input" />
-            <input type="text" name="subject" placeholder="Subject" required class="w-full px-5 py-3 border border-gray-600 rounded-xl text-white bg-gray-800 focus:ring-4 focus:ring-[#06d6a0]/50 focus:border-[#06d6a0] focus:outline-none shadow-md form-input" />
-            <textarea name="message" placeholder="Message" rows="6" required class="w-full px-5 py-3 border border-gray-600 rounded-xl text-white bg-gray-800 focus:ring-4 focus:ring-[#06d6a0]/50 focus:border-[#06d6a0] focus:outline-none shadow-md resize-none form-input"></textarea>
-            <button
-                type="submit"
-                id="submit-button"
-                class="w-full mt-6 bg-[#06d6a0] text-gray-900 font-extrabold py-3.5 px-8 rounded-full shadow-2xl shadow-[#06d6a0]/40 transition-all duration-300 hover:bg-[#06d6a0]/90 uppercase tracking-wider"
-            >
-                ✉ Send
-            </button>
-            <p id="form-status" class="mt-4 text-base font-semibold text-white"></p>
-        </form>
+        <div class="professional-card p-6">
+            <form id="contact-form" class="centered-form" >
+                <input type="text" name="name" placeholder="Name" required class="form-input text-center" />
+                <input type="email" name="email" placeholder="Email" required class="form-input text-center" />
+                <input type="text" name="subject" placeholder="Subject" required class="form-input text-center" />
+                <textarea name="message" placeholder="Message" rows="4" required class="form-input resize-none text-center"></textarea>
+                <button type="submit" id="submit-button" class="cta-button">
+                    Send Message
+                </button>
+                <p id="form-status" class="mt-3 text-sm font-semibold text-white"></p>
+            </form>
+        </div>
     </div>
 </section>
-        <div class="flex justify-center gap-6 mb-6 mt-6">
-  <a href="mailto:ibacklungu888@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Email Me">
-    <img src="email_red.png" alt="Email" class="w-6 h-6">
-  </a>
-  <a href="https://linkedin.com/in/iback-lungu-3217451b4" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
-    <img src="./linkedin_blue.png" alt="LinkedIn" class="w-6 h-6">
-  </a>
-  <a href="https://github.com/ibacklungu" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
-    <img src="./github_purple.png" alt="GitHub" class="w-6 h-6">
-  </a>
-  <a href="https://wa.me/260975135029" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
-    <img src="./whatsapp _green.png" alt="WhatsApp" class="w-6 h-6">
-  </a>
-</div>
 </main>
 
-<!-- ===== FOOTER ===== -->
-<footer class="bg-gray-900 border-t border-gray-800 py-5">
-        <!-- Copyright -->
-        <p class="text-gray-500 text-sm text-center">
-            &copy; <span id="current-year"></span> Iback Lungu. All Rights Reserved.
-        </p>
-    </div>
+<footer class="bg-slate-900 border-t border-slate-800 py-6">
+    <p class="text-slate-400 text-sm text-center">
+        &copy; <span id="current-year"></span> Iback Lungu. All Rights Reserved.
+    </p>
 </footer>
 
-<!-- ===== JAVASCRIPT FUNCTIONALITY ===== -->
+<!-- Font Awesome -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js" crossorigin="anonymous"></script>
+
 <script>
-    // === CURRENT YEAR FOR FOOTER ===
     document.getElementById('current-year').textContent = new Date().getFullYear();
     
-    // === INTERSECTION OBSERVER FOR ANIMATIONS ===
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-            }
+            if (entry.isIntersecting) entry.target.classList.add('is-visible');
         });
     }, { threshold: 0.15 });
     
-    // Observe all animated elements
-    document.querySelectorAll('.hero-fade-in').forEach(el => observer.observe(el));
-    document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+    document.querySelectorAll('.hero-fade-in, .animate-on-scroll').forEach(el => observer.observe(el));
     
-    // === MOBILE MENU FUNCTIONALITY ===
+    // Mobile menu
     const hamburgerButton = document.getElementById('hamburger-button');
     const mobileMenu = document.getElementById('mobile-menu');
     const hamburgerOpen = document.getElementById('hamburger-open');
@@ -675,66 +806,49 @@ body::-webkit-scrollbar { display: none; }
     
     if (hamburgerButton) {
         hamburgerButton.addEventListener('click', () => {
-            const isMenuOpen = mobileMenu.classList.contains('opacity-100');
-            
-            if (isMenuOpen) {
-                // Close mobile menu
-                mobileMenu.classList.remove('opacity-100', 'visible');
-                mobileMenu.classList.add('opacity-0', 'invisible');
-                hamburgerOpen.classList.remove('hidden');
-                hamburgerClose.classList.add('hidden');
-            } else {
-                // Open mobile menu
-                mobileMenu.classList.add('opacity-100', 'visible');
-                mobileMenu.classList.remove('opacity-0', 'invisible');
-                hamburgerOpen.classList.add('hidden');
-                hamburgerClose.classList.remove('hidden');
-            }
+            const isOpen = mobileMenu.classList.contains('opacity-100');
+            mobileMenu.classList.toggle('opacity-100', !isOpen);
+            mobileMenu.classList.toggle('invisible', isOpen);
+            hamburgerOpen.classList.toggle('hidden', !isOpen);
+            hamburgerClose.classList.toggle('hidden', isOpen);
         });
     }
     
-    // Close mobile menu when a link is clicked
     mobileLinks.forEach(link => {
         link.addEventListener('click', () => {
             mobileMenu.classList.remove('opacity-100', 'visible');
-            mobileMenu.classList.add('opacity-0', 'invisible');
+            mobileMenu.classList.add('invisible');
             hamburgerOpen.classList.remove('hidden');
             hamburgerClose.classList.add('hidden');
         });
     });
     
-    // === CONTACT FORM HANDLING ===
+    // Contact form
     const contactForm = document.getElementById('contact-form');
     const statusMessage = document.getElementById('form-status');
     const submitButton = document.getElementById('submit-button');
     
     if (contactForm) {
-        contactForm.addEventListener('submit', function(event) {
-            event.preventDefault();
-            
-            // Disable submit button and show loading state
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
             submitButton.disabled = true;
-            submitButton.textContent = '⏳ Sending...';
-            statusMessage.textContent = 'Sending message...';
+            submitButton.textContent = 'Sending...';
+            statusMessage.textContent = 'Sending your message...';
             statusMessage.className = 'mt-4 text-base font-semibold text-blue-400';
             
-            // Send email via EmailJS
             emailjs.sendForm('service_89njjb3', 'template_h4cawxa', this)
                 .then(() => {
-                    // Success message
-                    statusMessage.textContent = '✅ Message sent successfully!';
+                    statusMessage.textContent = 'Message sent successfully!';
                     statusMessage.className = 'mt-4 text-base font-semibold text-green-400';
                     contactForm.reset();
                 })
                 .catch(() => {
-                    // Error message
-                    statusMessage.textContent = '❌ Failed to send. Please try again.';
+                    statusMessage.textContent = 'Failed to send. Please try again.';
                     statusMessage.className = 'mt-4 text-base font-semibold text-red-400';
                 })
                 .finally(() => {
-                    // Re-enable submit button
                     submitButton.disabled = false;
-                    submitButton.textContent = '✉ Send';
+                    submitButton.textContent = 'Send Message';
                 });
         });
     }
