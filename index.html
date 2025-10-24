@@ -358,9 +358,10 @@ body::-webkit-scrollbar { display: none; }
     opacity: 1 !important; 
     transition: none !important; 
   }
+  /* Replace existing #home rules to ensure the hero always fills viewport minus fixed header (4rem) */
   #home { 
-    min-height: 70vh; 
-    padding: 2rem 1rem;
+    min-height: calc(100vh - 4rem); 
+    padding: 0 1rem;
     display: flex;
     align-items: center;
   }
@@ -376,7 +377,18 @@ body::-webkit-scrollbar { display: none; }
   }
 }
 
-/* Updated Project Card Styles */
+/* Add a global rule to make the hero section fill viewport minus the fixed header (desktop/tablet) */
+#home {
+  min-height: calc(100vh - 4rem);
+  padding-top: 0; /* remove extra top spacing — layout centered by flex */
+  padding-left: 1rem;
+  padding-right: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* === PROJECT CARD STYLES === */
 .project-card {
     position: relative;
     height: 400px;
@@ -504,7 +516,7 @@ body::-webkit-scrollbar { display: none; }
 
 <main>
 <!-- ===== HERO SECTION ===== -->
-<section id="home" class="min-h-screen flex items-center justify-center pt-16 px-4">
+<section id="home" class="flex items-center justify-center px-4">
     <div class="text-center max-w-4xl hero-fade-in">
         <img src="./p2-removebg-preview 2.png" alt="Iback Lungu" 
              class="w-28 h-28 md:w-36 md:h-36 mx-auto rounded-full border-2 border-[#06d6a0] object-cover mb-6"
