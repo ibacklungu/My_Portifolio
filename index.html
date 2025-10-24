@@ -31,16 +31,13 @@ body {
     scrollbar-width: none;      /* Hide scrollbar for Firefox */
     padding-top: 4rem;          /* Space for fixed header */
     margin: 0;
-    /* Deep, modern dark mode background gradient */
     background: linear-gradient(to bottom, #101620, #0a0d13); 
     color: #f3f4f6;
 }
-/* Hide scrollbar for Webkit browsers */
 body::-webkit-scrollbar { display: none; }
 
 /* === TEXT GRADIENT UTILITY === */
 .text-gradient {
-    /* Vibrant teal gradient for text */
     background: linear-gradient(135deg, #17c8d9 0%, #06d6a0 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -75,7 +72,7 @@ body::-webkit-scrollbar { display: none; }
     overflow-wrap: break-word;
     hyphens: auto;
     width: 100%;
-    font-size: 0.95rem; /* Professional body copy size */
+    font-size: 0.95rem;
     line-height: 1.6;
 }
 
@@ -94,189 +91,198 @@ body::-webkit-scrollbar { display: none; }
 .project-card {
   display: flex;
   flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  min-height: 350px;
 }
 .project-status-container {
   margin-top: auto;
   position: relative;
   z-index: 10;
 }
-
-.project-card {
-    position: relative;
-    overflow: hidden;
-    min-height: 350px;
-}
 .project-card .card-content-overlay {
-    position: relative;
-    z-index: 10;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 1.5rem;
-    background: linear-gradient(to top, rgba(16, 22, 32, 1) 0%, rgba(16, 22, 32, 0.8) 35%, rgba(16, 22, 32, 0) 100%);
+  position: relative;
+  z-index: 10;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.5rem;
+  background: linear-gradient(to top, rgba(16,22,32,1) 0%, rgba(16,22,32,0.8) 35%, rgba(16,22,32,0) 100%);
 }
 
 /* === CARD IMAGE CONTAINER === */
 .card-image-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
 }
 .card-image-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* === LIVE BUTTON STYLES === */
 .live-button {
-    display: inline-flex;
-    align-items: center;
-    background-color: #06d6a0;
-    color: #101620; 
-    font-weight: 700;
-    padding: 0.5rem 1rem;
-    border-radius: 9999px;
-    font-size: 0.8rem;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    letter-spacing: 0.05em;
-    box-shadow: 0 4px 6px rgba(6, 214, 160, 0.2);
+  display: inline-flex;
+  align-items: center;
+  background-color: #06d6a0;
+  color: #101620; 
+  font-weight: 700;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  box-shadow: 0 4px 6px rgba(6,214,160,0.2);
 }
 .live-button:hover {
-    background-color: #17c8d9;
-    transform: scale(1.03);
-    box-shadow: 0 4px 10px rgba(23, 200, 217, 0.4);
+  background-color: #17c8d9;
+  transform: scale(1.03);
+  box-shadow: 0 4px 10px rgba(23,200,217,0.4);
 }
 
 /* === PROJECT STATUS CONTAINER === */
 .project-status-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 1rem;
-    flex-wrap: wrap;
-    gap: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* === "COMING SOON" BADGE FIX === */
+.project-status-container .inline-flex {
+  background-color: #06d6a0 !important;
+  color: #000000 !important;
+  font-weight: 700;
+  padding: 0.5rem 1rem !important;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  box-shadow: 0 4px 6px rgba(6, 214, 160, 0.2);
+  overflow: hidden; /* Keeps ping inside */
+}
+.project-status-container .animate-ping {
+  top: 0;
+  left: 0;
+  transform: translate(-25%, -25%);
+  opacity: 0.6;
+}
+.project-status-container span.relative.flex.h-2.w-2.mr-2 {
+  position: relative;
+  flex-shrink: 0; /* Prevent overlap with text */
 }
 
 /* === EDUCATION ICONS === */
 .education-icon {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1rem;
-    font-size: 1.5rem;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
 }
 
 /* === FORM STYLES === */
 .centered-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .form-input {
-    text-align: center;
+  text-align: center;
 }
 
 /* === SECTION HEADER STYLES === */
 .section-header {
-    text-align: center;
-    margin-bottom: 3rem;
+  text-align: center;
+  margin-bottom: 3rem;
 }
 .section-subtitle {
-    color: #06d6a0;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    font-size: 0.875rem;
-    margin-bottom: 0.5rem;
+  color: #06d6a0;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
 }
 .section-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: white;
-    margin-bottom: 1rem;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 1rem;
 }
 .section-description {
-    color: #9ca3af;
-    max-width: 42rem;
-    margin-left: auto;
-    margin-right: auto;
+  color: #9ca3af;
+  max-width: 42rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* === MOBILE MENU STYLES === */
 #mobile-menu {
-    background: rgba(16, 22, 32, 0.95) !important; /* Dark transparent background */
-    backdrop-filter: blur(20px);
+  background: rgba(16, 22, 32, 0.95) !important;
+  backdrop-filter: blur(20px);
 }
 #mobile-menu a {
-    background: linear-gradient(135deg, #17c8d9 0%, #06d6a0 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    font-weight: 600;
+  background: linear-gradient(135deg, #17c8d9 0%, #06d6a0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 600;
 }
 #mobile-menu a:hover {
-    transform: scale(1.05);
-    transition: all 0.3s ease;
-}
-
-/* === IN PROGRESS BUTTON STYLES === */
-.project-status-container .inline-flex {
-    background-color: #8ad186 !important;
-    color: #000000 !important; /* Pure black text for better contrast */
-    font-weight: 700;
-    padding: 0.5rem 1rem !important;
-    border-radius: 9999px;
-    font-size: 0.8rem;
-    text-decoration: none;
-    letter-spacing: 0.05em;
-    box-shadow: 0 4px 6px rgba(6, 214, 160, 0.2);
+  transform: scale(1.05);
+  transition: all 0.3s ease;
 }
 
 /* === MOBILE RESPONSIVE STYLES === */
 @media (max-width: 640px) {
-    .project-status-container {
-        flex-direction: row !important;
-        align-items: center !important;
-        justify-content: space-between;
-    }
+  .project-status-container {
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between;
+  }
 }
 
 /* === MOBILE OPTIMIZATIONS === */
 @media (max-width: 640px) {
-    /* Disable animations on mobile for better performance */
-    .hero-fade-in, .animate-on-scroll { transform:none!important; opacity:1!important; transition:none!important; }
-    
-    /* Mobile hero section adjustments */
-    #home { 
-        min-height:70vh; 
-        padding: 2rem 1rem;
-        display: flex;
-        align-items: center;
-    }
-    #hero-content h1 {
-        font-size: 1.8rem;
-    }
-    .hero-buttons { 
-        max-width: 280px;
-    }
-    .project-status-container {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    .section-title {
-        font-size: 2rem;
-    }
+  .hero-fade-in, .animate-on-scroll { 
+    transform:none!important; 
+    opacity:1!important; 
+    transition:none!important; 
+  }
+  #home { 
+    min-height:70vh; 
+    padding: 2rem 1rem;
+    display: flex;
+    align-items: center;
+  }
+  #hero-content h1 {
+    font-size: 1.8rem;
+  }
+  .hero-buttons { 
+    max-width: 280px;
+  }
+  .project-status-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .section-title {
+    font-size: 2rem;
+  }
 }
 </style>
+
 </head>
 
 <body>
@@ -491,75 +497,100 @@ body::-webkit-scrollbar { display: none; }
 
 <!-- ===== PROJECTS SECTION ===== -->
 <section id="projects" class="py-16 md:py-24 bg-gray-800 pt-16">
-    <div class="max-w-7xl mx-auto px-4 animate-on-scroll">
-        <!-- Section Header -->
-        <div class="section-header">
-            <p class="section-subtitle">Browse My Recent</p>
-            <h2 class="section-title">Work & Explorations</h2>
-        </div>
-        
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-2 w-full">
-            
-            <!-- Maji Ndogo Project Card -->
-            <div class="group project-card bg-[#1f2937] rounded-2xl border border-gray-700 flex flex-col h-full shadow-2xl hover:shadow-[#06d6a0]/30 hover:border-[#06d6a0] transition-all duration-500 transform hover:-translate-y-2 relative overflow-hidden">
-                <div class="card-image-container">
-                    <img src="./Maji_Ndongo_Image_5.png" alt="Maji Ndogo Agriculture Project" class="w-full h-full object-cover">
-                    <!-- Content overlay at the top -->
-                    <div class="absolute top-0 left-0 right-0 p-6 bg-gradient-to-b from-[#101620] via-[#101620]/90 to-transparent text-center">
-                        <h3 class="text-2xl font-extrabold text-white mb-2">Maji Ndogo Agricultural Analysis</h3>
-                        <p class="text-gray-300 text-sm leading-relaxed">
-                            When data meets agriculture, every insight becomes a seed for change.
-                        </p>
-                    </div>
-                </div>
-                <div class="mt-auto p-6">
-                    <div class="project-status-container flex flex-row items-center justify-between gap-3">
-                        <!-- In Progress Button -->
-                        <div class="inline-flex items-center text-gray-300 font-bold py-2 px-4 rounded-full bg-[#06d6a0] text-xs uppercase tracking-wider">
-                            <span class="relative flex h-2 w-2 mr-2">
-                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-black opacity-75"></span>
-                                <span class="relative inline-flex rounded-full h-2 w-2 bg-black"></span>
-                            </span>COMING SOON...
-                        </div>
-                        <!-- Live Demo Button -->
-                        <a href="#" class="live-button inline-flex items-center justify-center py-2 px-4 rounded-full bg-[#06d6a0] text-[#101620] font-bold text-xs uppercase tracking-wider hover:bg-[#17c8d9] transition-all duration-300">
-                            <span>LIVE DEMO</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Digital Payments Project Card -->
-            <div class="group project-card bg-[#1f2937] rounded-2xl border border-gray-700 flex flex-col h-full shadow-2xl hover:shadow-[#06d6a0]/30 hover:border-[#06d6a0] transition-all duration-500 transform hover:-translate-y-2 relative overflow-hidden">
-                <div class="card-image-container">
-                    <img src="./Digital Payments in Zambia.png" alt="Digital Payments Dashboard" class="w-full h-full object-cover">
-                    <!-- Content overlay at the top -->
-                    <div class="absolute top-0 left-0 right-0 p-6 bg-gradient-to-b from-[#101620] via-[#101620]/90 to-transparent text-center">
-                        <h3 class="text-2xl font-extrabold text-white mb-2">Digital Payments Dashboard</h3>
-                        <p class="text-gray-300 text-sm leading-relaxed">
-                            Track and analyze transactions for POS systems.
-                        </p>
-                    </div>
-                </div>
-                <div class="mt-auto p-6">
-                    <div class="project-status-container flex flex-row items-center justify-between gap-3">
-                        <!-- In Progress Button -->
-                        <div class="inline-flex items-center text-gray-300 font-bold py-2 px-4 rounded-full bg-[#06d6a0] text-xs uppercase tracking-wider">
-                            <span class="relative flex h-2 w-2 mr-2">
-                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-black opacity-75"></span>
-                                <span class="relative inline-flex rounded-full h-2 w-2 bg-black"></span>
-                            </span>COMING SOON...
-                        </div>
-                        <!-- Live Demo Button -->
-                        <a href="#" class="live-button inline-flex items-center justify-center py-2 px-4 rounded-full bg-[#06d6a0] text-[#101620] font-bold text-xs uppercase tracking-wider hover:bg-[#17c8d9] transition-all duration-300">
-                            <span>LIVE DEMO</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <div class="max-w-7xl mx-auto px-4 animate-on-scroll">
+
+    <!-- Section Header -->
+    <div class="section-header text-center mb-12">
+      <p class="section-subtitle">Browse My Recent</p>
+      <h2 class="section-title">Work & Explorations</h2>
     </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-2 w-full">
+
+      <!-- Maji Ndogo Project Card -->
+      <div
+        class="group project-card bg-[#1f2937] rounded-2xl border border-gray-700 flex flex-col h-full shadow-2xl hover:shadow-[#06d6a0]/30 hover:border-[#06d6a0] transition-all duration-500 transform hover:-translate-y-2 relative overflow-hidden">
+        <div class="card-image-container relative">
+          <img src="./Maji_Ndongo_Image_5.png" alt="Maji Ndogo Agriculture Project"
+            class="w-full h-full object-cover">
+          <!-- Content overlay at the top -->
+          <div
+            class="absolute top-0 left-0 right-0 p-6 bg-gradient-to-b from-[#101620] via-[#101620]/90 to-transparent text-center">
+            <h3 class="text-2xl font-extrabold text-white mb-2">
+              <!-- Maji Ndogo Agriculture Dashboard  -->
+            </h3>
+            <p class="text-gray-300 text-sm leading-relaxed">
+              <!-- When data meets agriculture, every insight becomes a seed for change. -->
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-auto p-6">
+          <div class="project-status-container flex flex-row items-center justify-between gap-3">
+            <!-- In Progress Button -->
+            <div
+              class="inline-flex items-center text-gray-900 font-bold py-2 px-4 rounded-full bg-[#06d6a0] text-xs uppercase tracking-wider">
+              <span class="relative flex h-2 w-2 mr-2">
+                <span
+                  class="animate-ping absolute inline-flex h-2 w-2 rounded-full bg-black opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-black"></span>
+              </span>
+              COMING SOON...
+            </div>
+
+            <!-- Live Demo Button -->
+            <a href="#"
+              class="live-button inline-flex items-center justify-center py-2 px-4 rounded-full bg-[#06d6a0] text-[#101620] font-bold text-xs uppercase tracking-wider hover:bg-[#17c8d9] transition-all duration-300">
+              <span>LIVE DEMO</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Digital Payments Project Card -->
+      <div
+        class="group project-card bg-[#1f2937] rounded-2xl border border-gray-700 flex flex-col h-full shadow-2xl hover:shadow-[#06d6a0]/30 hover:border-[#06d6a0] transition-all duration-500 transform hover:-translate-y-2 relative overflow-hidden">
+        <div class="card-image-container relative">
+          <img src="./Digital Payments in Zambia.png" alt="Digital Payments Dashboard"
+            class="w-full h-full object-cover">
+          <!-- Content overlay at the top -->
+          <div
+            class="absolute top-0 left-0 right-0 p-6 bg-gradient-to-b from-[#101620] via-[#101620]/90 to-transparent text-center">
+            <h3 class="text-2xl font-extrabold text-white mb-2">
+              <!-- Digital Payments Dashboard -->
+            </h3>
+            <p class="text-gray-300 text-sm leading-relaxed">
+              <!--Track and analyze transactions for POS systems.-->
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-auto p-6">
+          <div class="project-status-container flex flex-row items-center justify-between gap-3">
+            <!-- In Progress Button -->
+            <div
+              class="inline-flex items-center text-gray-900 font-bold py-2 px-4 rounded-full bg-[#06d6a0] text-xs uppercase tracking-wider">
+              <span class="relative flex h-2 w-2 mr-2">
+                <span
+                  class="animate-ping absolute inline-flex h-2 w-2 rounded-full bg-black opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-black"></span>
+              </span>
+              COMING SOON...
+            </div>
+
+            <!-- Live Demo Button -->
+            <a href="#"
+              class="live-button inline-flex items-center justify-center py-2 px-4 rounded-full bg-[#06d6a0] text-[#101620] font-bold text-xs uppercase tracking-wider hover:bg-[#17c8d9] transition-all duration-300">
+              <span>LIVE DEMO</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </section>
+
 
 <!-- ===== CONTACT SECTION ===== -->
 <section id="contact" class="py-16 md:py-24 bg-gray-800 pt-16">
@@ -592,7 +623,7 @@ body::-webkit-scrollbar { display: none; }
         </form>
     </div>
 </section>
-        <div class="flex justify-center gap-6 mb-6 mt-8">
+        <div class="flex justify-center gap-6 mb-6 mt-6">
   <a href="mailto:ibacklungu888@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Email Me">
     <img src="email_red.png" alt="Email" class="w-6 h-6">
   </a>
