@@ -380,6 +380,36 @@ body::-webkit-scrollbar { display: none; }
   .flex.flex-wrap.justify-center .flex.flex-col.items-center {
     flex: 0 0 auto !important;
     margin-bottom: 0.5rem !important;
+    width: 60px !important; /* Fixed width for consistent alignment */
+  }
+  
+  /* IMPROVED LOGO STYLING FOR MOBILE */
+  .bank-logo-grid {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    padding: 0 10px !important;
+  }
+  
+  .bank-logo-item {
+    flex: 0 0 calc(25% - 8px) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    margin-bottom: 12px !important;
+  }
+  
+  .bank-logo-item img {
+    width: 40px !important;
+    height: 40px !important;
+    object-fit: contain !important;
+  }
+  
+  .bank-logo-item span {
+    font-size: 9px !important;
+    margin-top: 4px !important;
+    text-align: center !important;
   }
 }
 
@@ -427,6 +457,54 @@ body::-webkit-scrollbar { display: none; }
 }
 @media (max-width: 640px) {
   .project-image-container { height: 220px; }
+}
+
+/* IMPROVED LOGO ALIGNMENT FOR ALL SCREENS */
+.bank-logos-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 0;
+}
+
+.bank-logo-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 70px;
+}
+
+.bank-logo-item img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.bank-logo-item span {
+  font-size: 10px;
+  margin-top: 5px;
+  text-align: center;
+  color: #cbd5e1;
+}
+
+@media (max-width: 640px) {
+  .bank-logos-container {
+    gap: 8px;
+  }
+  
+  .bank-logo-item {
+    width: 60px;
+  }
+  
+  .bank-logo-item img {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .bank-logo-item span {
+    font-size: 9px;
+  }
 }
 </style>
 </head>
