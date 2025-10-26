@@ -509,95 +509,84 @@
             transform: translateX(-50%) translateY(-5px); /* Final position */
         }
 
-        /* === FDBZ SIGNAL LINES STYLES === */
-        /* Container for FDBZ logo with signals */
+        /* === CLEAN AND PROFESSIONAL FDBZ STYLES === */
+        /* Container for FDBZ logo with clean indicators */
         .fdbl-logo-container {
             position: relative; /* For positioning the signal elements */
         }
 
-        /* Three signal lines pointing to FDBZ logo */
-        .fdbl-signal-line {
-            position: absolute;
-            background: #06d6a0;
-            height: 2px;
-            animation: signal-pulse 2s ease-in-out infinite;
-            z-index: 5;
-            pointer-events: none; /* Don't interfere with hover */
-        }
-
-        /* Top signal line */
-        .fdbl-signal-line.top {
-            top: -25px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 30px;
-        }
-
-        /* Left signal line */
-        .fdbl-signal-line.left {
-            top: 50%;
-            left: -25px;
-            transform: translateY(-50%) rotate(90deg);
-            width: 30px;
-        }
-
-        /* Right signal line */
-        .fdbl-signal-line.right {
-            top: 50%;
-            right: -25px;
-            transform: translateY(-50%) rotate(90deg);
-            width: 30px;
-        }
-
-        /* Signal pulse animation */
-        @keyframes signal-pulse {
-            0%, 100% {
-                opacity: 0.3;
-                transform: translateX(-50%) scale(0.8);
-            }
-            50% {
-                opacity: 1;
-                transform: translateX(-50%) scale(1.2);
-            }
-        }
-
-        /* Arrow pointer to FDBZ logo */
+        /* Simple arrow pointing to FDBZ logo */
         .fdbl-arrow-pointer {
             position: absolute;
-            top: -40px;
+            top: -50px; /* Positioned above the logo */
             left: 50%;
             transform: translateX(-50%);
-            width: 0;
-            height: 0;
-            border-left: 10px solid transparent;
-            border-right: 10px solid transparent;
-            border-bottom: 15px solid #06d6a0;
-            animation: bounce-arrow 2s ease-in-out infinite;
             z-index: 15;
+            animation: arrow-pulse 2s ease-in-out infinite;
         }
 
+        /* Arrow head only - no tail */
+        .fdbl-arrow-pointer .arrow-head {
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-bottom: 12px solid #06d6a0; /* Consistent green color */
+        }
+
+        /* Arrow pulse animation */
+        @keyframes arrow-pulse {
+            0%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            50% {
+                transform: translateX(-50%) translateY(-3px);
+            }
+        }
+
+        /* "CLICK HERE" message with consistent styling */
         .fdbl-arrow-pointer::after {
-            content: 'STARTING HERE';
+            content: 'CLICK HERE';
             position: absolute;
             top: -35px;
             left: 50%;
             transform: translateX(-50%);
             white-space: nowrap;
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             font-weight: 700;
-            color: #06d6a0;
-            background: rgba(15, 23, 42, 0.9);
-            padding: 0.3rem 0.6rem;
+            color: #06d6a0; /* Consistent green color */
+            background: rgba(30, 41, 59, 0.9); /* Dark background matching theme */
+            padding: 0.4rem 0.8rem;
             border-radius: 6px;
-            border: 1px solid #06d6a0;
+            border: 1px solid #06d6a0; /* Consistent green border */
+            box-shadow: 0 4px 8px rgba(6, 214, 160, 0.2); /* Subtle green shadow */
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        @keyframes bounce-arrow {
+        /* Subtle pulsing glow for FDBZ logo */
+        .fdbl-logo-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            background: rgba(6, 214, 160, 0.2); /* Consistent green glow */
+            animation: logo-pulse 2s ease-in-out infinite;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        @keyframes logo-pulse {
             0%, 100% {
-                transform: translateX(-50%) translateY(0);
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.4;
             }
             50% {
-                transform: translateX(-50%) translateY(-5px);
+                transform: translate(-50%, -50%) scale(1.2);
+                opacity: 0.6;
             }
         }
 
@@ -616,14 +605,21 @@
                 padding: 0.4rem 0.8rem; /* Smaller padding on mobile */
             }
 
-            /* Adjust FDBZ signals for mobile */
+            /* Adjust FDBZ arrow for mobile */
             .fdbl-arrow-pointer {
-                top: -35px;
+                top: -40px;
             }
             
             .fdbl-arrow-pointer::after {
-                font-size: 0.6rem;
+                font-size: 0.65rem;
                 top: -30px;
+                padding: 0.3rem 0.6rem;
+            }
+
+            .fdbl-arrow-pointer .arrow-head {
+                border-left: 6px solid transparent;
+                border-right: 6px solid transparent;
+                border-bottom: 10px solid #06d6a0;
             }
         }
         
@@ -943,15 +939,6 @@
                                         <img src="./map-zambia.jpg" alt="Zambian Map">
                                     </div>
                                 </div>
-                               
-                                <!-- COMING SOON badge -->
-                                <div class="coming-soon-badge">
-                                    <span class="dot">
-                                        <span class="ping"></span>
-                                        <span class="static"></span>
-                                    </span>
-                                    COMING SOON...
-                                </div>
                             
                                 <!-- Logo Legend -->
                                 <div class="mt-auto pt-4">
@@ -959,18 +946,18 @@
                                     <div class="bank-logos-desktop">
                                         <!-- FDBZ Logo with Special Effects -->
                                         <div class="bank-logo-item fdbl-logo-container">
-                                            <!-- Three signal lines pointing to FDBZ -->
-                                            <div class="fdbl-signal-line top"></div>
-                                            <div class="fdbl-signal-line left"></div>
-                                            <div class="fdbl-signal-line right"></div>
+                                            <!-- Simple arrow pointing to logo -->
+                                            <div class="fdbl-arrow-pointer">
+                                                <div class="arrow-head"></div>
+                                            </div>
                                             
-                                            <!-- Arrow pointer -->
-                                            <div class="fdbl-arrow-pointer"></div>
+                                            <!-- Subtle pulsing glow effect -->
+                                            <div class="fdbl-logo-glow"></div>
                                             
                                             <img src="./FDBZ-logo.png" alt="First Digital Bank In Zambia">
                                             <span>FDBZ</span>
                                             <!-- Tooltip for FDBZ -->
-                                            <div class="tooltip">Starting Point - Ready Soon</div>
+                                            <div class="tooltip">Click to explore</div> 
                                         </div>
                                         <div class="bank-logo-item">
                                             <img src="./zanaco-logo.png" alt="Zanaco">
@@ -1014,18 +1001,18 @@
                                     <div class="bank-logos-mobile">
                                         <!-- FDBZ Logo with Special Effects -->
                                         <div class="bank-logo-item fdbl-logo-container">
-                                            <!-- Three signal lines pointing to FDBZ -->
-                                            <div class="fdbl-signal-line top"></div>
-                                            <div class="fdbl-signal-line left"></div>
-                                            <div class="fdbl-signal-line right"></div>
+                                            <!-- Simple arrow pointing to logo -->
+                                            <div class="fdbl-arrow-pointer">
+                                                <div class="arrow-head"></div>
+                                            </div>
                                             
-                                            <!-- Arrow pointer -->
-                                            <div class="fdbl-arrow-pointer"></div>
+                                            <!-- Subtle pulsing glow effect -->
+                                            <div class="fdbl-logo-glow"></div>
                                             
                                             <img src="./FDBZ-logo.png" alt="First Digital Bank In Zambia">
                                             <span>FDBZ</span>
                                             <!-- Tooltip for FDBZ -->
-                                            <div class="tooltip">Starting Point - Ready Soon</div>
+                                            <div class="tooltip">Click to explore</div>
                                         </div>
                                         <div class="bank-logo-item">
                                             <img src="./zanaco-logo.png" alt="Zanaco">
