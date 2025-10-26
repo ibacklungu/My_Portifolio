@@ -367,6 +367,20 @@ body::-webkit-scrollbar { display: none; }
     height: 0.5rem; /* Smaller dot for mobile */
     margin-right: 0.375rem; /* Reduced spacing for mobile */
   }
+  
+  /* HORIZONTAL LOGO ALIGNMENT FOR MOBILE */
+  .flex.flex-wrap.justify-center {
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+  }
+  
+  .flex.flex-wrap.justify-center .flex.flex-col.items-center {
+    flex: 0 0 auto !important;
+    margin-bottom: 0.5rem !important;
+  }
 }
 
 #home {
