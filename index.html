@@ -631,42 +631,92 @@ body::-webkit-scrollbar { display: none; }
             <h2 class="section-title">Work & Explorations</h2>
             <p class="section-description">Practical applications of data science techniques to solve real-world problems</p>
         </div>
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-2">
-            <!-- PROJECT CARD 1 -->
-            <div class="project-card professional-card">
-                <!-- TITLE AT THE TOP -->
-                <div class="project-card-title">
-                    <h3>Maji Ndogo Agriculture Project</h3>
-                    <p>When data meets agriculture, every insight becomes a seed for change</p>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <!-- PROJECT CARD 1: Maji Ndogo -->
+            <div class="project-card professional-card flex flex-col">
+                <div class="p-5 pb-2">
+                    <h3 class="text-xl font-bold text-white mb-2">Maji Ndogo Agriculture Project</h3>
+                    <p class="text-slate-300 text-sm">When data meets agriculture, every insight becomes a seed for change.</p>
                 </div>
-                <div class="project-image-container">
+                <div class="mt-auto project-image-container relative">
                     <img src="./Maji_Ndongo_Image_5.png" alt="Maji Ndogo Agriculture Project" class="w-full h-full object-cover">
-                    <!-- COMING SOON AT THE BOTTOM -->
                     <div class="coming-soon-badge">
-                        <span class="dot">
-                            <span class="ping"></span>
-                            <span class="static"></span>
-                        </span>
-                        COMING SOON...
+                        COMING SOON
                     </div>
                 </div>
             </div>
-            <!-- PROJECT CARD 2 -->
-            <div class="project-card professional-card">
-                <!-- TITLE AT THE TOP -->
-                <div class="project-card-title">
-                    <h3>Digital Payments Analysis</h3>
-                    <p>This project involved designing and building a centralized analytics platform for Point-of-Sale (POS) systems, which provides real-time visibility into key business operations to support data-informed decision-making.</p>
+
+            <!-- PROJECT CARD 2: REPLACED WITH POS MAP COMPONENT -->
+            <div class="project-card professional-card flex flex-col">
+                <!-- Title & Description at Top -->
+                <div class="p-5 pb-2">
+                    <h3 class="text-xl font-bold text-white mb-2">Digital Payments Analysis</h3>
+                    <p class="text-slate-300 text-sm">
+                        This project involved designing and building a centralized analytics platform for Point-of-Sale (POS) systems, which provides real-time visibility into key business operations to support data-informed decision-making.
+                    </p>
                 </div>
-                <div class="project-image-container">
-                    <img src="./Digital Payments in Zambia.png" alt="Digital Payments Dashboard" class="w-full h-full object-cover">
-                    <!-- COMING SOON AT THE BOTTOM -->
-                    <div class="coming-soon-badge">
-                        <span class="dot">
-                            <span class="ping"></span>
-                            <span class="static"></span>
-                        </span>
-                        COMING SOON...
+
+                <!-- POS Map Component (Your New Content) -->
+                <div class="mt-auto flex flex-col h-full">
+                    <div class="bg-slate-800 rounded-xl p-4 text-center h-full flex flex-col">
+                        <!-- Map Placeholder -->
+                        <div class="relative w-full flex-grow bg-slate-900 rounded-lg overflow-hidden border border-slate-700 mb-4">
+                            <div class="aspect-[4/3] bg-gradient-to-br from-emerald-900 to-teal-800 flex items-center justify-center">
+                              <img src="./map-zambia.jpg" alt="Map of Zambia with POS Locations" class="w-full h-full object-cover opacity-80">
+                          
+                            </div>
+                        </div>
+                       
+                        <!-- COMING SOON badge at bottom -->
+                    <div class="coming-soon-badge mt-3 mx-auto">
+                        COMING SOON
+                    </div>
+
+                        <!-- Logo Legend -->
+                        <div class="mt-auto">
+                            <div class="flex flex-wrap justify-center gap-2">
+                                <div class="flex flex-col items-center">
+                                    <img src="./zanaco-logo.png" alt="Zanaco" class="w-8 h-8 object-contain">
+                                    <span class="text-[10px] text-slate-300 mt-1">Zanaco</span>
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <img src="./indo-logo.png" alt="Indo" class="w-8 h-8 object-contain">
+                                    <span class="text-[10px] text-slate-300 mt-1">Indo</span>
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <img src="./absa-logo.webp" alt="ABSA" class="w-8 h-8 object-contain">
+                                    <span class="text-[10px] text-slate-300 mt-1">ABSA</span>
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <img src="./konse konse-logo" alt="Konse" class="w-8 h-8 object-contain">
+                                    <span class="text-[10px] text-slate-300 mt-1">Konse</span>
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <img src="./FNB-logo.png" alt="FNB" class="w-8 h-8 object-contain">
+                                    <span class="text-[10px] text-slate-300 mt-1">FNB</span>
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <img src="./img/logos/firstcapital.png" alt="1st Cap" class="w-8 h-8 object-contain">
+                                    <span class="text-[10px] text-slate-300 mt-1">1st Cap</span>
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <img src="./kazang-logo.gif" alt="Kazang" class="w-8 h-8 object-contain">
+                                    <span class="text-[10px] text-slate-300 mt-1">Kazang</span>
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <img src="./stanbic bank-logo" alt="Stanbic" class="w-8 h-8 object-contain">
+                                    <span class="text-[10px] text-slate-300 mt-1">Stanbic</span>
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <img src="./izwe-logo" alt="Izwe" class="w-8 h-8 object-contain">
+                                    <span class="text-[10px] text-slate-300 mt-1">Izwe</span>
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <img src="./access-bank-plc-logo.png" alt="Access Bank" class="w-8 h-8 object-contain">
+                                    <span class="text-[10px] text-slate-300 mt-1">Ac</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
