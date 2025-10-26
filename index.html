@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-    <!-- META TAGS FOR CHARACTER SET AND VIEWPORT -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Iback Lungu | Data Science Portfolio</title>
     
-    <!-- ===== EXTERNAL DEPENDENCIES ===== -->
-    <!-- EmailJS for contact form functionality -->
+    <!-- EmailJS for contact form -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script type="text/javascript">
         (function() {
@@ -15,27 +13,26 @@
         })();
     </script>
     
-    <!-- Tailwind CSS for styling -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Google Fonts - Inter font family -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
-    <!-- CUSTOM STYLES -->
     <style>
         /* === GLOBAL STYLES === */
         body {
             font-family: 'Inter', sans-serif;
-            -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
-            scrollbar-width: none; /* Hide scrollbar for Firefox */
-            padding-top: 4rem; /* Space for fixed header */
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            padding-top: 4rem;
             margin: 0;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); /* Dark gradient background */
-            color: #f8fafc; /* Light text color */
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #f8fafc;
         }
-        /* Hide scrollbar for Webkit browsers */
+        
         body::-webkit-scrollbar { 
             display: none; 
         }
@@ -48,7 +45,7 @@
             background-clip: text;
         }
 
-        /* Hero section fade-in animation */
+        /* Animations */
         .hero-fade-in { 
             opacity: 0; 
             transform: translateY(2rem); 
@@ -59,7 +56,6 @@
             transform: translateY(0); 
         }
 
-        /* Scroll animation for sections */
         .animate-on-scroll { 
             opacity: 0; 
             transform: translateY(3rem); 
@@ -72,44 +68,42 @@
 
         /* === CARD STYLES === */
         .professional-card {
-            background: rgba(30, 41, 59, 0.7); /* Semi-transparent dark background */
-            backdrop-filter: blur(4px); /* Blur effect for glassmorphism */
-            border-radius: 16px; /* Rounded corners */
-            border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
-            transition: all 0.4s ease; /* Smooth transition for hover effects */
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(4px);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
             overflow: hidden;
             position: relative;
         }
 
-        /* Card hover effect */
         .professional-card:hover {
-            transform: translateY(-8px); /* Lift effect on hover */
-            box-shadow: 0 16px 40px rgba(6, 214, 160, 0.15); /* Green shadow */
-            border-color: rgba(6, 214, 160, 0.3); /* Green border on hover */
+            transform: translateY(-8px);
+            box-shadow: 0 16px 40px rgba(6, 214, 160, 0.15);
+            border-color: rgba(6, 214, 160, 0.3);
         }
 
-        /* Container for card logos */
         .card-logo-container {
             width: 100%;
             height: 100px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(0, 0, 0, 0.1); /* Dark background for logos */
+            background: rgba(0, 0, 0, 0.1);
             margin-bottom: 1rem;
             position: relative;
         }
         .card-logo-container img {
             max-height: 70px;
             max-width: 160px;
-            object-fit: contain; /* Maintain aspect ratio */
+            object-fit: contain;
         }
 
         /* === BUTTON STYLES === */
         .cta-button {
             display: inline-flex;
             align-items: center;
-            background: linear-gradient(135deg, #3b82f6 0%, #06d6a0 100%); /* Gradient background */
+            background: linear-gradient(135deg, #3b82f6 0%, #06d6a0 100%);
             color: white; 
             font-weight: 700;
             padding: 0.75rem 1.5rem;
@@ -118,11 +112,11 @@
             transition: all 0.3s ease;
             text-decoration: none;
             letter-spacing: 0.05em;
-            box-shadow: 0 4px 6px rgba(6,214,160,0.2); /* Subtle shadow */
+            box-shadow: 0 4px 6px rgba(6,214,160,0.2);
         }
         .cta-button:hover {
-            transform: translateY(-3px); /* Lift effect on hover */
-            box-shadow: 0 8px 15px rgba(6, 214, 160, 0.3); /* Enhanced shadow on hover */
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(6, 214, 160, 0.3);
         }
 
         /* === FORM STYLES === */
@@ -138,8 +132,8 @@
             text-align: left;
             width: 100%;
             padding: 0.75rem 1rem;
-            background: rgba(255, 255, 255, 0.05); /* Semi-transparent background */
-            border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 8px;
             color: white;
             font-size: 0.9rem;
@@ -153,7 +147,7 @@
             margin-bottom: 3rem;
         }
         .section-subtitle {
-            color: #06d6a0; /* Green accent color */
+            color: #06d6a0;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.1em;
@@ -167,7 +161,7 @@
             margin-bottom: 1rem;
         }
         .section-description {
-            color: #94a3b8; /* Muted text color */
+            color: #94a3b8;
             max-width: 42rem;
             margin-left: auto;
             margin-right: auto;
@@ -184,27 +178,24 @@
             position: relative;
             height: 320px;
             overflow: hidden;
-            border-radius: 12px 12px 0 0; /* Rounded top corners only */
+            border-radius: 12px 12px 0 0;
         }
         .project-image-container img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             object-position: center;
-            image-rendering: -webkit-optimize-contrast; /* Improve image rendering */
             transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.3s ease;
-            will-change: transform; /* Performance optimization */
         }
         .project-image-container:hover img {
-            transform: scale(1.08); /* Zoom effect on hover */
-            filter: contrast(1.02) saturate(1.03); /* Slight enhancement on hover */
+            transform: scale(1.08);
+            filter: contrast(1.02) saturate(1.03);
         }
 
-        /* === PROJECT TITLE AT THE TOP === */
         .project-card-title {
             padding: 1.5rem 1.5rem 1rem;
             text-align: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Subtle separator */
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .project-card-title h3 {
@@ -215,29 +206,29 @@
         }
 
         .project-card-title p {
-            color: #cbd5e1; /* Muted text */
+            color: #cbd5e1;
             margin: 0.5rem 0 0;
             font-size: 0.9rem;
         }
 
-        /* === COMING SOON BADGE - MOVED HIGHER & TRANSPARENT === */
+        /* === COMING SOON BADGE === */
         .coming-soon-badge {
             position: absolute;
-            bottom: 150px; /* Positioned higher to avoid bank logos */
+            bottom: 150px;
             left: 50%;
-            transform: translateX(-50%); /* Center horizontally */
+            transform: translateX(-50%);
             display: inline-flex;
             align-items: center;
-            background: rgba(6, 214, 160, 0.15); /* Semi-transparent green */
+            background: rgba(6, 214, 160, 0.15);
             color: white;
             font-weight: 700;
             padding: 0.70rem 1.4rem;
-            border-radius: 9999px; /* Fully rounded */
+            border-radius: 9999px;
             font-size: 0.8rem;
             letter-spacing: 0.05em;
-            backdrop-filter: blur(10px); /* Glassmorphism effect */
+            backdrop-filter: blur(10px);
             border: 1px solid rgba(6, 214, 160, 0.3);
-            z-index: 10; /* Ensure it appears above other elements */
+            z-index: 10;
             cursor: pointer;
         }
         .coming-soon-badge .dot {
@@ -256,7 +247,7 @@
             background: white;
             border-radius: 9999px;
             opacity: 0.75;
-            animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite; /* Pulsing animation */
+            animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
         }
         .coming-soon-badge .dot .static {
             position: relative;
@@ -266,7 +257,6 @@
             border-radius: 9999px;
         }
 
-        /* Ping animation keyframes */
         @keyframes ping {
             75%, 100% {
                 transform: scale(2);
@@ -275,19 +265,6 @@
         }
 
         /* === SKILLS SECTION === */
-        .skill-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1rem;
-            padding: 0.75rem;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.03); /* Very subtle background */
-            transition: all 0.3s ease;
-        }
-        .skill-item:hover {
-            background: rgba(6, 214, 160, 0.1); /* Green highlight on hover */
-            transform: translateX(5px); /* Slight movement on hover */
-        }
         .skill-icon {
             width: 40px;
             height: 40px;
@@ -299,33 +276,29 @@
             font-weight: bold;
             font-size: 0.9rem;
             flex-shrink: 0;
-            background: rgba(6, 214, 160, 0.1); /* Green background */
-            color: #06d6a0; /* Green text */
-        }
-        .skill-name {
-            font-weight: 500;
-            color: white;
+            background: rgba(6, 214, 160, 0.1);
+            color: #06d6a0;
         }
 
-        /* === SOCIAL ICONS - HOVER EFFECT === */
+        /* === SOCIAL ICONS === */
         .social-icon {
             display: flex;
             align-items: center;
             justify-content: center;
             width: 40px;
             height: 40px;
-            border-radius: 50%; /* Circular icons */
-            background: rgba(30, 41, 59, 0.7); /* Dark background */
-            border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+            border-radius: 50%;
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.3s ease;
             padding: 8px;
             pointer-events: auto;
         }
         .social-icon:hover {
-            transform: translateY(-3px); /* Lift effect on hover */
-            background: rgba(6, 214, 160, 0.2); /* Green tint on hover */
-            border-color: rgba(6, 214, 160, 0.5); /* Green border on hover */
-            box-shadow: 0 4px 8px rgba(6, 214, 160, 0.2); /* Green shadow */
+            transform: translateY(-3px);
+            background: rgba(6, 214, 160, 0.2);
+            border-color: rgba(6, 214, 160, 0.5);
+            box-shadow: 0 4px 8px rgba(6, 214, 160, 0.2);
         }
         .social-icon img {
             width: 100%;
@@ -334,9 +307,8 @@
             border-radius: 50%;
         }
 
-        /* === RESPONSIVE & HERO FIXES === */
+        /* === RESPONSIVE STYLES === */
         @media (max-width: 640px) {
-            /* Disable animations on mobile for better performance */
             .hero-fade-in, .animate-on-scroll { 
                 transform: none !important; 
                 opacity: 1 !important; 
@@ -349,25 +321,27 @@
                 align-items: center;
             }
             .section-title {
-                font-size: 2rem; /* Smaller title on mobile */
+                font-size: 2rem;
             }
             
-            /* MOBILE RESPONSIVE STYLES FOR COMING SOON BADGE */
             .coming-soon-badge {
-                padding: 0.5rem 1rem; /* Reduced padding for mobile */
-                font-size: 0.75rem; /* Smaller font size for mobile */
-                bottom: 180px; /* Adjusted position for mobile */
+                padding: 0.5rem 1rem;
+                font-size: 0.75rem;
+                bottom: 180px;
             }
             .coming-soon-badge .dot {
-                width: 0.5rem; /* Smaller dot for mobile */
-                height: 0.5rem; /* Smaller dot for mobile */
-                margin-right: 0.375rem; /* Reduced spacing for mobile */
+                width: 0.5rem;
+                height: 0.5rem;
+                margin-right: 0.375rem;
+            }
+            
+            .project-image-container { 
+                height: 220px; 
             }
         }
 
-        /* Hero section styling */
         #home {
-            min-height: calc(100vh - 4rem); /* Full viewport height minus header */
+            min-height: calc(100vh - 4rem);
             padding-top: 0;
             padding-left: 1rem;
             padding-right: 1rem;
@@ -376,7 +350,7 @@
             justify-content: center;
         }
 
-        /* === BLINKING DOT ANIMATION FOR "IN PROGRESS" STATUS === */
+        /* === BLINKING DOT ANIMATION === */
         @keyframes blinking-dot {
             0%, 100% { opacity: 1; }
             50% { opacity: 0; }
@@ -388,138 +362,85 @@
             border-radius: 50%;
             background-color: #06d6a0;
             margin-left: 8px;
-            animation: blinking-dot 1.4s ease-in-out infinite; /* Blinking animation */
+            animation: blinking-dot 1.4s ease-in-out infinite;
         }
 
-        /* === CENTERED BLINKING DOT FOR ALX LOGO === */
         .alx-progress-dot {
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%); /* Perfect centering */
+            transform: translate(-50%, -50%);
             width: 12px;
             height: 12px;
             border-radius: 50%;
-            background-color: #0d5a47; /* Darker green */
+            background-color: #0d5a47;
             animation: blinking-dot 1.4s ease-in-out infinite;
             z-index: 5;
         }
 
-        /* Responsive project image heights */
         @media (min-width: 1024px) {
-            .project-image-container { height: 420px; } /* Taller images on desktop */
-        }
-        @media (max-width: 640px) {
-            .project-image-container { height: 220px; } /* Shorter images on mobile */
+            .project-image-container { height: 420px; }
         }
 
         /* === RESPONSIVE LOGO CONTAINER STYLES === */
-        /* Desktop: Single horizontal line with all logos */
         .bank-logos-desktop {
-            display: flex; /* Flex layout for horizontal alignment */
-            flex-wrap: nowrap; /* Prevent wrapping to keep in single line */
-            justify-content: center; /* Center logos horizontally */
-            align-items: center; /* Center logos vertically */
-            gap: 1rem; /* Space between logos */
-            padding: 0.5rem 0; /* Vertical padding */
-            overflow-x: auto; /* Allow horizontal scrolling if needed */
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.5rem 0;
+            overflow-x: auto;
         }
         
-        /* Mobile: Grid layout with 5 logos per row */
         .bank-logos-mobile {
-            display: grid; /* Grid layout for precise control */
-            grid-template-columns: repeat(5, 1fr); /* 5 equal columns */
-            gap: 0.75rem; /* Space between grid items */
-            padding: 0.5rem 0; /* Vertical padding */
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 0.75rem;
+            padding: 0.5rem 0;
         }
         
-        /* Individual logo item styling */
         .bank-logo-item {
             display: flex;
-            flex-direction: column; /* Stack image and text vertically */
-            align-items: center; /* Center content horizontally */
-            justify-content: center; /* Center content vertically */
-            position: relative; /* For tooltip positioning */
-            transition: all 0.3s ease; /* Smooth transition for hover effects */
-            cursor: pointer; /* Indicate interactivity */
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transition: all 0.3s ease;
+            cursor: pointer;
         }
 
-        /* Hover effect for all bank logos */
         .bank-logo-item:hover {
-            transform: translateY(-5px); /* Lift effect on hover */
+            transform: translateY(-5px);
         }
 
-        /* Logo image styling */
         .bank-logo-item img {
-            width: 2.5rem; /* Fixed width for consistency */
-            height: 2.5rem; /* Fixed height for consistency */
-            object-fit: contain; /* Maintain aspect ratio */
-            transition: all 0.3s ease; /* Smooth transition for hover effects */
+            width: 2.5rem;
+            height: 2.5rem;
+            object-fit: contain;
+            transition: all 0.3s ease;
         }
 
-        /* Enhanced hover effect for logo images */
         .bank-logo-item:hover img {
-            filter: brightness(1.2) contrast(1.1); /* Slight brightness and contrast boost */
-            transform: scale(1.1); /* Slight scale up on hover */
+            filter: brightness(1.2) contrast(1.1);
+            transform: scale(1.1);
         }
         
-        /* Logo label styling */
         .bank-logo-item span {
-            font-size: 0.6rem; /* Small text for labels */
-            margin-top: 0.25rem; /* Space between image and text */
-            text-align: center; /* Center align text */
-            color: #cbd5e1; /* Muted text color */
-        }
-
-        /* Tooltip styling for FDBZ logo */
-        .bank-logo-item .tooltip {
-            position: absolute;
-            bottom: 100%; /* Position above the logo */
-            left: 50%;
-            transform: translateX(-50%) translateY(-10px); /* Center and position slightly above */
-            background: rgba(6, 214, 160, 0.9); /* Green background */
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            white-space: nowrap;
-            opacity: 0; /* Hidden by default */
-            visibility: hidden; /* Hidden by default */
-            transition: all 0.3s ease; /* Smooth transition */
-            z-index: 20; /* Ensure it appears above other elements */
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Subtle shadow */
-        }
-
-        /* Tooltip arrow */
-        .bank-logo-item .tooltip::after {
-            content: '';
-            position: absolute;
-            top: 100%; /* Position at bottom of tooltip */
-            left: 50%;
-            transform: translateX(-50%);
-            border-width: 6px;
-            border-style: solid;
-            border-color: rgba(6, 214, 160, 0.9) transparent transparent transparent;
-        }
-
-        /* Show tooltip on hover */
-        .bank-logo-item:hover .tooltip {
-            opacity: 1; /* Make visible */
-            visibility: visible; /* Make visible */
-            transform: translateX(-50%) translateY(-5px); /* Final position */
+            font-size: 0.6rem;
+            margin-top: 0.25rem;
+            text-align: center;
+            color: #cbd5e1;
         }
 
         /* === ENHANCED FDBZ SIGNAL STYLES === */
-        /* Container for FDBZ logo with signals */
         .fdbl-logo-container {
-            position: relative; /* For positioning the signal elements */
+            position: relative;
         }
 
-        /* Enhanced signal indicator */
         .fdbl-signal-indicator {
             position: absolute;
-            top: -45px;
+            top: -35px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
@@ -529,14 +450,13 @@
             cursor: pointer;
         }
 
-        /* Enhanced signal animation */
         .fdbl-signal-pulse {
-            width: 16px;
-            height: 16px;
+            width: 14px;
+            height: 14px;
             border-radius: 50%;
             background: #06d6a0;
             position: relative;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             animation: signal-pulse 1.5s ease-in-out infinite;
             box-shadow: 0 0 0 0 rgba(6, 214, 160, 0.7);
         }
@@ -548,7 +468,7 @@
             }
             70% {
                 transform: scale(1.1);
-                box-shadow: 0 0 0 10px rgba(6, 214, 160, 0);
+                box-shadow: 0 0 0 8px rgba(6, 214, 160, 0);
             }
             100% {
                 transform: scale(0.95);
@@ -556,13 +476,12 @@
             }
         }
 
-        /* Arrow pointing down */
         .fdbl-arrow-down {
             width: 0;
             height: 0;
-            border-left: 6px solid transparent;
-            border-right: 6px solid transparent;
-            border-top: 10px solid #06d6a0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 8px solid #06d6a0;
             animation: arrow-bounce 1.5s ease-in-out infinite;
         }
 
@@ -571,30 +490,31 @@
                 transform: translateY(0);
             }
             50% {
-                transform: translateY(3px);
+                transform: translateY(2px);
             }
         }
 
-        /* "CLICK HERE" message */
+        /* "CLICK HERE" message - SMALLER SIZE */
         .fdbl-click-here {
             position: absolute;
-            top: -75px;
+            top: -60px;
             left: 50%;
             transform: translateX(-50%);
             white-space: nowrap;
-            font-size: 0.75rem;
+            font-size: 0.65rem;
             font-weight: 700;
             color: #06d6a0;
-            background: rgba(30, 41, 59, 0.9);
-            padding: 0.4rem 0.8rem;
+            background: rgba(30, 41, 59, 0.95);
+            padding: 0.35rem 0.7rem;
             border-radius: 6px;
             border: 1px solid #06d6a0;
-            box-shadow: 0 4px 8px rgba(6, 214, 160, 0.2);
+            box-shadow: 0 3px 6px rgba(6, 214, 160, 0.2);
             text-transform: uppercase;
             letter-spacing: 0.5px;
             cursor: pointer;
             transition: all 0.3s ease;
             z-index: 16;
+            line-height: 1;
         }
 
         .fdbl-click-here:hover {
@@ -602,36 +522,10 @@
             transform: translateX(-50%) scale(1.05);
         }
 
-        /* Subtle pulsing glow for FDBZ logo */
-        .fdbl-logo-glow {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 3rem;
-            height: 3rem;
-            border-radius: 50%;
-            background: rgba(6, 214, 160, 0.2);
-            animation: logo-pulse 2s ease-in-out infinite;
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        @keyframes logo-pulse {
-            0%, 100% {
-                transform: translate(-50%, -50%) scale(1);
-                opacity: 0.4;
-            }
-            50% {
-                transform: translate(-50%, -50%) scale(1.2);
-                opacity: 0.6;
-            }
-        }
-
-        /* FDBZ coming soon badge */
+        /* FDBZ coming soon badge - SMALLER SIZE */
         .fdbl-coming-soon {
             position: absolute;
-            top: -75px;
+            top: -60px;
             left: 50%;
             transform: translateX(-50%);
             display: inline-flex;
@@ -639,24 +533,25 @@
             background: rgba(6, 214, 160, 0.15);
             color: white;
             font-weight: 700;
-            padding: 0.5rem 1rem;
+            padding: 0.4rem 0.8rem;
             border-radius: 9999px;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             letter-spacing: 0.05em;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(6, 214, 160, 0.3);
             z-index: 16;
             cursor: pointer;
             transition: all 0.3s ease;
-            display: none; /* Hidden by default */
+            display: none;
+            line-height: 1;
         }
 
         .fdbl-coming-soon .dot {
             position: relative;
             display: flex;
-            width: 0.6rem;
-            height: 0.6rem;
-            margin-right: 0.4rem;
+            width: 0.5rem;
+            height: 0.5rem;
+            margin-right: 0.3rem;
         }
 
         .fdbl-coming-soon .dot .ping {
@@ -684,51 +579,88 @@
             transform: translateX(-50%) scale(1.05);
         }
 
+        .fdbl-logo-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            background: rgba(6, 214, 160, 0.2);
+            animation: logo-pulse 2s ease-in-out infinite;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        @keyframes logo-pulse {
+            0%, 100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.4;
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.15);
+                opacity: 0.6;
+            }
+        }
+
         /* Responsive adjustments for mobile */
         @media (max-width: 768px) {
             .bank-logos-desktop {
-                display: none; /* Hide desktop layout on mobile */
+                display: none;
             }
             .bank-logos-mobile {
-                display: grid; /* Show mobile layout on mobile */
+                display: grid;
             }
 
-            /* Adjust tooltip for mobile */
-            .bank-logo-item .tooltip {
-                font-size: 0.7rem; /* Smaller font on mobile */
-                padding: 0.4rem 0.8rem; /* Smaller padding on mobile */
-            }
-
-            /* Adjust FDBZ signals for mobile */
             .fdbl-signal-indicator {
-                top: -35px;
+                top: -30px;
             }
 
             .fdbl-click-here, .fdbl-coming-soon {
-                top: -60px;
-                font-size: 0.65rem;
-                padding: 0.3rem 0.6rem;
+                top: -50px;
+                font-size: 0.6rem;
+                padding: 0.25rem 0.5rem;
+                white-space: nowrap;
             }
 
             .fdbl-signal-pulse {
-                width: 12px;
-                height: 12px;
+                width: 10px;
+                height: 10px;
             }
 
             .fdbl-arrow-down {
-                border-left: 5px solid transparent;
-                border-right: 5px solid transparent;
-                border-top: 8px solid #06d6a0;
+                border-left: 4px solid transparent;
+                border-right: 4px solid transparent;
+                border-top: 6px solid #06d6a0;
+            }
+
+            .fdbl-logo-glow {
+                width: 2rem;
+                height: 2rem;
             }
         }
-        
+
+        /* Extra small mobile devices */
+        @media (max-width: 480px) {
+            .fdbl-click-here, .fdbl-coming-soon {
+                font-size: 0.55rem;
+                padding: 0.2rem 0.4rem;
+                letter-spacing: 0.3px;
+            }
+            
+            .fdbl-signal-indicator {
+                top: -25px;
+            }
+        }
+
         /* Responsive adjustments for desktop */
         @media (min-width: 769px) {
             .bank-logos-desktop {
-                display: flex; /* Show desktop layout on desktop */
+                display: flex;
             }
             .bank-logos-mobile {
-                display: none; /* Hide mobile layout on desktop */
+                display: none;
             }
         }
     </style>
@@ -765,7 +697,7 @@
             </div>
         </div>
         
-        <!-- Mobile Menu (Hidden by default) -->
+        <!-- Mobile Menu -->
         <div id="mobile-menu" class="md:hidden absolute top-16 left-0 w-full bg-slate-900/98 backdrop-blur-lg transition-all duration-300 ease-in-out opacity-0 invisible">
             <nav class="flex flex-col items-center space-y-4 py-6">
                 <a href="#home" class="text-slate-300 hover:text-teal-400 font-medium text-lg mobile-nav-link">Home</a>
@@ -825,7 +757,6 @@
                                 <!-- Centered blinking dot on ALX logo -->
                                 <span class="alx-progress-dot" aria-label="In progress"></span>
                             </div>
-                            <!-- Title without inline blinking dot -->
                             <h4 class="text-xl font-bold text-[#17c8d9] mt-2">ALX Africa Data Science Program</h4>
                             <p class="text-slate-400 text-sm mb-3">2025 – 2026</p>
                             <p class="text-slate-300 mt-2 w-full text-left">
@@ -1053,7 +984,7 @@
                                             
                                             <!-- "CLICK HERE" message -->
                                             <div class="fdbl-click-here" id="fdbl-click-here">
-                                                CLICK HERE
+                                                CLICK TO EXPLORE
                                             </div>
                                             
                                             <!-- "COMING SOON" badge -->
@@ -1069,9 +1000,7 @@
                                             <div class="fdbl-logo-glow"></div>
                                             
                                             <img src="./FDBZ-logo.png" alt="First Digital Bank In Zambia">
-                                            <span>FDBZ</span>
-                                            <!-- Tooltip for FDBZ -->
-                                            <div class="tooltip">Click to explore</div> 
+                                            <span>FDBZ</span> 
                                         </div>
                                         <div class="bank-logo-item">
                                             <img src="./zanaco-logo.png" alt="Zanaco">
@@ -1123,7 +1052,7 @@
                                             
                                             <!-- "CLICK HERE" message -->
                                             <div class="fdbl-click-here" id="fdbl-click-here-mobile">
-                                                CLICK HERE
+                                                CLICK TO EXPLORE
                                             </div>
                                             
                                             <!-- "COMING SOON" badge -->
@@ -1140,8 +1069,6 @@
                                             
                                             <img src="./FDBZ-logo.png" alt="First Digital Bank In Zambia">
                                             <span>FDBZ</span>
-                                            <!-- Tooltip for FDBZ -->
-                                            <div class="tooltip">Click to explore</div>
                                         </div>
                                         <div class="bank-logo-item">
                                             <img src="./zanaco-logo.png" alt="Zanaco">
@@ -1238,10 +1165,6 @@
             &copy; <span id="current-year"></span> Iback Lungu. All Rights Reserved.
         </p>
     </footer>
-
-    <!-- ===== EXTERNAL SCRIPTS ===== -->
-    <!-- Font Awesome Icons -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js" crossorigin="anonymous"></script>
 
     <!-- ===== CUSTOM JAVASCRIPT ===== -->
     <script>
