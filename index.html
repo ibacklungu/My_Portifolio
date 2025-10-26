@@ -580,6 +580,27 @@
             .bank-logos-mobile {
                 display: none;
             }
+            
+            /* FIX: Ensure FDBZ explore elements are visible on desktop */
+            .fdbl-logo-container .fdbl-signal-indicator,
+            .fdbl-logo-container .fdbl-explore {
+                display: flex !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+            }
+            
+            .maji-explore-container,
+            .maji-explore-container .maji-explore {
+                display: flex !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+            }
+        }
+
+        /* FIX: Ensure the parent container has enough height for the explore elements */
+        .fdbl-logo-container {
+            min-height: 80px;
+            padding-top: 20px;
         }
     </style>
 </head>
@@ -895,9 +916,25 @@
                             
                                 <!-- Logo Legend -->
                                 <div class="mt-auto pt-4">
-                                    <!-- DESKTOP LOGO LAYOUT: Single horizontal line -->
+                                    <!-- DESKTOP LOGO LAYOUT: Single horizontal line - FDBZ at position 5 -->
                                     <div class="bank-logos-desktop">
-                                        <!-- FDBZ Logo with Special Effects -->
+                                        <div class="bank-logo-item">
+                                            <img src="./zanaco-logo.png" alt="Zanaco">
+                                            <span>Zanaco</span>
+                                        </div>
+                                        <div class="bank-logo-item">
+                                            <img src="./indo-logo.png" alt="Indo">
+                                            <span>Indo</span>
+                                        </div>
+                                        <div class="bank-logo-item">
+                                            <img src="./absa-logo.webp" alt="ABSA">
+                                            <span>ABSA</span>
+                                        </div>
+                                        <div class="bank-logo-item">
+                                            <img src="./stanbic bank-logo" alt="Stanbic">
+                                            <span>Stanbic</span>
+                                        </div>
+                                        <!-- FDBZ Logo with Special Effects - Position 5 -->
                                         <div class="bank-logo-item fdbl-logo-container">
                                             <!-- Enhanced signal indicator - Arrow only -->
                                             <div class="fdbl-signal-indicator">
@@ -916,22 +953,6 @@
                                             
                                             <img src="./FDBZ-logo.png" alt="First Digital Bank In Zambia">
                                             <span>FDBZ</span> 
-                                        </div>
-                                        <div class="bank-logo-item">
-                                            <img src="./zanaco-logo.png" alt="Zanaco">
-                                            <span>Zanaco</span>
-                                        </div>
-                                        <div class="bank-logo-item">
-                                            <img src="./indo-logo.png" alt="Indo">
-                                            <span>Indo</span>
-                                        </div>
-                                        <div class="bank-logo-item">
-                                            <img src="./absa-logo.webp" alt="ABSA">
-                                            <span>ABSA</span>
-                                        </div>
-                                        <div class="bank-logo-item">
-                                            <img src="./stanbic bank-logo" alt="Stanbic">
-                                            <span>Stanbic</span>
                                         </div>
                                         <div class="bank-logo-item">
                                             <img src="./konse konse -logo" alt="Konse">
@@ -955,9 +976,17 @@
                                         </div>
                                     </div>
 
-                                    <!-- MOBILE LOGO LAYOUT: 5 logos per row (2 rows) -->
+                                    <!-- MOBILE LOGO LAYOUT: 5 logos per row (2 rows) - FDBZ at position 3 -->
                                     <div class="bank-logos-mobile">
-                                        <!-- FDBZ Logo with Special Effects -->
+                                        <div class="bank-logo-item">
+                                            <img src="./zanaco-logo.png" alt="Zanaco">
+                                            <span>Zanaco</span>
+                                        </div>
+                                        <div class="bank-logo-item">
+                                            <img src="./indo-logo.png" alt="Indo">
+                                            <span>Indo</span>
+                                        </div>
+                                        <!-- FDBZ Logo with Special Effects - Position 3 -->
                                         <div class="bank-logo-item fdbl-logo-container">
                                             <!-- Enhanced signal indicator - Arrow only -->
                                             <div class="fdbl-signal-indicator">
@@ -976,14 +1005,6 @@
                                             
                                             <img src="./FDBZ-logo.png" alt="First Digital Bank In Zambia">
                                             <span>FDBZ</span>
-                                        </div>
-                                        <div class="bank-logo-item">
-                                            <img src="./zanaco-logo.png" alt="Zanaco">
-                                            <span>Zanaco</span>
-                                        </div>
-                                        <div class="bank-logo-item">
-                                            <img src="./indo-logo.png" alt="Indo">
-                                            <span>Indo</span>
                                         </div>
                                         <div class="bank-logo-item">
                                             <img src="./absa-logo.webp" alt="ABSA">
