@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
+    <!-- META TAGS FOR CHARACTER SET AND VIEWPORT -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Iback Lungu | Data Science Portfolio</title>
     
     <!-- ===== EXTERNAL DEPENDENCIES ===== -->
+    <!-- EmailJS for contact form functionality -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script type="text/javascript">
         (function() {
@@ -13,1008 +15,1190 @@
         })();
     </script>
     
+    <!-- Tailwind CSS for styling -->
     <script src="https://cdn.tailwindcss.com"></script>
     
+    <!-- Google Fonts - Inter font family -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
+    <!-- CUSTOM STYLES -->
     <style>
-/* === GLOBAL STYLES === */
-body {
-    font-family: 'Inter', sans-serif;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-    padding-top: 4rem;
-    margin: 0;
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-    color: #f8fafc;
-}
-body::-webkit-scrollbar { display: none; }
+        /* === GLOBAL STYLES === */
+        body {
+            font-family: 'Inter', sans-serif;
+            -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
+            scrollbar-width: none; /* Hide scrollbar for Firefox */
+            padding-top: 4rem; /* Space for fixed header */
+            margin: 0;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); /* Dark gradient background */
+            color: #f8fafc; /* Light text color */
+        }
+        /* Hide scrollbar for Webkit browsers */
+        body::-webkit-scrollbar { 
+            display: none; 
+        }
 
-.text-gradient {
-    background: linear-gradient(135deg, #3b82f6 0%, #06d6a0 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
+        /* Gradient text effect */
+        .text-gradient {
+            background: linear-gradient(135deg, #3b82f6 0%, #06d6a0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
 
-.hero-fade-in { 
-    opacity: 0; 
-    transform: translateY(2rem); 
-    transition: opacity 1.2s cubic-bezier(0.19, 1, 0.22, 1), transform 1.2s cubic-bezier(0.19, 1, 0.22, 1); 
-}
-.hero-fade-in.is-visible { 
-    opacity: 1; 
-    transform: translateY(0); 
-}
+        /* Hero section fade-in animation */
+        .hero-fade-in { 
+            opacity: 0; 
+            transform: translateY(2rem); 
+            transition: opacity 1.2s cubic-bezier(0.19, 1, 0.22, 1), transform 1.2s cubic-bezier(0.19, 1, 0.22, 1); 
+        }
+        .hero-fade-in.is-visible { 
+            opacity: 1; 
+            transform: translateY(0); 
+        }
 
-.animate-on-scroll { 
-    opacity: 0; 
-    transform: translateY(3rem); 
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out; 
-}
-.animate-on-scroll.is-visible { 
-    opacity: 1; 
-    transform: translateY(0); 
-}
+        /* Scroll animation for sections */
+        .animate-on-scroll { 
+            opacity: 0; 
+            transform: translateY(3rem); 
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out; 
+        }
+        .animate-on-scroll.is-visible { 
+            opacity: 1; 
+            transform: translateY(0); 
+        }
 
-/* === CARD STYLES === */
-.professional-card {
-    background: rgba(30, 41, 59, 0.7);
-    backdrop-filter: blur(4px);
-    border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: all 0.4s ease;
-    overflow: hidden;
-    position: relative;
-}
+        /* === CARD STYLES === */
+        .professional-card {
+            background: rgba(30, 41, 59, 0.7); /* Semi-transparent dark background */
+            backdrop-filter: blur(4px); /* Blur effect for glassmorphism */
+            border-radius: 16px; /* Rounded corners */
+            border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+            transition: all 0.4s ease; /* Smooth transition for hover effects */
+            overflow: hidden;
+            position: relative;
+        }
 
-.professional-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 16px 40px rgba(6, 214, 160, 0.15);
-    border-color: rgba(6, 214, 160, 0.3);
-}
+        /* Card hover effect */
+        .professional-card:hover {
+            transform: translateY(-8px); /* Lift effect on hover */
+            box-shadow: 0 16px 40px rgba(6, 214, 160, 0.15); /* Green shadow */
+            border-color: rgba(6, 214, 160, 0.3); /* Green border on hover */
+        }
 
-.card-logo-container {
-    width: 100%;
-    height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(0, 0, 0, 0.1);
-    margin-bottom: 1rem;
-    position: relative;
-}
-.card-logo-container img {
-    max-height: 70px;
-    max-width: 160px;
-    object-fit: contain;
-}
+        /* Container for card logos */
+        .card-logo-container {
+            width: 100%;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.1); /* Dark background for logos */
+            margin-bottom: 1rem;
+            position: relative;
+        }
+        .card-logo-container img {
+            max-height: 70px;
+            max-width: 160px;
+            object-fit: contain; /* Maintain aspect ratio */
+        }
 
-/* === BUTTON STYLES === */
-.cta-button {
-  display: inline-flex;
-  align-items: center;
-  background: linear-gradient(135deg, #3b82f6 0%, #06d6a0 100%);
-  color: white; 
-  font-weight: 700;
-  padding: 0.75rem 1.5rem;
-  border-radius: 12px;
-  font-size: 0.9rem;
-  transition: all 0.3s ease;
-  text-decoration: none;
-  letter-spacing: 0.05em;
-  box-shadow: 0 4px 6px rgba(6,214,160,0.2);
-}
-.cta-button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 15px rgba(6, 214, 160, 0.3);
-}
+        /* === BUTTON STYLES === */
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            background: linear-gradient(135deg, #3b82f6 0%, #06d6a0 100%); /* Gradient background */
+            color: white; 
+            font-weight: 700;
+            padding: 0.75rem 1.5rem;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            letter-spacing: 0.05em;
+            box-shadow: 0 4px 6px rgba(6,214,160,0.2); /* Subtle shadow */
+        }
+        .cta-button:hover {
+            transform: translateY(-3px); /* Lift effect on hover */
+            box-shadow: 0 8px 15px rgba(6, 214, 160, 0.3); /* Enhanced shadow on hover */
+        }
 
-.live-button {
-  display: inline-flex;
-  align-items: center;
-  background-color: #06d6a0;
-  color: #101620; 
-  font-weight: 700;
-  padding: 0.5rem 1rem;
-  border-radius: 9999px;
-  font-size: 0.8rem;
-  transition: all 0.3s ease;
-  text-decoration: none;
-  letter-spacing: 0.05em;
-  box-shadow: 0 4px 6px rgba(6,214,160,0.2);
-}
-.live-button:hover {
-  background-color: #17c8d9;
-  transform: scale(1.03);
-  box-shadow: 0 4px 10px rgba(23,200,217,0.4);
-}
+        /* === FORM STYLES === */
+        .centered-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .form-input {
+            text-align: left;
+            width: 100%;
+            padding: 0.75rem 1rem;
+            background: rgba(255, 255, 255, 0.05); /* Semi-transparent background */
+            border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+            border-radius: 8px;
+            color: white;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            margin-bottom: 1rem;
+        }
 
-/* === FORM STYLES === */
-.centered-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  max-width: 400px;
-  margin: 0 auto;
-}
-.form-input {
-  text-align: left;
-  width: 100%;
-  padding: 0.75rem 1rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-  color: white;
-  font-size: 0.9rem;
-  transition: all 0.3s ease;
-  margin-bottom: 1rem;
-}
+        /* === SECTION HEADERS === */
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .section-subtitle {
+            color: #06d6a0; /* Green accent color */
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+        }
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1rem;
+        }
+        .section-description {
+            color: #94a3b8; /* Muted text color */
+            max-width: 42rem;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
 
-/* === SECTION HEADERS === */
-.section-header {
-  text-align: center;
-  margin-bottom: 3rem;
-}
-.section-subtitle {
-  color: #06d6a0;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-size: 0.875rem;
-  margin-bottom: 0.5rem;
-}
-.section-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: white;
-  margin-bottom: 1rem;
-}
-.section-description {
-  color: #94a3b8;
-  max-width: 42rem;
-  margin-left: auto;
-  margin-right: auto;
-  line-height: 1.6;
-}
+        /* === PROJECT CARD STYLES === */
+        .project-card {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .project-image-container {
+            position: relative;
+            height: 320px;
+            overflow: hidden;
+            border-radius: 12px 12px 0 0; /* Rounded top corners only */
+        }
+        .project-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            image-rendering: -webkit-optimize-contrast; /* Improve image rendering */
+            transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.3s ease;
+            will-change: transform; /* Performance optimization */
+        }
+        .project-image-container:hover img {
+            transform: scale(1.08); /* Zoom effect on hover */
+            filter: contrast(1.02) saturate(1.03); /* Slight enhancement on hover */
+        }
 
-/* === PROJECT CARD STYLES === */
-.project-card {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-.project-image-container {
-  position: relative;
-  height: 320px;
-  overflow: hidden;
-  border-radius: 12px 12px 0 0;
-}
-.project-image-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  image-rendering: -webkit-optimize-contrast;
-  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.3s ease;
-  will-change: transform;
-}
-.project-image-container:hover img {
-  transform: scale(1.08);
-  filter: contrast(1.02) saturate(1.03);
-}
+        /* === PROJECT TITLE AT THE TOP === */
+        .project-card-title {
+            padding: 1.5rem 1.5rem 1rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Subtle separator */
+        }
 
-/* === PROJECT TITLE AT THE TOP === */
-.project-card-title {
-  padding: 1.5rem 1.5rem 1rem;
-  text-align: center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
+        .project-card-title h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            margin: 0;
+        }
 
-.project-card-title h3 {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: white;
-  margin: 0;
-}
+        .project-card-title p {
+            color: #cbd5e1; /* Muted text */
+            margin: 0.5rem 0 0;
+            font-size: 0.9rem;
+        }
 
-.project-card-title p {
-  color: #cbd5e1;
-  margin: 0.5rem 0 0;
-  font-size: 0.9rem;
-}
+        /* === COMING SOON BADGE - MOVED HIGHER & TRANSPARENT === */
+        .coming-soon-badge {
+            position: absolute;
+            bottom: 150px; /* Positioned higher to avoid bank logos */
+            left: 50%;
+            transform: translateX(-50%); /* Center horizontally */
+            display: inline-flex;
+            align-items: center;
+            background: rgba(6, 214, 160, 0.15); /* Semi-transparent green */
+            color: white;
+            font-weight: 700;
+            padding: 0.70rem 1.4rem;
+            border-radius: 9999px; /* Fully rounded */
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
+            backdrop-filter: blur(10px); /* Glassmorphism effect */
+            border: 1px solid rgba(6, 214, 160, 0.3);
+            z-index: 10; /* Ensure it appears above other elements */
+        }
+        .coming-soon-badge .dot {
+            position: relative;
+            display: flex;
+            width: 0.75rem;
+            height: 0.75rem;
+            margin-right: 0.5rem;
+        }
+        .coming-soon-badge .dot .ping {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            border-radius: 9999px;
+            opacity: 0.75;
+            animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite; /* Pulsing animation */
+        }
+        .coming-soon-badge .dot .static {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: white;
+            border-radius: 9999px;
+        }
 
-/* === COMING SOON BADGE - MOVED HIGHER & TRANSPARENT === */
-.coming-soon-badge {
-  position: absolute;
-  bottom: 150px; /* Moved higher to avoid bank logos */
-  left: 50%;
-  transform: translateX(-50%);
-  display: inline-flex;
-  align-items: center;
-  background: rgba(6, 214, 160, 0.15);
-  color: white;
-  font-weight: 700;
-  padding: 0.70rem 1.4rem;
-  border-radius: 9999px;
-  font-size: 0.8rem;
-  letter-spacing: 0.05em;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(6, 214, 160, 0.3);
-  z-index: 10;
-}
-.coming-soon-badge .dot {
-  position: relative;
-  display: flex;
-  width: 0.75rem;
-  height: 0.75rem;
-  margin-right: 0.5rem;
-}
-.coming-soon-badge .dot .ping {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: white;
-  border-radius: 9999px;
-  opacity: 0.75;
-  animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
-}
-.coming-soon-badge .dot .static {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  background: white;
-  border-radius: 9999px;
-}
+        /* Ping animation keyframes */
+        @keyframes ping {
+            75%, 100% {
+                transform: scale(2);
+                opacity: 0;
+            }
+        }
 
-@keyframes ping {
-  75%, 100% {
-    transform: scale(2);
-    opacity: 0;
-  }
-}
+        /* === SKILLS SECTION === */
+        .skill-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding: 0.75rem;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.03); /* Very subtle background */
+            transition: all 0.3s ease;
+        }
+        .skill-item:hover {
+            background: rgba(6, 214, 160, 0.1); /* Green highlight on hover */
+            transform: translateX(5px); /* Slight movement on hover */
+        }
+        .skill-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            font-weight: bold;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+            background: rgba(6, 214, 160, 0.1); /* Green background */
+            color: #06d6a0; /* Green text */
+        }
+        .skill-name {
+            font-weight: 500;
+            color: white;
+        }
 
-/* === SKILLS SECTION === */
-.skill-item {
-  display: flex;
-  align-items: center;
-  margin-bottom: 1rem;
-  padding: 0.75rem;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.03);
-  transition: all 0.3s ease;
-}
-.skill-item:hover {
-  background: rgba(6, 214, 160, 0.1);
-  transform: translateX(5px);
-}
-.skill-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 1rem;
-  font-weight: bold;
-  font-size: 0.9rem;
-  flex-shrink: 0;
-  background: rgba(6, 214, 160, 0.1);
-  color: #06d6a0;
-}
-.skill-name {
-  font-weight: 500;
-  color: white;
-}
+        /* === SOCIAL ICONS - HOVER EFFECT === */
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%; /* Circular icons */
+            background: rgba(30, 41, 59, 0.7); /* Dark background */
+            border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+            transition: all 0.3s ease;
+            padding: 8px;
+            pointer-events: auto;
+        }
+        .social-icon:hover {
+            transform: translateY(-3px); /* Lift effect on hover */
+            background: rgba(6, 214, 160, 0.2); /* Green tint on hover */
+            border-color: rgba(6, 214, 160, 0.5); /* Green border on hover */
+            box-shadow: 0 4px 8px rgba(6, 214, 160, 0.2); /* Green shadow */
+        }
+        .social-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 50%;
+        }
 
-/* === SOCIAL ICONS - HOVER EFFECT === */
-.social-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: rgba(30, 41, 59, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: all 0.3s ease;
-  padding: 8px;
-  pointer-events: auto;
-}
-.social-icon:hover {
-  transform: translateY(-3px);
-  background: rgba(6, 214, 160, 0.2);
-  border-color: rgba(6, 214, 160, 0.5);
-  box-shadow: 0 4px 8px rgba(6, 214, 160, 0.2);
-}
-.social-icon img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  border-radius: 50%;
-}
+        /* === RESPONSIVE & HERO FIXES === */
+        @media (max-width: 640px) {
+            /* Disable animations on mobile for better performance */
+            .hero-fade-in, .animate-on-scroll { 
+                transform: none !important; 
+                opacity: 1 !important; 
+                transition: none !important; 
+            }
+            #home { 
+                min-height: calc(100vh - 4rem); 
+                padding: 0 1rem;
+                display: flex;
+                align-items: center;
+            }
+            .section-title {
+                font-size: 2rem; /* Smaller title on mobile */
+            }
+            
+            /* MOBILE RESPONSIVE STYLES FOR COMING SOON BADGE */
+            .coming-soon-badge {
+                padding: 0.5rem 1rem; /* Reduced padding for mobile */
+                font-size: 0.75rem; /* Smaller font size for mobile */
+                bottom: 180px; /* Adjusted position for mobile */
+            }
+            .coming-soon-badge .dot {
+                width: 0.5rem; /* Smaller dot for mobile */
+                height: 0.5rem; /* Smaller dot for mobile */
+                margin-right: 0.375rem; /* Reduced spacing for mobile */
+            }
+        }
 
-/* === RESPONSIVE & HERO FIXES === */
-@media (max-width: 640px) {
-  .hero-fade-in, .animate-on-scroll { 
-    transform: none !important; 
-    opacity: 1 !important; 
-    transition: none !important; 
-  }
-  #home { 
-    min-height: calc(100vh - 4rem); 
-    padding: 0 1rem;
-    display: flex;
-    align-items: center;
-  }
-  .section-title {
-    font-size: 2rem;
-  }
-  
-  /* MOBILE RESPONSIVE STYLES FOR COMING SOON BADGE */
-  .coming-soon-badge {
-    padding: 0.5rem 1rem; /* Reduced padding for mobile */
-    font-size: 0.75rem; /* Smaller font size for mobile */
-    bottom: 180px; /* Adjusted position for mobile */
-  }
-  .coming-soon-badge .dot {
-    width: 0.5rem; /* Smaller dot for mobile */
-    height: 0.5rem; /* Smaller dot for mobile */
-    margin-right: 0.375rem; /* Reduced spacing for mobile */
-  }
-  
-  /* HORIZONTAL LOGO ALIGNMENT FOR MOBILE */
-  .flex.flex-wrap.justify-center {
-    flex-direction: row !important;
-    flex-wrap: wrap !important;
-    justify-content: center !important;
-    align-items: center !important;
-    gap: 0.5rem !important;
-  }
-  
-  .flex.flex-wrap.justify-center .flex.flex-col.items-center {
-    flex: 0 0 auto !important;
-    margin-bottom: 0.5rem !important;
-    width: 60px !important; /* Fixed width for consistent alignment */
-  }
-  
-  /* IMPROVED LOGO STYLING FOR MOBILE */
-  .bank-logo-grid {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    justify-content: center !important;
-    gap: 8px !important;
-    padding: 0 10px !important;
-  }
-  
-  .bank-logo-item {
-    flex: 0 0 calc(25% - 8px) !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    margin-bottom: 12px !important;
-  }
-  
-  .bank-logo-item img {
-    width: 40px !important;
-    height: 40px !important;
-    object-fit: contain !important;
-  }
-  
-  .bank-logo-item span {
-    font-size: 9px !important;
-    margin-top: 4px !important;
-    text-align: center !important;
-  }
-}
+        /* Hero section styling */
+        #home {
+            min-height: calc(100vh - 4rem); /* Full viewport height minus header */
+            padding-top: 0;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-#home {
-  min-height: calc(100vh - 4rem);
-  padding-top: 0;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+        /* === BLINKING DOT ANIMATION FOR "IN PROGRESS" STATUS === */
+        @keyframes blinking-dot {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        .in-progress-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #06d6a0;
+            margin-left: 8px;
+            animation: blinking-dot 1.4s ease-in-out infinite; /* Blinking animation */
+        }
 
-/* === BLINKING DOT ANIMATION FOR "IN PROGRESS" STATUS === */
-@keyframes blinking-dot {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
-.in-progress-dot {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: #06d6a0;
-  margin-left: 8px;
-  animation: blinking-dot 1.4s ease-in-out infinite;
-}
+        /* === CENTERED BLINKING DOT FOR ALX LOGO === */
+        .alx-progress-dot {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); /* Perfect centering */
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #0d5a47; /* Darker green */
+            animation: blinking-dot 1.4s ease-in-out infinite;
+            z-index: 5;
+        }
 
-/* === CENTERED BLINKING DOT FOR ALX LOGO === */
-.alx-progress-dot {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background-color: #0d5a47;
-  animation: blinking-dot 1.4s ease-in-out infinite;
-  z-index: 5;
-}
+        /* Responsive project image heights */
+        @media (min-width: 1024px) {
+            .project-image-container { height: 420px; } /* Taller images on desktop */
+        }
+        @media (max-width: 640px) {
+            .project-image-container { height: 220px; } /* Shorter images on mobile */
+        }
 
-@media (min-width: 1024px) {
-  .project-image-container { height: 420px; }
-}
-@media (max-width: 640px) {
-  .project-image-container { height: 220px; }
-}
+        /* === RESPONSIVE LOGO CONTAINER STYLES === */
+        /* Desktop: Single horizontal line with all logos */
+        .bank-logos-desktop {
+            display: flex; /* Flex layout for horizontal alignment */
+            flex-wrap: nowrap; /* Prevent wrapping to keep in single line */
+            justify-content: center; /* Center logos horizontally */
+            align-items: center; /* Center logos vertically */
+            gap: 1rem; /* Space between logos */
+            padding: 0.5rem 0; /* Vertical padding */
+            overflow-x: auto; /* Allow horizontal scrolling if needed */
+        }
+        
+        /* Mobile: Grid layout with 5 logos per row */
+        .bank-logos-mobile {
+            display: grid; /* Grid layout for precise control */
+            grid-template-columns: repeat(5, 1fr); /* 5 equal columns */
+            gap: 0.75rem; /* Space between grid items */
+            padding: 0.5rem 0; /* Vertical padding */
+        }
+        
+        /* Individual logo item styling */
+        .bank-logo-item {
+            display: flex;
+            flex-direction: column; /* Stack image and text vertically */
+            align-items: center; /* Center content horizontally */
+            justify-content: center; /* Center content vertically */
+            position: relative; /* For tooltip positioning */
+            transition: all 0.3s ease; /* Smooth transition for hover effects */
+            cursor: pointer; /* Indicate interactivity */
+        }
 
-/* IMPROVED LOGO ALIGNMENT FOR ALL SCREENS */
-.bank-logos-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 16px;
-  padding: 10px 0;
-}
+        /* Hover effect for all bank logos */
+        .bank-logo-item:hover {
+            transform: translateY(-5px); /* Lift effect on hover */
+        }
 
-.bank-logo-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 70px;
-}
+        /* Logo image styling */
+        .bank-logo-item img {
+            width: 2.5rem; /* Fixed width for consistency */
+            height: 2.5rem; /* Fixed height for consistency */
+            object-fit: contain; /* Maintain aspect ratio */
+            transition: all 0.3s ease; /* Smooth transition for hover effects */
+        }
 
-.bank-logo-item img {
-  width: 40px;
-  height: 40px;
-  object-fit: contain;
-}
+        /* Enhanced hover effect for logo images */
+        .bank-logo-item:hover img {
+            filter: brightness(1.2) contrast(1.1); /* Slight brightness and contrast boost */
+            transform: scale(1.1); /* Slight scale up on hover */
+        }
+        
+        /* Logo label styling */
+        .bank-logo-item span {
+            font-size: 0.6rem; /* Small text for labels */
+            margin-top: 0.25rem; /* Space between image and text */
+            text-align: center; /* Center align text */
+            color: #cbd5e1; /* Muted text color */
+        }
 
-.bank-logo-item span {
-  font-size: 10px;
-  margin-top: 5px;
-  text-align: center;
-  color: #cbd5e1;
-}
+        /* Tooltip styling for FDBZ logo */
+        .bank-logo-item .tooltip {
+            position: absolute;
+            bottom: 100%; /* Position above the logo */
+            left: 50%;
+            transform: translateX(-50%) translateY(-10px); /* Center and position slightly above */
+            background: rgba(6, 214, 160, 0.9); /* Green background */
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            white-space: nowrap;
+            opacity: 0; /* Hidden by default */
+            visibility: hidden; /* Hidden by default */
+            transition: all 0.3s ease; /* Smooth transition */
+            z-index: 20; /* Ensure it appears above other elements */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+        }
 
-@media (max-width: 640px) {
-  .bank-logos-container {
-    gap: 8px;
-  }
-  
-  .bank-logo-item {
-    width: 60px;
-  }
-  
-  .bank-logo-item img {
-    width: 35px;
-    height: 35px;
-  }
-  
-  .bank-logo-item span {
-    font-size: 9px;
-  }
-}
-</style>
+        /* Tooltip arrow */
+        .bank-logo-item .tooltip::after {
+            content: '';
+            position: absolute;
+            top: 100%; /* Position at bottom of tooltip */
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 6px;
+            border-style: solid;
+            border-color: rgba(6, 214, 160, 0.9) transparent transparent transparent;
+        }
+
+        /* Show tooltip on hover */
+        .bank-logo-item:hover .tooltip {
+            opacity: 1; /* Make visible */
+            visibility: visible; /* Make visible */
+            transform: translateX(-50%) translateY(-5px); /* Final position */
+        }
+
+        /* === FDBZ SIGNAL LINES STYLES === */
+        /* Container for FDBZ logo with signals */
+        .fdbl-logo-container {
+            position: relative; /* For positioning the signal elements */
+        }
+
+        /* Three signal lines pointing to FDBZ logo */
+        .fdbl-signal-line {
+            position: absolute;
+            background: #06d6a0;
+            height: 2px;
+            animation: signal-pulse 2s ease-in-out infinite;
+            z-index: 5;
+            pointer-events: none; /* Don't interfere with hover */
+        }
+
+        /* Top signal line */
+        .fdbl-signal-line.top {
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+        }
+
+        /* Left signal line */
+        .fdbl-signal-line.left {
+            top: 50%;
+            left: -25px;
+            transform: translateY(-50%) rotate(90deg);
+            width: 30px;
+        }
+
+        /* Right signal line */
+        .fdbl-signal-line.right {
+            top: 50%;
+            right: -25px;
+            transform: translateY(-50%) rotate(90deg);
+            width: 30px;
+        }
+
+        /* Signal pulse animation */
+        @keyframes signal-pulse {
+            0%, 100% {
+                opacity: 0.3;
+                transform: translateX(-50%) scale(0.8);
+            }
+            50% {
+                opacity: 1;
+                transform: translateX(-50%) scale(1.2);
+            }
+        }
+
+        /* Arrow pointer to FDBZ logo */
+        .fdbl-arrow-pointer {
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 15px solid #06d6a0;
+            animation: bounce-arrow 2s ease-in-out infinite;
+            z-index: 15;
+        }
+
+        .fdbl-arrow-pointer::after {
+            content: 'STARTING HERE';
+            position: absolute;
+            top: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: #06d6a0;
+            background: rgba(15, 23, 42, 0.9);
+            padding: 0.3rem 0.6rem;
+            border-radius: 6px;
+            border: 1px solid #06d6a0;
+        }
+
+        @keyframes bounce-arrow {
+            0%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            50% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+
+        /* Responsive adjustments for mobile */
+        @media (max-width: 768px) {
+            .bank-logos-desktop {
+                display: none; /* Hide desktop layout on mobile */
+            }
+            .bank-logos-mobile {
+                display: grid; /* Show mobile layout on mobile */
+            }
+
+            /* Adjust tooltip for mobile */
+            .bank-logo-item .tooltip {
+                font-size: 0.7rem; /* Smaller font on mobile */
+                padding: 0.4rem 0.8rem; /* Smaller padding on mobile */
+            }
+
+            /* Adjust FDBZ signals for mobile */
+            .fdbl-arrow-pointer {
+                top: -35px;
+            }
+            
+            .fdbl-arrow-pointer::after {
+                font-size: 0.6rem;
+                top: -30px;
+            }
+        }
+        
+        /* Responsive adjustments for desktop */
+        @media (min-width: 769px) {
+            .bank-logos-desktop {
+                display: flex; /* Show desktop layout on desktop */
+            }
+            .bank-logos-mobile {
+                display: none; /* Hide mobile layout on desktop */
+            }
+        }
+    </style>
 </head>
 
 <body>
-<!-- ===== FIXED HEADER NAVIGATION ===== -->
-<header class="fixed top-0 left-0 right-0 z-50 bg-slate-900/85 backdrop-blur-md shadow-xl border-b border-slate-800/50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between h-16">
-            <a href="#home" class="text-2xl font-extrabold hover:opacity-90 transition">
-                <span class="text-white">Iback Lungu</span>
-            </a>
-            <nav class="hidden md:flex space-x-8">
-                <a href="#home" class="text-slate-300 hover:text-teal-300 font-medium transition-colors duration-300">Home</a>
-                <a href="#about" class="text-slate-300 hover:text-teal-300 font-medium transition-colors duration-300">About</a>
-                <a href="#skills" class="text-slate-300 hover:text-teal-300 font-medium transition-colors duration-300">Skills</a>
-                <a href="#projects" class="text-slate-300 hover:text-teal-300 font-medium transition-colors duration-300">Projects</a>
-                <a href="#contact" class="text-slate-300 hover:text-teal-300 font-medium transition-colors duration-300">Contact</a>
-            </nav>
-            <button id="hamburger-button" class="md:hidden text-white focus:outline-none" aria-label="Open menu">
-                <svg id="hamburger-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                </svg>
-                <svg id="hamburger-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                </svg>
-            </button>
-        </div>
-    </div>
-    <div id="mobile-menu" class="md:hidden absolute top-16 left-0 w-full bg-slate-900/98 backdrop-blur-lg transition-all duration-300 ease-in-out opacity-0 invisible">
-        <nav class="flex flex-col items-center space-y-4 py-6">
-            <a href="#home" class="text-slate-300 hover:text-teal-400 font-medium text-lg mobile-nav-link">Home</a>
-            <a href="#about" class="text-slate-300 hover:text-teal-400 font-medium text-lg mobile-nav-link">About</a>
-            <a href="#skills" class="text-slate-300 hover:text-teal-400 font-medium text-lg mobile-nav-link">Skills</a>
-            <a href="#projects" class="text-slate-300 hover:text-teal-400 font-medium text-lg mobile-nav-link">Projects</a>
-            <a href="#contact" class="text-slate-300 hover:text-teal-400 font-medium text-lg mobile-nav-link">Contact</a>
-        </nav>
-    </div>
-</header>
-
-<main>
-<!-- ===== HERO SECTION ===== -->
-<section id="home" class="flex items-center justify-center px-4">
-    <div class="text-center max-w-4xl hero-fade-in">
-        <img src="./p2-removebg-preview 2.png" alt="Iback Lungu" 
-             class="w-28 h-28 md:w-36 md:h-36 mx-auto rounded-full border-2 border-[#06d6a0] object-cover mb-6"
-             loading="lazy">
-        <h1 class="hero-heading text-4xl md:text-6xl lg:text-5xl font-extrabold text-white mb-3">
-            Aspiring Data Scientist
-        </h1>
-        <p class="hero-subheading text-xl md:text-4xl text-slate-300 mb-8 max-w-2xl mx-auto">
-            <span class="text-gradient">Empowering Decisions Through Data</span>
-        </p>
-        <a href="#projects" class="cta-button">
-            Explore My Work
-            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-            </svg>
-        </a>
-    </div>
-</section>
-
-<!-- ===== EDUCATION & EXPERIENCE SECTION ===== -->
-<section id="about" class="py-16 md:py-24 bg-slate-900">
-    <div class="max-w-7xl mx-auto px-4 animate-on-scroll">
-        <div class="section-header">
-            <h2 class="section-title">Professional Journey</h2>
-        </div>
-
-        <!-- EDUCATION -->
-        <div class="mb-16">
-            <h3 class="text-2xl font-bold text-white mb-8 text-center">Education</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
-                <!-- ALX CARD WITH CENTERED BLINKING DOT -->
-                <div class="professional-card p-6 flex flex-col items-center text-center">
-                    <div class="card-logo-container">
-                        <img src="./alx-icon.jpg" alt="ALX Africa" class="rounded-lg">
-                        <!-- Centered blinking dot on ALX logo -->
-                        <span class="alx-progress-dot" aria-label="In progress"></span>
-                    </div>
-                    <!-- Title without inline blinking dot -->
-                    <h4 class="text-xl font-bold text-[#17c8d9] mt-2">ALX Africa Data Science Program</h4>
-                    <p class="text-slate-400 text-sm mb-3">2025 – 2026</p>
-                    <p class="text-slate-300 mt-2 w-full text-left">
-                        I'm currently enrolled in a Data Science program, where I'm developing practical skills in Python, SQL, PowerBI, and Machine Learning to address real-world challenges. My program is project-based, centered on transforming complex raw data into clear, actionable insights that help decision-makers drive impactful solutions.
-                    </p>
-                </div>
-
-                <!-- COPPERBELT UNIVERSITY -->
-                <div class="professional-card p-6 flex flex-col items-center text-center">
-                    <div class="card-logo-container">
-                        <img src="./cbu icon.jpeg" alt="Copperbelt University" class="rounded-lg">
-                    </div>
-                    <h4 class="text-xl font-bold text-[#17c8d9] mt-2">BSc in Mathematics</h4>
-                    <p class="text-slate-400 text-sm mb-3">2016 – 2020</p>
-                    <p class="text-slate-300 mt-2 w-full text-left">
-                        My degree equipped me with strong analytical and problem-solving skills. I developed a deep understanding of statistical reasoning, logic, and quantitative methods—foundations that now empower my journey into data science and machine learning.
-                    </p>
-                </div>
+    <!-- ===== FIXED HEADER NAVIGATION ===== -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-slate-900/85 backdrop-blur-md shadow-xl border-b border-slate-800/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo/Name -->
+                <a href="#home" class="text-2xl font-extrabold hover:opacity-90 transition">
+                    <span class="text-white">Iback Lungu</span>
+                </a>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-slate-300 hover:text-teal-300 font-medium transition-colors duration-300">Home</a>
+                    <a href="#about" class="text-slate-300 hover:text-teal-300 font-medium transition-colors duration-300">About</a>
+                    <a href="#skills" class="text-slate-300 hover:text-teal-300 font-medium transition-colors duration-300">Skills</a>
+                    <a href="#projects" class="text-slate-300 hover:text-teal-300 font-medium transition-colors duration-300">Projects</a>
+                    <a href="#contact" class="text-slate-300 hover:text-teal-300 font-medium transition-colors duration-300">Contact</a>
+                </nav>
+                
+                <!-- Mobile Menu Button -->
+                <button id="hamburger-button" class="md:hidden text-white focus:outline-none" aria-label="Open menu">
+                    <svg id="hamburger-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                    <svg id="hamburger-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
             </div>
-        </div>
-
-        <!-- EXPERIENCE -->
-        <div>
-            <h3 class="text-2xl font-bold text-white mb-8 text-center">Professional Experience</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">
-                <!-- 4 experience cards -->
-                <div class="professional-card p-6 flex flex-col items-center text-center">
-                    <div class="card-logo-container">
-                        <img src="./zanaco-logo.png" alt="Zanaco Bank" class="rounded-lg">
-                    </div>
-                    <h4 class="text-xl font-bold text-[#17c8d9] mt-2">Trade Development Representative</h4>
-                    <p class="text-slate-400 text-sm mb-3">Nov 2024 – Aug 2025</p>
-                    <p class="text-slate-300 mt-2 w-full text-left text-sm">
-                        Here I promoted Zanaco POS digital payment solutions and onboarded new merchants by guiding them on using card and mobile payment solutions. I maintained a healthy merchant portfolio through proactive account management, performance monitoring, and fast issue resolution—strengthening customer relationships, improving retention, and increasing transaction volumes across my territory.
-                    </p>
-                </div>
-                <div class="professional-card p-6 flex flex-col items-center text-center">
-                    <div class="card-logo-container">
-                        <img src="./bolabet-logo.jpg" alt="Bolabet Limited" class="rounded-lg">
-                    </div>
-                    <h4 class="text-xl font-bold text-[#17c8d9] mt-2">Platform Support Assistant</h4>
-                    <p class="text-slate-400 text-sm mb-3">Aug 2023 – Feb 2024</p>
-                    <p class="text-slate-300 mt-2 w-full text-left text-sm">
-                        I served as the main point of contact between internal teams, network providers, and game providers to keep the platform running smoothly. I quickly resolved technical issues to minimize downtime and keep users satisfied.
-                    </p>
-                </div>
-                <div class="professional-card p-6 flex flex-col items-center text-center">
-                    <div class="card-logo-container">
-                        <img src="./coca-cola-logo.png" alt="Coca-Cola (Smollan)" class="rounded-lg">
-                    </div>
-                    <h4 class="text-xl font-bold text-[#17c8d9] mt-2">General Trade Merchandiser</h4>
-                    <p class="text-slate-400 text-sm mb-3">Feb 2023 – Aug 2023</p>
-                    <p class="text-slate-300 mt-2 w-full text-left text-sm">
-                        I improved product visibility and sales performance across key accounts. I executed merchandising plans by rotating stock, arranging eye-catching displays, and ensuring optimal facings and shelf placement to keep Coca‑Cola products highly visible and available. Conducted regular stock audits, coordinated timely restocks to prevent out-of-stock situations, engaged store managers to secure prime display locations, and supported in-store promotional activations to drive sales growth.
-                    </p>
-                </div>
-                <div class="professional-card p-6 flex flex-col items-center text-center">
-                    <div class="card-logo-container">
-                        <img src="./stanbic bank-logo" alt="Stanbic Bank" class="rounded-lg">
-                    </div>
-                    <h4 class="text-xl font-bold text-[#17c8d9] mt-2">Field Sales Representative</h4>
-                    <p class="text-slate-400 text-sm mb-3">Mar 2021 – Feb 2023</p>
-                    <p class="text-slate-300 mt-2 w-full text-left text-sm">
-                        As a Trade Development Representative, I promoted mobiLot devices that facilitated airtime sales, bill payments for TV subscriptions, and provided access to loans through a POS platform. I ensured client retention and satisfaction by providing responsive post-sale support through WhatsApp and calls, effectively expanding our digital payment adoption across my assigned territory. Due to my consistency, I was recognized as the best performing employee for this project.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ===== SKILLS SECTION ===== -->
-<section id="skills" class="py-16 md:py-24 bg-slate-900 text-gray-100">
-  <div class="max-w-7xl mx-auto px-4 animate-on-scroll">
-    <header class="text-center mb-12">
-      <p class="text-[#17c8d9] uppercase tracking-wider font-medium mb-2">Technical Expertise</p>
-      <h2 class="text-3xl md:text-4xl font-extrabold mb-3">Data Science Toolkit</h2>
-      <p class="text-gray-400 max-w-2xl mx-auto">
-        A comprehensive set of tools and techniques for extracting insights and building data-driven solutions.
-      </p>
-    </header>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
-      <!-- 3 skill cards -->
-      <article class="bg-slate-800 rounded-2xl p-6 shadow-md hover:shadow-lg transition-shadow">
-        <h3 class="text-xl font-bold text-[#17c8d9] mb-4 text-center border-b border-slate-700 pb-2">
-          Programming & Machine Learning
-        </h3>
-        <ul class="space-y-3">
-          <li class="flex items-center gap-3">
-            <span class="skill-icon">🐍</span>
-            <span>Python for Data Science</span>
-          </li>
-          <li class="flex items-center gap-3">
-            <span class="skill-icon">📊</span>
-            <span>Pandas & NumPy for Data Wrangling</span>
-          </li>
-          <li class="flex items-center gap-3">
-            <span class="skill-icon">🤖</span>
-            <span>Scikit-learn for Machine Learning</span>
-          </li>
-          <li class="flex items-center gap-3">
-            <span class="skill-icon">🧩</span>
-            <span>Quantitative Problem Solving</span>
-          </li>
-        </ul>
-      </article>
-
-      <article class="bg-slate-800 rounded-2xl p-6 shadow-md hover:shadow-lg transition-shadow">
-        <h3 class="text-xl font-bold text-[#17c8d9] mb-4 text-center border-b border-slate-700 pb-2">
-          Data Visualization & Reporting
-        </h3>
-        <ul class="space-y-3">
-          <li class="flex items-center gap-3">
-            <span class="skill-icon">📈</span>
-            <span>Power BI Dashboards</span>
-          </li>
-          <li class="flex items-center gap-3">
-            <span class="skill-icon">📉</span>
-            <span>Matplotlib & Seaborn</span>
-          </li>
-          <li class="flex items-center gap-3">
-            <span class="skill-icon">📊</span>
-            <span>Statistical Analysis</span>
-          </li>
-          <li class="flex items-center gap-3">
-            <span class="skill-icon">🧾</span>
-            <span>Excel & Google Sheets</span>
-          </li>
-        </ul>
-      </article>
-
-      <article class="bg-slate-800 rounded-2xl p-6 shadow-md hover:shadow-lg transition-shadow">
-        <h3 class="text-xl font-bold text-[#17c8d9] mb-4 text-center border-b border-slate-700 pb-2">
-          Data Infrastructure
-        </h3>
-        <ul class="space-y-3">
-          <li class="flex items-center gap-3">
-            <span class="skill-icon">🗄️</span>
-            <span>SQL Database Management</span>
-          </li>
-          <li class="flex items-center gap-3">
-            <span class="skill-icon">🔧</span>
-            <span>Git & GitHub Version Control</span>
-          </li>
-          <li class="flex items-center gap-3">
-            <span class="skill-icon">🔗</span>
-            <span>ETL Concepts & Data Pipelines</span>
-          </li>
-        </ul>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ===== PROJECTS SECTION ===== -->
-<section id="projects" class="py-16 md:py-24 bg-slate-900">
-    <div class="max-w-7xl mx-auto px-4 animate-on-scroll">
-        <div class="section-header">
-            <p class="section-subtitle">Data Projects</p>
-            <h2 class="section-title">Work & Explorations</h2>
-            <p class="section-description">Practical applications of data science techniques to solve real-world problems</p>
-        </div>
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <!-- PROJECT CARD 1: Maji Ndogo -->
-            <div class="project-card professional-card flex flex-col">
-                <div class="p-5 pb-2">
-                    <h3 class="text-xl font-bold text-white mb-2">Maji Ndogo Agriculture Project</h3>
-                    <p class="text-slate-300 text-sm">When data meets agriculture, every insight becomes a seed for change.</p>
-                </div>
-                <div class="mt-auto project-image-container relative">
-                    <img src="./Maji_Ndongo_Image_5.png" alt="Maji Ndogo Agriculture Project" class="w-full h-full object-cover">
-                    <!-- COMING SOON moved higher -->
-                    <div class="coming-soon-badge">
-                        <span class="dot">
-                            <span class="ping"></span>
-                            <span class="static"></span>
-                        </span>
-                        COMING SOON...
-                    </div>
-                </div>
-            </div>
-
-            <!-- PROJECT CARD 2: Digital Payments Analysis -->
-            <div class="project-card professional-card flex flex-col">
-                <!-- Title & Description at Top -->
-                <div class="p-5 pb-2">
-                    <h3 class="text-xl font-bold text-white mb-2">Digital Payments Dashboard Project</h3>
-                    <p class="text-slate-300 text-sm">
-                        This project focused on developing a centralized analytics platform for Point-of-Sale (POS) systems. The solution provides real-time visibility into essential business operations, enabling stakeholders to make more informed, data-driven decisions.
-                    </p>
-                </div>
-
-                <!-- POS Map Component -->
-                <div class="mt-auto flex flex-col h-full">
-                    <div class="bg-slate-800 rounded-xl p-4 text-center h-full flex flex-col relative">
-                        <!-- Map Placeholder -->
-                        <div class="relative w-full flex-grow bg-slate-900 rounded-lg overflow-hidden border border-slate-700 mb-4">
-                            <div class="aspect-[4/3] bg-gradient-to-br from-emerald-900 to-teal-800 flex items-center justify-center">
-                              <img src="./map-zambia.jpg" alt="Zambian Map">
-                            </div>
-                        </div>
-                       
-                        <!-- COMING SOON badge at bottom (moved higher) -->
-                        <div class="coming-soon-badge">
-                            <span class="dot">
-                                <span class="ping"></span>
-                                <span class="static"></span>
-                            </span>
-                            COMING SOON...
-                        </div>
-                    
-                        <!-- Logo Legend -->
-<div class="mt-auto pt-4">
-    <!-- Desktop: Single line -->
-    <div class="hidden md:flex flex-nowrap justify-center items-center gap-4 md:gap-6 lg:gap-8 px-4 overflow-x-auto">
-        <div class="flex flex-col items-center flex-shrink-0">
-            <img src="./FDBZ-logo.png" alt="First Digital Bank In Zambia" class="w-8 h-8 md:w-10 md:h-10 object-contain">
-            <span class="text-[10px] md:text-xs text-slate-300 mt-1">FDBZ</span>
-        </div>
-        <div class="flex flex-col items-center flex-shrink-0">
-            <img src="./zanaco-logo.png" alt="Zanaco" class="w-8 h-8 md:w-10 md:h-10 object-contain">
-            <span class="text-[10px] md:text-xs text-slate-300 mt-1">Zanaco</span>
-        </div>
-        <div class="flex flex-col items-center flex-shrink-0">
-            <img src="./indo-logo.png" alt="Indo" class="w-8 h-8 md:w-10 md:h-10 object-contain">
-            <span class="text-[10px] md:text-xs text-slate-300 mt-1">Indo</span>
-        </div>
-        <div class="flex flex-col items-center flex-shrink-0">
-            <img src="./absa-logo.webp" alt="ABSA" class="w-8 h-8 md:w-10 md:h-10 object-contain">
-            <span class="text-[10px] md:text-xs text-slate-300 mt-1">ABSA</span>
-        </div>           
-        <div class="flex flex-col items-center flex-shrink-0">
-            <img src="./stanbic bank-logo" alt="Stanbic" class="w-8 h-8 md:w-10 md:h-10 object-contain">
-            <span class="text-[10px] md:text-xs text-slate-300 mt-1">Stanbic</span>
-        </div>
-        <div class="flex flex-col items-center flex-shrink-0">
-            <img src="./konse konse -logo" alt="Konse" class="w-8 h-8 md:w-10 md:h-10 object-contain">
-            <span class="text-[10px] md:text-xs text-slate-300 mt-1">543</span>
-        </div>
-        <div class="flex flex-col items-center flex-shrink-0">
-            <img src="./FNB-logo.png" alt="FNB" class="w-8 h-8 md:w-10 md:h-10 object-contain">
-            <span class="text-[10px] md:text-xs text-slate-300 mt-1">FNB</span>
-        </div>
-        <div class="flex flex-col items-center flex-shrink-0">
-            <img src="./first capital bank-logo.jpg" alt="1st Cap" class="w-8 h-8 md:w-10 md:h-10 object-contain">
-            <span class="text-[10px] md:text-xs text-slate-300 mt-1">FCB</span>
-        </div>
-        <div class="flex flex-col items-center flex-shrink-0">
-            <img src="./kazang-logo.gif" alt="Kazang" class="w-8 h-8 md:w-10 md:h-10 object-contain">
-            <span class="text-[10px] md:text-xs text-slate-300 mt-1">Kazang</span>
-        </div>
-        <div class="flex flex-col items-center flex-shrink-0">
-            <img src="./izwe-logo" alt="Izwe" class="w-8 h-8 md:w-10 md:h-10 object-contain">
-            <span class="text-[10px] md:text-xs text-slate-300 mt-1">Izwe</span>
-        </div>
-    </div>
-
-    <!-- Mobile: Flexible grid (adjusts based on screen size) -->
-    <div class="md:hidden grid grid-cols-5 gap-3 px-2">
-        <div class="flex flex-col items-center">
-            <img src="./FDBZ-logo.png" alt="First Digital Bank In Zambia" class="w-7 h-7 object-contain">
-            <span class="text-[9px] text-slate-300 mt-1">FDBZ</span>
-        </div>
-        <div class="flex flex-col items-center">
-            <img src="./zanaco-logo.png" alt="Zanaco" class="w-7 h-7 object-contain">
-            <span class="text-[9px] text-slate-300 mt-1">Zanaco</span>
-        </div>
-        <div class="flex flex-col items-center">
-            <img src="./indo-logo.png" alt="Indo" class="w-7 h-7 object-contain">
-            <span class="text-[9px] text-slate-300 mt-1">Indo</span>
-        </div>
-        <div class="flex flex-col items-center">
-            <img src="./absa-logo.webp" alt="ABSA" class="w-7 h-7 object-contain">
-            <span class="text-[9px] text-slate-300 mt-1">ABSA</span>
-        </div>           
-        <div class="flex flex-col items-center">
-            <img src="./stanbic bank-logo" alt="Stanbic" class="w-7 h-7 object-contain">
-            <span class="text-[9px] text-slate-300 mt-1">Stanbic</span>
-        </div>
-        <div class="flex flex-col items-center">
-            <img src="./konse konse -logo" alt="Konse" class="w-7 h-7 object-contain">
-            <span class="text-[9px] text-slate-300 mt-1">543</span>
-        </div>
-        <div class="flex flex-col items-center">
-            <img src="./FNB-logo.png" alt="FNB" class="w-7 h-7 object-contain">
-            <span class="text-[9px] text-slate-300 mt-1">FNB</span>
-        </div>
-        <div class="flex flex-col items-center">
-            <img src="./first capital bank-logo.jpg" alt="1st Cap" class="w-7 h-7 object-contain">
-            <span class="text-[9px] text-slate-300 mt-1">FCB</span>
-        </div>
-        <div class="flex flex-col items-center">
-            <img src="./kazang-logo.gif" alt="Kazang" class="w-7 h-7 object-contain">
-            <span class="text-[9px] text-slate-300 mt-1">Kazang</span>
-        </div>
-        <div class="flex flex-col items-center">
-            <img src="./izwe-logo" alt="Izwe" class="w-7 h-7 object-contain">
-            <span class="text-[9px] text-slate-300 mt-1">Izwe</span>
-        </div>
-    </div>
-</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ===== CONTACT SECTION ===== -->
-<section id="contact" class="py-12 md:py-16 bg-slate-900">
-    <div class="max-w-3xl mx-auto px-4 text-center animate-on-scroll">
-        <div class="section-header">
-            <h2 class="section-title">Let's Connect</h2>
-            <p class="section-description mb-6">
-                I'm always interested in discussing data science opportunities, collaborations, or innovative projects.
-            </p>
         </div>
         
-        <!-- Social Icons -->
-        <div class="flex justify-center gap-4 mb-6">
-            <a href="mailto:ibacklungu888@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Email Me" class="social-icon">
-                <img src="./email_red.png" alt="Email">
-            </a>
-            <a href="https://linkedin.com/in/iback-lungu-3217451b4" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" class="social-icon">
-                <img src="linkedin_blue.png" alt="LinkedIn">
-            </a>
-            <a href="https://github.com/ibacklungu" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile" class="social-icon">
-                <img src="./github_purple.png" alt="GitHub">
-            </a>
-            <a href="https://wa.me/260975135029" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="social-icon">
-                <img src="./whatsapp _green.png" alt="WhatsApp">
-            </a>
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="md:hidden absolute top-16 left-0 w-full bg-slate-900/98 backdrop-blur-lg transition-all duration-300 ease-in-out opacity-0 invisible">
+            <nav class="flex flex-col items-center space-y-4 py-6">
+                <a href="#home" class="text-slate-300 hover:text-teal-400 font-medium text-lg mobile-nav-link">Home</a>
+                <a href="#about" class="text-slate-300 hover:text-teal-400 font-medium text-lg mobile-nav-link">About</a>
+                <a href="#skills" class="text-slate-300 hover:text-teal-400 font-medium text-lg mobile-nav-link">Skills</a>
+                <a href="#projects" class="text-slate-300 hover:text-teal-400 font-medium text-lg mobile-nav-link">Projects</a>
+                <a href="#contact" class="text-slate-300 hover:text-teal-400 font-medium text-lg mobile-nav-link">Contact</a>
+            </nav>
         </div>
+    </header>
 
-        <!-- Contact Form -->
-        <div class="professional-card p-6">
-            <form id="contact-form" class="centered-form">
-                <input type="text" name="name" placeholder="Name" required class="form-input text-center" />
-                <input type="email" name="email" placeholder="Email" required class="form-input text-center" />
-                <input type="text" name="subject" placeholder="Subject" required class="form-input text-center" />
-                <textarea name="message" placeholder="Message" rows="4" required class="form-input resize-none text-center"></textarea>
-                <button type="submit" id="submit-button" class="cta-button">
-                    Send Message
-                </button>
-                <p id="form-status" class="mt-3 text-sm font-semibold text-white"></p>
-            </form>
-        </div>
-    </div>
-</section>
-</main>
+    <main>
+        <!-- ===== HERO SECTION ===== -->
+        <section id="home" class="flex items-center justify-center px-4">
+            <div class="text-center max-w-4xl hero-fade-in">
+                <!-- Profile Image -->
+                <img src="./p2-removebg-preview 2.png" alt="Iback Lungu" 
+                     class="w-28 h-28 md:w-36 md:h-36 mx-auto rounded-full border-2 border-[#06d6a0] object-cover mb-6"
+                     loading="lazy">
+                
+                <!-- Main Heading -->
+                <h1 class="hero-heading text-4xl md:text-6xl lg:text-5xl font-extrabold text-white mb-3">
+                    Aspiring Data Scientist
+                </h1>
+                
+                <!-- Subheading with Gradient Text -->
+                <p class="hero-subheading text-xl md:text-4xl text-slate-300 mb-8 max-w-2xl mx-auto">
+                    <span class="text-gradient">Empowering Decisions Through Data</span>
+                </p>
+                
+                <!-- Call to Action Button -->
+                <a href="#projects" class="cta-button">
+                    Explore My Work
+                    <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </a>
+            </div>
+        </section>
 
-<footer class="bg-slate-900 border-t border-slate-800 py-6">
-    <p class="text-slate-400 text-sm text-center">
-        &copy; <span id="current-year"></span> Iback Lungu. All Rights Reserved.
-    </p>
-</footer>
+        <!-- ===== EDUCATION & EXPERIENCE SECTION ===== -->
+        <section id="about" class="py-16 md:py-24 bg-slate-900">
+            <div class="max-w-7xl mx-auto px-4 animate-on-scroll">
+                <!-- Section Header -->
+                <div class="section-header">
+                    <h2 class="section-title">Professional Journey</h2>
+                </div>
 
-<!-- Font Awesome -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js" crossorigin="anonymous"></script>
+                <!-- EDUCATION -->
+                <div class="mb-16">
+                    <h3 class="text-2xl font-bold text-white mb-8 text-center">Education</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <!-- ALX CARD WITH CENTERED BLINKING DOT -->
+                        <div class="professional-card p-6 flex flex-col items-center text-center">
+                            <div class="card-logo-container">
+                                <img src="./alx-icon.jpg" alt="ALX Africa" class="rounded-lg">
+                                <!-- Centered blinking dot on ALX logo -->
+                                <span class="alx-progress-dot" aria-label="In progress"></span>
+                            </div>
+                            <!-- Title without inline blinking dot -->
+                            <h4 class="text-xl font-bold text-[#17c8d9] mt-2">ALX Africa Data Science Program</h4>
+                            <p class="text-slate-400 text-sm mb-3">2025 – 2026</p>
+                            <p class="text-slate-300 mt-2 w-full text-left">
+                                I'm currently enrolled in a Data Science program, where I'm developing practical skills in Python, SQL, PowerBI, and Machine Learning to address real-world challenges. My program is project-based, centered on transforming complex raw data into clear, actionable insights that help decision-makers drive impactful solutions.
+                            </p>
+                        </div>
 
-<script>
-    document.getElementById('current-year').textContent = new Date().getFullYear();
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.classList.add('is-visible');
+                        <!-- COPPERBELT UNIVERSITY -->
+                        <div class="professional-card p-6 flex flex-col items-center text-center">
+                            <div class="card-logo-container">
+                                <img src="./cbu icon.jpeg" alt="Copperbelt University" class="rounded-lg">
+                            </div>
+                            <h4 class="text-xl font-bold text-[#17c8d9] mt-2">BSc in Mathematics</h4>
+                            <p class="text-slate-400 text-sm mb-3">2016 – 2020</p>
+                            <p class="text-slate-300 mt-2 w-full text-left">
+                                My degree equipped me with strong analytical and problem-solving skills. I developed a deep understanding of statistical reasoning, logic, and quantitative methods—foundations that now empower my journey into data science and machine learning.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EXPERIENCE -->
+                <div>
+                    <h3 class="text-2xl font-bold text-white mb-8 text-center">Professional Experience</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">
+                        <!-- 4 experience cards -->
+                        <div class="professional-card p-6 flex flex-col items-center text-center">
+                            <div class="card-logo-container">
+                                <img src="./zanaco-logo.png" alt="Zanaco Bank" class="rounded-lg">
+                            </div>
+                            <h4 class="text-xl font-bold text-[#17c8d9] mt-2">Trade Development Representative</h4>
+                            <p class="text-slate-400 text-sm mb-3">Nov 2024 – Aug 2025</p>
+                            <p class="text-slate-300 mt-2 w-full text-left text-sm">
+                                Here I promoted Zanaco POS digital payment solutions and onboarded new merchants by guiding them on using card and mobile payment solutions. I maintained a healthy merchant portfolio through proactive account management, performance monitoring, and fast issue resolution—strengthening customer relationships, improving retention, and increasing transaction volumes across my territory.
+                            </p>
+                        </div>
+                        <div class="professional-card p-6 flex flex-col items-center text-center">
+                            <div class="card-logo-container">
+                                <img src="./bolabet-logo.jpg" alt="Bolabet Limited" class="rounded-lg">
+                            </div>
+                            <h4 class="text-xl font-bold text-[#17c8d9] mt-2">Platform Support Assistant</h4>
+                            <p class="text-slate-400 text-sm mb-3">Aug 2023 – Feb 2024</p>
+                            <p class="text-slate-300 mt-2 w-full text-left text-sm">
+                                I served as the main point of contact between internal teams, network providers, and game providers to keep the platform running smoothly. I quickly resolved technical issues to minimize downtime and keep users satisfied.
+                            </p>
+                        </div>
+                        <div class="professional-card p-6 flex flex-col items-center text-center">
+                            <div class="card-logo-container">
+                                <img src="./coca-cola-logo.png" alt="Coca-Cola (Smollan)" class="rounded-lg">
+                            </div>
+                            <h4 class="text-xl font-bold text-[#17c8d9] mt-2">General Trade Merchandiser</h4>
+                            <p class="text-slate-400 text-sm mb-3">Feb 2023 – Aug 2023</p>
+                            <p class="text-slate-300 mt-2 w-full text-left text-sm">
+                                I improved product visibility and sales performance across key accounts. I executed merchandising plans by rotating stock, arranging eye-catching displays, and ensuring optimal facings and shelf placement to keep Coca‑Cola products highly visible and available. Conducted regular stock audits, coordinated timely restocks to prevent out-of-stock situations, engaged store managers to secure prime display locations, and supported in-store promotional activations to drive sales growth.
+                            </p>
+                        </div>
+                        <div class="professional-card p-6 flex flex-col items-center text-center">
+                            <div class="card-logo-container">
+                                <img src="./stanbic bank-logo" alt="Stanbic Bank" class="rounded-lg">
+                            </div>
+                            <h4 class="text-xl font-bold text-[#17c8d9] mt-2">Field Sales Representative</h4>
+                            <p class="text-slate-400 text-sm mb-3">Mar 2021 – Feb 2023</p>
+                            <p class="text-slate-300 mt-2 w-full text-left text-sm">
+                                As a Trade Development Representative, I promoted mobiLot devices that facilitated airtime sales, bill payments for TV subscriptions, and provided access to loans through a POS platform. I ensured client retention and satisfaction by providing responsive post-sale support through WhatsApp and calls, effectively expanding our digital payment adoption across my assigned territory. Due to my consistency, I was recognized as the best performing employee for this project.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SKILLS SECTION ===== -->
+        <section id="skills" class="py-16 md:py-24 bg-slate-900 text-gray-100">
+            <div class="max-w-7xl mx-auto px-4 animate-on-scroll">
+                <!-- Section Header -->
+                <header class="text-center mb-12">
+                    <p class="text-[#17c8d9] uppercase tracking-wider font-medium mb-2">Technical Expertise</p>
+                    <h2 class="text-3xl md:text-4xl font-extrabold mb-3">Data Science Toolkit</h2>
+                    <p class="text-gray-400 max-w-2xl mx-auto">
+                        A comprehensive set of tools and techniques for extracting insights and building data-driven solutions.
+                    </p>
+                </header>
+
+                <!-- Skills Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+                    <!-- Programming & Machine Learning Card -->
+                    <article class="bg-slate-800 rounded-2xl p-6 shadow-md hover:shadow-lg transition-shadow">
+                        <h3 class="text-xl font-bold text-[#17c8d9] mb-4 text-center border-b border-slate-700 pb-2">
+                            Programming & Machine Learning
+                        </h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-center gap-3">
+                                <span class="skill-icon">🐍</span>
+                                <span>Python for Data Science</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <span class="skill-icon">📊</span>
+                                <span>Pandas & NumPy for Data Wrangling</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <span class="skill-icon">🤖</span>
+                                <span>Scikit-learn for Machine Learning</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <span class="skill-icon">🧩</span>
+                                <span>Quantitative Problem Solving</span>
+                            </li>
+                        </ul>
+                    </article>
+
+                    <!-- Data Visualization & Reporting Card -->
+                    <article class="bg-slate-800 rounded-2xl p-6 shadow-md hover:shadow-lg transition-shadow">
+                        <h3 class="text-xl font-bold text-[#17c8d9] mb-4 text-center border-b border-slate-700 pb-2">
+                            Data Visualization & Reporting
+                        </h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-center gap-3">
+                                <span class="skill-icon">📈</span>
+                                <span>Power BI Dashboards</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <span class="skill-icon">📉</span>
+                                <span>Matplotlib & Seaborn</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <span class="skill-icon">📊</span>
+                                <span>Statistical Analysis</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <span class="skill-icon">🧾</span>
+                                <span>Excel & Google Sheets</span>
+                            </li>
+                        </ul>
+                    </article>
+
+                    <!-- Data Infrastructure Card -->
+                    <article class="bg-slate-800 rounded-2xl p-6 shadow-md hover:shadow-lg transition-shadow">
+                        <h3 class="text-xl font-bold text-[#17c8d9] mb-4 text-center border-b border-slate-700 pb-2">
+                            Data Infrastructure
+                        </h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-center gap-3">
+                                <span class="skill-icon">🗄️</span>
+                                <span>SQL Database Management</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <span class="skill-icon">🔧</span>
+                                <span>Git & GitHub Version Control</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <span class="skill-icon">🔗</span>
+                                <span>ETL Concepts & Data Pipelines</span>
+                            </li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== PROJECTS SECTION ===== -->
+        <section id="projects" class="py-16 md:py-24 bg-slate-900">
+            <div class="max-w-7xl mx-auto px-4 animate-on-scroll">
+                <!-- Section Header -->
+                <div class="section-header">
+                    <p class="section-subtitle">Data Projects</p>
+                    <h2 class="section-title">Work & Explorations</h2>
+                    <p class="section-description">Practical applications of data science techniques to solve real-world problems</p>
+                </div>
+                
+                <!-- Projects Grid -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <!-- PROJECT CARD 1: Maji Ndogo -->
+                    <div class="project-card professional-card flex flex-col">
+                        <!-- Project Title and Description -->
+                        <div class="p-5 pb-2">
+                            <h3 class="text-xl font-bold text-white mb-2">Maji Ndogo Agriculture Project</h3>
+                            <p class="text-slate-300 text-sm">When data meets agriculture, every insight becomes a seed for change.</p>
+                        </div>
+                        
+                        <!-- Project Image with Coming Soon Badge -->
+                        <div class="mt-auto project-image-container relative">
+                            <img src="./Maji_Ndongo_Image_5.png" alt="Maji Ndogo Agriculture Project" class="w-full h-full object-cover">
+                            <!-- COMING SOON badge -->
+                            <div class="coming-soon-badge">
+                                <span class="dot">
+                                    <span class="ping"></span>
+                                    <span class="static"></span>
+                                </span>
+                                COMING SOON...
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PROJECT CARD 2: Digital Payments Analysis -->
+                    <div class="project-card professional-card flex flex-col">
+                        <!-- Project Title and Description -->
+                        <div class="p-5 pb-2">
+                            <h3 class="text-xl font-bold text-white mb-2">Digital Payments Dashboard Project</h3>
+                            <p class="text-slate-300 text-sm">
+                                This project focused on developing a centralized analytics platform for Point-of-Sale (POS) systems. The solution provides real-time visibility into essential business operations, enabling stakeholders to make more informed, data-driven decisions.
+                            </p>
+                        </div>
+
+                        <!-- POS Map Component -->
+                        <div class="mt-auto flex flex-col h-full">
+                            <div class="bg-slate-800 rounded-xl p-4 text-center h-full flex flex-col relative">
+                                <!-- Map Placeholder -->
+                                <div class="relative w-full flex-grow bg-slate-900 rounded-lg overflow-hidden border border-slate-700 mb-4">
+                                    <div class="aspect-[4/3] bg-gradient-to-br from-emerald-900 to-teal-800 flex items-center justify-center">
+                                        <img src="./map-zambia.jpg" alt="Zambian Map">
+                                    </div>
+                                </div>
+                               
+                                <!-- COMING SOON badge -->
+                                <div class="coming-soon-badge">
+                                    <span class="dot">
+                                        <span class="ping"></span>
+                                        <span class="static"></span>
+                                    </span>
+                                    COMING SOON...
+                                </div>
+                            
+                                <!-- Logo Legend -->
+                                <div class="mt-auto pt-4">
+                                    <!-- DESKTOP LOGO LAYOUT: Single horizontal line -->
+                                    <div class="bank-logos-desktop">
+                                        <!-- FDBZ Logo with Special Effects -->
+                                        <div class="bank-logo-item fdbl-logo-container">
+                                            <!-- Three signal lines pointing to FDBZ -->
+                                            <div class="fdbl-signal-line top"></div>
+                                            <div class="fdbl-signal-line left"></div>
+                                            <div class="fdbl-signal-line right"></div>
+                                            
+                                            <!-- Arrow pointer -->
+                                            <div class="fdbl-arrow-pointer"></div>
+                                            
+                                            <img src="./FDBZ-logo.png" alt="First Digital Bank In Zambia">
+                                            <span>FDBZ</span>
+                                            <!-- Tooltip for FDBZ -->
+                                            <div class="tooltip">Starting Point - Ready Soon</div>
+                                        </div>
+                                        <div class="bank-logo-item">
+                                            <img src="./zanaco-logo.png" alt="Zanaco">
+                                            <span>Zanaco</span>
+                                        </div>
+                                        <div class="bank-logo-item">
+                                            <img src="./indo-logo.png" alt="Indo">
+                                            <span>Indo</span>
+                                        </div>
+                                        <div class="bank-logo-item">
+                                            <img src="./absa-logo.webp" alt="ABSA">
+                                            <span>ABSA</span>
+                                        </div>
+                                        <div class="bank-logo-item">
+                                            <img src="./stanbic bank-logo" alt="Stanbic">
+                                            <span>Stanbic</span>
+                                        </div>
+                                        <div class="bank-logo-item">
+                                            <img src="./konse konse -logo" alt="Konse">
+                                            <span>543</span>
+                                        </div>
+                                        <div class="bank-logo-item">
+                                            <img src="./FNB-logo.png" alt="FNB">
+                                            <span>FNB</span>
+                                        </div>
+                                        <div class="bank-logo-item">
+                                            <img src="./first capital bank-logo.jpg" alt="1st Cap">
+                                            <span>FCB</span>
+                                        </div>
+                                        <div class="bank-logo-item">
+                                            <img src="./kazang-logo.gif" alt="Kazang">
+                                            <span>Kazang</span>
+                                        </div>
+                                        <div class="bank-logo-item">
+                                            <img src="./izwe-logo" alt="Izwe">
+                                            <span>Izwe</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- MOBILE LOGO LAYOUT: 5 logos per row (2 rows) -->
+                                    <div class="bank-logos-mobile">
+                                        <!-- FDBZ Logo with Special Effects -->
+                                        <div class="bank-logo-item fdbl-logo-container">
+                                            <!-- Three signal lines pointing to FDBZ -->
+                                            <div class="fdbl-signal-line top"></div>
+                                            <div class="fdbl-signal-line left"></div>
+                                            <div class="fdbl-signal-line right"></div>
+                                            
+                                            <!-- Arrow pointer -->
+                                            <div class="fdbl-arrow-pointer"></div>
+                                            
+                                            <img src="./FDBZ-logo.png" alt="First Digital Bank In Zambia">
+                                            <span>FDBZ</span>
+                                            <!-- Tooltip for FDBZ -->
+                                            <div class="tooltip">Starting Point - Ready Soon</div>
+                                        </div>
+                                        <div class="bank-logo-item">
+                                            <img src="./zanaco-logo.png" alt="Zanaco">
+                                            <span>Zanaco</span>
+                                        </div>
+                                        <div class="bank-logo-item">
+                                            <img src="./indo-logo.png" alt="Indo">
+                                            <span>Indo</span>
+                                        </div>
+                                        <div class="bank-logo-item">
+                                            <img src="./absa-logo.webp" alt="ABSA">
+                                            <span>ABSA</span>
+                                        </div>
+                                        <div class="bank-logo-item">
+                                            <img src="./stanbic bank-logo" alt="Stanbic">
+                                            <span>Stanbic</span>
+                                        </div>
+                                        <div class="bank-logo-item">
+                                            <img src="./konse konse -logo" alt="Konse">
+                                            <span>543</span>
+                                        </div>
+                                        <div class="bank-logo-item">
+                                            <img src="./FNB-logo.png" alt="FNB">
+                                            <span>FNB</span>
+                                        </div>
+                                        <div class="bank-logo-item">
+                                            <img src="./first capital bank-logo.jpg" alt="1st Cap">
+                                            <span>FCB</span>
+                                        </div>
+                                        <div class="bank-logo-item">
+                                            <img src="./kazang-logo.gif" alt="Kazang">
+                                            <span>Kazang</span>
+                                        </div>
+                                        <div class="bank-logo-item">
+                                            <img src="./izwe-logo" alt="Izwe">
+                                            <span>Izwe</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CONTACT SECTION ===== -->
+        <section id="contact" class="py-12 md:py-16 bg-slate-900">
+            <div class="max-w-3xl mx-auto px-4 text-center animate-on-scroll">
+                <!-- Section Header -->
+                <div class="section-header">
+                    <h2 class="section-title">Let's Connect</h2>
+                    <p class="section-description mb-6">
+                        I'm always interested in discussing data science opportunities, collaborations, or innovative projects.
+                    </p>
+                </div>
+                
+                <!-- Social Icons -->
+                <div class="flex justify-center gap-4 mb-6">
+                    <a href="mailto:ibacklungu888@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Email Me" class="social-icon">
+                        <img src="./email_red.png" alt="Email">
+                    </a>
+                    <a href="https://linkedin.com/in/iback-lungu-3217451b4" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" class="social-icon">
+                        <img src="linkedin_blue.png" alt="LinkedIn">
+                    </a>
+                    <a href="https://github.com/ibacklungu" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile" class="social-icon">
+                        <img src="./github_purple.png" alt="GitHub">
+                    </a>
+                    <a href="https://wa.me/260975135029" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="social-icon">
+                        <img src="./whatsapp _green.png" alt="WhatsApp">
+                    </a>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="professional-card p-6">
+                    <form id="contact-form" class="centered-form">
+                        <input type="text" name="name" placeholder="Name" required class="form-input text-center" />
+                        <input type="email" name="email" placeholder="Email" required class="form-input text-center" />
+                        <input type="text" name="subject" placeholder="Subject" required class="form-input text-center" />
+                        <textarea name="message" placeholder="Message" rows="4" required class="form-input resize-none text-center"></textarea>
+                        <button type="submit" id="submit-button" class="cta-button">
+                            Send Message
+                        </button>
+                        <p id="form-status" class="mt-3 text-sm font-semibold text-white"></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="bg-slate-900 border-t border-slate-800 py-6">
+        <p class="text-slate-400 text-sm text-center">
+            &copy; <span id="current-year"></span> Iback Lungu. All Rights Reserved.
+        </p>
+    </footer>
+
+    <!-- ===== EXTERNAL SCRIPTS ===== -->
+    <!-- Font Awesome Icons -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js" crossorigin="anonymous"></script>
+
+    <!-- ===== CUSTOM JAVASCRIPT ===== -->
+    <script>
+        // Set current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        
+        // Intersection Observer for scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('is-visible');
+            });
+        }, { threshold: 0.15 });
+        
+        // Observe elements with animation classes
+        document.querySelectorAll('.hero-fade-in, .animate-on-scroll').forEach(el => observer.observe(el));
+        
+        // Mobile menu functionality
+        const hamburgerButton = document.getElementById('hamburger-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const hamburgerOpen = document.getElementById('hamburger-open');
+        const hamburgerClose = document.getElementById('hamburger-close');
+        const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+        
+        if (hamburgerButton) {
+            hamburgerButton.addEventListener('click', () => {
+                const isOpen = mobileMenu.classList.contains('opacity-100');
+                mobileMenu.classList.toggle('opacity-100', !isOpen);
+                mobileMenu.classList.toggle('invisible', isOpen);
+                hamburgerOpen.classList.toggle('hidden', !isOpen);
+                hamburgerClose.classList.toggle('hidden', isOpen);
+            });
+        }
+        
+        // Close mobile menu when a link is clicked
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('opacity-100', 'visible');
+                mobileMenu.classList.add('invisible');
+                hamburgerOpen.classList.remove('hidden');
+                hamburgerClose.classList.add('hidden');
+            });
         });
-    }, { threshold: 0.15 });
-    
-    document.querySelectorAll('.hero-fade-in, .animate-on-scroll').forEach(el => observer.observe(el));
-    
-    // Mobile menu
-    const hamburgerButton = document.getElementById('hamburger-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const hamburgerOpen = document.getElementById('hamburger-open');
-    const hamburgerClose = document.getElementById('hamburger-close');
-    const mobileLinks = document.querySelectorAll('.mobile-nav-link');
-    
-    if (hamburgerButton) {
-        hamburgerButton.addEventListener('click', () => {
-            const isOpen = mobileMenu.classList.contains('opacity-100');
-            mobileMenu.classList.toggle('opacity-100', !isOpen);
-            mobileMenu.classList.toggle('invisible', isOpen);
-            hamburgerOpen.classList.toggle('hidden', !isOpen);
-            hamburgerClose.classList.toggle('hidden', isOpen);
-        });
-    }
-    
-    mobileLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            mobileMenu.classList.remove('opacity-100', 'visible');
-            mobileMenu.classList.add('invisible');
-            hamburgerOpen.classList.remove('hidden');
-            hamburgerClose.classList.add('hidden');
-        });
-    });
-    
-    // Contact form
-    const contactForm = document.getElementById('contact-form');
-    const statusMessage = document.getElementById('form-status');
-    const submitButton = document.getElementById('submit-button');
-    
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            submitButton.disabled = true;
-            submitButton.textContent = 'Sending...';
-            statusMessage.textContent = 'Sending your message...';
-            statusMessage.className = 'mt-4 text-base font-semibold text-blue-400';
-            
-            emailjs.sendForm('service_89njjb3', 'template_h4cawxa', this)
-                .then(() => {
-                    statusMessage.textContent = 'Message sent successfully!';
-                    statusMessage.className = 'mt-4 text-base font-semibold text-green-400';
-                    contactForm.reset();
-                })
-                .catch(() => {
-                    statusMessage.textContent = 'Failed to send. Please try again.';
-                    statusMessage.className = 'mt-4 text-base font-semibold text-red-400';
-                })
-                .finally(() => {
-                    submitButton.disabled = false;
-                    submitButton.textContent = 'Send Message';
-                });
-        });
-    }
-</script>
+        
+        // Contact form submission
+        const contactForm = document.getElementById('contact-form');
+        const statusMessage = document.getElementById('form-status');
+        const submitButton = document.getElementById('submit-button');
+        
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                submitButton.disabled = true;
+                submitButton.textContent = 'Sending...';
+                statusMessage.textContent = 'Sending your message...';
+                statusMessage.className = 'mt-4 text-base font-semibold text-blue-400';
+                
+                // Send form data using EmailJS
+                emailjs.sendForm('service_89njjb3', 'template_h4cawxa', this)
+                    .then(() => {
+                        statusMessage.textContent = 'Message sent successfully!';
+                        statusMessage.className = 'mt-4 text-base font-semibold text-green-400';
+                        contactForm.reset();
+                    })
+                    .catch(() => {
+                        statusMessage.textContent = 'Failed to send. Please try again.';
+                        statusMessage.className = 'mt-4 text-base font-semibold text-red-400';
+                    })
+                    .finally(() => {
+                        submitButton.disabled = false;
+                        submitButton.textContent = 'Send Message';
+                    });
+            });
+        }
+    </script>
 </body>
 </html>
