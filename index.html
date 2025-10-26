@@ -602,6 +602,31 @@
             min-height: 80px;
             padding-top: 20px;
         }
+
+        /* === FDBZ EXPLORE BUTTON ON LOGO STYLES === */
+        .fdbl-explore-btn {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: rgba(6, 214, 160, 0.2);
+            color: white;
+            border: 1px solid rgba(6, 214, 160, 0.5);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.6rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+            z-index: 20;
+            white-space: nowrap;
+        }
+
+        .fdbl-explore-btn:hover {
+            background: rgba(6, 214, 160, 0.3);
+            transform: scale(1.05);
+            box-shadow: 0 0 10px rgba(6, 214, 160, 0.4);
+        }
     </style>
 </head>
 
@@ -951,6 +976,9 @@
                                                 COMING SOON...
                                             </div>
                                             
+                                            <!-- FDBZ Explore Button on Logo -->
+                                            <div class="fdbl-explore-btn" id="fdbl-btn-desktop">EXPLORE</div>
+                                            
                                             <img src="./FDBZ-logo.png" alt="First Digital Bank In Zambia">
                                             <span>FDBZ</span> 
                                         </div>
@@ -1002,6 +1030,9 @@
                                             <div class="fdbl-coming-soon" id="fdbl-coming-soon-mobile">
                                                 COMING SOON...
                                             </div>
+                                            
+                                            <!-- FDBZ Explore Button on Logo -->
+                                            <div class="fdbl-explore-btn" id="fdbl-btn-mobile">EXPLORE</div>
                                             
                                             <img src="./FDBZ-logo.png" alt="First Digital Bank In Zambia">
                                             <span>FDBZ</span>
@@ -1215,6 +1246,33 @@
             
             // Set up the interactive behavior for Maji Ndogo
             toggleMajiState(majiExplore, majiComingSoon);
+            
+            // FDBZ Explore Button toggle functionality
+            // Desktop button
+            const fdblBtnDesktop = document.getElementById('fdbl-btn-desktop');
+            
+            if (fdblBtnDesktop) {
+                fdblBtnDesktop.addEventListener('click', function() {
+                    if (fdblBtnDesktop.textContent === 'EXPLORE') {
+                        fdblBtnDesktop.textContent = 'COMING SOON';
+                    } else {
+                        fdblBtnDesktop.textContent = 'EXPLORE';
+                    }
+                });
+            }
+            
+            // Mobile button
+            const fdblBtnMobile = document.getElementById('fdbl-btn-mobile');
+            
+            if (fdblBtnMobile) {
+                fdblBtnMobile.addEventListener('click', function() {
+                    if (fdblBtnMobile.textContent === 'EXPLORE') {
+                        fdblBtnMobile.textContent = 'COMING SOON';
+                    } else {
+                        fdblBtnMobile.textContent = 'EXPLORE';
+                    }
+                });
+            }
         });
     </script>
 </body>
