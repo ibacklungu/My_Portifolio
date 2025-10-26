@@ -238,6 +238,7 @@
             backdrop-filter: blur(10px); /* Glassmorphism effect */
             border: 1px solid rgba(6, 214, 160, 0.3);
             z-index: 10; /* Ensure it appears above other elements */
+            cursor: pointer;
         }
         .coming-soon-badge .dot {
             position: relative;
@@ -509,59 +510,96 @@
             transform: translateX(-50%) translateY(-5px); /* Final position */
         }
 
-        /* === CLEAN AND PROFESSIONAL FDBZ STYLES === */
-        /* Container for FDBZ logo with clean indicators */
+        /* === ENHANCED FDBZ SIGNAL STYLES === */
+        /* Container for FDBZ logo with signals */
         .fdbl-logo-container {
             position: relative; /* For positioning the signal elements */
         }
 
-        /* Simple arrow pointing to FDBZ logo */
-        .fdbl-arrow-pointer {
+        /* Enhanced signal indicator */
+        .fdbl-signal-indicator {
             position: absolute;
-            top: -50px; /* Positioned above the logo */
+            top: -45px;
             left: 50%;
             transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             z-index: 15;
-            animation: arrow-pulse 2s ease-in-out infinite;
+            cursor: pointer;
         }
 
-        /* Arrow head only - no tail */
-        .fdbl-arrow-pointer .arrow-head {
+        /* Enhanced signal animation */
+        .fdbl-signal-pulse {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #06d6a0;
+            position: relative;
+            margin-bottom: 8px;
+            animation: signal-pulse 1.5s ease-in-out infinite;
+            box-shadow: 0 0 0 0 rgba(6, 214, 160, 0.7);
+        }
+
+        @keyframes signal-pulse {
+            0% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(6, 214, 160, 0.7);
+            }
+            70% {
+                transform: scale(1.1);
+                box-shadow: 0 0 0 10px rgba(6, 214, 160, 0);
+            }
+            100% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(6, 214, 160, 0);
+            }
+        }
+
+        /* Arrow pointing down */
+        .fdbl-arrow-down {
             width: 0;
             height: 0;
-            border-left: 8px solid transparent;
-            border-right: 8px solid transparent;
-            border-bottom: 12px solid #06d6a0; /* Consistent green color */
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 10px solid #06d6a0;
+            animation: arrow-bounce 1.5s ease-in-out infinite;
         }
 
-        /* Arrow pulse animation */
-        @keyframes arrow-pulse {
+        @keyframes arrow-bounce {
             0%, 100% {
-                transform: translateX(-50%) translateY(0);
+                transform: translateY(0);
             }
             50% {
-                transform: translateX(-50%) translateY(-3px);
+                transform: translateY(3px);
             }
         }
 
-        /* "CLICK HERE" message with consistent styling */
-        .fdbl-arrow-pointer::after {
-            content: 'CLICK HERE';
+        /* "CLICK HERE" message */
+        .fdbl-click-here {
             position: absolute;
-            top: -35px;
+            top: -75px;
             left: 50%;
             transform: translateX(-50%);
             white-space: nowrap;
             font-size: 0.75rem;
             font-weight: 700;
-            color: #06d6a0; /* Consistent green color */
-            background: rgba(30, 41, 59, 0.9); /* Dark background matching theme */
+            color: #06d6a0;
+            background: rgba(30, 41, 59, 0.9);
             padding: 0.4rem 0.8rem;
             border-radius: 6px;
-            border: 1px solid #06d6a0; /* Consistent green border */
-            box-shadow: 0 4px 8px rgba(6, 214, 160, 0.2); /* Subtle green shadow */
+            border: 1px solid #06d6a0;
+            box-shadow: 0 4px 8px rgba(6, 214, 160, 0.2);
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 16;
+        }
+
+        .fdbl-click-here:hover {
+            background: rgba(6, 214, 160, 0.1);
+            transform: translateX(-50%) scale(1.05);
         }
 
         /* Subtle pulsing glow for FDBZ logo */
@@ -573,7 +611,7 @@
             width: 3rem;
             height: 3rem;
             border-radius: 50%;
-            background: rgba(6, 214, 160, 0.2); /* Consistent green glow */
+            background: rgba(6, 214, 160, 0.2);
             animation: logo-pulse 2s ease-in-out infinite;
             z-index: 1;
             pointer-events: none;
@@ -588,6 +626,62 @@
                 transform: translate(-50%, -50%) scale(1.2);
                 opacity: 0.6;
             }
+        }
+
+        /* FDBZ coming soon badge */
+        .fdbl-coming-soon {
+            position: absolute;
+            top: -75px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: inline-flex;
+            align-items: center;
+            background: rgba(6, 214, 160, 0.15);
+            color: white;
+            font-weight: 700;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.7rem;
+            letter-spacing: 0.05em;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(6, 214, 160, 0.3);
+            z-index: 16;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: none; /* Hidden by default */
+        }
+
+        .fdbl-coming-soon .dot {
+            position: relative;
+            display: flex;
+            width: 0.6rem;
+            height: 0.6rem;
+            margin-right: 0.4rem;
+        }
+
+        .fdbl-coming-soon .dot .ping {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            border-radius: 9999px;
+            opacity: 0.75;
+            animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+        }
+
+        .fdbl-coming-soon .dot .static {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: white;
+            border-radius: 9999px;
+        }
+
+        .fdbl-coming-soon:hover {
+            background: rgba(6, 214, 160, 0.25);
+            transform: translateX(-50%) scale(1.05);
         }
 
         /* Responsive adjustments for mobile */
@@ -605,21 +699,26 @@
                 padding: 0.4rem 0.8rem; /* Smaller padding on mobile */
             }
 
-            /* Adjust FDBZ arrow for mobile */
-            .fdbl-arrow-pointer {
-                top: -40px;
+            /* Adjust FDBZ signals for mobile */
+            .fdbl-signal-indicator {
+                top: -35px;
             }
-            
-            .fdbl-arrow-pointer::after {
+
+            .fdbl-click-here, .fdbl-coming-soon {
+                top: -60px;
                 font-size: 0.65rem;
-                top: -30px;
                 padding: 0.3rem 0.6rem;
             }
 
-            .fdbl-arrow-pointer .arrow-head {
-                border-left: 6px solid transparent;
-                border-right: 6px solid transparent;
-                border-bottom: 10px solid #06d6a0;
+            .fdbl-signal-pulse {
+                width: 12px;
+                height: 12px;
+            }
+
+            .fdbl-arrow-down {
+                border-left: 5px solid transparent;
+                border-right: 5px solid transparent;
+                border-top: 8px solid #06d6a0;
             }
         }
         
@@ -910,7 +1009,7 @@
                         <div class="mt-auto project-image-container relative">
                             <img src="./Maji_Ndongo_Image_5.png" alt="Maji Ndogo Agriculture Project" class="w-full h-full object-cover">
                             <!-- COMING SOON badge -->
-                            <div class="coming-soon-badge">
+                            <div class="coming-soon-badge" id="maji-coming-soon">
                                 <span class="dot">
                                     <span class="ping"></span>
                                     <span class="static"></span>
@@ -946,9 +1045,24 @@
                                     <div class="bank-logos-desktop">
                                         <!-- FDBZ Logo with Special Effects -->
                                         <div class="bank-logo-item fdbl-logo-container">
-                                            <!-- Simple arrow pointing to logo -->
-                                            <div class="fdbl-arrow-pointer">
-                                                <div class="arrow-head"></div>
+                                            <!-- Enhanced signal indicator -->
+                                            <div class="fdbl-signal-indicator">
+                                                <div class="fdbl-signal-pulse"></div>
+                                                <div class="fdbl-arrow-down"></div>
+                                            </div>
+                                            
+                                            <!-- "CLICK HERE" message -->
+                                            <div class="fdbl-click-here" id="fdbl-click-here">
+                                                CLICK HERE
+                                            </div>
+                                            
+                                            <!-- "COMING SOON" badge -->
+                                            <div class="fdbl-coming-soon" id="fdbl-coming-soon">
+                                                <span class="dot">
+                                                    <span class="ping"></span>
+                                                    <span class="static"></span>
+                                                </span>
+                                                COMING SOON...
                                             </div>
                                             
                                             <!-- Subtle pulsing glow effect -->
@@ -1001,9 +1115,24 @@
                                     <div class="bank-logos-mobile">
                                         <!-- FDBZ Logo with Special Effects -->
                                         <div class="bank-logo-item fdbl-logo-container">
-                                            <!-- Simple arrow pointing to logo -->
-                                            <div class="fdbl-arrow-pointer">
-                                                <div class="arrow-head"></div>
+                                            <!-- Enhanced signal indicator -->
+                                            <div class="fdbl-signal-indicator">
+                                                <div class="fdbl-signal-pulse"></div>
+                                                <div class="fdbl-arrow-down"></div>
+                                            </div>
+                                            
+                                            <!-- "CLICK HERE" message -->
+                                            <div class="fdbl-click-here" id="fdbl-click-here-mobile">
+                                                CLICK HERE
+                                            </div>
+                                            
+                                            <!-- "COMING SOON" badge -->
+                                            <div class="fdbl-coming-soon" id="fdbl-coming-soon-mobile">
+                                                <span class="dot">
+                                                    <span class="ping"></span>
+                                                    <span class="static"></span>
+                                                </span>
+                                                COMING SOON...
                                             </div>
                                             
                                             <!-- Subtle pulsing glow effect -->
@@ -1186,6 +1315,34 @@
                     });
             });
         }
+
+        // Interactive FDBZ elements functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get references to the interactive elements
+            const clickHereDesktop = document.getElementById('fdbl-click-here');
+            const comingSoonDesktop = document.getElementById('fdbl-coming-soon');
+            const clickHereMobile = document.getElementById('fdbl-click-here-mobile');
+            const comingSoonMobile = document.getElementById('fdbl-coming-soon-mobile');
+            
+            // Function to toggle between "CLICK HERE" and "COMING SOON"
+            function toggleFDBZState(clickHere, comingSoon) {
+                if (clickHere && comingSoon) {
+                    clickHere.addEventListener('click', function() {
+                        clickHere.style.display = 'none';
+                        comingSoon.style.display = 'inline-flex';
+                    });
+                    
+                    comingSoon.addEventListener('click', function() {
+                        comingSoon.style.display = 'none';
+                        clickHere.style.display = 'block';
+                    });
+                }
+            }
+            
+            // Set up the interactive behavior for both desktop and mobile
+            toggleFDBZState(clickHereDesktop, comingSoonDesktop);
+            toggleFDBZState(clickHereMobile, comingSoonMobile);
+        });
     </script>
 </body>
 </html>
