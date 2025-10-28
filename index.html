@@ -570,6 +570,11 @@
                 border-right: 5px solid transparent;
                 border-top: 8px solid #06d6a0;
             }
+            
+            /* Hide the bottom explore button on mobile */
+            .fdbl-explore-btn {
+                display: none !important;
+            }
         }
 
         /* Responsive adjustments for desktop */
@@ -935,7 +940,7 @@
                                 <!-- Map Placeholder -->
                                 <div class="relative w-full flex-grow bg-slate-900 rounded-lg overflow-hidden border border-slate-700 mb-4">
                                     <div class="aspect-[4/3] bg-gradient-to-br from-emerald-900 to-teal-800 flex items-center justify-center">
-                                        <img src="./map-zambia.jpg" alt="Zambian Map">
+                                        <img src="./POS-image.jpeg" alt="POS">
                                     </div>
                                 </div>
                             
@@ -1030,9 +1035,6 @@
                                             <div class="fdbl-coming-soon" id="fdbl-coming-soon-mobile">
                                                 COMING SOON...
                                             </div>
-                                            
-                                            <!-- FDBZ Explore Button on Logo -->
-                                            <div class="fdbl-explore-btn" id="fdbl-btn-mobile">EXPLORE</div>
                                             
                                             <img src="./FDBZ-logo.png" alt="First Digital Bank In Zambia">
                                             <span>FDBZ</span>
@@ -1247,8 +1249,7 @@
             // Set up the interactive behavior for Maji Ndogo
             toggleMajiState(majiExplore, majiComingSoon);
             
-            // FDBZ Explore Button toggle functionality
-            // Desktop button
+            // FDBZ Explore Button toggle functionality (desktop only)
             const fdblBtnDesktop = document.getElementById('fdbl-btn-desktop');
             
             if (fdblBtnDesktop) {
@@ -1257,19 +1258,6 @@
                         fdblBtnDesktop.textContent = 'COMING SOON';
                     } else {
                         fdblBtnDesktop.textContent = 'EXPLORE';
-                    }
-                });
-            }
-            
-            // Mobile button
-            const fdblBtnMobile = document.getElementById('fdbl-btn-mobile');
-            
-            if (fdblBtnMobile) {
-                fdblBtnMobile.addEventListener('click', function() {
-                    if (fdblBtnMobile.textContent === 'EXPLORE') {
-                        fdblBtnMobile.textContent = 'COMING SOON';
-                    } else {
-                        fdblBtnMobile.textContent = 'EXPLORE';
                     }
                 });
             }
