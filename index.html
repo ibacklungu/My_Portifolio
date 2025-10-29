@@ -309,150 +309,6 @@
             .project-image-container { height: 420px; }
         }
 
-        /* === RESPONSIVE LOGO CONTAINER STYLES === */
-        .bank-logos-desktop {
-            display: flex;
-            flex-wrap: nowrap;
-            justify-content: center;
-            align-items: center;
-            gap: 1rem;
-            padding: 0.5rem 0;
-            overflow-x: auto;
-        }
-        
-        .bank-logos-mobile {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 0.75rem;
-            padding: 0.5rem 0;
-        }
-        
-        .bank-logo-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .bank-logo-item:hover {
-            transform: translateY(-5px);
-        }
-
-        .bank-logo-item img {
-            width: 2.5rem;
-            height: 2.5rem;
-            object-fit: contain;
-            transition: all 0.3s ease;
-        }
-
-        .bank-logo-item:hover img {
-            filter: brightness(1.2) contrast(1.1);
-            transform: scale(1.1);
-        }
-        
-        .bank-logo-item span {
-            font-size: 0.6rem;
-            margin-top: 0.25rem;
-            text-align: center;
-            color: #cbd5e1;
-        }
-
-        /* === ENHANCED FDBZ SIGNAL STYLES === */
-        .fdbl-logo-container {
-            position: relative;
-        }
-
-        .fdbl-signal-indicator {
-            position: absolute;
-            top: -45px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            z-index: 15;
-            cursor: pointer;
-        }
-
-        .fdbl-arrow-down {
-            width: 0;
-            height: 0;
-            border-left: 6px solid transparent;
-            border-right: 6px solid transparent;
-            border-top: 10px solid #06d6a0;
-            animation: arrow-bounce 1.5s ease-in-out infinite;
-        }
-
-        @keyframes arrow-bounce {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(5px);
-            }
-        }
-
-        /* "EXPLORE" message - VISIBLE ON DESKTOP */
-        .fdbl-explore {
-            position: absolute;
-            top: -65px;
-            left: 50%;
-            transform: translateX(-50%);
-            white-space: nowrap;
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: #06d6a0;
-            background: rgba(15, 23, 42, 0.95);
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            border: 1px solid #06d6a0;
-            box-shadow: 0 4px 12px rgba(6, 214, 160, 0.3);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            z-index: 16;
-            line-height: 1;
-            display: block;
-        }
-
-        .fdbl-explore:hover {
-            background: rgba(6, 214, 160, 0.15);
-            transform: translateX(-50%) scale(1.05);
-        }
-
-        /* FDBZ coming soon badge */
-        .fdbl-coming-soon {
-            position: absolute;
-            top: -65px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: inline-flex;
-            align-items: center;
-            background: rgba(6, 214, 160, 0.15);
-            color: white;
-            font-weight: 700;
-            padding: 0.5rem 1rem;
-            border-radius: 9999px;
-            font-size: 0.75rem;
-            letter-spacing: 0.05em;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(6, 214, 160, 0.3);
-            z-index: 16;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: none;
-            line-height: 1;
-        }
-
-        .fdbl-coming-soon:hover {
-            background: rgba(6, 214, 160, 0.25);
-            transform: translateX(-50%) scale(1.05);
-        }
-
         /* === MAJI NDOGO EXPLORE BUTTON STYLES === */
         .maji-explore-container {
             position: absolute;
@@ -480,6 +336,15 @@
             border-right: 6px solid transparent;
             border-top: 10px solid #06d6a0;
             animation: arrow-bounce 1.5s ease-in-out infinite;
+        }
+
+        @keyframes arrow-bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(5px);
+            }
         }
 
         .maji-explore {
@@ -532,30 +397,6 @@
 
         /* Responsive adjustments for mobile */
         @media (max-width: 768px) {
-            .bank-logos-desktop {
-                display: none;
-            }
-            .bank-logos-mobile {
-                display: grid;
-            }
-
-            .fdbl-signal-indicator {
-                top: -35px;
-            }
-
-            .fdbl-explore, .fdbl-coming-soon {
-                top: -55px;
-                font-size: 0.7rem;
-                padding: 0.4rem 0.8rem;
-                white-space: nowrap;
-            }
-
-            .fdbl-arrow-down {
-                border-left: 5px solid transparent;
-                border-right: 5px solid transparent;
-                border-top: 8px solid #06d6a0;
-            }
-
             .maji-explore-container {
                 transform: translate(-50%, -40%);
             }
@@ -570,67 +411,83 @@
                 border-right: 5px solid transparent;
                 border-top: 8px solid #06d6a0;
             }
-            
-            /* Hide the bottom explore button on mobile */
-            .fdbl-explore-btn {
-                display: none !important;
-            }
         }
 
-        /* Responsive adjustments for desktop */
-        @media (min-width: 769px) {
-            .bank-logos-desktop {
-                display: flex;
-            }
-            .bank-logos-mobile {
-                display: none;
-            }
-            
-            /* FIX: Ensure FDBZ explore elements are visible on desktop */
-            .fdbl-logo-container .fdbl-signal-indicator,
-            .fdbl-logo-container .fdbl-explore {
-                display: flex !important;
-                visibility: visible !important;
-                opacity: 1 !important;
-            }
-            
-            .maji-explore-container,
-            .maji-explore-container .maji-explore {
-                display: flex !important;
-                visibility: visible !important;
-                opacity: 1 !important;
-            }
-        }
-
-        /* FIX: Ensure the parent container has enough height for the explore elements */
-        .fdbl-logo-container {
-            min-height: 80px;
-            padding-top: 20px;
-        }
-
-        /* === FDBZ EXPLORE BUTTON ON LOGO STYLES === */
-        .fdbl-explore-btn {
+        /* === PAYMENTS PROJECT EXPLORE BUTTON STYLES === */
+        .payments-explore-container {
             position: absolute;
-            top: -8px;
-            right: -8px;
-            background: rgba(6, 214, 160, 0.2);
-            color: white;
-            border: 1px solid rgba(6, 214, 160, 0.5);
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 0.6rem;
-            font-weight: bold;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 15;
+            cursor: pointer;
+        }
+
+        .payments-signal-indicator {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .payments-arrow-down {
+            width: 0;
+            height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 10px solid #06d6a0;
+            animation: arrow-bounce 1.5s ease-in-out infinite;
+        }
+
+        .payments-explore {
+            white-space: nowrap;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #06d6a0;
+            background: rgba(15, 23, 42, 0.95);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            border: 1px solid #06d6a0;
+            box-shadow: 0 4px 12px rgba(6, 214, 160, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
             cursor: pointer;
             transition: all 0.3s ease;
-            backdrop-filter: blur(5px);
-            z-index: 20;
-            white-space: nowrap;
+            z-index: 16;
+            line-height: 1;
+            display: block;
         }
 
-        .fdbl-explore-btn:hover {
-            background: rgba(6, 214, 160, 0.3);
+        .payments-explore:hover {
+            background: rgba(6, 214, 160, 0.15);
             transform: scale(1.05);
-            box-shadow: 0 0 10px rgba(6, 214, 160, 0.4);
+        }
+
+        .payments-coming-soon {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(6, 214, 160, 0.15);
+            color: white;
+            font-weight: 700;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(6, 214, 160, 0.3);
+            z-index: 16;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: none;
+            line-height: 1;
+        }
+
+        .payments-coming-soon:hover {
+            background: rgba(6, 214, 160, 0.25);
+            transform: scale(1.05);
         }
     </style>
 </head>
@@ -896,13 +753,13 @@
                 </div>
                 
                 <!-- Projects Grid -->
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    <!-- PROJECT CARD 1: Maji Ndogo -->
+                <div class="grid grid-cols-1 gap-6">
+                    <!-- PROJECT CARD 1: Maji Ndogo - Full Width -->
                     <div class="project-card professional-card flex flex-col">
                         <!-- Project Title and Description -->
                         <div class="p-5 pb-2">
-                            <h3 class="text-xl font-bold text-white mb-2">Maji Ndogo Agriculture Project</h3>
-                            <p class="text-slate-300 text-sm">When data meets agriculture, every insight becomes a seed for change.</p>
+                            <h3 class="text-xl font-bold text-white mb-2 items-center text-center">Maji Ndogo Agriculture Project</h3>
+                            <p class="text-slate-300 text-sm">This project addresses one of Africa's most pressing challenges: optimizing agricultural production in variable climate conditions. Using farm survey data from Maji Ndogo, we developed a data-driven framework to answer two fundamental questions: where to farm and what crops to grow for maximum yield and sustainability.</p>
                         </div>
                         
                         <!-- Project Image with Explore Button -->
@@ -928,9 +785,18 @@
                     <div class="project-card professional-card flex flex-col">
                         <!-- Project Title and Description -->
                         <div class="p-5 pb-2">
-                            <h3 class="text-xl font-bold text-white mb-2">Digital Payments Dashboard Project</h3>
+                            <h3 class="text-xl font-bold text-white mb-2 items-center text-center">Transforming How Financial Institutions Empower Field Agents With Data-Driven Insights.</h3>
                             <p class="text-slate-300 text-sm">
-                                This project focused on developing a centralized analytics platform for Point-of-Sale (POS) systems. The solution provides real-time visibility into essential business operations, enabling stakeholders to make more informed, data-driven decisions.
+                                This project addresses a critical operational gap I experienced as a field representative: teams often work without real-time visibility into merchant performance or terminal locations, while managers rely on delayed reports from IT departments.
+                            </p>
+                            <p class="text-slate-300 text-sm mt-2">
+                                In Phases 1-2, I'm building a complete analytics pipeline using SQL, Excel, and Power BI to transform raw transaction data into actionable insights.
+                            </p>
+                            <p class="text-slate-300 text-sm mt-2">
+                                Phase 3 will introduce a mobile-optimized dashboard and machine learning models to serve two key audiences: field teams gain real-time visibility into territory health and terminal locations, while management receives predictive insights on at-risk merchants and emerging trends.
+                            </p>
+                            <p class="text-slate-300 text-sm mt-2">
+                                The goal is to replace reactive reporting with unified, real-time data that supports decision-making across all levels.
                             </p>
                         </div>
 
@@ -938,134 +804,21 @@
                         <div class="mt-auto flex flex-col h-full">
                             <div class="bg-slate-800 rounded-xl p-4 text-center h-full flex flex-col relative">
                                 <!-- Map Placeholder -->
-                                <div class="relative w-full flex-grow bg-slate-900 rounded-lg overflow-hidden border border-slate-700 mb-4">
+                                <div class="relative w-full flex-grow bg-slate-900 rounded-lg overflow-hidden border border-slate-700">
                                     <div class="aspect-[4/3] bg-gradient-to-br from-emerald-900 to-teal-800 flex items-center justify-center">
-                                        <img src="./POS-IMG.jpeg" alt="POS">
-                                    </div>
-                                </div>
-                            
-                                <!-- Logo Legend -->
-                                <div class="mt-auto pt-4">
-                                    <!-- DESKTOP LOGO LAYOUT: Single horizontal line - FDBZ at position 5 -->
-                                    <div class="bank-logos-desktop">
-                                        <div class="bank-logo-item">
-                                            <img src="./zanaco-logo.png" alt="Zanaco">
-                                            <span>Zanaco</span>
-                                        </div>
-                                        <div class="bank-logo-item">
-                                            <img src="./indo-logo.png" alt="Indo">
-                                            <span>Indo</span>
-                                        </div>
-                                        <div class="bank-logo-item">
-                                            <img src="./absa-logo.webp" alt="ABSA">
-                                            <span>ABSA</span>
-                                        </div>
-                                        <div class="bank-logo-item">
-                                            <img src="./stanbic bank-logo" alt="Stanbic">
-                                            <span>Stanbic</span>
-                                        </div>
-                                        <!-- FDBZ Logo with Special Effects - Position 5 -->
-                                        <div class="bank-logo-item fdbl-logo-container">
-                                            <!-- Enhanced signal indicator - Arrow only -->
-                                            <div class="fdbl-signal-indicator">
-                                                <div class="fdbl-arrow-down"></div>
+                                        <img src="./POS-IMG.jpeg" alt="POS Analytics Dashboard" class="w-full h-full object-cover">
+                                        
+                                        <!-- EXPLORE Button for Payments Project -->
+                                        <div class="payments-explore-container">
+                                            <div class="payments-signal-indicator">
+                                                <div class="payments-arrow-down"></div>
                                             </div>
-                                            
-                                            <!-- "EXPLORE" message - VISIBLE ON DESKTOP -->
-                                            <div class="fdbl-explore" id="fdbl-explore">
+                                            <div class="payments-explore" id="payments-explore">
                                                 EXPLORE
                                             </div>
-                                            
-                                            <!-- "COMING SOON" badge -->
-                                            <div class="fdbl-coming-soon" id="fdbl-coming-soon">
+                                            <div class="payments-coming-soon" id="payments-coming-soon">
                                                 COMING SOON...
                                             </div>
-                                            
-                                            <!-- FDBZ Explore Button on Logo -->
-                                            <div class="fdbl-explore-btn" id="fdbl-btn-desktop">EXPLORE</div>
-                                            
-                                            <img src="./FDBZ-logo.png" alt="First Digital Bank In Zambia">
-                                            <span>FDBZ</span> 
-                                        </div>
-                                        <div class="bank-logo-item">
-                                            <img src="./konse konse -logo" alt="Konse">
-                                            <span>543</span>
-                                        </div>
-                                        <div class="bank-logo-item">
-                                            <img src="./FNB-logo.png" alt="FNB">
-                                            <span>FNB</span>
-                                        </div>
-                                        <div class="bank-logo-item">
-                                            <img src="./first capital bank-logo.jpg" alt="1st Cap">
-                                            <span>FCB</span>
-                                        </div>
-                                        <div class="bank-logo-item">
-                                            <img src="./kazang-logo.gif" alt="Kazang">
-                                            <span>Kazang</span>
-                                        </div>
-                                        <div class="bank-logo-item">
-                                            <img src="./izwe-logo" alt="Izwe">
-                                            <span>Izwe</span>
-                                        </div>
-                                    </div>
-
-                                    <!-- MOBILE LOGO LAYOUT: 5 logos per row (2 rows) - FDBZ at position 3 -->
-                                    <div class="bank-logos-mobile">
-                                        <div class="bank-logo-item">
-                                            <img src="./zanaco-logo.png" alt="Zanaco">
-                                            <span>Zanaco</span>
-                                        </div>
-                                        <div class="bank-logo-item">
-                                            <img src="./indo-logo.png" alt="Indo">
-                                            <span>Indo</span>
-                                        </div>
-                                        <!-- FDBZ Logo with Special Effects - Position 3 -->
-                                        <div class="bank-logo-item fdbl-logo-container">
-                                            <!-- Enhanced signal indicator - Arrow only -->
-                                            <div class="fdbl-signal-indicator">
-                                                <div class="fdbl-arrow-down"></div>
-                                            </div>
-                                            
-                                            <!-- "EXPLORE" message -->
-                                            <div class="fdbl-explore" id="fdbl-explore-mobile">
-                                                EXPLORE
-                                            </div>
-                                            
-                                            <!-- "COMING SOON" badge -->
-                                            <div class="fdbl-coming-soon" id="fdbl-coming-soon-mobile">
-                                                COMING SOON...
-                                            </div>
-                                            
-                                            <img src="./FDBZ-logo.png" alt="First Digital Bank In Zambia">
-                                            <span>FDBZ</span>
-                                        </div>
-                                        <div class="bank-logo-item">
-                                            <img src="./absa-logo.webp" alt="ABSA">
-                                            <span>ABSA</span>
-                                        </div>
-                                        <div class="bank-logo-item">
-                                            <img src="./stanbic bank-logo" alt="Stanbic">
-                                            <span>Stanbic</span>
-                                        </div>
-                                        <div class="bank-logo-item">
-                                            <img src="./konse konse -logo" alt="Konse">
-                                            <span>543</span>
-                                        </div>
-                                        <div class="bank-logo-item">
-                                            <img src="./FNB-logo.png" alt="FNB">
-                                            <span>FNB</span>
-                                        </div>
-                                        <div class="bank-logo-item">
-                                            <img src="./first capital bank-logo.jpg" alt="1st Cap">
-                                            <span>FCB</span>
-                                        </div>
-                                        <div class="bank-logo-item">
-                                            <img src="./kazang-logo.gif" alt="Kazang">
-                                            <span>Kazang</span>
-                                        </div>
-                                        <div class="bank-logo-item">
-                                            <img src="./izwe-logo" alt="Izwe">
-                                            <span>Izwe</span>
                                         </div>
                                     </div>
                                 </div>
@@ -1200,33 +953,8 @@
             });
         }
 
-        // Interactive FDBZ elements functionality
+        // Interactive elements functionality
         document.addEventListener('DOMContentLoaded', function() {
-            // Get references to the interactive elements
-            const exploreDesktop = document.getElementById('fdbl-explore');
-            const comingSoonDesktop = document.getElementById('fdbl-coming-soon');
-            const exploreMobile = document.getElementById('fdbl-explore-mobile');
-            const comingSoonMobile = document.getElementById('fdbl-coming-soon-mobile');
-            
-            // Function to toggle between "EXPLORE" and "COMING SOON"
-            function toggleFDBZState(explore, comingSoon) {
-                if (explore && comingSoon) {
-                    explore.addEventListener('click', function() {
-                        explore.style.display = 'none';
-                        comingSoon.style.display = 'inline-flex';
-                    });
-                    
-                    comingSoon.addEventListener('click', function() {
-                        comingSoon.style.display = 'none';
-                        explore.style.display = 'block';
-                    });
-                }
-            }
-            
-            // Set up the interactive behavior for both desktop and mobile
-            toggleFDBZState(exploreDesktop, comingSoonDesktop);
-            toggleFDBZState(exploreMobile, comingSoonMobile);
-            
             // Maji Ndogo interactive elements
             const majiExplore = document.getElementById('maji-explore');
             const majiComingSoon = document.getElementById('maji-coming-soon');
@@ -1249,18 +977,27 @@
             // Set up the interactive behavior for Maji Ndogo
             toggleMajiState(majiExplore, majiComingSoon);
             
-            // FDBZ Explore Button toggle functionality (desktop only)
-            const fdblBtnDesktop = document.getElementById('fdbl-btn-desktop');
+            // Payments project interactive elements
+            const paymentsExplore = document.getElementById('payments-explore');
+            const paymentsComingSoon = document.getElementById('payments-coming-soon');
             
-            if (fdblBtnDesktop) {
-                fdblBtnDesktop.addEventListener('click', function() {
-                    if (fdblBtnDesktop.textContent === 'EXPLORE') {
-                        fdblBtnDesktop.textContent = 'COMING SOON';
-                    } else {
-                        fdblBtnDesktop.textContent = 'EXPLORE';
-                    }
-                });
+            // Function to toggle between "EXPLORE" and "COMING SOON" for Payments project
+            function togglePaymentsState(explore, comingSoon) {
+                if (explore && comingSoon) {
+                    explore.addEventListener('click', function() {
+                        explore.style.display = 'none';
+                        comingSoon.style.display = 'inline-flex';
+                    });
+                    
+                    comingSoon.addEventListener('click', function() {
+                        comingSoon.style.display = 'none';
+                        explore.style.display = 'block';
+                    });
+                }
             }
+            
+            // Set up the interactive behavior for Payments project
+            togglePaymentsState(paymentsExplore, paymentsComingSoon);
         });
     </script>
 </body>
