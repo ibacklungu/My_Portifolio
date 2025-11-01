@@ -4,40 +4,39 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Iback Lungu | Data Science Portfolio</title>
-    
-    <!-- EmailJS for contact form -->
+
+    <!-- EmailJS: Enables contact form to send emails without a backend -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script type="text/javascript">
         (function() {
             emailjs.init({ publicKey: "5MsPZTTeDr90FHm7N" });
         })();
     </script>
-    
-    <!-- Tailwind CSS -->
+
+    <!-- Tailwind CSS: Utility-first CSS framework for rapid UI development -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts -->
+
+    <!-- Google Fonts: Load the 'Inter' font family for clean, modern typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
+
     <style>
         /* === GLOBAL STYLES === */
         body {
             font-family: 'Inter', sans-serif;
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-            padding-top: 4rem;
+            -ms-overflow-style: none;       /* Hide scrollbar in IE/Edge */
+            scrollbar-width: none;          /* Hide scrollbar in Firefox */
+            padding-top: 4rem;              /* Space for fixed header */
             margin: 0;
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             color: #f8fafc;
         }
-        
         body::-webkit-scrollbar { 
-            display: none; 
+            display: none;                  /* Hide scrollbar in Chrome/Safari */
         }
 
-        /* Gradient text effect */
+        /* Gradient text for visual emphasis */
         .text-gradient {
             background: linear-gradient(135deg, #3b82f6 0%, #06d6a0 100%);
             -webkit-background-clip: text;
@@ -45,7 +44,7 @@
             background-clip: text;
         }
 
-        /* Animations */
+        /* Scroll animations: fade-in effects */
         .hero-fade-in { 
             opacity: 0; 
             transform: translateY(2rem); 
@@ -55,7 +54,6 @@
             opacity: 1; 
             transform: translateY(0); 
         }
-
         .animate-on-scroll { 
             opacity: 0; 
             transform: translateY(3rem); 
@@ -66,7 +64,7 @@
             transform: translateY(0); 
         }
 
-        /* === CARD STYLES === */
+        /* === CARD STYLES (used in Education, Experience, Skills) === */
         .professional-card {
             background: rgba(30, 41, 59, 0.7);
             backdrop-filter: blur(4px);
@@ -76,13 +74,13 @@
             overflow: hidden;
             position: relative;
         }
-
         .professional-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 16px 40px rgba(6, 214, 160, 0.15);
             border-color: rgba(6, 214, 160, 0.3);
         }
 
+        /* Logo container inside cards */
         .card-logo-container {
             width: 100%;
             height: 100px;
@@ -99,7 +97,7 @@
             object-fit: contain;
         }
 
-        /* === BUTTON STYLES === */
+        /* Call-to-action button (e.g., "Explore My Work") */
         .cta-button {
             display: inline-flex;
             align-items: center;
@@ -119,7 +117,7 @@
             box-shadow: 0 8px 15px rgba(6, 214, 160, 0.3);
         }
 
-        /* === FORM STYLES === */
+        /* Contact form styling */
         .centered-form {
             display: flex;
             flex-direction: column;
@@ -141,7 +139,7 @@
             margin-bottom: 1rem;
         }
 
-        /* === SECTION HEADERS === */
+        /* Section headers (used in About, Skills, Projects, etc.) */
         .section-header {
             text-align: center;
             margin-bottom: 3rem;
@@ -168,7 +166,7 @@
             line-height: 1.6;
         }
 
-        /* === PROJECT CARD STYLES === */
+        /* Project card image container */
         .project-card {
             display: flex;
             flex-direction: column;
@@ -192,26 +190,21 @@
             filter: contrast(1.02) saturate(1.03);
         }
 
-        .project-card-title {
-            padding: 1.5rem 1.5rem 1rem;
-            text-align: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        /* Special styling for POS image to show full image */
+        .pos-image-container {
+            background-color: rgba(15, 23, 42, 0.8);
+        }
+        .pos-image-container img {
+            object-fit: contain; /* Ensures full image is visible */
         }
 
-        .project-card-title h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: white;
-            margin: 0;
+        /* Desktop-specific styling for POS image */
+        @media (min-width: 1024px) {
+            .project-image-container { height: 420px; }
+            .pos-image-container { height: 550px; }
         }
 
-        .project-card-title p {
-            color: #cbd5e1;
-            margin: 0.5rem 0 0;
-            font-size: 0.9rem;
-        }
-
-        /* === SKILLS SECTION === */
+        /* Skill icon styling (in Skills section) */
         .skill-icon {
             width: 40px;
             height: 40px;
@@ -227,7 +220,7 @@
             color: #06d6a0;
         }
 
-        /* === SOCIAL ICONS === */
+        /* Social media icons */
         .social-icon {
             display: flex;
             align-items: center;
@@ -256,6 +249,7 @@
 
         /* === RESPONSIVE STYLES === */
         @media (max-width: 640px) {
+            /* Disable animations on mobile for performance */
             .hero-fade-in, .animate-on-scroll { 
                 transform: none !important; 
                 opacity: 1 !important; 
@@ -266,38 +260,32 @@
                 padding: 0 1rem;
                 display: flex;
                 align-items: center;
-                padding-bottom: 2rem; /* Add some padding at the bottom */
+                padding-bottom: 2rem;
             }
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .project-image-container { 
-                height: 220px; 
-            }
+            .section-title { font-size: 2rem; }
+            .project-image-container { height: 220px; }
 
-            /* NEW: keep main hero heading on a single line on small screens */
+            /* Keep hero heading on one line */
             .hero-heading {
                 white-space: nowrap;
                 overflow: hidden;
-                text-overflow: ellipsis; /* prevents layout break if extremely narrow */
-                font-size: 2rem; /* slightly reduce size on mobile so it fits on one line */
+                text-overflow: ellipsis;
+                font-size: 2rem;
                 line-height: 1;
             }
 
-            /* Adjust profile image and hero section spacing for mobile */
+            /* Adjust spacing for mobile */
             #home img.profile-image {
-                margin-bottom: 1rem;  /* Reduce bottom margin on mobile */
-                margin-top: -2rem;    /* Move image up on mobile */
+                margin-bottom: 1rem;
+                margin-top: -2rem;
             }
-
-            /* Adjust CTA button spacing on mobile */
             #home .cta-button {
-                margin-top: 1.5rem;    /* Add some space above the button */
-                margin-bottom: 1rem;    /* Add some space below the button */
+                margin-top: 1.5rem;
+                margin-bottom: 1rem;
             }
         }
 
+        /* Hero section layout */
         #home {
             min-height: calc(100vh - 4rem);
             padding-top: 0;
@@ -308,12 +296,11 @@
             justify-content: center;
         }
 
-        /* === BLINKING DOT ANIMATION === */
+        /* ALX "in progress" blinking dot */
         @keyframes blinking-dot {
             0%, 100% { opacity: 1; }
             50% { opacity: 0; }
         }
-
         .alx-progress-dot {
             position: absolute;
             top: 50%;
@@ -327,115 +314,9 @@
             z-index: 5;
         }
 
-        @media (min-width: 1024px) {
-            .project-image-container { height: 420px; }
-        }
-
-        /* === MAJI NDOGO EXPLORE BUTTON STYLES === */
-        .maji-explore-container {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            z-index: 15;
-            cursor: pointer;
-        }
-
-        .maji-signal-indicator {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-
-        .maji-arrow-down {
-            width: 0;
-            height: 0;
-            border-left: 6px solid transparent;
-            border-right: 6px solid transparent;
-            border-top: 10px solid #06d6a0;
-            animation: arrow-bounce 1.5s ease-in-out infinite;
-        }
-
-        @keyframes arrow-bounce {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(5px);
-            }
-        }
-
-        .maji-explore {
-            white-space: nowrap;
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: #06d6a0;
-            background: rgba(15, 23, 42, 0.95);
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            border: 1px solid #06d6a0;
-            box-shadow: 0 4px 12px rgba(6, 214, 160, 0.3);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            z-index: 16;
-            line-height: 1;
-            display: block;
-        }
-
-        .maji-explore:hover {
-            background: rgba(6, 214, 160, 0.15);
-            transform: scale(1.05);
-        }
-
-        .maji-coming-soon {
-            display: inline-flex;
-            align-items: center;
-            background: rgba(6, 214, 160, 0.15);
-            color: white;
-            font-weight: 700;
-            padding: 0.5rem 1rem;
-            border-radius: 9999px;
-            font-size: 0.75rem;
-            letter-spacing: 0.05em;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(6, 214, 160, 0.3);
-            z-index: 16;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: none;
-            line-height: 1;
-        }
-
-        .maji-coming-soon:hover {
-            background: rgba(6, 214, 160, 0.25);
-            transform: scale(1.05);
-        }
-
-        /* Responsive adjustments for mobile */
-        @media (max-width: 768px) {
-            .maji-explore-container {
-                transform: translate(-50%, -40%);
-            }
-
-            .maji-explore, .maji-coming-soon {
-                font-size: 0.7rem;
-                padding: 0.4rem 0.8rem;
-            }
-
-            .maji-arrow-down {
-                border-left: 5px solid transparent;
-                border-right: 5px solid transparent;
-                border-top: 8px solid #06d6a0;
-            }
-        }
-
-        /* === PAYMENTS PROJECT EXPLORE BUTTON STYLES === */
+        /* === EXPLORE BUTTON STYLES (used in both projects) === */
+        /* Shared styles for both Maji Ndogo and Payments projects */
+        .maji-explore-container,
         .payments-explore-container {
             position: absolute;
             top: 50%;
@@ -447,14 +328,14 @@
             z-index: 15;
             cursor: pointer;
         }
-
+        .maji-signal-indicator,
         .payments-signal-indicator {
             display: flex;
             flex-direction: column;
             align-items: center;
             margin-bottom: 10px;
         }
-
+        .maji-arrow-down,
         .payments-arrow-down {
             width: 0;
             height: 0;
@@ -463,7 +344,11 @@
             border-top: 10px solid #06d6a0;
             animation: arrow-bounce 1.5s ease-in-out infinite;
         }
-
+        @keyframes arrow-bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(5px); }
+        }
+        .maji-explore,
         .payments-explore {
             white-space: nowrap;
             font-size: 0.75rem;
@@ -482,12 +367,12 @@
             line-height: 1;
             display: block;
         }
-
+        .maji-explore:hover,
         .payments-explore:hover {
             background: rgba(6, 214, 160, 0.15);
             transform: scale(1.05);
         }
-
+        .maji-coming-soon,
         .payments-coming-soon {
             display: inline-flex;
             align-items: center;
@@ -506,577 +391,54 @@
             display: none;
             line-height: 1;
         }
-
+        .maji-coming-soon:hover,
         .payments-coming-soon:hover {
             background: rgba(6, 214, 160, 0.25);
             transform: scale(1.05);
         }
 
-        /* NEW: Hero heading sizing (keep mobile rule intact further below) */
+        /* Mobile adjustments for explore buttons */
+        @media (max-width: 768px) {
+            .maji-explore-container,
+            .payments-explore-container {
+                transform: translate(-50%, -40%);
+            }
+            .maji-explore, .maji-coming-soon,
+            .payments-explore, .payments-coming-soon {
+                font-size: 0.7rem;
+                padding: 0.4rem 0.8rem;
+            }
+            .maji-arrow-down,
+            .payments-arrow-down {
+                border-left: 5px solid transparent;
+                border-right: 5px solid transparent;
+                border-top: 8px solid #06d6a0;
+            }
+        }
+
+        /* Responsive hero heading sizes */
         .hero-heading {
-            font-size: 2.25rem;     /* base size for small desktops/tablets */
+            font-size: 2.25rem;
             line-height: 1.04;
             letter-spacing: -0.01em;
         }
-
         @media (min-width: 768px) {
-            .hero-heading {
-                font-size: 3.25rem; /* medium screens */
-            }
+            .hero-heading { font-size: 3.25rem; }
         }
-
         @media (min-width: 1024px) {
-            .hero-heading {
-                font-size: 4rem; /* larger desktop */
-            }
-        }
-
-        @media (max-width: 640px) {
-            .hero-fade-in, .animate-on-scroll { 
-                transform: none !important; 
-                opacity: 1 !important; 
-                transition: none !important; 
-            }
-            #home { 
-                min-height: calc(100vh - 4rem);
-                padding: 0 1rem;
-                display: flex;
-                align-items: center;
-                padding-bottom: 2rem; /* Add some padding at the bottom */
-            }
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .project-image-container { 
-                height: 220px; 
-            }
-
-            /* NEW: keep main hero heading on a single line on small screens */
-            .hero-heading {
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis; /* prevents layout break if extremely narrow */
-                font-size: 2rem; /* slightly reduce size on mobile so it fits on one line */
-                line-height: 1;
-            }
-
-            /* Adjust profile image and hero section spacing for mobile */
-            #home img.profile-image {
-                margin-bottom: 1rem;  /* Reduce bottom margin on mobile */
-                margin-top: -2rem;    /* Move image up on mobile */
-            }
-
-            /* Adjust CTA button spacing on mobile */
-            #home .cta-button {
-                margin-top: 1.5rem;    /* Add some space above the button */
-                margin-bottom: 1rem;    /* Add some space below the button */
-            }
-        }
-
-        #home {
-            min-height: calc(100vh - 4rem);
-            padding-top: 0;
-            padding-left: 1rem;
-            padding-right: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* === BLINKING DOT ANIMATION === */
-        @keyframes blinking-dot {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
-
-        .alx-progress-dot {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background-color: #0d5a47;
-            animation: blinking-dot 1.4s ease-in-out infinite;
-            z-index: 5;
-        }
-
-        @media (min-width: 1024px) {
-            .project-image-container { height: 420px; }
-        }
-
-        /* === MAJI NDOGO EXPLORE BUTTON STYLES === */
-        .maji-explore-container {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            z-index: 15;
-            cursor: pointer;
-        }
-
-        .maji-signal-indicator {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-
-        .maji-arrow-down {
-            width: 0;
-            height: 0;
-            border-left: 6px solid transparent;
-            border-right: 6px solid transparent;
-            border-top: 10px solid #06d6a0;
-            animation: arrow-bounce 1.5s ease-in-out infinite;
-        }
-
-        @keyframes arrow-bounce {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(5px);
-            }
-        }
-
-        .maji-explore {
-            white-space: nowrap;
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: #06d6a0;
-            background: rgba(15, 23, 42, 0.95);
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            border: 1px solid #06d6a0;
-            box-shadow: 0 4px 12px rgba(6, 214, 160, 0.3);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            z-index: 16;
-            line-height: 1;
-            display: block;
-        }
-
-        .maji-explore:hover {
-            background: rgba(6, 214, 160, 0.15);
-            transform: scale(1.05);
-        }
-
-        .maji-coming-soon {
-            display: inline-flex;
-            align-items: center;
-            background: rgba(6, 214, 160, 0.15);
-            color: white;
-            font-weight: 700;
-            padding: 0.5rem 1rem;
-            border-radius: 9999px;
-            font-size: 0.75rem;
-            letter-spacing: 0.05em;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(6, 214, 160, 0.3);
-            z-index: 16;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: none;
-            line-height: 1;
-        }
-
-        .maji-coming-soon:hover {
-            background: rgba(6, 214, 160, 0.25);
-            transform: scale(1.05);
-        }
-
-        /* Responsive adjustments for mobile */
-        @media (max-width: 768px) {
-            .maji-explore-container {
-                transform: translate(-50%, -40%);
-            }
-
-            .maji-explore, .maji-coming-soon {
-                font-size: 0.7rem;
-                padding: 0.4rem 0.8rem;
-            }
-
-            .maji-arrow-down {
-                border-left: 5px solid transparent;
-                border-right: 5px solid transparent;
-                border-top: 8px solid #06d6a0;
-            }
-        }
-
-        /* === PAYMENTS PROJECT EXPLORE BUTTON STYLES === */
-        .payments-explore-container {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            z-index: 15;
-            cursor: pointer;
-        }
-
-        .payments-signal-indicator {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-
-        .payments-arrow-down {
-            width: 0;
-            height: 0;
-            border-left: 6px solid transparent;
-            border-right: 6px solid transparent;
-            border-top: 10px solid #06d6a0;
-            animation: arrow-bounce 1.5s ease-in-out infinite;
-        }
-
-        .payments-explore {
-            white-space: nowrap;
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: #06d6a0;
-            background: rgba(15, 23, 42, 0.95);
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            border: 1px solid #06d6a0;
-            box-shadow: 0 4px 12px rgba(6, 214, 160, 0.3);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            z-index: 16;
-            line-height: 1;
-            display: block;
-        }
-
-        .payments-explore:hover {
-            background: rgba(6, 214, 160, 0.15);
-            transform: scale(1.05);
-        }
-
-        .payments-coming-soon {
-            display: inline-flex;
-            align-items: center;
-            background: rgba(6, 214, 160, 0.15);
-            color: white;
-            font-weight: 700;
-            padding: 0.5rem 1rem;
-            border-radius: 9999px;
-            font-size: 0.75rem;
-            letter-spacing: 0.05em;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(6, 214, 160, 0.3);
-            z-index: 16;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: none;
-            line-height: 1;
-        }
-
-        .payments-coming-soon:hover {
-            background: rgba(6, 214, 160, 0.25);
-            transform: scale(1.05);
-        }
-
-        /* NEW: Hero heading sizing (keep mobile rule intact further below) */
-        .hero-heading {
-            font-size: 2.25rem;     /* base size for small desktops/tablets */
-            line-height: 1.04;
-            letter-spacing: -0.01em;
-        }
-
-        @media (min-width: 768px) {
-            .hero-heading {
-                font-size: 3.25rem; /* medium screens */
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .hero-heading {
-                font-size: 4rem; /* larger desktop */
-            }
-        }
-
-        @media (max-width: 640px) {
-            .hero-fade-in, .animate-on-scroll { 
-                transform: none !important; 
-                opacity: 1 !important; 
-                transition: none !important; 
-            }
-            #home { 
-                min-height: calc(100vh - 4rem);
-                padding: 0 1rem;
-                display: flex;
-                align-items: center;
-                padding-bottom: 2rem; /* Add some padding at the bottom */
-            }
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .project-image-container { 
-                height: 220px; 
-            }
-
-            /* NEW: keep main hero heading on a single line on small screens */
-            .hero-heading {
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis; /* prevents layout break if extremely narrow */
-                font-size: 2rem; /* slightly reduce size on mobile so it fits on one line */
-                line-height: 1;
-            }
-
-            /* Adjust profile image and hero section spacing on mobile */
-            #home img.profile-image {
-                margin-bottom: 1rem;  /* Reduce bottom margin on mobile */
-                margin-top: -2rem;    /* Move image up on mobile */
-            }
-
-            /* Adjust CTA button spacing on mobile */
-            #home .cta-button {
-                margin-top: 1.5rem;    /* Add some space above the button */
-                margin-bottom: 1rem;    /* Add some space below the button */
-            }
-        }
-
-        #home {
-            min-height: calc(100vh - 4rem);
-            padding-top: 0;
-            padding-left: 1rem;
-            padding-right: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* === BLINKING DOT ANIMATION === */
-        @keyframes blinking-dot {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
-
-        .alx-progress-dot {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background-color: #0d5a47;
-            animation: blinking-dot 1.4s ease-in-out infinite;
-            z-index: 5;
-        }
-
-        @media (min-width: 1024px) {
-            .project-image-container { height: 420px; }
-        }
-
-        /* === MAJI NDOGO EXPLORE BUTTON STYLES === */
-        .maji-explore-container {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            z-index: 15;
-            cursor: pointer;
-        }
-
-        .maji-signal-indicator {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-
-        .maji-arrow-down {
-            width: 0;
-            height: 0;
-            border-left: 6px solid transparent;
-            border-right: 6px solid transparent;
-            border-top: 10px solid #06d6a0;
-            animation: arrow-bounce 1.5s ease-in-out infinite;
-        }
-
-        @keyframes arrow-bounce {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(5px);
-            }
-        }
-
-        .maji-explore {
-            white-space: nowrap;
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: #06d6a0;
-            background: rgba(15, 23, 42, 0.95);
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            border: 1px solid #06d6a0;
-            box-shadow: 0 4px 12px rgba(6, 214, 160, 0.3);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            z-index: 16;
-            line-height: 1;
-            display: block;
-        }
-
-        .maji-explore:hover {
-            background: rgba(6, 214, 160, 0.15);
-            transform: scale(1.05);
-        }
-
-        .maji-coming-soon {
-            display: inline-flex;
-            align-items: center;
-            background: rgba(6, 214, 160, 0.15);
-            color: white;
-            font-weight: 700;
-            padding: 0.5rem 1rem;
-            border-radius: 9999px;
-            font-size: 0.75rem;
-            letter-spacing: 0.05em;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(6, 214, 160, 0.3);
-            z-index: 16;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: none;
-            line-height: 1;
-        }
-
-        .maji-coming-soon:hover {
-            background: rgba(6, 214, 160, 0.25);
-            transform: scale(1.05);
-        }
-
-        /* Responsive adjustments for mobile */
-        @media (max-width: 768px) {
-            .maji-explore-container {
-                transform: translate(-50%, -40%);
-            }
-
-            .maji-explore, .maji-coming-soon {
-                font-size: 0.7rem;
-                padding: 0.4rem 0.8rem;
-            }
-
-            .maji-arrow-down {
-                border-left: 5px solid transparent;
-                border-right: 5px solid transparent;
-                border-top: 8px solid #06d6a0;
-            }
-        }
-
-        /* === PAYMENTS PROJECT EXPLORE BUTTON STYLES === */
-        .payments-explore-container {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            z-index: 15;
-            cursor: pointer;
-        }
-
-        .payments-signal-indicator {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-
-        .payments-arrow-down {
-            width: 0;
-            height: 0;
-            border-left: 6px solid transparent;
-            border-right: 6px solid transparent;
-            border-top: 10px solid #06d6a0;
-            animation: arrow-bounce 1.5s ease-in-out infinite;
-        }
-
-        .payments-explore {
-            white-space: nowrap;
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: #06d6a0;
-            background: rgba(15, 23, 42, 0.95);
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            border: 1px solid #06d6a0;
-            box-shadow: 0 4px 12px rgba(6, 214, 160, 0.3);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            z-index: 16;
-            line-height: 1;
-            display: block;
-        }
-
-        .payments-explore:hover {
-            background: rgba(6, 214, 160, 0.15);
-            transform: scale(1.05);
-        }
-
-        .payments-coming-soon {
-            display: inline-flex;
-            align-items: center;
-            background: rgba(6, 214, 160, 0.15);
-            color: white;
-            font-weight: 700;
-            padding: 0.5rem 1rem;
-            border-radius: 9999px;
-            font-size: 0.75rem;
-            letter-spacing: 0.05em;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(6, 214, 160, 0.3);
-            z-index: 16;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: none;
-            line-height: 1;
-        }
-
-        .payments-coming-soon:hover {
-            background: rgba(6, 214, 160, 0.25);
-            transform: scale(1.05);
+            .hero-heading { font-size: 4rem; }
         }
     </style>
 </head>
-
 <body>
     <!-- ===== FIXED HEADER NAVIGATION ===== -->
     <header class="fixed top-0 left-0 right-0 z-50 bg-slate-900/85 backdrop-blur-md shadow-xl border-b border-slate-800/50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
-                <!-- Logo/Name -->
                 <a href="#home" class="text-2xl font-extrabold hover:opacity-90 transition">
                     <span class="text-white">Iback Lungu</span>
                 </a>
-                
-                <!-- Desktop Navigation -->
+                <!-- Desktop navigation links -->
                 <nav class="hidden md:flex space-x-8">
                     <a href="#home" class="text-slate-300 hover:text-teal-300 font-medium transition-colors duration-300">Home</a>
                     <a href="#about" class="text-slate-300 hover:text-teal-300 font-medium transition-colors duration-300">About</a>
@@ -1084,8 +446,7 @@
                     <a href="#projects" class="text-slate-300 hover:text-teal-300 font-medium transition-colors duration-300">Projects</a>
                     <a href="#contact" class="text-slate-300 hover:text-teal-300 font-medium transition-colors duration-300">Contact</a>
                 </nav>
-                
-                <!-- Mobile Menu Button -->
+                <!-- Mobile menu toggle button -->
                 <button id="hamburger-button" class="md:hidden text-white focus:outline-none" aria-label="Open menu">
                     <svg id="hamburger-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
@@ -1096,8 +457,7 @@
                 </button>
             </div>
         </div>
-        
-        <!-- Mobile Menu -->
+        <!-- Mobile menu (slides in from right) -->
         <div id="mobile-menu" class="md:hidden fixed top-16 right-0 w-64 h-screen bg-slate-900/98 backdrop-blur-lg transform transition-all duration-300 ease-in-out translate-x-full opacity-0">
             <nav class="flex flex-col items-start p-6 space-y-6">
                 <a href="#home" class="text-gradient hover:opacity-80 font-medium text-lg mobile-nav-link">Home</a>
@@ -1113,22 +473,15 @@
         <!-- ===== HERO SECTION ===== -->
         <section id="home" class="flex items-center justify-center px-4">
             <div class="text-center max-w-4xl hero-fade-in">
-                <!-- Profile Image -->
                 <img src="./p2-removebg-preview 2.png" alt="Iback Lungu" 
                      class="w-28 h-28 md:w-36 md:h-36 mx-auto rounded-full border-2 border-[#06d6a0] object-cover mb-6 profile-image"
                      loading="lazy">
-                
-                <!-- Main Heading -->
                 <h1 class="hero-heading font-bold text-white mb-3">
                     Aspiring Data Scientist
                 </h1>
-                
-                <!-- Subheading with Gradient Text -->
                 <p class="hero-subheading text-xl md:text-4xl text-slate-300 mb-8 max-w-2xl mx-auto">
                     <span class="text-gradient">Empowering Decisions Through Data</span>
                 </p>
-                
-                <!-- Call to Action Button -->
                 <a href="#projects" class="cta-button">
                     Explore My Work
                     <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1141,20 +494,17 @@
         <!-- ===== EDUCATION & EXPERIENCE SECTION ===== -->
         <section id="about" class="py-16 md:py-24 bg-slate-900">
             <div class="max-w-7xl mx-auto px-4 animate-on-scroll">
-                <!-- Section Header -->
                 <div class="section-header">
                     <h2 class="section-title">Professional Journey</h2>
                 </div>
-
-                <!-- EDUCATION -->
+                <!-- Education cards -->
                 <div class="mb-16">
                     <h3 class="text-2xl font-bold text-white mb-8 text-center">Education</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
-                        <!-- ALX CARD WITH CENTERED BLINKING DOT -->
+                        <!-- ALX Africa -->
                         <div class="professional-card p-6 flex flex-col items-center text-center">
                             <div class="card-logo-container">
                                 <img src="./alx-icon.jpg" alt="ALX Africa" class="rounded-lg">
-                                <!-- Centered blinking dot on ALX logo -->
                                 <span class="alx-progress-dot" aria-label="In progress"></span>
                             </div>
                             <h4 class="text-xl font-bold text-[#17c8d9] mt-2">ALX Africa Data Science Program</h4>
@@ -1162,21 +512,17 @@
                             <p class="text-slate-300 mt-2 w-full text-left mb-3">
                                 I’m currently enrolled in the ALX Africa Data Science Program, a transformative journey that’s equipping me with practical skills in Excel, SQL, Power BI, Python, and Machine Learning.
                             </p>
-                            
                             <p class="text-slate-300 w-full text-left mb-3">
                                 What sets this experience apart isn’t just the tools—it’s the mindset. At ALX, we’re trained to start with the problem, not the code: to identify real challenges in business, communities, and everyday operations, and then use data to uncover insights that truly matter.
                             </p>
-                            
                             <p class="text-slate-300 w-full text-left mb-3">
                                 Through this program, I’m learning to turn raw, messy data into clear, actionable stories—ones that empower management to make smarter decisions, operate more efficiently, and drive meaningful change.
                             </p>
-                            
                             <p class="text-slate-300 w-full text-left">
                                 And my goal is to use these skills to help organizations and communities make data-driven choices that improve lives.
                             </p>
                         </div>
-
-                        <!-- COPPERBELT UNIVERSITY -->
+                        <!-- Copperbelt University -->
                         <div class="professional-card p-6 flex flex-col items-center text-center">
                             <div class="card-logo-container">
                                 <img src="./cbu icon.jpeg" alt="Copperbelt University" class="rounded-lg">
@@ -1190,11 +536,11 @@
                     </div>
                 </div>
 
-                <!-- EXPERIENCE -->
+                <!-- Professional Experience -->
                 <div>
                     <h3 class="text-2xl font-bold text-white mb-8 text-center">Professional Experience</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">
-                        <!-- 4 experience cards -->
+                        <!-- Experience cards (4 total) -->
                         <div class="professional-card p-6 flex flex-col items-center text-center">
                             <div class="card-logo-container">
                                 <img src="./zanaco-logo.png" alt="Zanaco Bank" class="rounded-lg">
@@ -1331,45 +677,32 @@
         <!-- ===== PROJECTS SECTION ===== -->
         <section id="projects" class="py-16 md:py-24 bg-slate-900">
             <div class="max-w-7xl mx-auto px-4 animate-on-scroll">
-                <!-- Section Header -->
                 <div class="section-header">
                     <p class="section-subtitle">Data Projects</p>
                     <h2 class="section-title">Work & Explorations</h2>
                     <p class="section-description">Practical applications of data science techniques to solve real-world problems</p>
                 </div>
-                
-                <!-- Projects Grid -->
                 <div class="grid grid-cols-1 gap-6">
-                    <!-- PROJECT CARD 1: Maji Ndogo - Full Width -->
+                    <!-- Maji Ndogo Project -->
                     <div class="project-card professional-card flex flex-col">
-                        <!-- Project Title and Description -->
                         <div class="p-5 pb-2">
                             <h3 class="text-xl font-bold text-white mb-2 items-center text-center">Maji Ndogo Agriculture Project</h3>
                             <p class="text-slate-300 text-sm">This analysis explores agricultural optimization in Maji Ndogo using Python and data analytics. By analyzing soil conditions, rainfall patterns, and crop yield data, the project focuses on identifying optimal farming locations and recommending suitable crops based on local environmental factors.</p>
                         </div>
-                        
-                        <!-- Project Image with Explore Button -->
                         <div class="mt-auto project-image-container relative">
                             <img src="./Maji_Ndongo_Image_5.png" alt="Maji Ndogo Agriculture Project" class="w-full h-full object-cover">
-                            
-                            <!-- EXPLORE Button for Maji Ndogo -->
                             <div class="maji-explore-container">
                                 <div class="maji-signal-indicator">
                                     <div class="maji-arrow-down"></div>
                                 </div>
-                                <div class="maji-explore" id="maji-explore">
-                                    EXPLORE
-                                </div>
-                                <div class="maji-coming-soon" id="maji-coming-soon">
-                                    COMING SOON...
-                                </div>
+                                <div class="maji-explore" id="maji-explore">EXPLORE</div>
+                                <div class="maji-coming-soon" id="maji-coming-soon">COMING SOON...</div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- PROJECT CARD 2: Digital Payments Analysis -->
+                    <!-- Digital Payments Project -->
                     <div class="project-card professional-card flex flex-col">
-                        <!-- Project Title and Description -->
                         <div class="p-5 pb-2">
                             <h3 class="text-xl font-bold text-white mb-2 items-center text-center">Digital Payments Analytics: Empowering Field Agents With Real-Time Insights</h3>
                             <p class="text-slate-300 text-sm">
@@ -1382,26 +715,18 @@
                                 Ultimately, the solution aims to transform reactive reporting into an integrated, data-driven decision support system that empowers both field operations and management.
                             </p>
                         </div>
-
-                        <!-- POS Map Component -->
+                        <!-- POS image container -->
                         <div class="mt-auto flex flex-col h-full">
                             <div class="bg-slate-800 rounded-xl p-4 text-center h-full flex flex-col relative">
-                                <!-- Map Placeholder -->
                                 <div class="relative w-full flex-grow bg-slate-900 rounded-lg overflow-hidden border border-slate-700">
                                     <div class="aspect-[4/3] bg-gradient-to-br from-emerald-900 to-teal-800 flex items-center justify-center">
                                         <img src="./POS-Img.png" alt="POS IMAGE" class="w-full h-full object-cover">
-                                        
-                                        <!-- EXPLORE Button for Payments Project -->
                                         <div class="payments-explore-container">
                                             <div class="payments-signal-indicator">
                                                 <div class="payments-arrow-down"></div>
                                             </div>
-                                            <div class="payments-explore" id="payments-explore">
-                                                EXPLORE
-                                            </div>
-                                            <div class="payments-coming-soon" id="payments-coming-soon">
-                                                COMING SOON...
-                                            </div>
+                                            <div class="payments-explore" id="payments-explore">EXPLORE</div>
+                                            <div class="payments-coming-soon" id="payments-coming-soon">COMING SOON...</div>
                                         </div>
                                     </div>
                                 </div>
@@ -1415,15 +740,13 @@
         <!-- ===== CONTACT SECTION ===== -->
         <section id="contact" class="py-12 md:py-16 bg-slate-900">
             <div class="max-w-3xl mx-auto px-4 text-center animate-on-scroll">
-                <!-- Section Header -->
                 <div class="section-header">
                     <h2 class="section-title">Let's Connect</h2>
                     <p class="section-description mb-6">
                         I'm always interested in discussing data science opportunities, collaborations, or innovative projects.
                     </p>
                 </div>
-                
-                <!-- Social Icons -->
+                <!-- Social icons -->
                 <div class="flex justify-center gap-4 mb-6">
                     <a href="mailto:ibacklungu888@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Email Me" class="social-icon">
                         <img src="./email_red.png" alt="Email">
@@ -1438,17 +761,14 @@
                         <img src="./whatsapp _green.png" alt="WhatsApp">
                     </a>
                 </div>
-
-                <!-- Contact Form -->
+                <!-- Contact form -->
                 <div class="professional-card p-6">
                     <form id="contact-form" class="centered-form">
                         <input type="text" name="name" placeholder="Name" required class="form-input text-center" />
                         <input type="email" name="email" placeholder="Email" required class="form-input text-center" />
                         <input type="text" name="subject" placeholder="Subject" required class="form-input text-center" />
                         <textarea name="message" placeholder="Message" rows="4" required class="form-input resize-none text-center"></textarea>
-                        <button type="submit" id="submit-button" class="cta-button">
-                            Send Message
-                        </button>
+                        <button type="submit" id="submit-button" class="cta-button">Send Message</button>
                         <p id="form-status" class="mt-3 text-sm font-semibold text-white"></p>
                     </form>
                 </div>
@@ -1467,49 +787,45 @@
     <script>
         // Set current year in footer
         document.getElementById('current-year').textContent = new Date().getFullYear();
-        
-        // Intersection Observer for scroll animations
+
+        // Scroll animations: fade in elements when they enter view
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) entry.target.classList.add('is-visible');
             });
         }, { threshold: 0.15 });
-        
-        // Observe elements with animation classes
         document.querySelectorAll('.hero-fade-in, .animate-on-scroll').forEach(el => observer.observe(el));
-        
-        // Mobile menu functionality
+
+        // Mobile menu toggle logic (fixed to work correctly)
         const hamburgerButton = document.getElementById('hamburger-button');
         const mobileMenu = document.getElementById('mobile-menu');
         const hamburgerOpen = document.getElementById('hamburger-open');
         const hamburgerClose = document.getElementById('hamburger-close');
-        const mobileLinks = document.querySelectorAll('.mobile-nav-link');
-        
         if (hamburgerButton) {
             hamburgerButton.addEventListener('click', () => {
-                const isOpen = !mobileMenu.classList.contains('translate-x-full');
-                mobileMenu.classList.toggle('translate-x-full', isOpen);
-                mobileMenu.classList.toggle('opacity-0', isOpen);
-                hamburgerOpen.classList.toggle('hidden', !isOpen);
-                hamburgerClose.classList.toggle('hidden', isOpen);
+                const isMenuOpen = mobileMenu.classList.contains('translate-x-full');
+                mobileMenu.classList.toggle('translate-x-full', !isMenuOpen);
+                mobileMenu.classList.toggle('opacity-0', !isMenuOpen);
+                hamburgerOpen.classList.toggle('hidden', !isMenuOpen);
+                hamburgerClose.classList.toggle('hidden', isMenuOpen);
             });
         }
-        
-        // Close mobile menu when a link is clicked
+
+        // Close mobile menu when a nav link is clicked
+        const mobileLinks = document.querySelectorAll('.mobile-nav-link');
         mobileLinks.forEach(link => {
             link.addEventListener('click', () => {
-                mobileMenu.classList.remove('opacity-100', 'visible');
-                mobileMenu.classList.add('invisible');
+                mobileMenu.classList.add('translate-x-full');
+                mobileMenu.classList.remove('opacity-100');
                 hamburgerOpen.classList.remove('hidden');
                 hamburgerClose.classList.add('hidden');
             });
         });
-        
-        // Contact form submission
+
+        // Contact form submission via EmailJS
         const contactForm = document.getElementById('contact-form');
         const statusMessage = document.getElementById('form-status');
         const submitButton = document.getElementById('submit-button');
-        
         if (contactForm) {
             contactForm.addEventListener('submit', function(e) {
                 e.preventDefault();
@@ -1517,8 +833,6 @@
                 submitButton.textContent = 'Sending...';
                 statusMessage.textContent = 'Sending your message...';
                 statusMessage.className = 'mt-4 text-base font-semibold text-blue-400';
-                
-                // Send form data using EmailJS
                 emailjs.sendForm('service_89njjb3', 'template_h4cawxa', this)
                     .then(() => {
                         statusMessage.textContent = 'Message sent successfully!';
@@ -1536,51 +850,35 @@
             });
         }
 
-        // Interactive elements functionality
+        // Interactive "EXPLORE" / "COMING SOON" toggle for both projects
         document.addEventListener('DOMContentLoaded', function() {
-            // Maji Ndogo interactive elements
+            // Maji Ndogo toggle
             const majiExplore = document.getElementById('maji-explore');
             const majiComingSoon = document.getElementById('maji-coming-soon');
-            
-            // Function to toggle between "EXPLORE" and "COMING SOON" for Maji Ndogo
-            function toggleMajiState(explore, comingSoon) {
-                if (explore && comingSoon) {
-                    explore.addEventListener('click', function() {
-                        explore.style.display = 'none';
-                        comingSoon.style.display = 'inline-flex';
-                    });
-                    
-                    comingSoon.addEventListener('click', function() {
-                        comingSoon.style.display = 'none';
-                        explore.style.display = 'block';
-                    });
-                }
+            if (majiExplore && majiComingSoon) {
+                majiExplore.addEventListener('click', () => {
+                    majiExplore.style.display = 'none';
+                    majiComingSoon.style.display = 'inline-flex';
+                });
+                majiComingSoon.addEventListener('click', () => {
+                    majiComingSoon.style.display = 'none';
+                    majiExplore.style.display = 'block';
+                });
             }
-            
-            // Set up the interactive behavior for Maji Ndogo
-            toggleMajiState(majiExplore, majiComingSoon);
-            
-            // Payments project interactive elements
+
+            // Payments project toggle
             const paymentsExplore = document.getElementById('payments-explore');
             const paymentsComingSoon = document.getElementById('payments-coming-soon');
-            
-            // Function to toggle between "EXPLORE" and "COMING SOON" for Payments project
-            function togglePaymentsState(explore, comingSoon) {
-                if (explore && comingSoon) {
-                    explore.addEventListener('click', function() {
-                        explore.style.display = 'none';
-                        comingSoon.style.display = 'inline-flex';
-                    });
-                    
-                    comingSoon.addEventListener('click', function() {
-                        comingSoon.style.display = 'none';
-                        explore.style.display = 'block';
-                    });
-                }
+            if (paymentsExplore && paymentsComingSoon) {
+                paymentsExplore.addEventListener('click', () => {
+                    paymentsExplore.style.display = 'none';
+                    paymentsComingSoon.style.display = 'inline-flex';
+                });
+                paymentsComingSoon.addEventListener('click', () => {
+                    paymentsComingSoon.style.display = 'none';
+                    paymentsExplore.style.display = 'block';
+                });
             }
-            
-            // Set up the interactive behavior for Payments project
-            togglePaymentsState(paymentsExplore, paymentsComingSoon);
         });
     </script>
 </body>
