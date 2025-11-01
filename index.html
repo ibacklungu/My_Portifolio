@@ -262,10 +262,11 @@
                 transition: none !important; 
             }
             #home { 
-                min-height: calc(100vh - 4rem); 
+                min-height: calc(100vh - 4rem);
                 padding: 0 1rem;
                 display: flex;
                 align-items: center;
+                padding-bottom: 2rem; /* Add some padding at the bottom */
             }
             .section-title {
                 font-size: 2rem;
@@ -282,6 +283,18 @@
                 text-overflow: ellipsis; /* prevents layout break if extremely narrow */
                 font-size: 2rem; /* slightly reduce size on mobile so it fits on one line */
                 line-height: 1;
+            }
+
+            /* Adjust profile image and hero section spacing for mobile */
+            #home img.profile-image {
+                margin-bottom: 1rem;  /* Reduce bottom margin on mobile */
+                margin-top: -2rem;    /* Move image up on mobile */
+            }
+
+            /* Adjust CTA button spacing on mobile */
+            #home .cta-button {
+                margin-top: 1.5rem;    /* Add some space above the button */
+                margin-bottom: 1rem;    /* Add some space below the button */
             }
         }
 
@@ -550,11 +563,11 @@
             <div class="text-center max-w-4xl hero-fade-in">
                 <!-- Profile Image -->
                 <img src="./p2-removebg-preview 2.png" alt="Iback Lungu" 
-                     class="w-28 h-28 md:w-36 md:h-36 mx-auto rounded-full border-2 border-[#06d6a0] object-cover mb-6"
+                     class="w-28 h-28 md:w-36 md:h-36 mx-auto rounded-full border-2 border-[#06d6a0] object-cover mb-6 profile-image"
                      loading="lazy">
                 
                 <!-- Main Heading -->
-                <h1 class="hero-heading text-4xl md:text-6xl lg:text-4xl font-bold text-white mb-3">
+                <h1 class="hero-heading font-bold text-white mb-3">
                     Aspiring Data Scientist
                 </h1>
                 
