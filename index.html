@@ -511,6 +511,558 @@
             background: rgba(6, 214, 160, 0.25);
             transform: scale(1.05);
         }
+
+        /* NEW: Hero heading sizing (keep mobile rule intact further below) */
+        .hero-heading {
+            font-size: 2.25rem;     /* base size for small desktops/tablets */
+            line-height: 1.04;
+            letter-spacing: -0.01em;
+        }
+
+        @media (min-width: 768px) {
+            .hero-heading {
+                font-size: 3.25rem; /* medium screens */
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .hero-heading {
+                font-size: 4rem; /* larger desktop */
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero-fade-in, .animate-on-scroll { 
+                transform: none !important; 
+                opacity: 1 !important; 
+                transition: none !important; 
+            }
+            #home { 
+                min-height: calc(100vh - 4rem);
+                padding: 0 1rem;
+                display: flex;
+                align-items: center;
+                padding-bottom: 2rem; /* Add some padding at the bottom */
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .project-image-container { 
+                height: 220px; 
+            }
+
+            /* NEW: keep main hero heading on a single line on small screens */
+            .hero-heading {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis; /* prevents layout break if extremely narrow */
+                font-size: 2rem; /* slightly reduce size on mobile so it fits on one line */
+                line-height: 1;
+            }
+
+            /* Adjust profile image and hero section spacing for mobile */
+            #home img.profile-image {
+                margin-bottom: 1rem;  /* Reduce bottom margin on mobile */
+                margin-top: -2rem;    /* Move image up on mobile */
+            }
+
+            /* Adjust CTA button spacing on mobile */
+            #home .cta-button {
+                margin-top: 1.5rem;    /* Add some space above the button */
+                margin-bottom: 1rem;    /* Add some space below the button */
+            }
+        }
+
+        #home {
+            min-height: calc(100vh - 4rem);
+            padding-top: 0;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* === BLINKING DOT ANIMATION === */
+        @keyframes blinking-dot {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .alx-progress-dot {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #0d5a47;
+            animation: blinking-dot 1.4s ease-in-out infinite;
+            z-index: 5;
+        }
+
+        @media (min-width: 1024px) {
+            .project-image-container { height: 420px; }
+        }
+
+        /* === MAJI NDOGO EXPLORE BUTTON STYLES === */
+        .maji-explore-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 15;
+            cursor: pointer;
+        }
+
+        .maji-signal-indicator {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .maji-arrow-down {
+            width: 0;
+            height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 10px solid #06d6a0;
+            animation: arrow-bounce 1.5s ease-in-out infinite;
+        }
+
+        @keyframes arrow-bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(5px);
+            }
+        }
+
+        .maji-explore {
+            white-space: nowrap;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #06d6a0;
+            background: rgba(15, 23, 42, 0.95);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            border: 1px solid #06d6a0;
+            box-shadow: 0 4px 12px rgba(6, 214, 160, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 16;
+            line-height: 1;
+            display: block;
+        }
+
+        .maji-explore:hover {
+            background: rgba(6, 214, 160, 0.15);
+            transform: scale(1.05);
+        }
+
+        .maji-coming-soon {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(6, 214, 160, 0.15);
+            color: white;
+            font-weight: 700;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(6, 214, 160, 0.3);
+            z-index: 16;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: none;
+            line-height: 1;
+        }
+
+        .maji-coming-soon:hover {
+            background: rgba(6, 214, 160, 0.25);
+            transform: scale(1.05);
+        }
+
+        /* Responsive adjustments for mobile */
+        @media (max-width: 768px) {
+            .maji-explore-container {
+                transform: translate(-50%, -40%);
+            }
+
+            .maji-explore, .maji-coming-soon {
+                font-size: 0.7rem;
+                padding: 0.4rem 0.8rem;
+            }
+
+            .maji-arrow-down {
+                border-left: 5px solid transparent;
+                border-right: 5px solid transparent;
+                border-top: 8px solid #06d6a0;
+            }
+        }
+
+        /* === PAYMENTS PROJECT EXPLORE BUTTON STYLES === */
+        .payments-explore-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 15;
+            cursor: pointer;
+        }
+
+        .payments-signal-indicator {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .payments-arrow-down {
+            width: 0;
+            height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 10px solid #06d6a0;
+            animation: arrow-bounce 1.5s ease-in-out infinite;
+        }
+
+        .payments-explore {
+            white-space: nowrap;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #06d6a0;
+            background: rgba(15, 23, 42, 0.95);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            border: 1px solid #06d6a0;
+            box-shadow: 0 4px 12px rgba(6, 214, 160, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 16;
+            line-height: 1;
+            display: block;
+        }
+
+        .payments-explore:hover {
+            background: rgba(6, 214, 160, 0.15);
+            transform: scale(1.05);
+        }
+
+        .payments-coming-soon {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(6, 214, 160, 0.15);
+            color: white;
+            font-weight: 700;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(6, 214, 160, 0.3);
+            z-index: 16;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: none;
+            line-height: 1;
+        }
+
+        .payments-coming-soon:hover {
+            background: rgba(6, 214, 160, 0.25);
+            transform: scale(1.05);
+        }
+
+        /* NEW: Hero heading sizing (keep mobile rule intact further below) */
+        .hero-heading {
+            font-size: 2.25rem;     /* base size for small desktops/tablets */
+            line-height: 1.04;
+            letter-spacing: -0.01em;
+        }
+
+        @media (min-width: 768px) {
+            .hero-heading {
+                font-size: 3.25rem; /* medium screens */
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .hero-heading {
+                font-size: 4rem; /* larger desktop */
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero-fade-in, .animate-on-scroll { 
+                transform: none !important; 
+                opacity: 1 !important; 
+                transition: none !important; 
+            }
+            #home { 
+                min-height: calc(100vh - 4rem);
+                padding: 0 1rem;
+                display: flex;
+                align-items: center;
+                padding-bottom: 2rem; /* Add some padding at the bottom */
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .project-image-container { 
+                height: 220px; 
+            }
+
+            /* NEW: keep main hero heading on a single line on small screens */
+            .hero-heading {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis; /* prevents layout break if extremely narrow */
+                font-size: 2rem; /* slightly reduce size on mobile so it fits on one line */
+                line-height: 1;
+            }
+
+            /* Adjust profile image and hero section spacing on mobile */
+            #home img.profile-image {
+                margin-bottom: 1rem;  /* Reduce bottom margin on mobile */
+                margin-top: -2rem;    /* Move image up on mobile */
+            }
+
+            /* Adjust CTA button spacing on mobile */
+            #home .cta-button {
+                margin-top: 1.5rem;    /* Add some space above the button */
+                margin-bottom: 1rem;    /* Add some space below the button */
+            }
+        }
+
+        #home {
+            min-height: calc(100vh - 4rem);
+            padding-top: 0;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* === BLINKING DOT ANIMATION === */
+        @keyframes blinking-dot {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .alx-progress-dot {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #0d5a47;
+            animation: blinking-dot 1.4s ease-in-out infinite;
+            z-index: 5;
+        }
+
+        @media (min-width: 1024px) {
+            .project-image-container { height: 420px; }
+        }
+
+        /* === MAJI NDOGO EXPLORE BUTTON STYLES === */
+        .maji-explore-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 15;
+            cursor: pointer;
+        }
+
+        .maji-signal-indicator {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .maji-arrow-down {
+            width: 0;
+            height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 10px solid #06d6a0;
+            animation: arrow-bounce 1.5s ease-in-out infinite;
+        }
+
+        @keyframes arrow-bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(5px);
+            }
+        }
+
+        .maji-explore {
+            white-space: nowrap;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #06d6a0;
+            background: rgba(15, 23, 42, 0.95);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            border: 1px solid #06d6a0;
+            box-shadow: 0 4px 12px rgba(6, 214, 160, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 16;
+            line-height: 1;
+            display: block;
+        }
+
+        .maji-explore:hover {
+            background: rgba(6, 214, 160, 0.15);
+            transform: scale(1.05);
+        }
+
+        .maji-coming-soon {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(6, 214, 160, 0.15);
+            color: white;
+            font-weight: 700;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(6, 214, 160, 0.3);
+            z-index: 16;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: none;
+            line-height: 1;
+        }
+
+        .maji-coming-soon:hover {
+            background: rgba(6, 214, 160, 0.25);
+            transform: scale(1.05);
+        }
+
+        /* Responsive adjustments for mobile */
+        @media (max-width: 768px) {
+            .maji-explore-container {
+                transform: translate(-50%, -40%);
+            }
+
+            .maji-explore, .maji-coming-soon {
+                font-size: 0.7rem;
+                padding: 0.4rem 0.8rem;
+            }
+
+            .maji-arrow-down {
+                border-left: 5px solid transparent;
+                border-right: 5px solid transparent;
+                border-top: 8px solid #06d6a0;
+            }
+        }
+
+        /* === PAYMENTS PROJECT EXPLORE BUTTON STYLES === */
+        .payments-explore-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 15;
+            cursor: pointer;
+        }
+
+        .payments-signal-indicator {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .payments-arrow-down {
+            width: 0;
+            height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 10px solid #06d6a0;
+            animation: arrow-bounce 1.5s ease-in-out infinite;
+        }
+
+        .payments-explore {
+            white-space: nowrap;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #06d6a0;
+            background: rgba(15, 23, 42, 0.95);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            border: 1px solid #06d6a0;
+            box-shadow: 0 4px 12px rgba(6, 214, 160, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 16;
+            line-height: 1;
+            display: block;
+        }
+
+        .payments-explore:hover {
+            background: rgba(6, 214, 160, 0.15);
+            transform: scale(1.05);
+        }
+
+        .payments-coming-soon {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(6, 214, 160, 0.15);
+            color: white;
+            font-weight: 700;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(6, 214, 160, 0.3);
+            z-index: 16;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: none;
+            line-height: 1;
+        }
+
+        .payments-coming-soon:hover {
+            background: rgba(6, 214, 160, 0.25);
+            transform: scale(1.05);
+        }
     </style>
 </head>
 
@@ -546,13 +1098,13 @@
         </div>
         
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="md:hidden absolute top-16 left-0 w-full bg-slate-900/98 backdrop-blur-lg transition-all duration-300 ease-in-out opacity-0 invisible">
-            <nav class="flex flex-col items-center space-y-4 py-6">
-                <a href="#home" class="text-slate-300 hover:text-teal-400 font-medium text-lg mobile-nav-link">Home</a>
-                <a href="#about" class="text-slate-300 hover:text-teal-400 font-medium text-lg mobile-nav-link">About</a>
-                <a href="#skills" class="text-slate-300 hover:text-teal-400 font-medium text-lg mobile-nav-link">Skills</a>
-                <a href="#projects" class="text-slate-300 hover:text-teal-400 font-medium text-lg mobile-nav-link">Projects</a>
-                <a href="#contact" class="text-slate-300 hover:text-teal-400 font-medium text-lg mobile-nav-link">Contact</a>
+        <div id="mobile-menu" class="md:hidden fixed top-16 right-0 w-64 h-screen bg-slate-900/98 backdrop-blur-lg transform transition-all duration-300 ease-in-out translate-x-full opacity-0">
+            <nav class="flex flex-col items-start p-6 space-y-6">
+                <a href="#home" class="text-gradient hover:opacity-80 font-medium text-lg mobile-nav-link">Home</a>
+                <a href="#about" class="text-gradient hover:opacity-80 font-medium text-lg mobile-nav-link">About</a>
+                <a href="#skills" class="text-gradient hover:opacity-80 font-medium text-lg mobile-nav-link">Skills</a>
+                <a href="#projects" class="text-gradient hover:opacity-80 font-medium text-lg mobile-nav-link">Projects</a>
+                <a href="#contact" class="text-gradient hover:opacity-80 font-medium text-lg mobile-nav-link">Contact</a>
             </nav>
         </div>
     </header>
@@ -935,9 +1487,9 @@
         
         if (hamburgerButton) {
             hamburgerButton.addEventListener('click', () => {
-                const isOpen = mobileMenu.classList.contains('opacity-100');
-                mobileMenu.classList.toggle('opacity-100', !isOpen);
-                mobileMenu.classList.toggle('invisible', isOpen);
+                const isOpen = !mobileMenu.classList.contains('translate-x-full');
+                mobileMenu.classList.toggle('translate-x-full', isOpen);
+                mobileMenu.classList.toggle('opacity-0', isOpen);
                 hamburgerOpen.classList.toggle('hidden', !isOpen);
                 hamburgerClose.classList.toggle('hidden', isOpen);
             });
