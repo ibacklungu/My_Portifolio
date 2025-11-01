@@ -274,6 +274,15 @@
             .project-image-container { 
                 height: 220px; 
             }
+
+            /* NEW: keep main hero heading on a single line on small screens */
+            .hero-heading {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis; /* prevents layout break if extremely narrow */
+                font-size: 2rem; /* slightly reduce size on mobile so it fits on one line */
+                line-height: 1;
+            }
         }
 
         #home {
