@@ -270,7 +270,7 @@
                 white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
-                font-size: 2rem;
+                font-size: 1.6rem; /* smaller mobile-specific size */
                 line-height: 1;
                 /* Tighten spacing on mobile so the phrase fits better */
                 word-spacing: -0.12rem;
@@ -281,6 +281,8 @@
             #home img.profile-image {
                 margin-bottom: 1rem;
                 margin-top: -2rem;
+                width: 4rem;   /* ensure mobile image is small */
+                height: 4rem;
             }
             #home .cta-button {
                 margin-top: 1.5rem;
@@ -419,18 +421,82 @@
             }
         }
 
-        /* Responsive hero heading sizes */
+        /* Responsive hero heading sizes (reduced to fit better) */
         .hero-heading {
-            font-size: 2.25rem;
+            font-size: 1.75rem; /* reduced base size */
             line-height: 1.04;
             letter-spacing: -0.01em;
         }
         @media (min-width: 768px) {
-            .hero-heading { font-size: 3.25rem; }
+            .hero-heading { font-size: 2.75rem; } /* reduced tablet size */
         }
         @media (min-width: 1024px) {
-            .hero-heading { font-size: 4rem; }
+            .hero-heading { font-size: 3.25rem; } /* reduced desktop size */
         }
+
+        /* Hero subheading smaller to avoid overflow */
+        .hero-subheading {
+            font-size: 1.05rem;
+        }
+        @media (min-width: 768px) {
+            .hero-subheading { font-size: 1.5rem; }
+        }
+
+        /* Profile image adjustments to prevent layout overflow on small screens */
+        .profile-image {
+            width: 4.5rem;
+            height: 4.5rem;
+        }
+        @media (min-width: 768px) {
+            .profile-image { width: 5.75rem; height: 5.75rem; }
+        }
+
+        /* Slightly smaller CTA button text on narrow screens */
+        @media (max-width: 640px) {
+            .cta-button { font-size: 0.82rem; padding: 0.6rem 1.1rem; }
+
+            /* Mobile-specific hero tweaks */
+            .hero-fade-in, .animate-on-scroll { 
+                transform: none !important; 
+                opacity: 1 !important; 
+                transition: none !important; 
+            }
+            #home { 
+                min-height: calc(100vh - 4rem);
+                padding: 0 1rem;
+                display: flex;
+                align-items: center;
+                padding-bottom: 2rem;
+            }
+            .section-title { font-size: 2rem; }
+            .project-image-container { height: 220px; }
+
+            /* Keep hero heading on one line */
+            .hero-heading {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                font-size: 1.6rem; /* smaller mobile-specific size */
+                line-height: 1;
+                /* Tighten spacing on mobile so the phrase fits better */
+                word-spacing: -0.12rem;
+                letter-spacing: -0.02em;
+            }
+
+            /* Adjust spacing for mobile */
+            #home img.profile-image {
+                margin-bottom: 1rem;
+                margin-top: -2rem;
+                width: 4rem;   /* ensure mobile image is small */
+                height: 4rem;
+            }
+            #home .cta-button {
+                margin-top: 1.5rem;
+                margin-bottom: 1rem;
+            }
+        }
+
+        /* ...existing code... */
     </style>
 </head>
 <body>
