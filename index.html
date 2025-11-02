@@ -247,6 +247,99 @@
             border-radius: 50%;
         }
 
+        /* === UPDATED EXPLORE BUTTON STYLES === */
+        .maji-explore-container,
+        .payments-explore-container {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .maji-explore,
+        .payments-explore,
+        .maji-coming-soon,
+        .payments-coming-soon {
+            background: linear-gradient(135deg, #3b82f6 0%, #06d6a0 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            min-width: 90px;
+        }
+
+        .maji-explore:hover,
+        .payments-explore:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(6, 214, 160, 0.4);
+        }
+
+        .maji-coming-soon,
+        .payments-coming-soon {
+            background: linear-gradient(135deg, #6b7280 0%, #374151 100%);
+            display: none;
+        }
+
+        .maji-coming-soon:hover,
+        .payments-coming-soon:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(107, 114, 128, 0.4);
+        }
+
+        .maji-signal-indicator,
+        .payments-signal-indicator {
+            margin-bottom: 6px;
+            animation: bounce 2s infinite;
+        }
+
+        .maji-arrow-down,
+        .payments-arrow-down {
+            width: 0;
+            height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 6px solid #06d6a0;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-3px);
+            }
+            60% {
+                transform: translateY(-2px);
+            }
+        }
+
+        /* Mobile responsive styles for explore buttons */
+        @media (max-width: 640px) {
+            .maji-explore,
+            .payments-explore,
+            .maji-coming-soon,
+            .payments-coming-soon {
+                padding: 6px 12px;
+                font-size: 0.7rem;
+                min-width: 80px;
+            }
+            
+            .maji-explore-container,
+            .payments-explore-container {
+                bottom: 10px;
+                right: 10px;
+            }
+        }
+
         /* === RESPONSIVE STYLES === */
         @media (max-width: 640px) {
             /* Disable animations on mobile for performance */
@@ -385,8 +478,6 @@
 		font-size: 3.5rem; /* larger on desktop */
 	}
 }
-
-/* ...existing code... */
     </style>
 </head>
 <body>
@@ -469,13 +560,13 @@
                             <h4 class="text-xl font-bold text-[#17c8d9] mt-2">ALX Africa Data Science Program</h4>
                             <p class="text-slate-400 text-sm mb-3">2025 – 2026</p>
                             <p class="text-slate-300 mt-2 w-full text-left mb-3">
-                                I’m currently enrolled in the ALX Africa Data Science Program, a transformative journey that’s equipping me with practical skills in Excel, SQL, Power BI, Python, and Machine Learning.
+                                I'm currently enrolled in the ALX Africa Data Science Program, a transformative journey that's equipping me with practical skills in Excel, SQL, Power BI, Python, and Machine Learning.
                             </p>
                             <p class="text-slate-300 w-full text-left mb-3">
-                                What sets this experience apart isn’t just the tools—it’s the mindset. At ALX, we’re trained to start with the problem, not the code: to identify real challenges in business, communities, and everyday operations, and then use data to uncover insights that truly matter.
+                                What sets this experience apart isn't just the tools—it's the mindset. At ALX, we're trained to start with the problem, not the code: to identify real challenges in business, communities, and everyday operations, and then use data to uncover insights that truly matter.
                             </p>
                             <p class="text-slate-300 w-full text-left mb-3">
-                                Through this program, I’m learning to turn raw, messy data into clear, actionable stories—ones that empower management to make smarter decisions, operate more efficiently, and drive meaningful change.
+                                Through this program, I'm learning to turn raw, messy data into clear, actionable stories—ones that empower management to make smarter decisions, operate more efficiently, and drive meaningful change.
                             </p>
                             <p class="text-slate-300 w-full text-left">
                                 And my goal is to use these skills to help organizations and communities make data-driven choices that improve lives.
@@ -811,33 +902,31 @@
 
         // Interactive "EXPLORE" / "COMING SOON" toggle for both projects
         document.addEventListener('DOMContentLoaded', function() {
-            // Maji Ndogo toggle
-            const majiExplore = document.getElementById('maji-explore');
-            const majiComingSoon = document.getElementById('maji-coming-soon');
-            if (majiExplore && majiComingSoon) {
-                majiExplore.addEventListener('click', () => {
-                    majiExplore.style.display = 'none';
-                    majiComingSoon.style.display = 'inline-flex';
-                });
-                majiComingSoon.addEventListener('click', () => {
-                    majiComingSoon.style.display = 'none';
-                    majiExplore.style.display = 'block';
-                });
+            // Function to handle explore button interactions
+            function setupExploreButton(exploreId, comingSoonId) {
+                const explore = document.getElementById(exploreId);
+                const comingSoon = document.getElementById(comingSoonId);
+                
+                if (explore && comingSoon) {
+                    explore.addEventListener('click', () => {
+                        explore.style.display = 'none';
+                        comingSoon.style.display = 'inline-flex';
+                    });
+                    
+                    comingSoon.addEventListener('click', () => {
+                        comingSoon.style.display = 'none';
+                        explore.style.display = 'inline-flex';
+                    });
+
+                    // Ensure proper initial state
+                    explore.style.display = 'inline-flex';
+                    comingSoon.style.display = 'none';
+                }
             }
 
-            // Payments project toggle
-            const paymentsExplore = document.getElementById('payments-explore');
-            const paymentsComingSoon = document.getElementById('payments-coming-soon');
-            if (paymentsExplore && paymentsComingSoon) {
-                paymentsExplore.addEventListener('click', () => {
-                    paymentsExplore.style.display = 'none';
-                    paymentsComingSoon.style.display = 'inline-flex';
-                });
-                paymentsComingSoon.addEventListener('click', () => {
-                    paymentsComingSoon.style.display = 'none';
-                    paymentsExplore.style.display = 'block';
-                });
-            }
+            // Setup both project buttons
+            setupExploreButton('maji-explore', 'maji-coming-soon');
+            setupExploreButton('payments-explore', 'payments-coming-soon');
         });
     </script>
 </body>
