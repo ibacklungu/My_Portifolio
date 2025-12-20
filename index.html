@@ -413,8 +413,8 @@
 
         /* Mobile menu sizing and theme-aware colors */
         #mobile-menu {
-            width: 80%;
-            max-width: var(--mobile-menu-width);
+              width: var(--mobile-menu-width);
+              max-width: 100%;
             background: var(--header-bg);
             color: var(--text-color);
         }
@@ -424,6 +424,33 @@
             color: var(--text-color) !important;
         }
 
+        /* Mobile menu flush to right, rounded on left edge so items sit near screen edge */
+        #mobile-menu {
+            width: auto !important;
+            min-width: 220px;
+            max-width: calc(100% - 16px);
+            right: 0; /* flush to the right edge */
+            padding: 0.25rem 0.5rem 0.5rem 0.5rem;
+            border-radius: 12px 0 0 12px; /* rounded left edge only */
+            box-shadow: 0 18px 40px rgba(2,6,23,0.08);
+        }
+
+        /* Header action wrapper (hamburger + theme indicator) */
+        #action-wrapper {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.06);
+            background: rgba(255,255,255,0.02);
+        }
+
+        /* Mobile menu link polish */
+        #mobile-menu .mobile-nav-link { padding: 0.6rem 0.5rem; border-radius: 8px; transition: background .12s ease, transform .12s ease; text-align: right; }
+        #mobile-menu .mobile-nav-link:hover { background: rgba(255,255,255,0.03); transform: translateX(-6px); }
+        #mobile-menu .mobile-nav-link:focus { outline: none; box-shadow: 0 4px 12px rgba(2,6,23,0.08); }
+
         /* Ensure header background uses theme variable */
         header {
             background: var(--header-bg) !important;
@@ -431,13 +458,17 @@
         }
 
         /* Hamburger and theme toggle inherit color to remain visible on light theme */
-        #hamburger-button, #theme-toggle, #theme-toggle-mobile {
+        #hamburger-button, #theme-toggle-mobile {
             color: var(--text-color) !important;
             background: rgba(255,255,255,0.03) !important;
             border: 1px solid rgba(255,255,255,0.04) !important;
             padding: 6px !important;
             border-radius: 8px !important;
         }
+
+        /* Theme indicator styling (single icon used before hamburger) */
+        #theme-indicator { cursor: pointer; padding: 6px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.04); background: rgba(255,255,255,0.02); }
+        #theme-indicator svg { display: block; }
 
         /* Light theme micro-typography improvements */
         body.light {
@@ -450,6 +481,101 @@
             border-color: rgba(15,23,42,0.06) !important;
             box-shadow: 0 8px 20px rgba(2,6,23,0.03) !important;
         }
+
+        /* Header actions wrapper (theme indicator + hamburger) */
+        #header-actions {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+        #header-actions #theme-indicator {
+            width: 36px;
+            height: 36px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.06);
+            background: rgba(255,255,255,0.02);
+            color: var(--text-color);
+        }
+        #action-wrapper {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4px;
+            border-radius: 10px;
+        }
+        /* ensure header actions look crisp on light theme */
+        body.light #header-actions #theme-indicator {
+            border: 1px solid rgba(15,23,42,0.06);
+            background: rgba(255,255,255,0.92);
+            color: #0f172a;
+        }
+
+            /* === Additional light-theme overrides for consistency === */
+            /* Force slate backgrounds to be light so content remains readable */
+            body.light .bg-slate-900,
+            body.light .bg-slate-800,
+            body.light .bg-slate-700 {
+                background: #ffffff !important;
+                color: var(--text-color) !important;
+                border-color: rgba(15,23,42,0.06) !important;
+                box-shadow: 0 8px 20px rgba(2,6,23,0.03) !important;
+            }
+
+            /* Borders adjustments for light mode */
+            body.light .border-slate-700,
+            body.light .border-slate-800 {
+                border-color: rgba(15,23,42,0.06) !important;
+            }
+
+            /* Make muted text darker in light mode for readability */
+            body.light .text-slate-300,
+            body.light .text-slate-400,
+            body.light .text-slate-500 {
+                color: rgba(15,23,42,0.82) !important;
+            }
+
+            /* Skills grid centering and styling */
+            .skills-grid { justify-items: center; }
+            .skills-grid article { max-width: 360px; text-align: center; }
+            .skill-icon { width: 56px; height: 56px; margin: 0 auto 0.75rem auto; border-radius: 12px; }
+            .skills-grid ul { padding: 0; }
+
+            /* Stronger hero heading on light theme */
+            body.light .hero-heading {
+                color: #081126 !important;
+                font-weight: 800;
+                text-shadow: none !important;
+            }
+
+            /* Mobile menu: fixed width anchored to right edge and align items to the right */
+            #mobile-menu nav {
+                padding-right: 1rem;
+                padding-left: 1rem;
+                align-items: flex-end;
+            }
+            #mobile-menu .mobile-nav-link {
+                width: 100%;
+                text-align: right;
+                display: block;
+                padding-right: 0.25rem;
+                color: var(--text-color) !important;
+            }
+
+            /* Hamburger button background and visibility polish */
+            #hamburger-button {
+                background: rgba(0,0,0,0.06);
+                padding: 6px;
+                border-radius: 8px;
+                border: 1px solid rgba(255,255,255,0.04);
+            }
+            body.light #hamburger-button {
+                background: rgba(15,23,42,0.04) !important;
+                color: var(--text-color) !important;
+                border: 1px solid rgba(15,23,42,0.06) !important;
+            }
 
         /* Override common utility text colors that conflict in light theme */
         body.light .text-white { color: var(--text-color) !important; }
@@ -622,8 +748,8 @@
                 <a href="#home" class="text-2xl font-extrabold hover:opacity-90 transition">
                     <span class="text-white">Iback Lungu</span>
                 </a>
-                <!-- Desktop navigation links -->
-                <nav class="hidden md:flex items-center space-x-4">
+                <!-- Desktop navigation links (moved to the right on desktop) -->
+                <nav class="hidden md:flex items-center space-x-4 ml-auto">
                     <div class="flex space-x-6">
                         <a href="#home" class="text-slate-300 hover:text-teal-300 font-medium transition-colors duration-300">Home</a>
                         <a href="#about" class="text-slate-300 hover:text-teal-300 font-medium transition-colors duration-300">About</a>
@@ -631,34 +757,42 @@
                         <a href="#projects" class="text-slate-300 hover:text-teal-300 font-medium transition-colors duration-300">Projects</a>
                         <a href="#contact" class="text-slate-300 hover:text-teal-300 font-medium transition-colors duration-300">Contact</a>
                     </div>
-                    <!-- Theme toggle (desktop) -->
-                    <button id="theme-toggle" aria-label="Toggle theme" class="ml-4 p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-white">🌙</button>
+                    <!-- Theme indicator sits before the hamburger and shows current theme -->
+                    <!-- (removed emoji toggle to avoid duplicate icons) -->
                 </nav>
-                <!-- Mobile menu toggle button -->
-                <button id="hamburger-button" class="md:hidden text-white focus:outline-none" aria-label="Open menu">
-                    <svg id="hamburger-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                    </svg>
-                    <svg id="hamburger-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                    </svg>
-                </button>
+                <!-- Header actions: theme indicator + hamburger, fits contents only -->
+                <div id="header-actions" class="flex items-center">
+                    <div id="theme-indicator" class="mr-2 p-2 rounded-md" title="Current theme" role="img" aria-label="Theme indicator" style="display:inline-flex;align-items:center;justify-content:center;">
+                        <!-- Icon updated by JS; clickable to toggle theme -->
+                    </div>
+                    <div id="action-wrapper" class="flex items-center gap-1 p-1 rounded-lg">
+                        <button id="hamburger-button" class="md:hidden text-white focus:outline-none" aria-label="Open menu">
+                            <svg id="hamburger-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                            </svg>
+                            <svg id="hamburger-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <!-- Removed duplicate mobile buttons; single header action group is used for both desktop and mobile -->
             </div>
         </div>
         <!-- Mobile overlay (dims page when menu is open) -->
         <div id="mobile-overlay" aria-hidden="true"></div>
 
         <!-- Mobile menu (slides in from right) -->
-        <div id="mobile-menu" style="z-index:60;" class="md:hidden fixed top-16 right-0 w-64 h-screen bg-slate-900/98 backdrop-blur-lg transform transition-all duration-300 ease-in-out translate-x-full opacity-0">
+        <div id="mobile-menu" style="z-index:60;" class="md:hidden fixed top-16 right-2 h-auto bg-slate-900/98 backdrop-blur-lg transform transition-all duration-300 ease-in-out translate-x-full opacity-0 rounded-xl overflow-hidden shadow-lg">
             <nav class="flex flex-col items-start p-6 space-y-6">
                 <a href="#home" class="text-gradient hover:opacity-80 font-medium text-lg mobile-nav-link">Home</a>
                 <a href="#about" class="text-gradient hover:opacity-80 font-medium text-lg mobile-nav-link">About</a>
                 <a href="#skills" class="text-gradient hover:opacity-80 font-medium text-lg mobile-nav-link">Skills</a>
                 <a href="#projects" class="text-gradient hover:opacity-80 font-medium text-lg mobile-nav-link">Projects</a>
                 <a href="#contact" class="text-gradient hover:opacity-80 font-medium text-lg mobile-nav-link">Contact</a>
-                <div class="mt-4 w-full border-t border-slate-700 pt-4">
-                    <button id="theme-toggle-mobile" aria-label="Toggle theme" class="w-full text-left p-2 rounded-md bg-slate-800 hover:bg-slate-700 text-white">Toggle theme</button>
-                </div>
+                    <div class="mt-4 w-full border-t border-slate-700 pt-4">
+                        <!-- Theme controlled by header indicator; mobile menu kept minimal -->
+                    </div>
             </nav>
         </div>
     </header>
@@ -785,36 +919,33 @@
             <div class="max-w-7xl mx-auto px-4 animate-on-scroll">
                 <!-- Section Header -->
                 <header class="text-center mb-12">
-                    <p class="text-[#17c8d9] uppercase tracking-wider font-medium mb-2">Technical Expertise</p>
-                    <h2 class="text-3xl md:text-4xl font-extrabold mb-3">Data Science Toolkit</h2>
-                    <p class="text-gray-400 max-w-2xl mx-auto">
-                        A comprehensive set of tools and techniques for extracting insights and building data-driven solutions.
-                    </p>
+                    <p class="text-[#17c8d9] uppercase tracking-wider font-medium mb-2">Data Science Toolkit</p>
+                    <p class="text-gray-400 max-w-2xl mx-auto">Tools and techniques I use to turn data into actionable insight — curated for clarity and impact.</p>
                 </header>
 
                 <!-- Skills Grid -->
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 skills-grid">
                     <!-- Programming & Machine Learning Card -->
                     <article class="bg-slate-800 rounded-2xl p-6 shadow-md hover:shadow-lg transition-shadow">
                         <h3 class="text-xl font-bold text-[#17c8d9] mb-4 text-center border-b border-slate-700 pb-2">
-                            Programming & Machine Learning
-                        </h3>
+                                Programming & Machine Learning
+                            </h3>
                         <ul class="space-y-3">
-                            <li class="flex items-center gap-3">
+                            <li class="flex flex-col items-center gap-3">
                                 <span class="skill-icon">🐍</span>
-                                <span>Python for Data Science</span>
+                                <span class="font-medium">Python for Data Science</span>
                             </li>
-                            <li class="flex items-center gap-3">
+                            <li class="flex flex-col items-center gap-3">
                                 <span class="skill-icon">📊</span>
-                                <span>Pandas & NumPy for Data Wrangling</span>
+                                <span class="font-medium">Pandas & NumPy</span>
                             </li>
-                            <li class="flex items-center gap-3">
+                            <li class="flex flex-col items-center gap-3">
                                 <span class="skill-icon">🤖</span>
-                                <span>Scikit-learn for Machine Learning</span>
+                                <span class="font-medium">Scikit-learn</span>
                             </li>
-                            <li class="flex items-center gap-3">
+                            <li class="flex flex-col items-center gap-3">
                                 <span class="skill-icon">🧩</span>
-                                <span>Quantitative Problem Solving</span>
+                                <span class="font-medium">Quantitative Problem Solving</span>
                             </li>
                         </ul>
                     </article>
@@ -825,21 +956,21 @@
                             Data Visualization & Reporting
                         </h3>
                         <ul class="space-y-3">
-                            <li class="flex items-center gap-3">
+                            <li class="flex flex-col items-center gap-3">
                                 <span class="skill-icon">📈</span>
-                                <span>Power BI Dashboards</span>
+                                <span class="font-medium">Power BI Dashboards</span>
                             </li>
-                            <li class="flex items-center gap-3">
+                            <li class="flex flex-col items-center gap-3">
                                 <span class="skill-icon">📉</span>
-                                <span>Matplotlib & Seaborn</span>
+                                <span class="font-medium">Matplotlib & Seaborn</span>
                             </li>
-                            <li class="flex items-center gap-3">
+                            <li class="flex flex-col items-center gap-3">
                                 <span class="skill-icon">📊</span>
-                                <span>Statistical Analysis</span>
+                                <span class="font-medium">Statistical Analysis</span>
                             </li>
-                            <li class="flex items-center gap-3">
+                            <li class="flex flex-col items-center gap-3">
                                 <span class="skill-icon">🧾</span>
-                                <span>Excel & Google Sheets</span>
+                                <span class="font-medium">Excel & Google Sheets</span>
                             </li>
                         </ul>
                     </article>
@@ -936,9 +1067,7 @@
             <div class="max-w-3xl mx-auto px-4 text-center animate-on-scroll">
                 <div class="section-header">
                     <h2 class="section-title">Let's Connect</h2>
-                    <p class="section-description mb-6">
-                        I'm always interested in discussing data science opportunities, collaborations, or innovative projects.
-                    </p>
+                    
                 </div>
                 <!-- Social icons -->
                 <div class="flex justify-center gap-4 mb-6">
@@ -1093,20 +1222,10 @@
             setupExploreButton('maji-explore', 'maji-coming-soon');
             setupExploreButton('payments-explore', 'payments-coming-soon');
 
-            // Theme toggle (dark/light) initialization
-            const themeToggle = document.getElementById('theme-toggle');
-            const themeToggleMobile = document.getElementById('theme-toggle-mobile');
-
+            // Theme toggle (dark/light) initialization — single source: header indicator
             function applyTheme(theme) {
-                if (theme === 'light') {
-                    document.body.classList.add('light');
-                    if (themeToggle) themeToggle.textContent = '☀️';
-                    if (themeToggleMobile) themeToggleMobile.textContent = 'Light mode';
-                } else {
-                    document.body.classList.remove('light');
-                    if (themeToggle) themeToggle.textContent = '🌙';
-                    if (themeToggleMobile) themeToggleMobile.textContent = 'Dark mode';
-                }
+                if (theme === 'light') document.body.classList.add('light');
+                else document.body.classList.remove('light');
                 localStorage.setItem('theme', theme);
             }
 
@@ -1116,9 +1235,35 @@
             else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) applyTheme('light');
             else applyTheme('dark');
 
-            // Toggle handlers
-            if (themeToggle) themeToggle.addEventListener('click', () => applyTheme(document.body.classList.contains('light') ? 'dark' : 'light'));
-            if (themeToggleMobile) themeToggleMobile.addEventListener('click', () => applyTheme(document.body.classList.contains('light') ? 'dark' : 'light'));
+            // Toggle handlers (header indicator toggles theme)
+            const themeToggle = document.getElementById('theme-toggle'); // kept for backward compatibility if present
+            // note: header indicator handles the visible icon and click
+
+            // Update the header theme indicator icon (visible before the hamburger)
+            const themeIndicator = document.getElementById('theme-indicator');
+            function updateThemeIndicator(theme) {
+                if (!themeIndicator) return;
+                if (theme === 'light') {
+                    // Sun icon (orange) for light theme
+                    themeIndicator.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3V2" stroke="#fb923c" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 22v-1" stroke="#fb923c" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M4.22 4.22L3.51 3.51" stroke="#fb923c" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M20.49 20.49l-.71-.71" stroke="#fb923c" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M1 12h1" stroke="#fb923c" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 12h1" stroke="#fb923c" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M4.22 19.78l-.71.71" stroke="#fb923c" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M20.49 3.51l-.71.71" stroke="#fb923c" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="4" stroke="#fb923c" stroke-width="1.6"/></svg>';
+                } else {
+                    // Moon outline for dark theme (light stroke)
+                    themeIndicator.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" stroke="#e6eef1" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+                }
+            }
+
+            // Ensure indicator updates when theme changes and allow clicking it to toggle
+            const originalApplyTheme = applyTheme;
+            applyTheme = function(theme) {
+                originalApplyTheme(theme);
+                updateThemeIndicator(theme);
+            };
+
+            // clicking the indicator toggles theme
+            if (themeIndicator) themeIndicator.addEventListener('click', () => applyTheme(document.body.classList.contains('light') ? 'dark' : 'light'));
+
+            // initialize indicator
+            updateThemeIndicator(document.body.classList.contains('light') ? 'light' : 'dark');
         });
     </script>
 </body>
