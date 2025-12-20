@@ -248,51 +248,68 @@
         }
 
         /* === UPDATED EXPLORE BUTTON STYLES === */
+        /* Centered at bottom for desktop; falls back to bottom-right on small screens */
         .maji-explore-container,
         .payments-explore-container {
             position: absolute;
             bottom: 15px;
-            right: 15px;
+            left: 50%;
+            right: auto;
+            transform: translateX(-50%);
             display: flex;
             flex-direction: column;
             align-items: center;
-            z-index: 10;
+            z-index: 20;
+            pointer-events: none; /* let individual controls handle pointer events */
         }
 
+        /* Individual controls receive pointer events */
         .maji-explore,
         .payments-explore,
         .maji-coming-soon,
         .payments-coming-soon {
+            pointer-events: auto;
             background: linear-gradient(135deg, #3b82f6 0%, #06d6a0 100%);
             color: white;
-            padding: 8px 16px;
-            border-radius: 6px;
-            font-weight: 600;
-            font-size: 0.8rem;
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.85rem;
             text-align: center;
             cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            min-width: 90px;
+            transition: all 0.22s ease;
+            box-shadow: 0 6px 18px rgba(2,6,23,0.45);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            min-width: 96px;
+            backdrop-filter: blur(4px);
         }
 
         .maji-explore:hover,
         .payments-explore:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(6, 214, 160, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 22px rgba(6, 214, 160, 0.2);
         }
 
+        /* Make the "COMING SOON" badge visible and styled for desktop
+           but keep it hidden on small screens for space */
         .maji-coming-soon,
         .payments-coming-soon {
-            background: linear-gradient(135deg, #6b7280 0%, #374151 100%);
-            display: none;
+            display: block;
+            margin-top: 8px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e6eef1;
+            padding: 6px 12px;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            border: 1px solid rgba(255,255,255,0.04);
         }
 
         .maji-coming-soon:hover,
         .payments-coming-soon:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(107, 114, 128, 0.4);
+            box-shadow: 0 6px 18px rgba(107, 114, 128, 0.25);
         }
 
         .maji-signal-indicator,
@@ -322,22 +339,38 @@
             }
         }
 
-        /* Mobile responsive styles for explore buttons */
+        /* Mobile responsive styles for explore buttons: move to bottom-right and hide coming-soon for compact screens */
         @media (max-width: 640px) {
             .maji-explore,
-            .payments-explore,
+            .payments-explore {
+                padding: 6px 10px;
+                font-size: 0.75rem;
+                min-width: 72px;
+            }
+
             .maji-coming-soon,
             .payments-coming-soon {
-                padding: 6px 12px;
-                font-size: 0.7rem;
-                min-width: 80px;
+                display: none;
             }
-            
+
             .maji-explore-container,
             .payments-explore-container {
-                bottom: 10px;
+                left: auto;
                 right: 10px;
+                bottom: 10px;
+                transform: none;
+                align-items: flex-end;
             }
+        }
+
+        /* Make images slightly more vivid on wider screens so they read better on desktop */
+        @media (min-width: 1024px) {
+            .project-image-container img {
+                filter: contrast(1.05) saturate(1.06) brightness(1.01);
+            }
+
+            /* Increase desktop project image height for more visual presence */
+            .project-image-container { height: 460px; }
         }
 
         /* === RESPONSIVE STYLES === */
