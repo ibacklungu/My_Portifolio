@@ -595,6 +595,50 @@
             .project-image-container { height: 460px; }
         }
 
+        /* ========== LAYOUT / GUTTER CONSISTENCY ========== */
+        :root {
+            --page-h-padding: 1.25rem; /* 20px default horizontal padding */
+            --section-gap: 1rem;       /* 16px gap between cards (tighter, consistent with other sections) */
+        }
+
+        @media (min-width: 1024px) {
+            :root { --page-h-padding: 2rem; }
+        }
+
+        /* Force the common container to use a consistent horizontal padding so cards
+           always have the same distance from the screen edge on all sections. */
+        .max-w-7xl.mx-auto { padding-left: var(--page-h-padding) !important; padding-right: var(--page-h-padding) !important; }
+
+        /* Projects and skills should use the same gap so spacing looks consistent
+           across sections and breakpoints. */
+        #projects .grid, .skills-grid { gap: var(--section-gap) !important; }
+
+        /* Projects grid: make it responsive and balanced on wider screens */
+        #projects .grid { grid-template-columns: repeat(1, 1fr); }
+        @media (min-width: 768px) {
+            #projects .grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        /* Project card inner spacing (consistent card gutters) */
+        .project-card .p-5 { padding: 1.25rem !important; }
+
+        /* ===== SKILLS: clearer, equal-height cards with left-aligned lists ===== */
+        .skills-grid article {
+            min-height: 220px;            /* ensures balanced card heights */
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;         /* allow left-aligned lists */
+            justify-content: flex-start;
+            padding: 1.25rem;
+            text-align: left;             /* lists are easier to scan when left-aligned */
+        }
+        .skills-grid h3 { text-align: center; }
+        .skills-grid ul { margin-top: 0.5rem; }
+        .skills-grid li { display: flex; align-items: center; gap: 0.75rem; }
+        .skills-grid .skill-icon { margin: 0; width: 44px; height: 44px; border-radius: 10px; font-size: 1.05rem; }
+        .skills-grid .font-medium { font-weight: 600; }
+
+
         /* === RESPONSIVE STYLES === */
         @media (max-width: 640px) {
             /* Disable animations on mobile for performance */
@@ -924,26 +968,26 @@
                 </header>
 
                 <!-- Skills Grid -->
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 skills-grid">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 skills-grid">
                     <!-- Programming & Machine Learning Card -->
                     <article class="bg-slate-800 rounded-2xl p-6 shadow-md hover:shadow-lg transition-shadow">
                         <h3 class="text-xl font-bold text-[#17c8d9] mb-4 text-center border-b border-slate-700 pb-2">
                                 Programming & Machine Learning
                             </h3>
                         <ul class="space-y-3">
-                            <li class="flex flex-col items-center gap-3">
+                            <li class="flex items-center gap-2">
                                 <span class="skill-icon">🐍</span>
                                 <span class="font-medium">Python for Data Science</span>
                             </li>
-                            <li class="flex flex-col items-center gap-3">
+                            <li class="flex items-center gap-2">
                                 <span class="skill-icon">📊</span>
                                 <span class="font-medium">Pandas & NumPy</span>
                             </li>
-                            <li class="flex flex-col items-center gap-3">
+                            <li class="flex items-center gap-2">
                                 <span class="skill-icon">🤖</span>
                                 <span class="font-medium">Scikit-learn</span>
                             </li>
-                            <li class="flex flex-col items-center gap-3">
+                            <li class="flex items-center gap-2">
                                 <span class="skill-icon">🧩</span>
                                 <span class="font-medium">Quantitative Problem Solving</span>
                             </li>
@@ -956,19 +1000,19 @@
                             Data Visualization & Reporting
                         </h3>
                         <ul class="space-y-3">
-                            <li class="flex flex-col items-center gap-3">
+                            <li class="flex items-center gap-3">
                                 <span class="skill-icon">📈</span>
                                 <span class="font-medium">Power BI Dashboards</span>
                             </li>
-                            <li class="flex flex-col items-center gap-3">
+                            <li class="flex items-center gap-3">
                                 <span class="skill-icon">📉</span>
                                 <span class="font-medium">Matplotlib & Seaborn</span>
                             </li>
-                            <li class="flex flex-col items-center gap-3">
+                            <li class="flex items-center gap-3">
                                 <span class="skill-icon">📊</span>
                                 <span class="font-medium">Statistical Analysis</span>
                             </li>
-                            <li class="flex flex-col items-center gap-3">
+                            <li class="flex items-center gap-3">
                                 <span class="skill-icon">🧾</span>
                                 <span class="font-medium">Excel & Google Sheets</span>
                             </li>
@@ -1007,7 +1051,7 @@
                     <h2 class="section-title">Work & Explorations</h2>
                     <p class="section-description">Practical applications of data science techniques to solve real-world problems</p>
                 </div>
-                <div class="grid grid-cols-1 gap-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 projects-grid">
                     <!-- Maji Ndogo Project -->
                     <div class="project-card professional-card flex flex-col">
                         <div class="p-5 pb-2">
