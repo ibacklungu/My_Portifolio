@@ -22,6 +22,28 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <style>
+        /* === THEME VARIABLES (dark default) === */
+        :root {
+            --page-bg: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            --text-color: #f8fafc;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --header-bg: rgba(15, 23, 42, 0.85);
+            --cta-bg: linear-gradient(135deg, #3b82f6 0%, #06d6a0 100%);
+            --cta-fore: #ffffff;
+            --muted: #94a3b8;
+        }
+
+        /* Light theme overrides */
+        body.light {
+            --page-bg: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+            --text-color: #0f172a;
+            --card-bg: rgba(255, 255, 255, 0.92);
+            --header-bg: rgba(255, 255, 255, 0.98);
+            --cta-bg: linear-gradient(135deg, #0f172a 0%, #06d6a0 100%);
+            --cta-fore: #ffffff;
+            --muted: #475569;
+        }
+
         /* === GLOBAL STYLES === */
         body {
             font-family: 'Inter', sans-serif;
@@ -29,8 +51,8 @@
             scrollbar-width: none;          /* Hide scrollbar in Firefox */
             padding-top: 4rem;              /* Space for fixed header */
             margin: 0;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            color: #f8fafc;
+            background: var(--page-bg);
+            color: var(--text-color);
         }
         body::-webkit-scrollbar { 
             display: none;                  /* Hide scrollbar in Chrome/Safari */
@@ -66,7 +88,7 @@
 
         /* === CARD STYLES (used in Education, Experience, Skills) === */
         .professional-card {
-            background: rgba(30, 41, 59, 0.7);
+            background: var(--card-bg);
             backdrop-filter: blur(4px);
             border-radius: 16px;
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -101,8 +123,8 @@
         .cta-button {
             display: inline-flex;
             align-items: center;
-            background: linear-gradient(135deg, #3b82f6 0%, #06d6a0 100%);
-            color: white; 
+            background: var(--cta-bg);
+            color: var(--cta-fore); 
             font-weight: 700;
             padding: 0.75rem 1.5rem;
             border-radius: 12px;
@@ -159,7 +181,7 @@
             margin-bottom: 1rem;
         }
         .section-description {
-            color: #94a3b8;
+            color: var(--muted);
             max-width: 42rem;
             margin-left: auto;
             margin-right: auto;
@@ -363,6 +385,80 @@
             }
         }
 
+        /* Mobile menu overlay states */
+        :root {
+            --overlay-bg: rgba(0,0,0,0.55);
+            --mobile-menu-width: 320px; /* default max width */
+        }
+
+        body.light {
+            --overlay-bg: rgba(15,23,42,0.06);
+            --mobile-menu-width: 320px;
+        }
+
+        #mobile-overlay {
+            position: fixed;
+            inset: 0;
+            background: var(--overlay-bg);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .25s ease;
+            z-index: 50;
+        }
+
+        #mobile-overlay.open {
+            opacity: 1 !important;
+            pointer-events: auto !important;
+        }
+
+        /* Mobile menu sizing and theme-aware colors */
+        #mobile-menu {
+            width: 80%;
+            max-width: var(--mobile-menu-width);
+            background: var(--header-bg);
+            color: var(--text-color);
+        }
+
+        /* Make mobile nav links readable in light theme */
+        #mobile-menu .mobile-nav-link {
+            color: var(--text-color) !important;
+        }
+
+        /* Ensure header background uses theme variable */
+        header {
+            background: var(--header-bg) !important;
+            border-color: rgba(0,0,0,0.06);
+        }
+
+        /* Hamburger and theme toggle inherit color to remain visible on light theme */
+        #hamburger-button, #theme-toggle, #theme-toggle-mobile {
+            color: var(--text-color) !important;
+            background: rgba(255,255,255,0.03) !important;
+            border: 1px solid rgba(255,255,255,0.04) !important;
+            padding: 6px !important;
+            border-radius: 8px !important;
+        }
+
+        /* Light theme micro-typography improvements */
+        body.light {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Light theme professional card border/shadow tweaks for contrast */
+        body.light .professional-card {
+            border-color: rgba(15,23,42,0.06) !important;
+            box-shadow: 0 8px 20px rgba(2,6,23,0.03) !important;
+        }
+
+        /* Override common utility text colors that conflict in light theme */
+        body.light .text-white { color: var(--text-color) !important; }
+        body.light .text-slate-300,
+        body.light .text-slate-400 { color: var(--muted) !important; }
+
+        /* Links and accents for light theme */
+        body.light .text-gradient { background: linear-gradient(135deg, #0f172a 0%, #06d6a0 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
         /* Make images slightly more vivid on wider screens so they read better on desktop */
         @media (min-width: 1024px) {
             .project-image-container img {
@@ -426,6 +522,11 @@
             align-items: center;
             justify-content: center;
         }
+
+        /* Ensure header and mobile menu follow theme colors */
+        header { background: var(--header-bg) !important; }
+        #mobile-menu { background: var(--header-bg) !important; }
+        .section-title { color: var(--text-color) !important; }
 
         /* ALX "in progress" blinking dot */
         @keyframes blinking-dot {
@@ -522,12 +623,16 @@
                     <span class="text-white">Iback Lungu</span>
                 </a>
                 <!-- Desktop navigation links -->
-                <nav class="hidden md:flex space-x-8">
-                    <a href="#home" class="text-slate-300 hover:text-teal-300 font-medium transition-colors duration-300">Home</a>
-                    <a href="#about" class="text-slate-300 hover:text-teal-300 font-medium transition-colors duration-300">About</a>
-                    <a href="#skills" class="text-slate-300 hover:text-teal-300 font-medium transition-colors duration-300">Skills</a>
-                    <a href="#projects" class="text-slate-300 hover:text-teal-300 font-medium transition-colors duration-300">Projects</a>
-                    <a href="#contact" class="text-slate-300 hover:text-teal-300 font-medium transition-colors duration-300">Contact</a>
+                <nav class="hidden md:flex items-center space-x-4">
+                    <div class="flex space-x-6">
+                        <a href="#home" class="text-slate-300 hover:text-teal-300 font-medium transition-colors duration-300">Home</a>
+                        <a href="#about" class="text-slate-300 hover:text-teal-300 font-medium transition-colors duration-300">About</a>
+                        <a href="#skills" class="text-slate-300 hover:text-teal-300 font-medium transition-colors duration-300">Skills</a>
+                        <a href="#projects" class="text-slate-300 hover:text-teal-300 font-medium transition-colors duration-300">Projects</a>
+                        <a href="#contact" class="text-slate-300 hover:text-teal-300 font-medium transition-colors duration-300">Contact</a>
+                    </div>
+                    <!-- Theme toggle (desktop) -->
+                    <button id="theme-toggle" aria-label="Toggle theme" class="ml-4 p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-white">🌙</button>
                 </nav>
                 <!-- Mobile menu toggle button -->
                 <button id="hamburger-button" class="md:hidden text-white focus:outline-none" aria-label="Open menu">
@@ -540,14 +645,20 @@
                 </button>
             </div>
         </div>
+        <!-- Mobile overlay (dims page when menu is open) -->
+        <div id="mobile-overlay" aria-hidden="true"></div>
+
         <!-- Mobile menu (slides in from right) -->
-        <div id="mobile-menu" class="md:hidden fixed top-16 right-0 w-64 h-screen bg-slate-900/98 backdrop-blur-lg transform transition-all duration-300 ease-in-out translate-x-full opacity-0">
+        <div id="mobile-menu" style="z-index:60;" class="md:hidden fixed top-16 right-0 w-64 h-screen bg-slate-900/98 backdrop-blur-lg transform transition-all duration-300 ease-in-out translate-x-full opacity-0">
             <nav class="flex flex-col items-start p-6 space-y-6">
                 <a href="#home" class="text-gradient hover:opacity-80 font-medium text-lg mobile-nav-link">Home</a>
                 <a href="#about" class="text-gradient hover:opacity-80 font-medium text-lg mobile-nav-link">About</a>
                 <a href="#skills" class="text-gradient hover:opacity-80 font-medium text-lg mobile-nav-link">Skills</a>
                 <a href="#projects" class="text-gradient hover:opacity-80 font-medium text-lg mobile-nav-link">Projects</a>
                 <a href="#contact" class="text-gradient hover:opacity-80 font-medium text-lg mobile-nav-link">Contact</a>
+                <div class="mt-4 w-full border-t border-slate-700 pt-4">
+                    <button id="theme-toggle-mobile" aria-label="Toggle theme" class="w-full text-left p-2 rounded-md bg-slate-800 hover:bg-slate-700 text-white">Toggle theme</button>
+                </div>
             </nav>
         </div>
     </header>
@@ -879,31 +990,52 @@
         }, { threshold: 0.15 });
         document.querySelectorAll('.hero-fade-in, .animate-on-scroll').forEach(el => observer.observe(el));
 
-        // Mobile menu toggle logic (fixed to work correctly)
+        // Mobile menu toggle logic (with overlay and scroll lock)
         const hamburgerButton = document.getElementById('hamburger-button');
         const mobileMenu = document.getElementById('mobile-menu');
+        const mobileOverlay = document.getElementById('mobile-overlay');
         const hamburgerOpen = document.getElementById('hamburger-open');
         const hamburgerClose = document.getElementById('hamburger-close');
+
+        function openMobileMenu() {
+            // slide menu in
+            mobileMenu.classList.remove('translate-x-full');
+            mobileMenu.classList.remove('opacity-0');
+            // show overlay
+            mobileOverlay.classList.add('open');
+            // swap icons
+            hamburgerOpen.classList.add('hidden');
+            hamburgerClose.classList.remove('hidden');
+            // lock scroll
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMobileMenu() {
+            mobileMenu.classList.add('translate-x-full');
+            mobileMenu.classList.add('opacity-0');
+            mobileOverlay.classList.remove('open');
+            hamburgerOpen.classList.remove('hidden');
+            hamburgerClose.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
         if (hamburgerButton) {
             hamburgerButton.addEventListener('click', () => {
-                const isMenuOpen = mobileMenu.classList.contains('translate-x-full');
-                mobileMenu.classList.toggle('translate-x-full', !isMenuOpen);
-                mobileMenu.classList.toggle('opacity-0', !isMenuOpen);
-                hamburgerOpen.classList.toggle('hidden', !isMenuOpen);
-                hamburgerClose.classList.toggle('hidden', isMenuOpen);
+                const isHidden = mobileMenu.classList.contains('translate-x-full');
+                if (isHidden) openMobileMenu(); else closeMobileMenu();
             });
         }
 
         // Close mobile menu when a nav link is clicked
         const mobileLinks = document.querySelectorAll('.mobile-nav-link');
         mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('translate-x-full');
-                mobileMenu.classList.remove('opacity-100');
-                hamburgerOpen.classList.remove('hidden');
-                hamburgerClose.classList.add('hidden');
-            });
+            link.addEventListener('click', () => closeMobileMenu());
         });
+
+        // Close when clicking the overlay
+        if (mobileOverlay) {
+            mobileOverlay.addEventListener('click', () => closeMobileMenu());
+        }
 
         // Contact form submission via EmailJS
         const contactForm = document.getElementById('contact-form');
@@ -960,6 +1092,33 @@
             // Setup both project buttons
             setupExploreButton('maji-explore', 'maji-coming-soon');
             setupExploreButton('payments-explore', 'payments-coming-soon');
+
+            // Theme toggle (dark/light) initialization
+            const themeToggle = document.getElementById('theme-toggle');
+            const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+
+            function applyTheme(theme) {
+                if (theme === 'light') {
+                    document.body.classList.add('light');
+                    if (themeToggle) themeToggle.textContent = '☀️';
+                    if (themeToggleMobile) themeToggleMobile.textContent = 'Light mode';
+                } else {
+                    document.body.classList.remove('light');
+                    if (themeToggle) themeToggle.textContent = '🌙';
+                    if (themeToggleMobile) themeToggleMobile.textContent = 'Dark mode';
+                }
+                localStorage.setItem('theme', theme);
+            }
+
+            // Initialize from saved preference or system setting
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) applyTheme(savedTheme);
+            else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) applyTheme('light');
+            else applyTheme('dark');
+
+            // Toggle handlers
+            if (themeToggle) themeToggle.addEventListener('click', () => applyTheme(document.body.classList.contains('light') ? 'dark' : 'light'));
+            if (themeToggleMobile) themeToggleMobile.addEventListener('click', () => applyTheme(document.body.classList.contains('light') ? 'dark' : 'light'));
         });
     </script>
 </body>
