@@ -1,0 +1,8 @@
+{
+    "liveServer.settings.port": 5501,
+    "editor.linkedEditing": true,
+    "powerquery.client.additionalSymbolsDirectories": [
+        "d:/Projects/my_portifolio/.vscode/excel-pq-symbols",
+        "d:/My_Projects/my_portifolio/.vscode/excel-pq-symbols"
+    ]
+}
